@@ -58,15 +58,15 @@ CREATE TABLE `Logs` (
 	PRIMARY KEY (`ID`)
 );
 
-ALTER TABLE `Client_Contract` ADD CONSTRAINT `Client_Contract_fk0` FOREIGN KEY (`ID_Client`) REFERENCES `Clients`(`ID`);
+ALTER TABLE `Client_Contract` ADD CONSTRAINT `Client_Contract_fk0` FOREIGN KEY (`ID_Client`) REFERENCES `Clients`(`ID`)ON DELETE CASCADE;
 
-ALTER TABLE `Client_Contract` ADD CONSTRAINT `Client_Contract_fk1` FOREIGN KEY (`ID_Company`) REFERENCES `Company`(`ID`);
+ALTER TABLE `Client_Contract` ADD CONSTRAINT `Client_Contract_fk1` FOREIGN KEY (`ID_Company`) REFERENCES `Company`(`ID`) ON DELETE CASCADE;
 
-ALTER TABLE `Employee_Contract` ADD CONSTRAINT `Employee_Contract_fk0` FOREIGN KEY (`ID_Company`) REFERENCES `Company`(`ID`);
+ALTER TABLE `Employee_Contract` ADD CONSTRAINT `Employee_Contract_fk0` FOREIGN KEY (`ID_Company`) REFERENCES `Company`(`ID`) ON DELETE CASCADE;
 
-ALTER TABLE `Employee_Contract` ADD CONSTRAINT `Employee_Contract_fk1` FOREIGN KEY (`ID_Employee`) REFERENCES `Employee`(`ID`);
+ALTER TABLE `Employee_Contract` ADD CONSTRAINT `Employee_Contract_fk1` FOREIGN KEY (`ID_Employee`) REFERENCES `Employee`(`ID`) ON DELETE CASCADE;
 
-ALTER TABLE `Logs` ADD CONSTRAINT `Logs_fk0` FOREIGN KEY (`ID_Client`) REFERENCES `Clients`(`ID`);
+ALTER TABLE `Logs` ADD CONSTRAINT `Logs_fk0` FOREIGN KEY (`ID_Client`) REFERENCES `Clients`(`ID`) ON DELETE CASCADE;
 
-ALTER TABLE `Logs` ADD CONSTRAINT `Logs_fk1` FOREIGN KEY (`ID_Employee`) REFERENCES `Employee`(`ID`);
+ALTER TABLE `Logs` ADD CONSTRAINT `Logs_fk1` FOREIGN KEY (`ID_Employee`) REFERENCES `Employee`(`ID`) ON DELETE CASCADE;
 
