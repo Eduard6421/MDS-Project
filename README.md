@@ -10,10 +10,10 @@ Additional Link (User Stories) : https://www.pivotaltracker.com/n/projects/21595
 **Project Manager : Eduard6421**
 
 
-Teams             :   Android(CristiDospra)    ,        Desktop(StefanIordache)      ,        Server  ( Team Manager : Eduard6421);
+**Teams**             :   Android(CristiDospra)    ,        Desktop(StefanIordache)      ,        Server  ( Team Manager : Eduard6421);
 
 
-Team-composition  :   
+**Team-composition**  :   
   
                      Android : 
                               -CristiDospra;
