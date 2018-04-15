@@ -14,16 +14,15 @@ Additional Link (User Stories) : https://www.pivotaltracker.com/n/projects/21595
 
 
 **Team-composition**  :   
-  
-                     Android : 
+                     **Android** : 
                               -CristiDospra;
                               -Eduard6421;
                               -StefanIordache;
-                     Desktop :
+                     **Desktop** :
                               -AlinaMaican;
                               -RSorin;
                               -StefanIordache;
-                     Server  : 
+                     **Server**  : 
                               -Eduard6421;
                               -StefanIordache;
                               
