@@ -18,37 +18,39 @@ public class CompanyContract extends Entity{
     private Date startDate;
     private Date endDate;
 
-    public void setIdEmployee(int IdEmployee) {
-        this.idEmployee = IdEmployee;
-    }
-
-    public void setIdCompany(int IdCompany) {
-        this.idCompany = IdCompany;
-    }
-
-    public void setStartDate(Date StartDate) {
-        this.startDate = StartDate;
-    }
-
-    public void setEndDate(Date EndDate) {
-        this.endDate = EndDate;
-    }
-
     public int getIdEmployee() {
         return idEmployee;
+    }
+
+    public void setIdEmployee(int idEmployee) {
+        this.idEmployee = idEmployee;
     }
 
     public int getIdCompany() {
         return idCompany;
     }
 
+    public void setIdCompany(int idCompany) {
+        this.idCompany = idCompany;
+    }
+
     public Date getStartDate() {
         return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public Date getEndDate() {
         return endDate;
     }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+
     
     
 }

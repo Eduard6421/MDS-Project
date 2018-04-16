@@ -18,37 +18,39 @@ public class Company extends Entity{
     Date contractStartDate;
     Date contractEndDate;
     String description;
-    
-    public void setName(String Name) {
-        this.name = Name;
-    }
-
-    public void setContractStartDate(Date ContractStartDate) {
-        this.contractStartDate = ContractStartDate;
-    }
-
-    public void setContractEndDate(Date ContractEndDate) {
-        this.contractEndDate = ContractEndDate;
-    }
-
-    public void setDescription(String Description) {
-        this.description = Description;
-    }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getContractStartDate() {
         return contractStartDate;
     }
 
+    public void setContractStartDate(Date contractStartDate) {
+        this.contractStartDate = contractStartDate;
+    }
+
     public Date getContractEndDate() {
         return contractEndDate;
+    }
+
+    public void setContractEndDate(Date contractEndDate) {
+        this.contractEndDate = contractEndDate;
     }
 
     public String getDescription() {
         return description;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    
     
 }
