@@ -14,17 +14,32 @@ import java.util.Date;
 public class Company extends Entity{
     
     
-    String name;
+    String Name;
     Date contractStartDate;
     Date contractEndDate;
-    String description;
+    String Description;
 
+    public Company(int Id,String name,Date contractStartDate,Date contractEndDate,String Description) {
+     this.Id = Id;
+     this.Name = name;
+     this.contractStartDate = contractStartDate;
+     this.contractEndDate   = contractEndDate;
+     this.Description = Description;
+    }
+    
+    public Company(String name,Date contractStartDate,Date contractEndDate,String Description) {
+     this.Name = name;
+     this.contractStartDate = contractStartDate;
+     this.contractEndDate   = contractEndDate;
+     this.Description = Description;
+    } 
+            
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public Date getContractStartDate() {
@@ -44,11 +59,11 @@ public class Company extends Entity{
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.Description = description;
     }
     
     
