@@ -19,6 +19,35 @@ public class Employee extends Entity{
     String phone;
     String email;
 
+    /**
+    Id, firstName , lastName , userName , user Password, address , phone , email
+    **/
+    public Employee(int Id,String firstName,String lastName,String userName,String userPassword,String address,String phone,String email){
+            
+        this.Id = Id;
+        this.firstName = firstName;
+        this.lastName  = lastName;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        
+    }
+    
+    public Employee(String firstName,String lastName,String userName,String userPassword,String address,String phone,String email){
+        
+        this.firstName = firstName;
+        this.lastName  = lastName;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        
+    }
+    
+    
     public String getFirstName() {
         return firstName;
     }

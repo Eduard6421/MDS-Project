@@ -9,7 +9,7 @@ package Models;
  *
  * @author t-edpoes
  */
-public class Clients extends Entity{
+public class Client extends Entity{
     
     
     String firstName;
