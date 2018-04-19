@@ -57,7 +57,7 @@ public class ClientController {
         Client clientInstance = null;
 
         List<Client> clientList = new ArrayList<>();
-        
+
         try {
             String query = "SELECT * FROM CLIENT;";
 

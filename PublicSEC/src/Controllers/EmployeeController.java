@@ -53,7 +53,7 @@ public class EmployeeController {
     }
 
     private static List<Employee> getAll() throws SQLException {
-    
+
         Employee employeeInstance = null;
 
         List<Employee> employeeList = new ArrayList<>();

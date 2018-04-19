@@ -7,11 +7,9 @@ package Models;
 
 import java.util.Date;
 
-/**
- *
- * @author t-edpoes
- */
-public class Log extends Entity{
+
+
+public class Meeting extends Entity{
 
     private int idClient;
     private int idEmployee;

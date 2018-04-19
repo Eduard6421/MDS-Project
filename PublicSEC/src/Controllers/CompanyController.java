@@ -69,20 +69,20 @@ public class CompanyController {
                         result.getDate("Contract_Start_Date"),
                         result.getDate("Contract_End_Date"),
                         result.getString("Description"));
-                
+
                 companyList.add(companyInstance);
-                            
+
             }
 
             statement.close();
 
         } catch (SQLException e) {
-            
+
             System.out.println(e);
         }
 
         return companyList;
-        
+
     }
 
 }

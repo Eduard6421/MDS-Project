@@ -11,19 +11,40 @@ import java.util.Date;
  *
  * @author t-edpoes
  */
-public class CompanyContract extends Entity{
-    
-    private int idEmployee;
+public class ClientContract extends Entity {
+
+    private int idClient;
     private int idCompany;
     private Date startDate;
     private Date endDate;
 
-    public int getIdEmployee() {
-        return idEmployee;
+    
+    
+    public ClientContract(int idClient, int idCompany, Date startDate, Date endDate) {
+
+        this.Id = -1;
+        this.idClient = idClient;
+        this.idCompany = idCompany;
+        this.startDate = startDate;
+        this.endDate = endDate;
+
     }
 
-    public void setIdEmployee(int idEmployee) {
-        this.idEmployee = idEmployee;
+    public ClientContract(int Id, int idClient, int idCompany, Date startDate, Date endDate) {
+        this.Id = Id;
+        this.idClient = idClient;
+        this.idCompany = idCompany;
+        this.startDate = startDate;
+        this.endDate = endDate;
+
+    }
+
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
     }
 
     public int getIdCompany() {
@@ -50,7 +71,4 @@ public class CompanyContract extends Entity{
         this.endDate = endDate;
     }
 
-
-    
-    
 }

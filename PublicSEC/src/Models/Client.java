@@ -19,8 +19,8 @@ public class Client extends Entity {
     String phone;
     String email;
 
-    public Client(int Id, String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
-        this.Id = Id;
+    public Client(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+        this.Id = -1;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -30,7 +30,8 @@ public class Client extends Entity {
         this.email = email;
     }
 
-    public Client(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+    public Client(int Id, String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+        this.Id = Id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
