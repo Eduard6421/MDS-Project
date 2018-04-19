@@ -52,7 +52,7 @@ public class ClientController {
         return clientInstance;
     }
 
-    private static List<Client> getAll() throws SQLException {
+    public static List<Client> getAll() throws SQLException {
 
         Client clientInstance = null;
 
