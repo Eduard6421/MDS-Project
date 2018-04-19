@@ -9,9 +9,8 @@ package Models;
  *
  * @author t-edpoes
  */
-public class Client extends Entity{
-    
-    
+public class Client extends Entity {
+
     String firstName;
     String lastName;
     String userName;
@@ -19,6 +18,27 @@ public class Client extends Entity{
     String address;
     String phone;
     String email;
+
+    public Client(int Id, String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+        this.Id = Id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public Client(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -76,7 +96,4 @@ public class Client extends Entity{
         this.email = email;
     }
 
-    
-    
-    
 }
