@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cristidospra.publicsec.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/login_screen_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/username_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/password_edit_text"
+            android:layout_marginTop="160dp"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName"/>
+
+        <EditText
+            android:id="@+id/password_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username_edit_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password_edit_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Sign In" />
+
+        <TextView
+            android:id="@+id/create_account_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/login_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:text="Create account" />
+
+        <TextView
+            android:id="@+id/trademark_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="17dp"
+            android:text="PublicSEC™" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

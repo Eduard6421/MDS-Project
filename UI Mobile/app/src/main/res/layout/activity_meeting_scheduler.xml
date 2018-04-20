@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MeetingSchedulerActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/meeting_scheduler_appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/meeting_scheduler_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageView
+                android:id="@+id/menu_bars_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu_bars" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_meeting_scheduler" />
+
+    <RelativeLayout
+        android:id="@+id/meeting_scheduler_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp">
+
+        <TextView
+            android:id="@+id/meeting_scheduler_company_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="100dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Company"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/meeting_scheduler_company_spinner"
+            android:layout_width="230dp"
+            android:layout_height="47dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/meeting_scheduler_company_text_view"
+            android:layout_marginEnd="30dp"
+            android:spinnerMode="dropdown"
+            />
+        <!-- ############################################################################# -->
+
+        <TextView
+            android:id="@+id/meeting_scheduler_date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/meeting_scheduler_company_text_view"
+            android:layout_below="@+id/meeting_scheduler_company_text_view"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Date"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/meeting_scheduler_date_edit_text"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/meeting_scheduler_date_text_view"
+            android:layout_marginEnd="30dp"
+            android:inputType="date"
+            android:text="01.04.2018"
+            android:clickable="true"/>
+        <!-- ############################################################################# -->
+
+        <TextView
+            android:id="@+id/meeting_scheduler_issue_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/meeting_scheduler_date_text_view"
+            android:layout_below="@+id/meeting_scheduler_date_text_view"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Issue"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/meeting_scheduler_issue_edit_text"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/meeting_scheduler_issue_text_view"
+            android:layout_marginEnd="30dp"
+            android:inputType="textLongMessage"
+            android:text="Issue text"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/meeting_scheduler_schdule_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/meeting_scheduler_issue_text_view"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="25dp"
+            android:text="Schedule" />
+        <!-- ############################################################################# -->
+
+
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

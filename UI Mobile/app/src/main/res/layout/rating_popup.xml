@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rating_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RatingBar
+            android:id="@+id/rating_popup_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="140dp" />
+
+        <TextView
+            android:id="@+id/rating_popup_description_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="255dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Description"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/rating_popup_description_edit_text"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/rating_popup_description_text_view"
+            android:layout_marginEnd="20dp"
+            android:hint="Your description"
+            android:inputType="textMultiLine"/>
+
+        <Button
+            android:id="@+id/rating_popup_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/rating_popup_rate_button"
+            android:layout_toStartOf="@+id/rating_popup_description_edit_text"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/rating_popup_rate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/rating_popup_ratingBar"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="90dp"
+            android:text="Rate" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

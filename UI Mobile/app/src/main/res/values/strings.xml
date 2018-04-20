@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PublicSEC</string>
+    <string name="title_activity_user_account">user_account</string>
+    <string name="title_activity_test_activity">TestACtivity</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_meeting_scheduler">MeetingScheduler</string>
+    <string name="title_activity_meetings">MeetingsActivity</string>
+    <string name="title_activity_employee_account">EmployeeAccountActivity</string>
+    <string name="title_activity_write_report_activty">WriteReportActivty</string>
+    <string name="title_activity_google_maps">Map</string>
+</resources>

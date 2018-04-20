@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<android.support.v7.widget.MenuPopupWindow.MenuDropDownListView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <item
+        android:id="@+id/user_overflow_account"
+        android:title="User Account" />
+
+    <item
+        android:id="@+id/user_overflow_meetings"
+        android:title="Meetings" />
+
+    <item
+        android:id="@+id/user_overflow_schedule_meeting"
+        android:title="Schedule Meeting" />
+
+    <item
+        android:id="@+id/user_overflow_contact_us"
+        android:title="Contact Us" />
+
+</android.support.v7.widget.MenuPopupWindow.MenuDropDownListView>

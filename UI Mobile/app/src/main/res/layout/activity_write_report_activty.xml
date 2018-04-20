@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WriteReportActivty">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/write_report_appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/write_report_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageView
+                android:id="@+id/menu_bars_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu_bars" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_write_report_activty" />
+
+    <RelativeLayout
+        android:id="@+id/write_report_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/write_report_meeting_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="150dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Company"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/write_report_meeting_spinner"
+            android:layout_width="230dp"
+            android:layout_height="47dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/write_report_meeting_text_view"
+            android:layout_marginEnd="30dp"
+            android:spinnerMode="dropdown"
+            />
+        <!-- ############################################################################# -->
+
+
+        <TextView
+            android:id="@+id/write_report_description_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="255dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Description"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/write_report_description_edit_text"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/write_report_description_text_view"
+            android:layout_marginEnd="20dp"
+            android:hint="Your description"
+            android:inputType="textMultiLine"/>
+
+        <Button
+            android:id="@+id/write_report_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/write_report_submit_button"
+            android:layout_toStartOf="@+id/write_report_description_edit_text"
+            android:layout_marginStart="60dp"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/write_report_submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="90dp"
+            android:layout_marginEnd="60dp"
+            android:text="Submit" />
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
