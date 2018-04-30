@@ -42,7 +42,8 @@ public class EmployeeController {
                         result.getString("Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
-                        result.getString("Email"));
+                        result.getString("Email"),
+                        result.getDouble("Rating"));
             }
 
             statement.close();
@@ -76,8 +77,10 @@ public class EmployeeController {
                         result.getString("Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
-                        result.getString("Email"));
+                        result.getString("Email"),
+                        result.getDouble("Rating"));
             }
+
 
             statement.close();
 
@@ -110,8 +113,10 @@ public class EmployeeController {
                         result.getString("Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
-                        result.getString("Email"));
+                        result.getString("Email"),
+                        result.getDouble("Rating"));
             }
+
 
             statement.close();
 
@@ -120,6 +125,29 @@ public class EmployeeController {
         }
 
         return employeeInstance;
+    }
+    
+     public static boolean changePassword(String oldPassword, String newPassword) {
+        String Username = GlobalData.getUsername();
+
+        try {
+
+            String update = "UPDATE employee SET User_Password = (?) WHERE User_Name= (?) AND User_Password = (?);";
+
+            PreparedStatement statement = Conn.prepareStatement(update);
+            statement.setString(1, newPassword);
+            statement.setString(2, Username);
+            statement.setString(3, oldPassword);
+
+            int result = statement.executeUpdate();
+
+            return result > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Wrong oldPassword : " + e);
+        }
+
+        return false;
     }
 
     public static boolean updateData(String email, String phoneNumber) {
@@ -168,7 +196,8 @@ public class EmployeeController {
                         result.getString("Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
-                        result.getString("Email"));
+                        result.getString("Email"),
+                        result.getDouble("Rating"));
 
                 employeeList.add(employeeInstance);
             }

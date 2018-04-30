@@ -36,7 +36,7 @@ CREATE TABLE `client_contract` (
   PRIMARY KEY (`ID`),
   KEY `Company_Foreign_Key_idx` (`ID_Company`),
   KEY `Client_Foreign_Key_idx` (`ID_Client`),
-  CONSTRAINT `Client_Foreign_Key` FOREIGN KEY (`ID_Client`) REFERENCES `clients` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Client_Foreign_Key` FOREIGN KEY (`ID_Client`) REFERENCES `client` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Company_Foreign_Key` FOREIGN KEY (`ID_Company`) REFERENCES `company` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -52,13 +52,13 @@ INSERT INTO `client_contract` VALUES (1,1,1,'2011-02-02','2012-02-02'),(2,1,2,'2
 UNLOCK TABLES;
 
 --
--- Table structure for table `clients`
+-- Table structure for table `client`
 --
 
-DROP TABLE IF EXISTS `clients`;
+DROP TABLE IF EXISTS `client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `clients` (
+CREATE TABLE `client` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `First_Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
@@ -72,13 +72,13 @@ CREATE TABLE `clients` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clients`
+-- Dumping data for table `client`
 --
 
-LOCK TABLES `clients` WRITE;
-/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES (1,'NumeClient1','PrenumeClient1','client1','parolaclient1','Strada Clientului Nr.7','0711223344','client@hotmail.com'),(2,'NumeClient1','PrenumeClient2','client2','parolaclient2','Strada Clientului nr 2','07112234','client2@hotmail.com'),(3,'NumeClient3','PrenumeClient3','client3','parolaclient3','Strada Clientului nr 3','04112341','client3@hotmail.com');
-/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES (1,'NumeClient1','PrenumeClient1','client1','parolaclient1','Strada Clientului Nr.7','0711223344','client@hotmail.com'),(2,'NumeClient1','PrenumeClient2','client2','parolaclient2','Strada Clientului nr 2','07112234','client2@hotmail.com'),(3,'NumeClient3','PrenumeClient3','client3','parolaclient3','Strada Clientului nr 3','04112341','client3@hotmail.com');
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -125,6 +125,7 @@ CREATE TABLE `employee` (
   `Last_Name` varchar(50) NOT NULL,
   `Phone` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
+  `Rating` double(4,3) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -135,7 +136,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'employee','passemployee1','employee1','employee1','0123012312','employee1@hotmail.com'),(2,'employee','passemployee2','employee2','employee2','012312313','employee2@hotmail.com');
+INSERT INTO `employee`(`ID`,`USERNAME`,`PASSWORD`,`First_Name`,`Last_Name`,`Phone`,`Email`) VALUES (1,'employee','passemployee1','employee1','employee1','0123012312','employee1@hotmail.com'),(2,'employee','passemployee2','employee2','employee2','012312313','employee2@hotmail.com');
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +188,7 @@ CREATE TABLE `meetings` (
   PRIMARY KEY (`ID`),
   KEY `Foreign_Key_Client_idx` (`ID_Client`),
   KEY `Foreign_Key_Employee_idx` (`ID_Employee`),
-  CONSTRAINT `Foreign_Key_Client1` FOREIGN KEY (`ID_Client`) REFERENCES `clients` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Foreign_Key_Client1` FOREIGN KEY (`ID_Client`) REFERENCES `client` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Foreign_Key_Employee1` FOREIGN KEY (`ID_Employee`) REFERENCES `company` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

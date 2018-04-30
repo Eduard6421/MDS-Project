@@ -18,13 +18,9 @@ public class Employee extends Entity {
     String address;
     String phone;
     String email;
+    Double rating;
 
-    /**
-     * Id, firstName , lastName , userName , user Password, address , phone ,
-     * email
-     *
-     */
-    public Employee(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+    public Employee(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email, double rating) {
         this.Id = -1;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,10 +29,11 @@ public class Employee extends Entity {
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.rating = rating;
 
     }
 
-    public Employee(int Id, String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+    public Employee(int Id, String firstName, String lastName, String userName, String userPassword, String address, String phone, String email, double rating) {
 
         this.Id = Id;
         this.firstName = firstName;
@@ -46,6 +43,7 @@ public class Employee extends Entity {
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.rating = rating;
 
     }
 
@@ -105,4 +103,11 @@ public class Employee extends Entity {
         this.email = email;
     }
 
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
 }
