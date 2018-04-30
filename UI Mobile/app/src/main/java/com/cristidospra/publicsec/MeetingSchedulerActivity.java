@@ -6,8 +6,20 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 
 public class MeetingSchedulerActivity extends AppCompatActivity {
+
+    private Spinner companySpinner;
+    private EditText dateEditText;
+    private EditText issueEditText;
+
+    private Button scheduleButton;
+
+    private ImageView menuBarsImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,14 +28,34 @@ public class MeetingSchedulerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        companySpinner = findViewById(R.id.meeting_scheduler_company_spinner);
+        dateEditText = findViewById(R.id.meeting_scheduler_date_edit_text);
+        issueEditText = findViewById(R.id.meeting_scheduler_issue_edit_text);
+
+        scheduleButton = findViewById(R.id.meeting_scheduler_schdule_button);
+
+        menuBarsImageView = findViewById(R.id.employee_menu_bars_image_view);
+
+        menuBarsImageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                /* @TODO
+                  menu popup in the corner
+                 */
+            }
+        });
+
+        scheduleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                schedule();
             }
         });
     }
 
+    private void schedule() {
+        /* @TODO
+        schedule a meeting
+         */
+    }
 }

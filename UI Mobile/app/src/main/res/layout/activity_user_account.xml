@@ -20,7 +20,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <ImageView
-                android:id="@+id/menu_bars_image_view"
+                android:id="@+id/user_account_menu_bars_image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_menu_bars" />
@@ -40,7 +40,7 @@
             android:id="@+id/user_username_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="100dp"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
@@ -49,7 +49,7 @@
 
         <EditText
             android:id="@+id/user_username_edit_text"
-            android:layout_width="230dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/user_username_text_view"
@@ -100,7 +100,7 @@
 
         <!-- ############################################################################# -->
         <TextView
-            android:id="@+id/user_adress_text_view"
+            android:id="@+id/user_address_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/user_phone_text_view"
@@ -112,11 +112,11 @@
 
 
         <EditText
-            android:id="@+id/user_adress_edit_text"
+            android:id="@+id/user_address_edit_text"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/user_adress_text_view"
+            android:layout_alignTop="@+id/user_address_text_view"
             android:layout_marginEnd="30dp"
             android:inputType="textPostalAddress"
             android:text="A se completa din database" />
@@ -125,7 +125,7 @@
             android:id="@+id/user_update_data_button"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/user_adress_edit_text"
+            android:layout_below="@+id/user_address_edit_text"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="25dp"

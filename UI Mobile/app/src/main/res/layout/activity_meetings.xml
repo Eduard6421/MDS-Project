@@ -20,7 +20,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <ImageView
-                android:id="@+id/menu_bars_image_view"
+                android:id="@+id/meetings_menu_bars_image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_menu_bars" />
