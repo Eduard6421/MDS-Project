@@ -18,6 +18,74 @@ public class CompanyController {
 
     private static final Connection Conn = MySQLConnector.getConnection();
 
+    public static Company getByAccount(String Username, String Password) {
+
+        Company companyInstance = null;
+
+        try {
+
+            String query = "SELECT * FROM COMPANY WHERE USERNAME = (?) AND PASSWORD = (?);";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+            statement.setString(1, Username);
+            statement.setString(2, Password);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                companyInstance = new Company(
+                        result.getInt("ID"),
+                        result.getString("Name"),
+                        result.getDate("Contract_Start_Date"),
+                        result.getDate("Contract_End_Date"),
+                        result.getString("Description"),
+                        result.getString("Username"),
+                        result.getString("Password"));
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+
+        return companyInstance;
+    }
+
+    public static Company getByUsername(String Username) {
+
+        Company companyInstance = null;
+
+        try {
+
+            String query = "SELECT * FROM COMPANY WHERE USERNAME = (?) ;";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+            statement.setString(1, Username);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                companyInstance = new Company(
+                        result.getInt("ID"),
+                        result.getString("Name"),
+                        result.getDate("Contract_Start_Date"),
+                        result.getDate("Contract_End_Date"),
+                        result.getString("Description"),
+                        result.getString("Username"),
+                        result.getString("Password"));
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+
+        return companyInstance;
+    }
+
     public static Company getById(int id) {
 
         Company companyInstance = null;
@@ -37,7 +105,9 @@ public class CompanyController {
                         result.getString("Name"),
                         result.getDate("Contract_Start_Date"),
                         result.getDate("Contract_End_Date"),
-                        result.getString("Description"));
+                        result.getString("Description"),
+                        result.getString("Username"),
+                        result.getString("Password"));
             }
 
             statement.close();
@@ -68,14 +138,13 @@ public class CompanyController {
                         result.getString("Name"),
                         result.getDate("Contract_Start_Date"),
                         result.getDate("Contract_End_Date"),
-                        result.getString("Description"));
+                        result.getString("Description"),
+                        result.getString("Username"),
+                        result.getString("Password"));
 
                 companyList.add(companyInstance);
-
             }
-
             statement.close();
-
         } catch (SQLException e) {
 
             System.out.println(e);

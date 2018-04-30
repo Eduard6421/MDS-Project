@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controllers;
 
 import Models.Report;
@@ -12,13 +11,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 public class MeetingController {
 
-    
     private static final Connection Conn = MySQLConnector.getConnection();
-    
-    
+
     public static Report getByMeeting(int Id) {
 
         Report reportInstance = null;
@@ -44,9 +40,9 @@ public class MeetingController {
         } catch (Exception e) {
             System.out.println("Error " + e);
         }
-        
+
         return reportInstance;
 
     }
-    
+
 }

@@ -4,6 +4,10 @@
 -- ------------------------------------------------------
 -- Server version	5.7.21-log
 
+DROP DATABASE IF EXISTS publicsec; 
+CREATE DATABASE publicsec;
+USE publicsec;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -18,6 +22,7 @@
 --
 -- Table structure for table `client_contract`
 --
+
 
 DROP TABLE IF EXISTS `client_contract`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -89,6 +94,8 @@ CREATE TABLE `company` (
   `Contract_Start_Date` date NOT NULL,
   `Contract_End_Date` date NOT NULL,
   `Description` varchar(50) DEFAULT NULL,
+  `Username` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -99,7 +106,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (1,'Firma1','2011-04-02','2012-04-02','asd'),(2,'Firma2','2012-04-05','2014-05-12','asd1');
+INSERT INTO `company` VALUES (1,'Firma1','2011-04-02','2012-04-02','asd','firma1','parola1'),(2,'Firma2','2012-04-05','2014-05-12','asd1','firma2','parola2');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
