@@ -9,11 +9,12 @@ package Util;
  *
  * @author Eduard
  */
+
 public class GlobalData {
 
     private static String Username;
 
-    private static int userType;
+    private static String userType;
 
     public static String getUsername() {
         return Username;
@@ -23,11 +24,11 @@ public class GlobalData {
         GlobalData.Username = Username;
     }
 
-    public static int getUserType() {
+    public static String getUserType() {
         return userType;
     }
 
-    public static void setUserType(int userType) {
+    public static void setUserType(String userType) {
         GlobalData.userType = userType;
     }
 
