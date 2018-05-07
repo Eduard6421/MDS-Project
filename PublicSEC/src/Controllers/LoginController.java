@@ -22,6 +22,7 @@ public class LoginController {
 
         if (ClientInstance != null) {
             GlobalData.setUsername(Username);
+            GlobalData.setUserType(0);
             return true;
 
         }
@@ -35,6 +36,7 @@ public class LoginController {
 
         if (EmployeeInstance != null) {
             GlobalData.setUsername(Username);
+            GlobalData.setUserType(1);
             return true;
 
         }
@@ -48,6 +50,7 @@ public class LoginController {
 
         if (CompanyInstance != null) {
             GlobalData.setUsername(Username);
+            GlobalData.setUserType(2);
             return true;
 
         }

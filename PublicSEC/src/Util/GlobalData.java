@@ -13,12 +13,22 @@ public class GlobalData {
 
     private static String Username;
 
+    private static int userType;
+
     public static String getUsername() {
         return Username;
     }
 
     public static void setUsername(String Username) {
         GlobalData.Username = Username;
+    }
+
+    public static int getUserType() {
+        return userType;
+    }
+
+    public static void setUserType(int userType) {
+        GlobalData.userType = userType;
     }
 
 }
