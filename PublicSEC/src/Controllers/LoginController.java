@@ -14,7 +14,7 @@ import Util.GlobalData;
  *
  * @author Eduard
  */
-public class AccountController {
+public class LoginController {
 
     public static boolean connectClient(String Username, String Password) {
 
