@@ -24,7 +24,7 @@ public class CompanyController {
 
         try {
 
-            String query = "SELECT * FROM COMPANY WHERE USERNAME = (?) AND PASSWORD = (?);";
+            String query = "SELECT * FROM COMPANY WHERE USER_NAME = (?) AND USER_PASSWORD = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(query);
             statement.setString(1, Username);
@@ -40,8 +40,8 @@ public class CompanyController {
                         result.getDate("Contract_Start_Date"),
                         result.getDate("Contract_End_Date"),
                         result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
+                        result.getString("User_Name"),
+                        result.getString("User_Password"));
             }
 
             statement.close();
@@ -59,7 +59,7 @@ public class CompanyController {
 
         try {
 
-            String query = "SELECT * FROM COMPANY WHERE USERNAME = (?) ;";
+            String query = "SELECT * FROM COMPANY WHERE USER_NAME = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
             statement.setString(1, Username);
@@ -73,8 +73,8 @@ public class CompanyController {
                         result.getDate("Contract_Start_Date"),
                         result.getDate("Contract_End_Date"),
                         result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
+                        result.getString("User_Name"),
+                        result.getString("User_Password"));
             }
 
             statement.close();
@@ -106,8 +106,8 @@ public class CompanyController {
                         result.getDate("Contract_Start_Date"),
                         result.getDate("Contract_End_Date"),
                         result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
+                        result.getString("User_Name"),
+                        result.getString("User_Password"));
             }
 
             statement.close();
@@ -139,8 +139,8 @@ public class CompanyController {
                         result.getDate("Contract_Start_Date"),
                         result.getDate("Contract_End_Date"),
                         result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
+                        result.getString("User_Name"),
+                        result.getString("User_Password"));
 
                 companyList.add(companyInstance);
             }

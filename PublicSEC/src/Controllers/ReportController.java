@@ -16,6 +16,30 @@ public class ReportController {
 
     private static final Connection Conn = MySQLConnector.getConnection();
 
+    public static boolean createReport(int idMeeting, String Description) {
+
+        try {
+            String query = "INSERT INTO reports ID_MEETING,DESCRIPTION VALUES (?,?)";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+            statement.setInt(1, idMeeting);
+            statement.setString(2, Description);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+            return result > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+
+        }
+
+        return false;
+
+    }
+
     public static Report getById(int Id) {
 
         Report reportInstance = null;
@@ -29,15 +53,16 @@ public class ReportController {
             ResultSet result = statement.executeQuery();
 
             reportInstance = new Report(
-                    result.getInt("ID"),
                     result.getInt("ID_MEETING"),
                     result.getString("Description"));
 
+            statement.close();
+
         } catch (SQLException e) {
-                
+
             System.out.println("Error " + e);
         }
-        
+
         return reportInstance;
 
     }
@@ -57,7 +82,6 @@ public class ReportController {
             while (result.next()) {
 
                 reportInstance = new Report(
-                        result.getInt("ID"),
                         result.getInt("ID_MEETING"),
                         result.getString("Description"));
 

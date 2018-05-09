@@ -19,13 +19,41 @@ public class EmployeeController {
 
     private static final Connection Conn = MySQLConnector.getConnection();
 
+    public static boolean registerEmployee(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+
+        try {
+            String query = "INSERT INTO employee (FIRST_NAME,LAST_NAME,USER_NAME,USER_PASSWORD,ADDRESS,PHONE,EMAIL) values (?,?,?,?,?,?,?);";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, userName);
+            statement.setString(4, userPassword);
+            statement.setString(5, address);
+            statement.setString(6, phone);
+            statement.setString(7, email);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+            return result > 0;
+
+        } catch (SQLException e) {
+            return false;
+        } finally {
+            return false;
+
+        }
+    }
+
     public static Employee getByAccount(String Username, String Password) {
 
         Employee employeeInstance = null;
 
         try {
 
-            String query = "SELECT * FROM Employee WHERE Username = (?) AND Password = (?);";
+            String query = "SELECT * FROM Employee WHERE User_Name = (?) AND User_Password = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(query);
             statement.setString(1, Username);
@@ -38,8 +66,8 @@ public class EmployeeController {
                         result.getInt("ID"),
                         result.getString("First_Name"),
                         result.getString("Last_Name"),
-                        result.getString("Username"),
-                        result.getString("Password"),
+                        result.getString("User_Name"),
+                        result.getString("User_Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),
@@ -73,14 +101,13 @@ public class EmployeeController {
                         result.getInt("ID"),
                         result.getString("First_Name"),
                         result.getString("Last_Name"),
-                        result.getString("Username"),
-                        result.getString("Password"),
+                        result.getString("User_Name"),
+                        result.getString("User_Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),
                         result.getDouble("Rating"));
             }
-
 
             statement.close();
 
@@ -109,14 +136,13 @@ public class EmployeeController {
                         result.getInt("ID"),
                         result.getString("First_Name"),
                         result.getString("Last_Name"),
-                        result.getString("Username"),
-                        result.getString("Password"),
+                        result.getString("User_Name"),
+                        result.getString("User_Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),
                         result.getDouble("Rating"));
             }
-
 
             statement.close();
 
@@ -126,8 +152,8 @@ public class EmployeeController {
 
         return employeeInstance;
     }
-    
-     public static boolean changePassword(String oldPassword, String newPassword) {
+
+    public static boolean changePassword(String oldPassword, String newPassword) {
         String Username = GlobalData.getUsername();
 
         try {
@@ -192,8 +218,8 @@ public class EmployeeController {
                         result.getInt("ID"),
                         result.getString("First_Name"),
                         result.getString("Last_Name"),
-                        result.getString("Username"),
-                        result.getString("Password"),
+                        result.getString("User_Name"),
+                        result.getString("User_Password"),
                         result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),

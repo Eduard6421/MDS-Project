@@ -19,12 +19,41 @@ public class ClientController {
 
     private static final Connection Conn = MySQLConnector.getConnection();
 
+    public static boolean registerClient(String firstName, String lastName,String userName, String userPassword, String address, String phone, String email) {
+        
+        
+        try {
+            String query = "INSERT INTO CLIENT (FIRST_NAME,LAST_NAME,USER_NAME,USER_PASSWORD,ADDRESS,PHONE,EMAIL) values (?,?,?,?,?,?,?);";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, userName);
+            statement.setString(4, userPassword);
+            statement.setString(5, address);
+            statement.setString(6, phone);
+            statement.setString(7, email);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+            
+            return result > 0;
+
+        } catch (SQLException e) {
+            return false;
+        } finally {
+            return false;
+
+        }
+    }
+
     public static Client getByAccount(String Username, String Password) {
         Client clientInstance = null;
 
         try {
 
-            String query = "SELECT * FROM CLIENT WHERE USERNAME = (?) AND PASSWORD = (?) ;";
+            String query = "SELECT * FROM client WHERE USER_NAME = (?) AND USER_PASSWORD = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
             statement.setString(1, Username);
@@ -60,7 +89,7 @@ public class ClientController {
 
         try {
 
-            String query = "SELECT * FROM CLIENT WHERE USERNAME = (?) ;";
+            String query = "SELECT * FROM CLIENT WHERE USER_NAME = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
             statement.setString(1, Username);

@@ -16,6 +16,7 @@ import Util.GlobalData;
  */
 public class LoginController {
 
+    
     public static boolean connectClient(String Username, String Password) {
 
         Client ClientInstance = ClientController.getByAccount(Username, Password);

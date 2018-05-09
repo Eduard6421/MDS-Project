@@ -7,14 +7,12 @@ package Models;
 
 import java.util.Date;
 
-
-
-public class Meeting extends Entity{
+public class Meeting extends Entity {
 
     private int idClient;
     private int idEmployee;
     private Date meetingDate;
-    private int feedback;
+    private double feedback;
     private String description;
 
     public int getIdClient() {
@@ -29,6 +27,14 @@ public class Meeting extends Entity{
         return idEmployee;
     }
 
+    public Meeting(int idClient, int idEmployee, Date meetingDate, double feedback, String description) {
+        this.idClient = idClient;
+        this.idEmployee = idEmployee;
+        this.meetingDate = meetingDate;
+        this.feedback = feedback;
+        this.description = description;
+    }
+
     public void setIdEmployee(int idEmployee) {
         this.idEmployee = idEmployee;
     }
@@ -41,11 +47,11 @@ public class Meeting extends Entity{
         this.meetingDate = meetingDate;
     }
 
-    public int getFeedback() {
+    public double getFeedback() {
         return feedback;
     }
 
-    public void setFeedback(int feedback) {
+    public void setFeedback(double feedback) {
         this.feedback = feedback;
     }
 
@@ -57,6 +63,4 @@ public class Meeting extends Entity{
         this.description = description;
     }
 
-
-    
 }

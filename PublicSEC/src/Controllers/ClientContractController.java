@@ -12,11 +12,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ClientContractController {
 
     private static final Connection Conn = MySQLConnector.getConnection();
+
+    public static boolean createClientContract(int idClient, int idCompany, Date startDate, Date endDate) {
+
+        try {
+            String query = "INSERT INTO client_contract (ID_Company,ID_Client,Start_Date,End_Date) values (?,?,?,?)";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+
+            java.sql.Date SQLStartDate = new java.sql.Date(startDate.getTime());
+            java.sql.Date SQLEndDate = new java.sql.Date(endDate.getTime());
+
+            statement.setInt(1, idCompany);
+            statement.setInt(2, idClient);
+            statement.setDate(3, SQLStartDate);
+            statement.setDate(4, SQLEndDate);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+            return result > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e);
+
+        }
+
+        return false;
+
+    }
 
     public static ClientContract getById(int Id) {
 

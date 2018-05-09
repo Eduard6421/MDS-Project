@@ -5,6 +5,8 @@
  */
 package publicsec;
 
+import Controllers.LoginController;
+
 /**
  *
  * @author t-edpoes
@@ -17,7 +19,7 @@ public class PublicSEC {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        
+            boolean clientSuccesConnection = LoginController.connectClient("asd","def");
         
         
     }
