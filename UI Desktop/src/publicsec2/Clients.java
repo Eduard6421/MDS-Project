@@ -147,13 +147,13 @@ public class Clients extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Client_Meetings.Fereastra = new Client_Meetings();
-        Client_Meetings.Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
+        ClientMeetings.Fereastra = new ClientMeetings();
+        ClientMeetings.Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
         Fereastra.getContentPane().add(Fereastra.jPanel2, BorderLayout.CENTER);
-        Client_Meetings.Fereastra.setLocationRelativeTo(null);
-        Client_Meetings.Fereastra.setExtendedState(MAXIMIZED_BOTH);
+        ClientMeetings.Fereastra.setLocationRelativeTo(null);
+        ClientMeetings.Fereastra.setExtendedState(MAXIMIZED_BOTH);
         Fereastra.setVisible(false);
-        Client_Meetings.Fereastra.setVisible(true);
+        ClientMeetings.Fereastra.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
