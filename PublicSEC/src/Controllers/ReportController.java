@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReportController {
 
@@ -37,6 +40,39 @@ public class ReportController {
         }
 
         return false;
+
+    }
+
+    public static List<Report> getAll() throws SQLException {
+
+        Report reportInstance = null;
+
+        List<Report> reportList = new ArrayList<>();
+
+        try {
+            String query = "SELECT * FROM EMPLOYEES";
+
+            Statement statement = Conn.createStatement();
+
+            ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+
+                reportInstance = new Report(result.getInt("ID"),
+                        result.getInt("ID_MEETING"),
+                        result.getString("Description"));
+
+                reportList.add(reportInstance);
+
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+
+        return reportList;
 
     }
 

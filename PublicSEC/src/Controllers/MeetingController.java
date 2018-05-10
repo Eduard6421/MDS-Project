@@ -12,6 +12,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MeetingController {
 
@@ -43,6 +46,73 @@ public class MeetingController {
         }
 
         return false;
+
+    }
+
+    public static List<Meeting> getAll() {
+        Meeting meetingInstance = null;
+
+        List<Meeting> meetingList = new ArrayList<>();
+
+        try {
+
+            String query = " SELECT * FROM MEETINGS";
+
+            Statement statement = Conn.createStatement();
+
+            ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+
+                meetingInstance = new Meeting(
+                        result.getInt("ID_Client"),
+                        result.getInt("ID_Employee"),
+                        result.getDate("Date"),
+                        result.getDouble("Feedback"),
+                        result.getString("Description"));
+
+                meetingList.add(meetingInstance);
+
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e);
+        }
+
+        return meetingList;
+
+    }
+    
+    public static Meeting getByClient(int clientId) {
+        Meeting meetingInstance = null;
+
+        try {
+
+            String query = "SELECT * FROM MEETINGS WHERE ID_CLIENT = (?)";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+            statement.setInt(1, clientId);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                meetingInstance = new Meeting(
+                        result.getInt("ID_Client"),
+                        result.getInt("ID_Employee"),
+                        result.getDate("Date"),
+                        result.getDouble("Feedback"),
+                        result.getString("Description"));
+
+            }
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println("Error " + e);
+        }
+
+        return meetingInstance;
 
     }
 

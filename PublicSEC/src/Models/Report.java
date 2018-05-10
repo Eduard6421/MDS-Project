@@ -11,9 +11,14 @@ public class Report extends Entity {
 
     int meetingID;
     String description;
-    
-    
-     public Report(int meetingID, String description) {
+
+    public Report(int meetingID, String description) {
+        this.meetingID = meetingID;
+        this.description = description;
+    }
+
+    public Report(int id, int meetingID, String description) {
+        this.Id = id;
         this.meetingID = meetingID;
         this.description = description;
     }
@@ -41,10 +46,5 @@ public class Report extends Entity {
     public void setId(int Id) {
         this.Id = Id;
     }
-
-   
-
- 
-    
 
 }
