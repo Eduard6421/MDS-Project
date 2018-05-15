@@ -1,12 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: publicsec
+-- Host: localhost    Database: publicsec
 -- ------------------------------------------------------
 -- Server version	5.7.21-log
-
-DROP DATABASE IF EXISTS publicsec; 
-CREATE DATABASE publicsec;
-USE publicsec;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,9 +16,38 @@ USE publicsec;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `client_contract`
+-- Table structure for table `client`
 --
 
+DROP TABLE IF EXISTS `client`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `client` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `First_Name` varchar(50) NOT NULL,
+  `Last_Name` varchar(50) NOT NULL,
+  `User_Name` varchar(225) DEFAULT NULL,
+  `User_Password` varchar(225) DEFAULT NULL,
+  `Address` varchar(50) NOT NULL,
+  `Phone` varchar(50) NOT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `client`
+--
+
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES (1,'NumeClient1','PrenumeClient1','client1','parolaclient1','Strada Clientului Nr.7','0711223344','client@hotmail.com'),(2,'NumeClient1','PrenumeClient2','client2','parolaclient2','Strada Clientului nr 2','07112234','client2@hotmail.com'),(3,'NumeClient3','PrenumeClient3','client3','parolaclient3','Strada Clientului nr 3','04112341','client3@hotmail.com'),(19,'1','1','1','1','1','1','1');
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `client_contract`
+--
 
 DROP TABLE IF EXISTS `client_contract`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -52,36 +77,6 @@ INSERT INTO `client_contract` VALUES (1,1,1,'2011-02-02','2012-02-02'),(2,1,2,'2
 UNLOCK TABLES;
 
 --
--- Table structure for table `client`
---
-
-DROP TABLE IF EXISTS `client`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `client` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `First_Name` varchar(50) NOT NULL,
-  `Last_Name` varchar(50) NOT NULL,
-  `User_Name` varchar(50) NOT NULL,
-  `User_Password` varchar(50) NOT NULL,
-  `Address` varchar(50) NOT NULL,
-  `Phone` varchar(50) NOT NULL,
-  `Email` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `client`
---
-
-LOCK TABLES `client` WRITE;
-/*!40000 ALTER TABLE `client` DISABLE KEYS */;
-INSERT INTO `client` VALUES (1,'NumeClient1','PrenumeClient1','client1','parolaclient1','Strada Clientului Nr.7','0711223344','client@hotmail.com'),(2,'NumeClient1','PrenumeClient2','client2','parolaclient2','Strada Clientului nr 2','07112234','client2@hotmail.com'),(3,'NumeClient3','PrenumeClient3','client3','parolaclient3','Strada Clientului nr 3','04112341','client3@hotmail.com');
-/*!40000 ALTER TABLE `client` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `company`
 --
 
@@ -94,8 +89,8 @@ CREATE TABLE `company` (
   `Contract_Start_Date` date NOT NULL,
   `Contract_End_Date` date NOT NULL,
   `Description` varchar(50) DEFAULT NULL,
-  `Username` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL,
+  `User_Name` varchar(225) DEFAULT NULL,
+  `User_Password` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -119,13 +114,13 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL,
+  `User_Name` varchar(225) DEFAULT NULL,
+  `User_Password` varchar(225) DEFAULT NULL,
   `First_Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
   `Phone` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Rating` double(4,3) NOT NULL DEFAULT 0,
+  `Rating` double(4,3) NOT NULL DEFAULT '0.000',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -136,7 +131,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee`(`ID`,`USERNAME`,`PASSWORD`,`First_Name`,`Last_Name`,`Phone`,`Email`) VALUES (1,'employee','passemployee1','employee1','employee1','0123012312','employee1@hotmail.com'),(2,'employee','passemployee2','employee2','employee2','012312313','employee2@hotmail.com');
+INSERT INTO `employee` VALUES (1,'employee','passemployee1','employee1','employee1','0123012312','employee1@hotmail.com',0.000),(2,'employee','passemployee2','employee2','employee2','012312313','employee2@hotmail.com',0.000);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +234,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-18 12:12:07
+-- Dump completed on 2018-05-10  0:51:01

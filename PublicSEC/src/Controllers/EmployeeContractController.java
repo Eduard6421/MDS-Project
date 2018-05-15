@@ -13,10 +13,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class EmployeeContractController {
 
     private static final Connection Conn = MySQLConnector.getConnection();
+
+    public static boolean createEmployeeContract(int companyId, int employeeId, java.sql.Date startDate, java.sql.Date endDate) {
+
+        java.sql.Date SQLStartDate = new java.sql.Date(startDate.getTime());
+        java.sql.Date SQLEndDate = new java.sql.Date(endDate.getTime());
+
+        try {
+
+            String query = "INSERT INTO EMPLOYEE_CONTRACT (ID_COMPANY,ID_EMPLOYEE,START_DATE,END_DATE) VALUES (?,?,?,?)";
+
+            PreparedStatement statement = Conn.prepareStatement(query);
+
+            statement.setInt(1, companyId);
+            statement.setInt(2, employeeId);
+            statement.setDate(3, SQLStartDate);
+            statement.setDate(4, SQLEndDate);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+            return result > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e);
+
+        }
+
+        return false;
+
+    }
 
     public static EmployeeContract getById(int Id) {
 
