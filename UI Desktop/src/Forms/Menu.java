@@ -20,7 +20,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    static Menu Window;
+    static Menu form;
 
     public Menu() {
         initComponents();
@@ -181,54 +181,54 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Employees.Window = new Employees();
-        Window.setVisible(false);
-        Employees.Window.setVisible(true);
+        Employees.form = new Employees();
+        form.setVisible(false);
+        Employees.form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Requests.Window = new Requests();
-        Requests.Window.getContentPane().setBackground(new Color(255, 255, 255));
-        Requests.Window.setLocationRelativeTo(null);
-        Requests.Window.setExtendedState(MAXIMIZED_BOTH);
-        Window.setVisible(false);
-        Requests.Window.setVisible(true);
+        Requests.form = new Requests();
+        Requests.form.getContentPane().setBackground(new Color(255, 255, 255));
+        Requests.form.setLocationRelativeTo(null);
+        Requests.form.setExtendedState(MAXIMIZED_BOTH);
+        form.setVisible(false);
+        Requests.form.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         jPanel1.setSize(screenSize.width, screenSize.height);
-        Window.getContentPane().setBackground(new Color(255, 255, 255));
-        Window.getContentPane().add(Window.jPanel1, BorderLayout.CENTER);
-        Window.setExtendedState(MAXIMIZED_BOTH);
-        Window.setLocationRelativeTo(null);
+        form.getContentPane().setBackground(new Color(255, 255, 255));
+        form.getContentPane().add(form.jPanel1, BorderLayout.CENTER);
+        form.setExtendedState(MAXIMIZED_BOTH);
+        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(form, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Window.setVisible(false);
-        Window.dispose();
-        Login.Window.getjTextField1().setText("");
-        Login.Window.setLocationRelativeTo(null);
-        Login.Window.setVisible(true);
+        form.setVisible(false);
+        form.dispose();
+        Login.form.getjTextField1().setText("");
+        Login.form.setLocationRelativeTo(null);
+        Login.form.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Clients.Window = new Clients();
-        Clients.Window.getContentPane().setBackground(new Color(255, 255, 255));
-        Clients.Window.setLocationRelativeTo(null);
-        Clients.Window.setExtendedState(MAXIMIZED_BOTH);
-        Window.setVisible(false);
-        Clients.Window.setVisible(true);
+        Clients.form = new Clients();
+        Clients.form.getContentPane().setBackground(new Color(255, 255, 255));
+        Clients.form.setLocationRelativeTo(null);
+        Clients.form.setExtendedState(MAXIMIZED_BOTH);
+        form.setVisible(false);
+        Clients.form.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

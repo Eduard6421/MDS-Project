@@ -19,7 +19,7 @@ public class Clients extends javax.swing.JFrame {
     /**
      * Creates new form Clients
      */
-    static Clients Window;
+    static Clients form;
 
     public Clients() {
         initComponents();
@@ -147,26 +147,26 @@ public class Clients extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ClientMeetings.Window = new ClientMeetings();
-        ClientMeetings.Window.getContentPane().setBackground(new Color(255, 255, 255));
-        Window.getContentPane().add(Window.jPanel2, BorderLayout.CENTER);
-        ClientMeetings.Window.setLocationRelativeTo(null);
-        ClientMeetings.Window.setExtendedState(MAXIMIZED_BOTH);
-        Window.setVisible(false);
-        ClientMeetings.Window.setVisible(true);
+        ClientMeetings.form = new ClientMeetings();
+        ClientMeetings.form.getContentPane().setBackground(new Color(255, 255, 255));
+        form.getContentPane().add(form.jPanel2, BorderLayout.CENTER);
+        ClientMeetings.form.setLocationRelativeTo(null);
+        ClientMeetings.form.setExtendedState(MAXIMIZED_BOTH);
+        form.setVisible(false);
+        ClientMeetings.form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Window.setVisible(false);
-        Window.dispose();
-        Menu.Window.setLocationRelativeTo(null);
-        Menu.Window.setVisible(true);
+        form.setVisible(false);
+        form.dispose();
+        Menu.form.setLocationRelativeTo(null);
+        Menu.form.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(form, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 

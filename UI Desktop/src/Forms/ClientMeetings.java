@@ -17,7 +17,7 @@ public class ClientMeetings extends javax.swing.JFrame {
     /**
      * Creates new form Client_Meetings
      */
-    static ClientMeetings Window;
+    static ClientMeetings form;
 
     public ClientMeetings() {
         initComponents();
@@ -139,15 +139,15 @@ public class ClientMeetings extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Window.setVisible(false);
-        Window.dispose();
-        Clients.Window.setLocationRelativeTo(null);
-        Clients.Window.setVisible(true);
+        form.setVisible(false);
+        form.dispose();
+        Clients.form.setLocationRelativeTo(null);
+        Clients.form.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(form, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 

@@ -5,10 +5,13 @@
  */
 package Forms;
 
+import Forms.Controllers.LoginController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import javax.swing.JTextField;
 
@@ -21,10 +24,29 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    static Login Window;
+    static Login form;
 
     public Login() {
         initComponents();
+    }
+
+    public Login(LoginController controller) {
+
+        initComponents();
+        buttonConnectEmployee.addActionListener(controller);
+        buttonConnectCompany.addActionListener(controller);
+        buttonExit.addActionListener(controller);
+
+        //-- Adding TAB to switch Input Slot
+        inputUsername.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_TAB) {
+                    inputUsername.transferFocus();
+                    e.consume();
+                }
+            }
+        });
     }
 
     /**
@@ -41,10 +63,10 @@ public class Login extends javax.swing.JFrame {
         inputUsername = new javax.swing.JTextField();
         buttonConnectEmployee = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
-        inputPassword = new javax.swing.JTextField();
         buttonConnectCompany = new javax.swing.JButton();
         labelUsername = new javax.swing.JLabel();
         labelPassword = new javax.swing.JLabel();
+        inputPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PublicSEC");
@@ -94,9 +116,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        inputPassword.setMaximumSize(new java.awt.Dimension(26, 20));
-        inputPassword.setPreferredSize(new java.awt.Dimension(26, 20));
-
         buttonConnectCompany.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         buttonConnectCompany.setText("Connect as Company");
         buttonConnectCompany.setToolTipText("");
@@ -113,48 +132,52 @@ public class Login extends javax.swing.JFrame {
         labelPassword.setText("Password");
         labelPassword.setToolTipText("");
 
+        inputPassword.setToolTipText("");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelPassword)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelUsername)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(buttonConnectEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonConnectCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(177, 177, 177))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(285, 285, 285))))
+                                .addGap(0, 8, Short.MAX_VALUE)
+                                .addComponent(labelUsername)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(inputUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(inputPassword)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonConnectEmployee)
+                        .addGap(57, 57, 57)
+                        .addComponent(buttonConnectCompany)))
+                .addGap(184, 184, 184))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(303, 303, 303)
+                .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUsername))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPassword))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonConnectCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonConnectEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonConnectEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonConnectCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
@@ -174,7 +197,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,23 +205,23 @@ public class Login extends javax.swing.JFrame {
 
     private void buttonConnectEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectEmployeeActionPerformed
         // TODO add your handling code here:
-        Menu.Window = new Menu();
-        Window.dispose();
-        Window.setVisible(false);
-        Menu.Window.setVisible(true);
+        Menu.form = new Menu();
+        form.dispose();
+        form.setVisible(false);
+        Menu.form.setVisible(true);
     }//GEN-LAST:event_buttonConnectEmployeeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        Window.getContentPane().setBackground(new Color(255, 255, 255));
-        Window.getContentPane().add(Window.jPanel1, BorderLayout.CENTER);
-        //Window.setExtendedState(MAXIMIZED_BOTH);
-        Window.setLocationRelativeTo(null);
+        form.getContentPane().setBackground(new Color(255, 255, 255));
+        form.getContentPane().add(form.jPanel1, BorderLayout.CENTER);
+        //form.setExtendedState(MAXIMIZED_BOTH);
+        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(form, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_buttonExitActionPerformed
 
@@ -240,19 +263,27 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Window = new Login();
+                form = new Login();
 
-                Window.setVisible(true);
-
+                form.setVisible(true);
+                
             }
         });
+    }
+ 
+    public String getUsername() {
+        return inputUsername.getText();
+    }    
+
+    public String getPassword() {
+        return new String(inputPassword.getPassword());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonConnectCompany;
     private javax.swing.JButton buttonConnectEmployee;
     private javax.swing.JButton buttonExit;
-    private javax.swing.JTextField inputPassword;
+    private javax.swing.JPasswordField inputPassword;
     private javax.swing.JTextField inputUsername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

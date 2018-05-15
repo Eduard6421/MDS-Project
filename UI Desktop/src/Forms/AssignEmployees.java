@@ -17,7 +17,7 @@ public class AssignEmployees extends javax.swing.JFrame {
     /**
      * Creates new form Assign_Employees
      */
-    static AssignEmployees Window;
+    static AssignEmployees form;
 
     public AssignEmployees() {
         initComponents();
@@ -147,16 +147,16 @@ public class AssignEmployees extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Window.setVisible(false);
-        Window.dispose();
-        Requests.Window.setLocationRelativeTo(null);
-        Requests.Window.setVisible(true);
+        form.setVisible(false);
+        form.dispose();
+        Requests.form.setLocationRelativeTo(null);
+        Requests.form.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(form, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 
