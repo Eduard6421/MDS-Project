@@ -11,18 +11,18 @@ import java.util.List;
 
 public class CompanyController {
 
-    private static final Connection Conn = MySQLConnector.getConnection();
+    private static final Connection conn = MySQLConnector.getConnection();
 
-    public static Company getByAccount(String Username, String Password) {
+    public static Company getByAccount(String username, String password) {
 
         Company companyInstance = null;
 
         try {
             String query = "SELECT * FROM COMPANY WHERE USER_NAME = (?) AND USER_PASSWORD = (?);";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setString(1, Username);
-            statement.setString(2, Password);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
 
             ResultSet result = statement.executeQuery();
 
@@ -47,15 +47,15 @@ public class CompanyController {
         return companyInstance;
     }
 
-    public static Company getByUsername(String Username) {
+    public static Company getByUsername(String username) {
 
         Company companyInstance = null;
 
         try {
             String query = "SELECT * FROM COMPANY WHERE USER_NAME = (?) ;";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setString(1, Username);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, username);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -86,7 +86,7 @@ public class CompanyController {
         try {
             String query = "SELECT * FROM COMPANY WHERE ID = (?) ;";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
@@ -120,7 +120,7 @@ public class CompanyController {
         try {
             String query = "SELECT * from COMPANY";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -144,4 +144,5 @@ public class CompanyController {
 
         return companyList;
     }
+    
 }

@@ -12,14 +12,14 @@ import java.util.List;
 
 public class ReportController {
 
-    private static final Connection Conn = MySQLConnector.getConnection();
+    private static final Connection conn = MySQLConnector.getConnection();
 
     public static boolean createReport(int idMeeting, String Description) {
 
         try {
             String query = "INSERT INTO reports ID_MEETING,DESCRIPTION VALUES (?,?)";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, idMeeting);
             statement.setString(2, Description);
 
@@ -46,7 +46,7 @@ public class ReportController {
         try {
             String query = "SELECT * FROM EMPLOYEES";
 
-            Statement statement = Conn.createStatement();
+            Statement statement = conn.createStatement();
 
             ResultSet result = statement.executeQuery(query);
 
@@ -69,15 +69,15 @@ public class ReportController {
         return reportList;
     }
 
-    public static Report getById(int Id) {
+    public static Report getById(int id) {
 
         Report reportInstance = null;
 
         try {
             String query = "SELECT * FROM REPORTS WHERE ID = (?);";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setInt(1, Id);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
             reportInstance = new Report(
@@ -94,15 +94,15 @@ public class ReportController {
         return reportInstance;
     }
 
-    public static Report getByMeeting(int Id) {
+    public static Report getByMeeting(int id) {
 
         Report reportInstance = null;
 
         try {
             String query = "SELECT * FROM REPORTS WHERE ID_MEETING = (?)";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setInt(1, Id);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -120,4 +120,5 @@ public class ReportController {
 
         return reportInstance;
     }
+    
 }

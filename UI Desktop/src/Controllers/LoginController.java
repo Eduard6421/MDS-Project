@@ -7,12 +7,12 @@ import Utils.GlobalData;
 
 public class LoginController {
 
-    public static boolean connectEmployee(String Username, String Password) {
+    public static boolean connectEmployee(String username, String password) {
 
-        Employee EmployeeInstance = EmployeeController.getByAccount(Username, Password);
+        Employee EmployeeInstance = EmployeeController.getByAccount(username, password);
 
         if (EmployeeInstance != null) {
-            GlobalData.setUsername(Username);
+            GlobalData.setUsername(username);
             GlobalData.setUserType("employee");
             return true;
 
@@ -21,12 +21,12 @@ public class LoginController {
         return false;
     }
 
-    public static boolean connectCompany(String Username, String Password) {
+    public static boolean connectCompany(String username, String password) {
 
-        Company CompanyInstance = CompanyController.getByAccount(Username, Password);
+        Company CompanyInstance = CompanyController.getByAccount(username, password);
 
         if (CompanyInstance != null) {
-            GlobalData.setUsername(Username);
+            GlobalData.setUsername(username);
             GlobalData.setUserType("company");
             return true;
 

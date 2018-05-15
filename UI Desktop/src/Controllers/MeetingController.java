@@ -13,14 +13,14 @@ import java.util.List;
 
 public class MeetingController {
 
-    private static final Connection Conn = MySQLConnector.getConnection();
+    private static final Connection conn = MySQLConnector.getConnection();
 
     public static boolean createMeeting(int clientId, int employeeId, Date date, String Description) {
 
         try {
             String query = " INSERT INTO MEETINGS (ID_CLIENT,ID_EMPLOYEE,DATE,FEEDBACK,DECRIPTION) VALUES (?,?,?,?,?);";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
 
             java.sql.Date SQLDate = new java.sql.Date(date.getTime());
 
@@ -50,7 +50,7 @@ public class MeetingController {
         try {
             String query = " SELECT * FROM MEETINGS";
 
-            Statement statement = Conn.createStatement();
+            Statement statement = conn.createStatement();
 
             ResultSet result = statement.executeQuery(query);
 
@@ -82,7 +82,7 @@ public class MeetingController {
         try {
             String query = "SELECT * FROM MEETINGS WHERE ID_CLIENT = (?)";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, clientId);
             ResultSet result = statement.executeQuery();
 
@@ -111,7 +111,7 @@ public class MeetingController {
         try {
             String query = "SELECT * FROM MEETINGS WHERE ID_EMPLOYEE = (?)";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, employeeId);
             ResultSet result = statement.executeQuery();
 
@@ -134,7 +134,7 @@ public class MeetingController {
         return meetingInstance;
     }
 
-    public static Meeting getByMeeting(int Id) {
+    public static Meeting getByMeeting(int id) {
 
         Meeting meetingInstance = null;
 
@@ -142,8 +142,8 @@ public class MeetingController {
 
             String query = "SELECT * FROM MEETINGS WHERE ID_MEETING = (?)";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setInt(1, Id);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -164,4 +164,5 @@ public class MeetingController {
 
         return meetingInstance;
     }
+    
 }

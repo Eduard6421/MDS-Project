@@ -12,14 +12,14 @@ import java.util.List;
 
 public class ClientController {
 
-    private static final Connection Conn = MySQLConnector.getConnection();
+    private static final Connection conn = MySQLConnector.getConnection();
 
     public static boolean registerClient(String firstName, String lastName,String userName, String userPassword, String address, String phone, String email) {
          
         try {
             String query = "INSERT INTO CLIENT (FIRST_NAME,LAST_NAME,USER_NAME,USER_PASSWORD,ADDRESS,PHONE,EMAIL) values (?,?,?,?,?,?,?);";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, userName);
@@ -42,15 +42,15 @@ public class ClientController {
         }
     }
 
-    public static Client getByAccount(String Username, String Password) {
+    public static Client getByAccount(String username, String password) {
         Client clientInstance = null;
 
         try {
             String query = "SELECT * FROM client WHERE USER_NAME = (?) AND USER_PASSWORD = (?) ;";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setString(1, Username);
-            statement.setString(2, Password);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -75,15 +75,15 @@ public class ClientController {
         return clientInstance;
     }
 
-    public static Client getByUsername(String Username) {
+    public static Client getByUsername(String username) {
 
         Client clientInstance = null;
 
         try {
             String query = "SELECT * FROM CLIENT WHERE USER_NAME = (?) ;";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setString(1, Username);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, username);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -115,7 +115,7 @@ public class ClientController {
         try {
             String query = "SELECT * FROM CLIENT WHERE ID = (?) ;";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
@@ -142,14 +142,14 @@ public class ClientController {
     }
 
     public static boolean changePassword(String oldPassword, String newPassword) {
-        String Username = GlobalData.getUsername();
+        String username = GlobalData.getUsername();
 
         try {
             String update = "UPDATE client SET User_Password = (?) WHERE User_Name= (?) AND User_Password = (?);";
 
-            PreparedStatement statement = Conn.prepareStatement(update);
+            PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, newPassword);
-            statement.setString(2, Username);
+            statement.setString(2, username);
             statement.setString(3, oldPassword);
 
             int result = statement.executeUpdate();
@@ -164,15 +164,15 @@ public class ClientController {
     }
 
     public static boolean updateData(String email, String phoneNumber) {
-        String Username = GlobalData.getUsername();
+        String username = GlobalData.getUsername();
 
         try {
             String update = "UPDATE client SET Email=(?),Phone=(?) WHERE User_Name= (?);";
 
-            PreparedStatement statement = Conn.prepareStatement(update);
+            PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, email);
             statement.setString(2, phoneNumber);
-            statement.setString(3, Username);
+            statement.setString(3, username);
 
             int result = statement.executeUpdate();
 
@@ -195,7 +195,7 @@ public class ClientController {
         try {
             String query = "SELECT * FROM CLIENT;";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {

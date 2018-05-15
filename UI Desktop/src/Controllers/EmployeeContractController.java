@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class EmployeeContractController {
 
-    private static final Connection Conn = MySQLConnector.getConnection();
+    private static final Connection conn = MySQLConnector.getConnection();
 
     public static boolean createEmployeeContract(int companyId, int employeeId, java.sql.Date startDate, java.sql.Date endDate) {
 
@@ -22,7 +22,7 @@ public class EmployeeContractController {
         try {
             String query = "INSERT INTO EMPLOYEE_CONTRACT (ID_COMPANY,ID_EMPLOYEE,START_DATE,END_DATE) VALUES (?,?,?,?)";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
 
             statement.setInt(1, companyId);
             statement.setInt(2, employeeId);
@@ -44,15 +44,15 @@ public class EmployeeContractController {
 
     }
 
-    public static EmployeeContract getById(int Id) {
+    public static EmployeeContract getById(int id) {
 
         EmployeeContract contractInstance = null;
 
         try {
             String query = "SELECT * FROM employee_contract WHERE ID = (?);";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
-            statement.setInt(1, Id);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -75,7 +75,7 @@ public class EmployeeContractController {
         return contractInstance;
     }
 
-    public static List<EmployeeContract> getByEmployee(int Id) {
+    public static List<EmployeeContract> getByEmployee(int id) {
 
         EmployeeContract contractInstance = null;
 
@@ -84,7 +84,8 @@ public class EmployeeContractController {
         try {
             String query = "SELECT  * from employee_contract WHERE ID_EMPLOYEE = (?); ";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -110,7 +111,7 @@ public class EmployeeContractController {
         return contractList;
     }
 
-    public static List<EmployeeContract> getByCompany(int Id) {
+    public static List<EmployeeContract> getByCompany(int id) {
 
         EmployeeContract contractInstance = null;
 
@@ -119,7 +120,8 @@ public class EmployeeContractController {
         try {
             String query = "SELECT  * from employee_contract WHERE ID_COMPANY = (?); ";
 
-            PreparedStatement statement = Conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -141,4 +143,5 @@ public class EmployeeContractController {
 
         return contractList;
     }
+    
 }
