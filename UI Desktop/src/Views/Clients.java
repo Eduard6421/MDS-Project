@@ -19,7 +19,7 @@ public class Clients extends javax.swing.JFrame {
     /**
      * Creates new form Clients
      */
-    static Clients Fereastra;
+    static Clients Window;
 
     public Clients() {
         initComponents();
@@ -147,26 +147,26 @@ public class Clients extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ClientMeetings.Fereastra = new ClientMeetings();
-        ClientMeetings.Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
-        Fereastra.getContentPane().add(Fereastra.jPanel2, BorderLayout.CENTER);
-        ClientMeetings.Fereastra.setLocationRelativeTo(null);
-        ClientMeetings.Fereastra.setExtendedState(MAXIMIZED_BOTH);
-        Fereastra.setVisible(false);
-        ClientMeetings.Fereastra.setVisible(true);
+        ClientMeetings.Window = new ClientMeetings();
+        ClientMeetings.Window.getContentPane().setBackground(new Color(255, 255, 255));
+        Window.getContentPane().add(Window.jPanel2, BorderLayout.CENTER);
+        ClientMeetings.Window.setLocationRelativeTo(null);
+        ClientMeetings.Window.setExtendedState(MAXIMIZED_BOTH);
+        Window.setVisible(false);
+        ClientMeetings.Window.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Fereastra.setVisible(false);
-        Fereastra.dispose();
-        Menu.Fereastra.setLocationRelativeTo(null);
-        Menu.Fereastra.setVisible(true);
+        Window.setVisible(false);
+        Window.dispose();
+        Menu.Window.setLocationRelativeTo(null);
+        Menu.Window.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Fereastra, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 

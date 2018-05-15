@@ -20,7 +20,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    static Menu Fereastra;
+    static Menu Window;
 
     public Menu() {
         initComponents();
@@ -181,54 +181,54 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Employees.Fereastra = new Employees();
-        Fereastra.setVisible(false);
-        Employees.Fereastra.setVisible(true);
+        Employees.Window = new Employees();
+        Window.setVisible(false);
+        Employees.Window.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Requests.Fereastra = new Requests();
-        Requests.Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
-        Requests.Fereastra.setLocationRelativeTo(null);
-        Requests.Fereastra.setExtendedState(MAXIMIZED_BOTH);
-        Fereastra.setVisible(false);
-        Requests.Fereastra.setVisible(true);
+        Requests.Window = new Requests();
+        Requests.Window.getContentPane().setBackground(new Color(255, 255, 255));
+        Requests.Window.setLocationRelativeTo(null);
+        Requests.Window.setExtendedState(MAXIMIZED_BOTH);
+        Window.setVisible(false);
+        Requests.Window.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         jPanel1.setSize(screenSize.width, screenSize.height);
-        Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
-        Fereastra.getContentPane().add(Fereastra.jPanel1, BorderLayout.CENTER);
-        Fereastra.setExtendedState(MAXIMIZED_BOTH);
-        Fereastra.setLocationRelativeTo(null);
+        Window.getContentPane().setBackground(new Color(255, 255, 255));
+        Window.getContentPane().add(Window.jPanel1, BorderLayout.CENTER);
+        Window.setExtendedState(MAXIMIZED_BOTH);
+        Window.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Fereastra, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Fereastra.setVisible(false);
-        Fereastra.dispose();
-        Login.Fereastra.getjTextField1().setText("");
-        Login.Fereastra.setLocationRelativeTo(null);
-        Login.Fereastra.setVisible(true);
+        Window.setVisible(false);
+        Window.dispose();
+        Login.Window.getjTextField1().setText("");
+        Login.Window.setLocationRelativeTo(null);
+        Login.Window.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Clients.Fereastra = new Clients();
-        Clients.Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
-        Clients.Fereastra.setLocationRelativeTo(null);
-        Clients.Fereastra.setExtendedState(MAXIMIZED_BOTH);
-        Fereastra.setVisible(false);
-        Clients.Fereastra.setVisible(true);
+        Clients.Window = new Clients();
+        Clients.Window.getContentPane().setBackground(new Color(255, 255, 255));
+        Clients.Window.setLocationRelativeTo(null);
+        Clients.Window.setExtendedState(MAXIMIZED_BOTH);
+        Window.setVisible(false);
+        Clients.Window.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

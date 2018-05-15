@@ -17,7 +17,7 @@ public class AssignEmployees extends javax.swing.JFrame {
     /**
      * Creates new form Assign_Employees
      */
-    static AssignEmployees Fereastra;
+    static AssignEmployees Window;
 
     public AssignEmployees() {
         initComponents();
@@ -139,7 +139,7 @@ public class AssignEmployees extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,16 +147,16 @@ public class AssignEmployees extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Fereastra.setVisible(false);
-        Fereastra.dispose();
-        Requests.Fereastra.setLocationRelativeTo(null);
-        Requests.Fereastra.setVisible(true);
+        Window.setVisible(false);
+        Window.dispose();
+        Requests.Window.setLocationRelativeTo(null);
+        Requests.Window.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Fereastra, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 

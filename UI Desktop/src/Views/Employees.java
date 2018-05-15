@@ -20,7 +20,7 @@ public class Employees extends javax.swing.JFrame {
     /**
      * Creates new form Employees
      */
-    static Employees Fereastra;
+    static Employees Window;
     public Employees() {
         initComponents();
     }
@@ -175,15 +175,15 @@ public class Employees extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Fereastra.setVisible(false);
-        Fereastra.dispose();
-        Menu.Fereastra.setLocationRelativeTo(null);
-        Menu.Fereastra.setVisible(true);
+        Window.setVisible(false);
+        Window.dispose();
+        Menu.Window.setLocationRelativeTo(null);
+        Menu.Window.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Fereastra, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -191,10 +191,10 @@ public class Employees extends javax.swing.JFrame {
         // TODO add your handling code here:
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         jPanel2.setSize(screenSize.width, screenSize.height);
-        Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
-        Fereastra.getContentPane().add(Fereastra.jPanel2, BorderLayout.CENTER);
-        Fereastra.setExtendedState(MAXIMIZED_BOTH);
-        Fereastra.setLocationRelativeTo(null);
+        Window.getContentPane().setBackground(new Color(255, 255, 255));
+        Window.getContentPane().add(Window.jPanel2, BorderLayout.CENTER);
+        Window.setExtendedState(MAXIMIZED_BOTH);
+        Window.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
     /**

@@ -20,7 +20,7 @@ public class Requests extends javax.swing.JFrame {
     /**
      * Creates new form Requests
      */
-    static Requests Fereastra;
+    static Requests Window;
 
     public Requests() {
         initComponents();
@@ -160,26 +160,26 @@ public class Requests extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AssignEmployees.Fereastra = new AssignEmployees();
-        AssignEmployees.Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
-        AssignEmployees.Fereastra.setExtendedState(MAXIMIZED_BOTH);
-        AssignEmployees.Fereastra.setLocationRelativeTo(null);
-        Fereastra.setVisible(false);
-        AssignEmployees.Fereastra.setVisible(true);
+        AssignEmployees.Window = new AssignEmployees();
+        AssignEmployees.Window.getContentPane().setBackground(new Color(255, 255, 255));
+        AssignEmployees.Window.setExtendedState(MAXIMIZED_BOTH);
+        AssignEmployees.Window.setLocationRelativeTo(null);
+        Window.setVisible(false);
+        AssignEmployees.Window.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Fereastra.setVisible(false);
-        Fereastra.dispose();
-        Menu.Fereastra.setLocationRelativeTo(null);
-        Menu.Fereastra.setVisible(true);
+        Window.setVisible(false);
+        Window.dispose();
+        Menu.Window.setLocationRelativeTo(null);
+        Menu.Window.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(Fereastra, WindowEvent.WINDOW_CLOSING);
+        WindowEvent closingEvent = new WindowEvent(Window, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -187,10 +187,10 @@ public class Requests extends javax.swing.JFrame {
         // TODO add your handling code here:
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         jPanel1.setSize(screenSize.width, screenSize.height);
-        Fereastra.getContentPane().setBackground(new Color(255, 255, 255));
-        Fereastra.getContentPane().add(Fereastra.jPanel2, BorderLayout.CENTER);
-        Fereastra.setExtendedState(MAXIMIZED_BOTH);
-        Fereastra.setLocationRelativeTo(null);
+        Window.getContentPane().setBackground(new Color(255, 255, 255));
+        Window.getContentPane().add(Window.jPanel2, BorderLayout.CENTER);
+        Window.setExtendedState(MAXIMIZED_BOTH);
+        Window.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
     /**
