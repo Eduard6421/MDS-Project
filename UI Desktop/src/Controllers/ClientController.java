@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Models.Client;
@@ -20,8 +15,7 @@ public class ClientController {
     private static final Connection Conn = MySQLConnector.getConnection();
 
     public static boolean registerClient(String firstName, String lastName,String userName, String userPassword, String address, String phone, String email) {
-        
-        
+         
         try {
             String query = "INSERT INTO CLIENT (FIRST_NAME,LAST_NAME,USER_NAME,USER_PASSWORD,ADDRESS,PHONE,EMAIL) values (?,?,?,?,?,?,?);";
 
@@ -52,7 +46,6 @@ public class ClientController {
         Client clientInstance = null;
 
         try {
-
             String query = "SELECT * FROM client WHERE USER_NAME = (?) AND USER_PASSWORD = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -80,7 +73,6 @@ public class ClientController {
         }
 
         return clientInstance;
-
     }
 
     public static Client getByUsername(String Username) {
@@ -88,7 +80,6 @@ public class ClientController {
         Client clientInstance = null;
 
         try {
-
             String query = "SELECT * FROM CLIENT WHERE USER_NAME = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -122,7 +113,6 @@ public class ClientController {
         Client clientInstance = null;
 
         try {
-
             String query = "SELECT * FROM CLIENT WHERE ID = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -155,7 +145,6 @@ public class ClientController {
         String Username = GlobalData.getUsername();
 
         try {
-
             String update = "UPDATE client SET User_Password = (?) WHERE User_Name= (?) AND User_Password = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(update);
@@ -178,7 +167,6 @@ public class ClientController {
         String Username = GlobalData.getUsername();
 
         try {
-
             String update = "UPDATE client SET Email=(?),Phone=(?) WHERE User_Name= (?);";
 
             PreparedStatement statement = Conn.prepareStatement(update);
@@ -232,7 +220,6 @@ public class ClientController {
         }
 
         return clientList;
-
     }
 
 }

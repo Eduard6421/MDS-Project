@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Models.Employee;
@@ -43,7 +38,6 @@ public class EmployeeController {
             return false;
         } finally {
             return false;
-
         }
     }
 
@@ -52,7 +46,6 @@ public class EmployeeController {
         Employee employeeInstance = null;
 
         try {
-
             String query = "SELECT * FROM Employee WHERE User_Name = (?) AND User_Password = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -88,7 +81,6 @@ public class EmployeeController {
         Employee employeeInstance = null;
 
         try {
-
             String query = "SELECT * FROM Employee WHERE USERNAME = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -123,7 +115,6 @@ public class EmployeeController {
         Employee employeeInstance = null;
 
         try {
-
             String query = "SELECT * FROM Employee WHERE ID = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -157,7 +148,6 @@ public class EmployeeController {
         String Username = GlobalData.getUsername();
 
         try {
-
             String update = "UPDATE employee SET User_Password = (?) WHERE User_Name= (?) AND User_Password = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(update);
@@ -180,7 +170,6 @@ public class EmployeeController {
         String Username = GlobalData.getUsername();
 
         try {
-
             String update = "UPDATE employee SET Email=(?),Phone=(?) WHERE User_Name= (?);";
 
             PreparedStatement statement = Conn.prepareStatement(update);
@@ -197,7 +186,6 @@ public class EmployeeController {
         }
 
         return false;
-
     }
 
     private static List<Employee> getAll() throws SQLException {
@@ -234,7 +222,5 @@ public class EmployeeController {
         }
 
         return employeeList;
-
     }
-
 }

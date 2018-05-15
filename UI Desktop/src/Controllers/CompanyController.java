@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Models.Company;
@@ -23,7 +18,6 @@ public class CompanyController {
         Company companyInstance = null;
 
         try {
-
             String query = "SELECT * FROM COMPANY WHERE USER_NAME = (?) AND USER_PASSWORD = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -58,7 +52,6 @@ public class CompanyController {
         Company companyInstance = null;
 
         try {
-
             String query = "SELECT * FROM COMPANY WHERE USER_NAME = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -91,7 +84,6 @@ public class CompanyController {
         Company companyInstance = null;
 
         try {
-
             String query = "SELECT * FROM COMPANY WHERE ID = (?) ;";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -151,7 +143,5 @@ public class CompanyController {
         }
 
         return companyList;
-
     }
-
 }

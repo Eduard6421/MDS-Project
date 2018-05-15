@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Models.EmployeeContract;
@@ -25,7 +20,6 @@ public class EmployeeContractController {
         java.sql.Date SQLEndDate = new java.sql.Date(endDate.getTime());
 
         try {
-
             String query = "INSERT INTO EMPLOYEE_CONTRACT (ID_COMPANY,ID_EMPLOYEE,START_DATE,END_DATE) VALUES (?,?,?,?)";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -55,7 +49,6 @@ public class EmployeeContractController {
         EmployeeContract contractInstance = null;
 
         try {
-
             String query = "SELECT * FROM employee_contract WHERE ID = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -89,7 +82,6 @@ public class EmployeeContractController {
         List<EmployeeContract> contractList = new ArrayList<>();
 
         try {
-
             String query = "SELECT  * from employee_contract WHERE ID_EMPLOYEE = (?); ";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -125,7 +117,6 @@ public class EmployeeContractController {
         List<EmployeeContract> contractList = new ArrayList<>();
 
         try {
-
             String query = "SELECT  * from employee_contract WHERE ID_COMPANY = (?); ";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -150,5 +141,4 @@ public class EmployeeContractController {
 
         return contractList;
     }
-
 }

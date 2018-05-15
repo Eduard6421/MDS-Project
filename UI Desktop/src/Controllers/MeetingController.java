@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Models.Meeting;
@@ -23,7 +18,6 @@ public class MeetingController {
     public static boolean createMeeting(int clientId, int employeeId, Date date, String Description) {
 
         try {
-
             String query = " INSERT INTO MEETINGS (ID_CLIENT,ID_EMPLOYEE,DATE,FEEDBACK,DECRIPTION) VALUES (?,?,?,?,?);";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -46,7 +40,6 @@ public class MeetingController {
         }
 
         return false;
-
     }
 
     public static List<Meeting> getAll() {
@@ -55,7 +48,6 @@ public class MeetingController {
         List<Meeting> meetingList = new ArrayList<>();
 
         try {
-
             String query = " SELECT * FROM MEETINGS";
 
             Statement statement = Conn.createStatement();
@@ -82,14 +74,12 @@ public class MeetingController {
         }
 
         return meetingList;
-
     }
     
     public static Meeting getByClient(int clientId) {
         Meeting meetingInstance = null;
 
         try {
-
             String query = "SELECT * FROM MEETINGS WHERE ID_CLIENT = (?)";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -113,14 +103,12 @@ public class MeetingController {
         }
 
         return meetingInstance;
-
     }
 
     public static Meeting getByEmployee(int employeeId) {
         Meeting meetingInstance = null;
 
         try {
-
             String query = "SELECT * FROM MEETINGS WHERE ID_EMPLOYEE = (?)";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -144,7 +132,6 @@ public class MeetingController {
         }
 
         return meetingInstance;
-
     }
 
     public static Meeting getByMeeting(int Id) {
@@ -176,7 +163,5 @@ public class MeetingController {
         }
 
         return meetingInstance;
-
     }
-
 }

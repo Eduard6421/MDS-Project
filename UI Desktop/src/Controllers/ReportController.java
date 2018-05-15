@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Models.Report;
@@ -40,7 +35,6 @@ public class ReportController {
         }
 
         return false;
-
     }
 
     public static List<Report> getAll() throws SQLException {
@@ -73,7 +67,6 @@ public class ReportController {
         }
 
         return reportList;
-
     }
 
     public static Report getById(int Id) {
@@ -81,7 +74,6 @@ public class ReportController {
         Report reportInstance = null;
 
         try {
-
             String query = "SELECT * FROM REPORTS WHERE ID = (?);";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -100,7 +92,6 @@ public class ReportController {
         }
 
         return reportInstance;
-
     }
 
     public static Report getByMeeting(int Id) {
@@ -108,7 +99,6 @@ public class ReportController {
         Report reportInstance = null;
 
         try {
-
             String query = "SELECT * FROM REPORTS WHERE ID_MEETING = (?)";
 
             PreparedStatement statement = Conn.prepareStatement(query);
@@ -129,7 +119,5 @@ public class ReportController {
         }
 
         return reportInstance;
-
     }
-
 }
