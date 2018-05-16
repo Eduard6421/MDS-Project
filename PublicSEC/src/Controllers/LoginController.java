@@ -1,59 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
 
 import Models.Client;
 import Models.Company;
 import Models.Employee;
-import Util.GlobalData;
+import Utils.GlobalData;
 
-/**
- *
- * @author Eduard
- */
 public class LoginController {
-
     
-    public static boolean connectClient(String Username, String Password) {
+    public static boolean connectClient(String username, String password) {
 
-        Client ClientInstance = ClientController.getByAccount(Username, Password);
+        Client client = ClientsController.getByAccount(username, password);
 
-        if (ClientInstance != null) {
-            GlobalData.setUsername(Username);
+        if (client != null) {
+            GlobalData.setUsername(username);
             GlobalData.setUserType("client");
             return true;
-
         }
 
         return false;
     }
 
-    public static boolean connectEmployee(String Username, String Password) {
+    public static boolean connectEmployee(String username, String password) {
 
-        Employee EmployeeInstance = EmployeeController.getByAccount(Username, Password);
+        Employee employee = EmployeesController.getByAccount(username, password);
 
-        if (EmployeeInstance != null) {
-            GlobalData.setUsername(Username);
+        if (employee != null) {
+            GlobalData.setUsername(username);
             GlobalData.setUserType("employee");
             return true;
-
         }
 
         return false;
     }
 
-    public static boolean connectCompany(String Username, String Password) {
+    public static boolean connectCompany(String username, String password) {
 
-        Company CompanyInstance = CompanyController.getByAccount(Username, Password);
+        Company company = CompaniesController.getByAccount(username, password);
 
-        if (CompanyInstance != null) {
-            GlobalData.setUsername(Username);
+        if (company != null) {
+            GlobalData.setUsername(username);
             GlobalData.setUserType("company");
             return true;
-
         }
 
         return false;
