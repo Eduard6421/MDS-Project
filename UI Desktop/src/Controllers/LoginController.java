@@ -6,16 +6,28 @@ import Models.Employee;
 import Utils.GlobalData;
 
 public class LoginController {
+    
+    public static boolean connectClient(String username, String password) {
+
+        Client client = ClientsController.getByAccount(username, password);
+
+        if (client != null) {
+            GlobalData.setUsername(username);
+            GlobalData.setUserType("client");
+            return true;
+        }
+
+        return false;
+    }
 
     public static boolean connectEmployee(String username, String password) {
 
-        Employee EmployeeInstance = EmployeeController.getByAccount(username, password);
+        Employee employee = EmployeesController.getByAccount(username, password);
 
-        if (EmployeeInstance != null) {
+        if (employee != null) {
             GlobalData.setUsername(username);
             GlobalData.setUserType("employee");
             return true;
-
         }
 
         return false;
@@ -23,13 +35,12 @@ public class LoginController {
 
     public static boolean connectCompany(String username, String password) {
 
-        Company CompanyInstance = CompanyController.getByAccount(username, password);
+        Company company = CompaniesController.getByAccount(username, password);
 
-        if (CompanyInstance != null) {
+        if (company != null) {
             GlobalData.setUsername(username);
             GlobalData.setUserType("company");
             return true;
-
         }
 
         return false;
