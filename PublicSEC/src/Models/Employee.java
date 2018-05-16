@@ -11,103 +11,103 @@ package Models;
  */
 public class Employee extends Entity {
 
-    String firstName;
-    String lastName;
-    String userName;
-    String userPassword;
-    String address;
-    String phone;
-    String email;
-    Double rating;
+    String FirstName;
+    String LastName;
+    String Username;
+    String Password;
+    String Address;
+    String Phone;
+    String Email;
+    Double Rating;
 
-    public Employee(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email, double rating) {
+    public Employee(String firstName, String lastName, String username, String userPassword, String address, String phone, String email, double rating) {
         this.Id = -1;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.address = address;
-        this.phone = phone;
-        this.email = email;
-        this.rating = rating;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Username = username;
+        this.Password = userPassword;
+        this.Address = address;
+        this.Phone = phone;
+        this.Email = email;
+        this.Rating = rating;
 
     }
 
-    public Employee(int Id, String firstName, String lastName, String userName, String userPassword, String address, String phone, String email, double rating) {
+    public Employee(int Id, String firstName, String lastName, String username, String userPassword, String address, String phone, String email, double rating) {
 
         this.Id = Id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.address = address;
-        this.phone = phone;
-        this.email = email;
-        this.rating = rating;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Username = username;
+        this.Password = userPassword;
+        this.Address = address;
+        this.Phone = phone;
+        this.Email = email;
+        this.Rating = rating;
 
     }
 
     public String getFirstName() {
-        return firstName;
+        return FirstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.FirstName = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return LastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.LastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return Username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.Username = username;
     }
 
     public String getUserPassword() {
-        return userPassword;
+        return Password;
     }
 
     public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+        this.Password = userPassword;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.Address = address;
     }
 
     public String getPhone() {
-        return phone;
+        return Phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.Phone = phone;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
     public Double getRating() {
-        return rating;
+        return Rating;
     }
 
     public void setRating(Double rating) {
-        this.rating = rating;
+        this.Rating = rating;
     }
 }

@@ -17,24 +17,24 @@ public class Company extends Entity{
     String Name;
     String Username;
     String Password;
-    Date contractStartDate;
-    Date contractEndDate;
+    Date ContractStartDate;
+    Date ContractEndDate;
     String Description;
 
-    public Company(int Id,String name,Date contractStartDate,Date contractEndDate,String Description,String Username,String Password) {
+    public Company(int Id, String name, Date contractStartDate, Date contractEndDate, String Description, String Username, String Password) {
      this.Id = Id;
      this.Name = name;
-     this.contractStartDate = contractStartDate;
-     this.contractEndDate   = contractEndDate;
+     this.ContractStartDate = contractStartDate;
+     this.ContractEndDate   = contractEndDate;
      this.Description = Description;
      this.Username = Username;
      this.Password = Password;
     }
     
-    public Company(String name,Date contractStartDate,Date contractEndDate,String Description,String Username,String Password) {
+    public Company(String name, Date contractStartDate, Date contractEndDate, String Description, String Username, String Password) {
      this.Name = name;
-     this.contractStartDate = contractStartDate;
-     this.contractEndDate   = contractEndDate;
+     this.ContractStartDate = contractStartDate;
+     this.ContractEndDate   = contractEndDate;
      this.Description = Description;
      this.Username = Username;
      this.Password = Password;
@@ -49,19 +49,19 @@ public class Company extends Entity{
     }
 
     public Date getContractStartDate() {
-        return contractStartDate;
+        return ContractStartDate;
     }
 
     public void setContractStartDate(Date contractStartDate) {
-        this.contractStartDate = contractStartDate;
+        this.ContractStartDate = contractStartDate;
     }
 
     public Date getContractEndDate() {
-        return contractEndDate;
+        return ContractEndDate;
     }
 
     public void setContractEndDate(Date contractEndDate) {
-        this.contractEndDate = contractEndDate;
+        this.ContractEndDate = contractEndDate;
     }
 
     public String getDescription() {

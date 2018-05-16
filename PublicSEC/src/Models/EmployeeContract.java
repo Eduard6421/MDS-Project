@@ -9,58 +9,58 @@ import java.util.Date;
 
 public class EmployeeContract extends Entity {
 
-    private int idEmployee;
-    private int idCompany;
-    private Date startDate;
-    private Date endDate;
+    private int IdEmployee;
+    private int IdCompany;
+    private Date StartDate;
+    private Date EndDate;
 
     public EmployeeContract(int Id, int idEmployee, int idCompany, Date startDate, Date endDate) {
         this.Id = Id;;
-        this.idEmployee = idEmployee;
-        this.idCompany = idCompany;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.IdEmployee = idEmployee;
+        this.IdCompany = idCompany;
+        this.StartDate = startDate;
+        this.EndDate = endDate;
 
     }
 
     public EmployeeContract(int idEmployee, int idCompany, Date startDate, Date endDate) {
         this.Id = -1;
-        this.idEmployee = idEmployee;
-        this.idCompany = idCompany;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.IdEmployee = idEmployee;
+        this.IdCompany = idCompany;
+        this.StartDate = startDate;
+        this.EndDate = endDate;
     }
 
     public int getIdEmployee() {
-        return idEmployee;
+        return IdEmployee;
     }
 
     public void setIdEmployee(int idEmployee) {
-        this.idEmployee = idEmployee;
+        this.IdEmployee = idEmployee;
     }
 
     public int getIdCompany() {
-        return idCompany;
+        return IdCompany;
     }
 
     public void setIdCompany(int idCompany) {
-        this.idCompany = idCompany;
+        this.IdCompany = idCompany;
     }
 
     public Date getStartDate() {
-        return startDate;
+        return StartDate;
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+        this.StartDate = startDate;
     }
 
     public Date getEndDate() {
-        return endDate;
+        return EndDate;
     }
 
     public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+        this.EndDate = endDate;
     }
 
 }

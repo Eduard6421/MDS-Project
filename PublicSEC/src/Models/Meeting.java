@@ -9,58 +9,58 @@ import java.util.Date;
 
 public class Meeting extends Entity {
 
-    private int idClient;
-    private int idEmployee;
-    private Date meetingDate;
-    private double feedback;
-    private String description;
+    private int IdClient;
+    private int IdEmployee;
+    private Date MeetingDate;
+    private double Feedback;
+    private String Description;
+    
+    public Meeting(int idClient, int idEmployee, Date meetingDate, double feedback, String description) {
+        this.IdClient = idClient;
+        this.IdEmployee = idEmployee;
+        this.MeetingDate = meetingDate;
+        this.Feedback = feedback;
+        this.Description = description;
+    }
 
     public int getIdClient() {
-        return idClient;
+        return IdClient;
     }
 
     public void setIdClient(int idClient) {
-        this.idClient = idClient;
+        this.IdClient = idClient;
     }
 
     public int getIdEmployee() {
-        return idEmployee;
-    }
-
-    public Meeting(int idClient, int idEmployee, Date meetingDate, double feedback, String description) {
-        this.idClient = idClient;
-        this.idEmployee = idEmployee;
-        this.meetingDate = meetingDate;
-        this.feedback = feedback;
-        this.description = description;
+        return IdEmployee;
     }
 
     public void setIdEmployee(int idEmployee) {
-        this.idEmployee = idEmployee;
+        this.IdEmployee = idEmployee;
     }
 
     public Date getMeetingDate() {
-        return meetingDate;
+        return MeetingDate;
     }
 
     public void setMeetingDate(Date meetingDate) {
-        this.meetingDate = meetingDate;
+        this.MeetingDate = meetingDate;
     }
 
     public double getFeedback() {
-        return feedback;
+        return Feedback;
     }
 
     public void setFeedback(double feedback) {
-        this.feedback = feedback;
+        this.Feedback = feedback;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.Description = description;
     }
 
 }

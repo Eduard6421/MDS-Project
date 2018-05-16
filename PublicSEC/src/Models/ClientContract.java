@@ -13,62 +13,62 @@ import java.util.Date;
  */
 public class ClientContract extends Entity {
 
-    private int idClient;
-    private int idCompany;
-    private Date startDate;
-    private Date endDate;
+    private int IdClient;
+    private int IdCompany;
+    private Date StartDate;
+    private Date EndDate;
 
     
     
     public ClientContract(int idClient, int idCompany, Date startDate, Date endDate) {
 
         this.Id = -1;
-        this.idClient = idClient;
-        this.idCompany = idCompany;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.IdClient = idClient;
+        this.IdCompany = idCompany;
+        this.StartDate = startDate;
+        this.EndDate = endDate;
 
     }
 
     public ClientContract(int Id, int idClient, int idCompany, Date startDate, Date endDate) {
         this.Id = Id;
-        this.idClient = idClient;
-        this.idCompany = idCompany;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.IdClient = idClient;
+        this.IdCompany = idCompany;
+        this.StartDate = startDate;
+        this.EndDate = endDate;
 
     }
 
     public int getIdClient() {
-        return idClient;
+        return IdClient;
     }
 
     public void setIdClient(int idClient) {
-        this.idClient = idClient;
+        this.IdClient = idClient;
     }
 
     public int getIdCompany() {
-        return idCompany;
+        return IdCompany;
     }
 
     public void setIdCompany(int idCompany) {
-        this.idCompany = idCompany;
+        this.IdCompany = idCompany;
     }
 
     public Date getStartDate() {
-        return startDate;
+        return StartDate;
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+        this.StartDate = startDate;
     }
 
     public Date getEndDate() {
-        return endDate;
+        return EndDate;
     }
 
     public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+        this.EndDate = endDate;
     }
 
 }
