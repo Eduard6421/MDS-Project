@@ -9,42 +9,34 @@ import java.util.Date;
 
 public class Report extends Entity {
 
-    int meetingID;
-    String description;
+    int MeetingID;
+    String Description;
 
     public Report(int meetingID, String description) {
-        this.meetingID = meetingID;
-        this.description = description;
+        this.MeetingID = meetingID;
+        this.Description = description;
     }
 
     public Report(int id, int meetingID, String description) {
         this.Id = id;
-        this.meetingID = meetingID;
-        this.description = description;
+        this.MeetingID = meetingID;
+        this.Description = description;
     }
 
     public int getMeetingID() {
-        return meetingID;
+        return MeetingID;
     }
 
     public void setMeetingID(int meetingID) {
-        this.meetingID = meetingID;
+        this.MeetingID = meetingID;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.Description = description;
     }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int Id) {
-        this.Id = Id;
-    }
-
+    
 }
