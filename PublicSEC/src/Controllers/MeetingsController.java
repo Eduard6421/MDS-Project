@@ -107,11 +107,71 @@ public class MeetingsController {
         return meeting;
     }
 
-    public static Meeting getByEmployee(int employeeId) {
+    public static Meeting getAllByEmployee(int employeeId) {
         Meeting meeting = null;
 
         try {
             String query = "SELECT * FROM Meetings WHERE IdEmployee = (?)";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                meeting = new Meeting(
+                        result.getInt("IdClient"),
+                        result.getInt("IdEmployee"),
+                        result.getDate("Date"),
+                        result.getDouble("Feedback"),
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
+
+            }
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println("Error " + e);
+        }
+
+        return meeting;
+    }
+    
+    public static Meeting getAllOpenedByEmployee(int employeeId) {
+        Meeting meeting = null;
+
+        try {
+            String query = "SELECT * FROM Meetings WHERE IdEmployee = (?) AND IsOpen = 1";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                meeting = new Meeting(
+                        result.getInt("IdClient"),
+                        result.getInt("IdEmployee"),
+                        result.getDate("Date"),
+                        result.getDouble("Feedback"),
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
+
+            }
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println("Error " + e);
+        }
+
+        return meeting;
+    }
+    
+    public static Meeting getAllClosedByEmployee(int employeeId) {
+        Meeting meeting = null;
+
+        try {
+            String query = "SELECT * FROM Meetings WHERE IdEmployee = (?) AND IsOpen = 0";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, employeeId);
