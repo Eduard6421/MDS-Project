@@ -15,32 +15,29 @@ public class Employee extends Entity {
     String LastName;
     String Username;
     String Password;
-    String Address;
     String Phone;
     String Email;
     Double Rating;
 
-    public Employee(String firstName, String lastName, String username, String userPassword, String address, String phone, String email, double rating) {
+    public Employee(String firstName, String lastName, String username, String userPassword, String phone, String email, double rating) {
         this.Id = -1;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.Username = username;
         this.Password = userPassword;
-        this.Address = address;
         this.Phone = phone;
         this.Email = email;
         this.Rating = rating;
 
     }
 
-    public Employee(int Id, String firstName, String lastName, String username, String userPassword, String address, String phone, String email, double rating) {
+    public Employee(int Id, String firstName, String lastName, String username, String userPassword, String phone, String email, double rating) {
 
         this.Id = Id;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.Username = username;
         this.Password = userPassword;
-        this.Address = address;
         this.Phone = phone;
         this.Email = email;
         this.Rating = rating;
@@ -77,14 +74,6 @@ public class Employee extends Entity {
 
     public void setUserPassword(String userPassword) {
         this.Password = userPassword;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        this.Address = address;
     }
 
     public String getPhone() {

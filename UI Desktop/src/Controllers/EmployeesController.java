@@ -14,19 +14,21 @@ public class EmployeesController {
 
     private static final Connection conn = MySQLConnector.getConnection();
 
-    public static boolean registerEmployee(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+    public static boolean registerEmployee(String firstName, String lastName, String userName, String password, String phone, String email) {
 
         try {
-            String query = "INSERT INTO Employees (FirstName, LastName, Username, Password, Address, Phone, Email) values (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Employees (FirstName, LastName, Username, Password, Phone, Email, Rating) values (?,?,?,?,?,?,?,?)";
 
+            double rating = 0;
+            
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             statement.setString(3, userName);
-            statement.setString(4, userPassword);
-            statement.setString(5, address);
-            statement.setString(6, phone);
-            statement.setString(7, email);
+            statement.setString(4, password);
+            statement.setString(5, phone);
+            statement.setString(6, email);
+            statement.setDouble(7, rating);
 
             int result = statement.executeUpdate();
 
@@ -43,7 +45,7 @@ public class EmployeesController {
 
     public static Employee getByAccount(String username, String password) {
 
-        Employee employeeInstance = null;
+        Employee employee = null;
 
         try {
             String query = "SELECT * FROM Employees WHERE Username = (?) AND Password = (?)";
@@ -55,13 +57,12 @@ public class EmployeesController {
 
             while (result.next()) {
 
-                employeeInstance = new Employee(
+                employee = new Employee(
                         result.getInt("Id"),
                         result.getString("FirstName"),
                         result.getString("LastName"),
                         result.getString("Username"),
                         result.getString("Password"),
-                        result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),
                         result.getDouble("Rating"));
@@ -73,12 +74,12 @@ public class EmployeesController {
             System.out.println("Error : " + e);
         }
 
-        return employeeInstance;
+        return employee;
     }
 
     public static Employee getByUsername(String username) {
 
-        Employee employeeInstance = null;
+        Employee employee = null;
 
         try {
             String query = "SELECT * FROM Employees WHERE Username = (?)";
@@ -89,13 +90,12 @@ public class EmployeesController {
 
             while (result.next()) {
 
-                employeeInstance = new Employee(
+                employee = new Employee(
                         result.getInt("Id"),
                         result.getString("FirstName"),
                         result.getString("LastName"),
                         result.getString("Username"),
                         result.getString("Password"),
-                        result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),
                         result.getDouble("Rating"));
@@ -107,12 +107,12 @@ public class EmployeesController {
             System.out.println("Error : " + e);
         }
 
-        return employeeInstance;
+        return employee;
     }
 
     public static Employee getById(int id) {
 
-        Employee employeeInstance = null;
+        Employee employee = null;
 
         try {
             String query = "SELECT * FROM Employees WHERE Id = (?)";
@@ -123,13 +123,12 @@ public class EmployeesController {
 
             while (result.next()) {
 
-                employeeInstance = new Employee(
+                employee = new Employee(
                         result.getInt("Id"),
                         result.getString("FirstName"),
                         result.getString("LastName"),
                         result.getString("Username"),
                         result.getString("Password"),
-                        result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),
                         result.getDouble("Rating"));
@@ -141,7 +140,7 @@ public class EmployeesController {
             System.out.println("Error : " + e);
         }
 
-        return employeeInstance;
+        return employee;
     }
 
     public static boolean changePassword(String oldPassword, String newPassword) {
@@ -190,9 +189,9 @@ public class EmployeesController {
 
     private static List<Employee> getAll() throws SQLException {
 
-        Employee employeeInstance = null;
+        Employee employee = null;
 
-        List<Employee> employeeList = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
 
         try {
             String query = "SELECT * FROM Employees";
@@ -202,18 +201,17 @@ public class EmployeesController {
 
             while (result.next()) {
 
-                employeeInstance = new Employee(
+                employee = new Employee(
                         result.getInt("Id"),
                         result.getString("FirstName"),
                         result.getString("LastName"),
                         result.getString("Username"),
                         result.getString("Password"),
-                        result.getString("Address"),
                         result.getString("Phone"),
                         result.getString("Email"),
                         result.getDouble("Rating"));
 
-                employeeList.add(employeeInstance);
+                employees.add(employee);
             }
             statement.close();
 
@@ -221,7 +219,7 @@ public class EmployeesController {
             System.out.println(e);
         }
 
-        return employeeList;
+        return employees;
     }
     
 }
