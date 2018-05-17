@@ -65,4 +65,12 @@ public class Meeting extends Entity {
         this.Description = description;
     }
 
+    public boolean getIsOpen() {
+        return IsOpen;
+    }
+    
+    public void setIsOpen(boolean isOpen) {
+        this.IsOpen = isOpen;
+    }
+    
 }
