@@ -147,13 +147,13 @@ public class Clients extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ClientMeetings.form = new ClientMeetings();
-        ClientMeetings.form.getContentPane().setBackground(new Color(255, 255, 255));
+        MeetingsTable.form = new MeetingsTable();
+        MeetingsTable.form.getContentPane().setBackground(new Color(255, 255, 255));
         form.getContentPane().add(form.jPanel2, BorderLayout.CENTER);
-        ClientMeetings.form.setLocationRelativeTo(null);
-        ClientMeetings.form.setExtendedState(MAXIMIZED_BOTH);
+        MeetingsTable.form.setLocationRelativeTo(null);
+        MeetingsTable.form.setExtendedState(MAXIMIZED_BOTH);
         form.setVisible(false);
-        ClientMeetings.form.setVisible(true);
+        MeetingsTable.form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

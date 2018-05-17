@@ -1,29 +1,27 @@
 package Forms.Controllers;
 
-import Forms.EmployeeMenu;
+import Forms.MeetingsTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class EmployeeMenuController implements ActionListener {
+public class MeetingsTableController implements ActionListener {
     
-    private EmployeeMenu form;
+    private MeetingsTable form;
     
     private boolean focus = true;
     
-    private LoginController parentController;
+    private EmployeeMenuController parentController;
     
-    public EmployeeMenuController() {
-        form = new EmployeeMenu(this);
-        form.setVisible(true);
+    public MeetingsTableController() {
     }
     
-    public EmployeeMenuController(LoginController parentController) {
+    public MeetingsTableController(EmployeeMenuController parentController, String tableType) {
         
         this.parentController = parentController;
         this.parentController.setWindowInvisible();
         
-        form = new EmployeeMenu(this);
+        form = new MeetingsTable(this, tableType);
         form.setVisible(true);
         
     }
@@ -35,16 +33,7 @@ public class EmployeeMenuController implements ActionListener {
         
         if (focus) {
             switch (command) {
-                case "View all meetings":
-                    MeetingsTableController meetingsTableController = new MeetingsTableController(this, "View all meetings");
-                    break;
-                case "View closed meetings":
-
-                    break;
-                case "View opened meetings":
-                    
-                    break;
-                case "Log out":
+                case "Back":
                     form.setVisible(false);
                     form.dispose();
                     parentController.setWindowVisible();
