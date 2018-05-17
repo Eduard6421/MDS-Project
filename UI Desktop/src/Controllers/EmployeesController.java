@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.util.Pair;
 
 public class EmployeesController {
 
@@ -217,6 +218,35 @@ public class EmployeesController {
 
         } catch (SQLException e) {
             System.out.println(e);
+        }
+
+        return employees;
+    }
+    
+    public static List<Pair<Integer, String>> getAllOnlyGeneralData() throws SQLException {
+
+        Pair<Integer, String> employee = null;
+
+        List<Pair<Integer, String>> employees = new ArrayList<>();
+
+        try {
+            String query = "SELECT Id, LastName || ' ' || FirstName FROM Employees";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                employee = new Pair<Integer, String>(result.getInt("Id"),
+                                                   result.getString("LastName || ' ' || FirstName"));
+
+                employees.add(employee);
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
         }
 
         return employees;
