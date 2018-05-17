@@ -61,7 +61,8 @@ public class MeetingsController {
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
-                        result.getString("Description"));
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
 
                 meetings.add(meeting);
 
@@ -93,7 +94,8 @@ public class MeetingsController {
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
-                        result.getString("Description"));
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
 
             }
             statement.close();
@@ -122,7 +124,8 @@ public class MeetingsController {
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
-                        result.getString("Description"));
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
 
             }
             statement.close();
@@ -153,7 +156,8 @@ public class MeetingsController {
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
-                        result.getString("Description"));
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
 
             }
             statement.close();

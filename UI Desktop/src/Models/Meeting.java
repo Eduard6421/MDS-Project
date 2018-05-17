@@ -14,13 +14,15 @@ public class Meeting extends Entity {
     private Date MeetingDate;
     private double Feedback;
     private String Description;
+    private boolean IsOpen;
     
-    public Meeting(int idClient, int idEmployee, Date meetingDate, double feedback, String description) {
+    public Meeting(int idClient, int idEmployee, Date meetingDate, double feedback, String description, boolean isOpen) {
         this.IdClient = idClient;
         this.IdEmployee = idEmployee;
         this.MeetingDate = meetingDate;
         this.Feedback = feedback;
         this.Description = description;
+        this.IsOpen = isOpen;
     }
 
     public int getIdClient() {
