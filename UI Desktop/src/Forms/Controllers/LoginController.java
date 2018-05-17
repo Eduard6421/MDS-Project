@@ -30,6 +30,7 @@ public class LoginController implements ActionListener {
                 case "Connect as Employee":
                     if (Controllers.LoginController.connectEmployee(username, password)) {
                         System.out.println("Angajat");
+                        EmployeeMenuController employeeMenuController = new EmployeeMenuController(this);
                     }
                     else {
                         displayConnectionError();
