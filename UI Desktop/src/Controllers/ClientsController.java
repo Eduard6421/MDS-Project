@@ -230,7 +230,7 @@ public class ClientsController {
         List<Pair<Integer, String>> clients = new ArrayList<>();
 
         try {
-            String query = "SELECT Id, LastName || ' ' || FirstName FROM Clients";
+            String query = "SELECT Id, Username FROM Clients";
 
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();
@@ -238,7 +238,7 @@ public class ClientsController {
             while (result.next()) {
 
                 client = new Pair<Integer, String>(result.getInt("Id"),
-                                                   result.getString("LastName || ' ' || FirstName"));
+                                                   result.getString("Username"));
 
                 clients.add(client);
             }
