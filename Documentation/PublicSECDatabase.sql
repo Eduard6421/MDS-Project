@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2018 at 10:18 AM
+-- Generation Time: May 17, 2018 at 06:27 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -117,7 +117,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`Id`, `Username`, `Password`, `FirstName`, `LastName`, `Phone`, `Email`, `Rating`) VALUES
-(1, 'employee', 'passemployee1', 'employee1', 'employee1', '0123012312', 'employee1@hotmail.com', 0.000),
+(1, 'employee1', 'employee1', 'employee1', 'employee1', '0123012312', 'employee1@hotmail.com', 0.000),
 (2, 'employee', 'passemployee2', 'employee2', 'employee2', '012312313', 'employee2@hotmail.com', 0.000);
 
 -- --------------------------------------------------------
@@ -154,16 +154,17 @@ CREATE TABLE `meetings` (
   `IdEmployee` int(11) NOT NULL,
   `Date` date NOT NULL,
   `Feedback` int(11) DEFAULT NULL,
-  `Description` mediumtext
+  `Description` mediumtext,
+  `IsOpen` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `meetings`
 --
 
-INSERT INTO `meetings` (`Id`, `IdClient`, `IdEmployee`, `Date`, `Feedback`, `Description`) VALUES
-(1, 1, 1, '2010-01-01', 5, 'da'),
-(2, 1, 2, '2010-04-02', 3, 'nu');
+INSERT INTO `meetings` (`Id`, `IdClient`, `IdEmployee`, `Date`, `Feedback`, `Description`, `IsOpen`) VALUES
+(1, 1, 1, '2010-01-01', 5, 'da', 1),
+(2, 1, 2, '2010-04-02', 3, 'nu', 1);
 
 -- --------------------------------------------------------
 
@@ -246,31 +247,31 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `client_contracts`
 --
 ALTER TABLE `client_contracts`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employee_contracts`
 --
 ALTER TABLE `employee_contracts`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `meetings`
@@ -282,7 +283,7 @@ ALTER TABLE `meetings`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
