@@ -107,8 +107,10 @@ public class MeetingsController {
         return meeting;
     }
 
-    public static Meeting getAllByEmployee(int employeeId) {
+    public static List<Meeting> getAllByEmployee(int employeeId) {
         Meeting meeting = null;
+        
+        List<Meeting> meetings = new ArrayList<>();
 
         try {
             String query = "SELECT * FROM Meetings WHERE IdEmployee = (?)";
@@ -126,7 +128,8 @@ public class MeetingsController {
                         result.getDouble("Feedback"),
                         result.getString("Description"),
                         result.getBoolean("IsOpen"));
-
+                
+                meetings.add(meeting);
             }
             statement.close();
 
@@ -134,11 +137,13 @@ public class MeetingsController {
             System.out.println("Error " + e);
         }
 
-        return meeting;
+        return meetings;
     }
     
-    public static Meeting getAllOpenedByEmployee(int employeeId) {
+    public static List<Meeting> getAllOpenedByEmployee(int employeeId) {
         Meeting meeting = null;
+        
+        List<Meeting> meetings = new ArrayList<>();
 
         try {
             String query = "SELECT * FROM Meetings WHERE IdEmployee = (?) AND IsOpen = 1";
@@ -156,7 +161,8 @@ public class MeetingsController {
                         result.getDouble("Feedback"),
                         result.getString("Description"),
                         result.getBoolean("IsOpen"));
-
+                
+                meetings.add(meeting);
             }
             statement.close();
 
@@ -164,12 +170,14 @@ public class MeetingsController {
             System.out.println("Error " + e);
         }
 
-        return meeting;
+        return meetings;
     }
     
-    public static Meeting getAllClosedByEmployee(int employeeId) {
+    public static List<Meeting> getAllClosedByEmployee(int employeeId) {
         Meeting meeting = null;
 
+        List<Meeting> meetings = new ArrayList<>();
+        
         try {
             String query = "SELECT * FROM Meetings WHERE IdEmployee = (?) AND IsOpen = 0";
 
@@ -187,6 +195,7 @@ public class MeetingsController {
                         result.getString("Description"),
                         result.getBoolean("IsOpen"));
 
+                meetings.add(meeting);
             }
             statement.close();
 
@@ -194,7 +203,7 @@ public class MeetingsController {
             System.out.println("Error " + e);
         }
 
-        return meeting;
+        return meetings;
     }
 
     public static Meeting getByMeeting(int id) {
