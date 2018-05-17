@@ -14,6 +14,7 @@ public class LoginController {
         if (client != null) {
             GlobalData.setUsername(username);
             GlobalData.setUserType("client");
+            GlobalData.setUserId(client.getId());
             return true;
         }
 
@@ -27,6 +28,7 @@ public class LoginController {
         if (employee != null) {
             GlobalData.setUsername(username);
             GlobalData.setUserType("employee");
+            GlobalData.setUserId(employee.getId());
             return true;
         }
 
@@ -40,6 +42,7 @@ public class LoginController {
         if (company != null) {
             GlobalData.setUsername(username);
             GlobalData.setUserType("company");
+            GlobalData.setUserId(company.getId());
             return true;
         }
 
