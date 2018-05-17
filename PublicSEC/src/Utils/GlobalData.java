@@ -14,7 +14,9 @@ public class GlobalData {
 
     private static String Username;
 
-    private static String userType;
+    private static String UserType;
+    
+    private static int UserId;
 
     public static String getUsername() {
         return Username;
@@ -25,11 +27,20 @@ public class GlobalData {
     }
 
     public static String getUserType() {
-        return userType;
+        return UserType;
     }
 
     public static void setUserType(String userType) {
-        GlobalData.userType = userType;
+        GlobalData.UserType = userType;
+    }
+    
+    public static int getUserId() {
+        return UserId;
+    }
+    
+    public static void setUserId(int userId) {
+        GlobalData.UserId = userId;
     }
 
 }
+
