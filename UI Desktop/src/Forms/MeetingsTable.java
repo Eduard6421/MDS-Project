@@ -8,6 +8,8 @@ package Forms;
 import Forms.Controllers.MeetingsTableController;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +31,22 @@ public class MeetingsTable extends javax.swing.JFrame {
         initComponents();
         buttonBack.addActionListener(controller);
         labelMeetingsType.setText(tableType);
+        
+    }
+    
+    public void showPopulation(List<Object[]> rows) {
+        
+        DefaultTableModel tModel = (DefaultTableModel) table.getModel();
+        table.setDefaultEditor(Object.class, null);
+
+        while (tModel.getRowCount() > 0) {
+            tModel.removeRow(0);
+        }
+        tModel.setRowCount(0);
+       
+        for (Object[] row : rows) {
+            tModel.addRow(row);
+        }
         
     }
 
