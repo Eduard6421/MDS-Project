@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Forms.Controllers.CompanyMenuController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,6 +25,10 @@ public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         initComponents();
+    }
+
+    public Menu(CompanyMenuController aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

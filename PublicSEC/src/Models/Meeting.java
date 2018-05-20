@@ -11,18 +11,28 @@ public class Meeting extends Entity {
 
     private int IdClient;
     private int IdEmployee;
+    private int IdCompany;
     private Date MeetingDate;
     private double Feedback;
     private String Description;
     private boolean IsOpen;
-    
-    public Meeting(int idClient, int idEmployee, Date meetingDate, double feedback, String description, boolean isOpen) {
+
+    public Meeting(int idClient, int idCompany, int idEmployee, Date meetingDate, double feedback, String description, boolean isOpen) {
         this.IdClient = idClient;
+        this.IdCompany = idCompany;
         this.IdEmployee = idEmployee;
         this.MeetingDate = meetingDate;
         this.Feedback = feedback;
         this.Description = description;
         this.IsOpen = isOpen;
+    }
+
+    public int getIdCompany() {
+        return IdCompany;
+    }
+
+    public void setIdCompany(int IdCompany) {
+        this.IdCompany = IdCompany;
     }
 
     public int getIdClient() {
@@ -68,9 +78,9 @@ public class Meeting extends Entity {
     public boolean getIsOpen() {
         return IsOpen;
     }
-    
+
     public void setIsOpen(boolean isOpen) {
         this.IsOpen = isOpen;
     }
-    
+
 }

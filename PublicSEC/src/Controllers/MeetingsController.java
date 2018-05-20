@@ -15,19 +15,20 @@ public class MeetingsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
 
-    public static boolean createMeeting(int clientId, int employeeId, Date date, String Description) {
+    public static boolean createMeeting(int clientId, int companyId, int employeeId,double Feedback, Date date, String Description) {
 
         try {
-            String query = "INSERT INTO Meetings (IdClient, IdEmployee, Date, Feedback, Description) VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO Meetings (IdClient, companyId, IdEmployee, Date, Feedback, Description) VALUES (?,?,?,?,?,?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
             java.sql.Date SQLDate = new java.sql.Date(date.getTime());
 
             statement.setInt(1, clientId);
-            statement.setInt(2, employeeId);
-            statement.setDate(3, SQLDate);
-            statement.setString(4, Description);
+            statement.setInt(2, companyId);
+            statement.setInt(3, employeeId);
+            statement.setDate(4, SQLDate);
+            statement.setString(5, Description);
 
             int result = statement.executeUpdate();
 
@@ -58,6 +59,7 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -91,6 +93,7 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -123,6 +126,7 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -156,6 +160,7 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -189,6 +194,7 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -222,6 +228,7 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),

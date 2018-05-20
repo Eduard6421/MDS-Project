@@ -9,6 +9,8 @@ public class PublicSEC_Main {
 
         LoginController controller = new LoginController();
         
+        while(true);
+        
     }
 
 }

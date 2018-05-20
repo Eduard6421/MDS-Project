@@ -6,6 +6,9 @@
 -- Generation Time: May 17, 2018 at 06:27 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
+DROP DATABASE IF EXISTS publicsec;
+CREATE DATABASE publicsec;
+USE publicsec;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -151,9 +154,10 @@ INSERT INTO `employee_contracts` (`Id`, `IdCompany`, `IdEmployee`, `StartDate`, 
 CREATE TABLE `meetings` (
   `Id` int(11) NOT NULL,
   `IdClient` int(11) NOT NULL,
-  `IdEmployee` int(11) NOT NULL,
+  `IdCompany` int(11) NOT NULL,
+  `IdEmployee` int(11) NULL,
   `Date` date NOT NULL,
-  `Feedback` int(11) DEFAULT NULL,
+  `Feedback` double(4,2) DEFAULT NULL,
   `Description` mediumtext,
   `IsOpen` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -162,9 +166,9 @@ CREATE TABLE `meetings` (
 -- Dumping data for table `meetings`
 --
 
-INSERT INTO `meetings` (`Id`, `IdClient`, `IdEmployee`, `Date`, `Feedback`, `Description`, `IsOpen`) VALUES
-(1, 1, 1, '2010-01-01', 5, 'da', 1),
-(2, 1, 2, '2010-04-02', 3, 'nu', 1);
+INSERT INTO `meetings` (`Id`, `IdClient`,`IdCompany`, `IdEmployee`, `Date`, `Feedback`, `Description`, `IsOpen`) VALUES
+(1, 1, 1, 1, '2010-01-01', 5, 'da', 1),
+(2, 1, 2, 2, '2010-04-02', 3, 'nu', 1);
 
 -- --------------------------------------------------------
 

@@ -188,7 +188,7 @@ public class EmployeesController {
         return false;
     }
 
-    private static List<Employee> getAll() throws SQLException {
+    public static List<Employee> getAll() throws SQLException {
 
         Employee employee = null;
 
