@@ -20,53 +20,47 @@ import static org.junit.Assert.*;
  * @author Eduard
  */
 public class ClientContractsControllerTest {
-    
+
     public ClientContractsControllerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
-    }
-
-    /**
-     * Test of createClientContract method, of class ClientContractsController.
-     */
-    @Test
-    public void testCreateClientContract() {
-        System.out.println("createClientContract");
-        int idClient = 0;
-        int idCompany = 0;
-        Date startDate = null;
-        Date endDate = null;
-        boolean expResult = false;
-        boolean result = ClientContractsController.createClientContract(idClient, idCompany, startDate, endDate);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getById method, of class ClientContractsController.
      */
     @Test
-    public void testGetById() {
+    public void testGetById1() {
         System.out.println("getById");
         int id = 0;
         ClientContract expResult = null;
         ClientContract result = ClientContractsController.getById(id);
         assertEquals(expResult, result);
+
+    }
+
+    @Test
+    public void testGetById2() {
+        System.out.println("getById");
+        int id = 1;
+        boolean expResult = true;
+        ClientContract result = ClientContractsController.getById(id);
+        boolean trueResult = result != null;
+        assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -98,5 +92,5 @@ public class ClientContractsControllerTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
