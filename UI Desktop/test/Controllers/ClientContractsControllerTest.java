@@ -61,36 +61,52 @@ public class ClientContractsControllerTest {
         ClientContract result = ClientContractsController.getById(id);
         boolean trueResult = result != null;
         assertEquals(expResult, trueResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getByClient method, of class ClientContractsController.
      */
     @Test
-    public void testGetByClient() {
+    public void testGetByClient1() {
         System.out.println("getByClient");
         int id = 0;
-        List<ClientContract> expResult = null;
         List<ClientContract> result = ClientContractsController.getByClient(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean trueResult = result.size() == 0;
+        boolean expResult = true;
+        assertEquals(expResult, trueResult);
+    }
+
+    @Test
+    public void testGetByClient2() {
+        System.out.println("getByClient");
+        int id = 1;
+        List<ClientContract> result = ClientContractsController.getByClient(id);
+        boolean trueResult = result.size() > 0;
+        boolean expResult = true;
+        assertEquals(expResult, trueResult);
     }
 
     /**
      * Test of getByCompany method, of class ClientContractsController.
      */
     @Test
-    public void testGetByCompany() {
+    public void testGetByCompany1() {
         System.out.println("getByCompany");
         int id = 0;
-        List<ClientContract> expResult = null;
         List<ClientContract> result = ClientContractsController.getByCompany(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean trueResult = result.size() == 0;
+        boolean expResult = true;
+        assertEquals(expResult, trueResult);
+    }
+
+    @Test
+    public void testGetByCompany2() {
+        System.out.println("getByCompany");
+        int id = 1;
+        List<ClientContract> result = ClientContractsController.getByCompany(id);
+        boolean trueResult = result.size() > 0;
+        boolean expResult = true;
+        assertEquals(expResult, trueResult);
     }
 
 }
