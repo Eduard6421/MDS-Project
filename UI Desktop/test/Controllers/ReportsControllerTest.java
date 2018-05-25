@@ -38,48 +38,42 @@ public class ReportsControllerTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of createReport method, of class ReportsController.
-     */
-    @Test
-    public void testCreateReport() {
-        System.out.println("createReport");
-        int idMeeting = 0;
-        String description = "";
-        boolean expResult = false;
-        boolean result = ReportsController.createReport(idMeeting, description);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    
     /**
      * Test of getAll method, of class ReportsController.
      */
     @Test
     public void testGetAll() throws Exception {
         System.out.println("getAll");
-        List<Report> expResult = null;
         List<Report> result = ReportsController.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult = true;
+        boolean trueResult = result.size() == 2;
+        
+        assertEquals(expResult, trueResult);
     }
 
     /**
      * Test of getById method, of class ReportsController.
      */
     @Test
-    public void testGetById() {
+    public void testGetById1() {
         System.out.println("getById");
         int id = 0;
         Report expResult = null;
         Report result = ReportsController.getById(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
+    
+    public void testGetById2() {
+        System.out.println("getById");
+        int id = 1;
+        boolean expResult = true;
+        Report result = ReportsController.getById(id);
+        boolean trueResult = result==null;
+        
+        assertEquals(expResult, trueResult);
+    }
+    
 
     /**
      * Test of getByMeeting method, of class ReportsController.
@@ -91,8 +85,6 @@ public class ReportsControllerTest {
         Report expResult = null;
         Report result = ReportsController.getByMeeting(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
