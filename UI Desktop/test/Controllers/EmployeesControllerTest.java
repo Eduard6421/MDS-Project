@@ -56,7 +56,7 @@ public class EmployeesControllerTest {
         Employee result = EmployeesController.getByAccount(username, password);
         assertEquals(expResult, result);
     }
-
+   @Test
     public void testGetByAccount2() {
         System.out.println("getByAccount");
         String username = "employee1";
@@ -66,9 +66,9 @@ public class EmployeesControllerTest {
         Employee result = EmployeesController.getByAccount(username, password);
         boolean trueResult = (result != null);
 
-        assertEquals(expResult, result);
+        assertEquals(expResult, trueResult);
     }
-
+   @Test
     public void testGetByAccount3() {
         System.out.println("getByAccount");
         String username = "";
@@ -89,7 +89,7 @@ public class EmployeesControllerTest {
         Employee result = EmployeesController.getByUsername(username);
         assertEquals(expResult, result);
     }
-    
+       @Test
     public void testGetByUsername2() {
         System.out.println("getByUsername");
         String username = "employee1";
@@ -99,7 +99,7 @@ public class EmployeesControllerTest {
         
         assertEquals(expResult, result);
     }
-    
+       @Test
     public void testGetByUsername3() {
         System.out.println("getByUsername");
         String username = "%";

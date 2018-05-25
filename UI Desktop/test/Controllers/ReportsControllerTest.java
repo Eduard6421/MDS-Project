@@ -19,26 +19,26 @@ import static org.junit.Assert.*;
  * @author Eduard
  */
 public class ReportsControllerTest {
-    
+
     public ReportsControllerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     /**
      * Test of getAll method, of class ReportsController.
      */
@@ -48,7 +48,7 @@ public class ReportsControllerTest {
         List<Report> result = ReportsController.getAll();
         boolean expResult = true;
         boolean trueResult = result.size() == 2;
-        
+
         assertEquals(expResult, trueResult);
     }
 
@@ -63,17 +63,17 @@ public class ReportsControllerTest {
         Report result = ReportsController.getById(id);
         assertEquals(expResult, result);
     }
-    
+
+    @Test
     public void testGetById2() {
         System.out.println("getById");
         int id = 1;
         boolean expResult = true;
         Report result = ReportsController.getById(id);
-        boolean trueResult = result==null;
-        
+        boolean trueResult = result == null;
+
         assertEquals(expResult, trueResult);
     }
-    
 
     /**
      * Test of getByMeeting method, of class ReportsController.
@@ -86,5 +86,5 @@ public class ReportsControllerTest {
         Report result = ReportsController.getByMeeting(id);
         assertEquals(expResult, result);
     }
-    
+
 }

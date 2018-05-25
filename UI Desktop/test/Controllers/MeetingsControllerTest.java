@@ -40,21 +40,18 @@ public class MeetingsControllerTest {
     public void tearDown() {
     }
 
- 
-
     /**
      * Test of getAll method, of class MeetingsController.
      */
-    
     //Test for Meetings Number of 2
     @Test
     public void testGetAll1() {
         System.out.println("getAll");
         boolean expResult = true;
         List<Meeting> result = MeetingsController.getAll();
-        boolean trueResult = (result.size() == 2);   
+        boolean trueResult = (result.size() == 2);
         assertEquals(expResult, trueResult);
-        
+
         // TODO review the generated test code and remove the default call to fail.
     }
 
@@ -68,12 +65,12 @@ public class MeetingsControllerTest {
         boolean expResult = true;
         Meeting result = MeetingsController.getByClient(clientId);
         boolean trueResult = (result != null);
-        
+
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
-    
+
     @Test
     public void testGetByClient2() {
         System.out.println("getByClient");
@@ -81,12 +78,11 @@ public class MeetingsControllerTest {
         boolean expResult = true;
         Meeting result = MeetingsController.getByClient(clientId);
         boolean trueResult = (result == null);
-        
+
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
-    
 
     /**
      * Test of getAllByEmployee method, of class MeetingsController.
@@ -95,14 +91,13 @@ public class MeetingsControllerTest {
     public void testGetAllByEmployee() {
         System.out.println("getAllByEmployee");
         int employeeId = 1;
-        boolean  expResult = false;
+        boolean expResult = false;
         List<Meeting> result = MeetingsController.getAllByEmployee(employeeId);
-        
-        boolean trueResult = (result.size() == 2);   
-        assertEquals(expResult, trueResult);
-        
-        // TODO review the generated test code and remove the default call to fail.
 
+        boolean trueResult = (result.size() == 2);
+        assertEquals(expResult, trueResult);
+
+        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -115,35 +110,36 @@ public class MeetingsControllerTest {
         List<Meeting> result = MeetingsController.getAllOpenedByEmployee(employeeId);
         boolean expResult = true;
         boolean trueResult = (result.size() == 1);
-        
+
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
-    
+
+    @Test
     public void testGetAllOpenedByEmployee2() {
         System.out.println("getAllOpenedByEmployee");
         int employeeId = 2;
         List<Meeting> result = MeetingsController.getAllOpenedByEmployee(employeeId);
         boolean expResult = true;
         boolean trueResult = (result.size() == 1);
-        
+
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
-    
+
+    @Test
     public void testGetAllOpenedByEmployee3() {
         System.out.println("getAllOpenedByEmployee");
         int employeeId = 0;
         List<Meeting> result = MeetingsController.getAllOpenedByEmployee(employeeId);
         boolean expResult = true;
         boolean trueResult = (result.size() == 0);
-        
+
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
-        
+
     }
-    
 
 }
