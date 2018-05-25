@@ -20,22 +20,22 @@ import static org.junit.Assert.*;
  * @author Eduard
  */
 public class EmployeesControllerTest {
-    
+
     public EmployeesControllerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,79 +43,98 @@ public class EmployeesControllerTest {
     /**
      * Test of registerEmployee method, of class EmployeesController.
      */
-    @Test
-    public void testRegisterEmployee() {
-        System.out.println("registerEmployee");
-        String firstName = "";
-        String lastName = "";
-        String userName = "";
-        String password = "";
-        String phone = "";
-        String email = "";
-        boolean expResult = false;
-        boolean result = EmployeesController.registerEmployee(firstName, lastName, userName, password, phone, email);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getByAccount method, of class EmployeesController.
      */
     @Test
-    public void testGetByAccount() {
+    public void testGetByAccount1() {
         System.out.println("getByAccount");
         String username = "";
         String password = "";
         Employee expResult = null;
         Employee result = EmployeesController.getByAccount(username, password);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    public void testGetByAccount2() {
+        System.out.println("getByAccount");
+        String username = "employee1";
+        String password = "employee1";
+        boolean expResult = true;
+
+        Employee result = EmployeesController.getByAccount(username, password);
+        boolean trueResult = (result != null);
+
+        assertEquals(expResult, result);
+    }
+
+    public void testGetByAccount3() {
+        System.out.println("getByAccount");
+        String username = "";
+        String password = ";OR 1=1";
+        Employee expResult = null;
+        Employee result = EmployeesController.getByAccount(username, password);
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of getByUsername method, of class EmployeesController.
      */
     @Test
-    public void testGetByUsername() {
+    public void testGetByUsername1() {
         System.out.println("getByUsername");
-        String username = "";
+        String username = "0";
         Employee expResult = null;
         Employee result = EmployeesController.getByUsername(username);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    public void testGetByUsername2() {
+        System.out.println("getByUsername");
+        String username = "employee1";
+        boolean expResult = true;
+        Employee result = EmployeesController.getByUsername(username);
+        boolean trueResult = result     != null;
+        
+        assertEquals(expResult, result);
+    }
+    
+    public void testGetByUsername3() {
+        System.out.println("getByUsername");
+        String username = "%";
+        Employee expResult = null;
+        Employee result = EmployeesController.getByUsername(username);
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of getById method, of class EmployeesController.
      */
     @Test
-    public void testGetById() {
+    public void testGetById1() {
         System.out.println("getById");
         int id = 0;
         Employee expResult = null;
         Employee result = EmployeesController.getById(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
+    
+    @Test
+    public void testGetById2() {
+        System.out.println("getById");
+        int id = 1;
+        boolean expResult = true;
+        Employee result = EmployeesController.getById(id);
+        boolean trueResult = (result!= null);
+        
+        assertEquals(expResult, trueResult);
+    }
+    
 
     /**
      * Test of changePassword method, of class EmployeesController.
      */
-    @Test
-    public void testChangePassword() {
-        System.out.println("changePassword");
-        String oldPassword = "";
-        String newPassword = "";
-        boolean expResult = false;
-        boolean result = EmployeesController.changePassword(oldPassword, newPassword);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of updateData method, of class EmployeesController.
@@ -128,8 +147,7 @@ public class EmployeesControllerTest {
         boolean expResult = false;
         boolean result = EmployeesController.updateData(email, phoneNumber);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -138,24 +156,15 @@ public class EmployeesControllerTest {
     @Test
     public void testGetAll() throws Exception {
         System.out.println("getAll");
-        List<Employee> expResult = null;
+
         List<Employee> result = EmployeesController.getAll();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean trueResult = result.size() == 2;
+        boolean expResult = true;
+        assertEquals(expResult, trueResult);
+
     }
 
     /**
      * Test of getAllOnlyGeneralData method, of class EmployeesController.
      */
-    @Test
-    public void testGetAllOnlyGeneralData() throws Exception {
-        System.out.println("getAllOnlyGeneralData");
-        List<Pair<Integer, String>> expResult = null;
-        List<Pair<Integer, String>> result = EmployeesController.getAllOnlyGeneralData();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
