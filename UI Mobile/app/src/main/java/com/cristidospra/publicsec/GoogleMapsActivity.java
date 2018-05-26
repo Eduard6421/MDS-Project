@@ -14,6 +14,10 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     private GoogleMap mMap;
 
+    private static Double lat;
+    private static Double lng;
+    private static String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,14 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         mapFragment.getMapAsync(this);
     }
 
+    /* @TODO
+        call this somehow
+     */
+    private static void setLocation(Double _lat, Double _lng, String _title) {
+        lat = _lat;
+        lng = _lng;
+        title = _title;
+    }
 
     /**
      * Manipulates the map once available.
@@ -39,8 +51,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng location = new LatLng(lat, lng);
+        mMap.addMarker(new MarkerOptions().position(location).title(title));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
     }
 }
