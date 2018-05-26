@@ -39,6 +39,7 @@ public class LoginController implements ActionListener {
                 case "Connect as Company":
                     if (Controllers.LoginController.connectCompany(username, password)) {
                         System.out.println("Companie");
+                        CompanyMenuController companyMenuController = new CompanyMenuController(this);
                     }
                     else {
                         displayConnectionError();
