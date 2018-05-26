@@ -1,20 +1,20 @@
 package Forms.Controllers;
 
-import Forms.Menu;
+import Forms.CompanyMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 public class CompanyMenuController implements ActionListener {
     
-    private Menu form;
+    private CompanyMenu form;
     
     private boolean focus = true;
     
     private LoginController parentController;
     
     public CompanyMenuController() {
-        form = new Menu(this);
+        form = new CompanyMenu(this);
         form.setVisible(true);
     }
     
@@ -23,7 +23,7 @@ public class CompanyMenuController implements ActionListener {
         this.parentController = parentController;
         this.parentController.setWindowInvisible();
         
-        form = new Menu(this);
+        form = new CompanyMenu(this);
         form.setVisible(true);
         
     }

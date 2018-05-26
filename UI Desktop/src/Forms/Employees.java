@@ -177,8 +177,8 @@ public class Employees extends javax.swing.JFrame {
         // TODO add your handling code here:
         form.setVisible(false);
         form.dispose();
-        Menu.form.setLocationRelativeTo(null);
-        Menu.form.setVisible(true);
+        CompanyMenu.form.setLocationRelativeTo(null);
+        CompanyMenu.form.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -227,7 +227,7 @@ public class Employees extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new Menu().setVisible(true);
+                 new CompanyMenu().setVisible(true);
               
             }
         });

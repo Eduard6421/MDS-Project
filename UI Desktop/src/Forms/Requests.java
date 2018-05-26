@@ -173,8 +173,8 @@ public class Requests extends javax.swing.JFrame {
         // TODO add your handling code here:
         form.setVisible(false);
         form.dispose();
-        Menu.form.setLocationRelativeTo(null);
-        Menu.form.setVisible(true);
+        CompanyMenu.form.setLocationRelativeTo(null);
+        CompanyMenu.form.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
