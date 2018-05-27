@@ -23,8 +23,7 @@ public class EmployeesTableController implements ActionListener {
     
     private CompanyMenuController parentController;
     
-    
-    
+    private List<Pair<Integer, String>> employeesIds = new ArrayList<>();
     
     public EmployeesTableController() {
     }
@@ -34,15 +33,10 @@ public class EmployeesTableController implements ActionListener {
         this.parentController = parentController;
         this.parentController.setWindowInvisible();
         
-        form = new EmployeesTable();
-        form.setVisible(true);
-        
+        form = new EmployeesTable(this);
+        form.setVisible(true);     
         
         fillTable();
-    }
-
-    EmployeesTableController(CompanyMenuController aThis, String command) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
@@ -97,6 +91,8 @@ public class EmployeesTableController implements ActionListener {
             row[3] = employee.getPhone();
             row[4] = employee.getEmail();
             row[5] = employee.getRating();
+            
+            employeesIds.add(new Pair<Integer, String>(employee.getId(), employee.getUsername()));
             
             rows.add(row);       
         }

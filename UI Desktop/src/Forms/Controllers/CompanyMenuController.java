@@ -3,7 +3,10 @@ package Forms.Controllers;
 import Forms.CompanyMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CompanyMenuController implements ActionListener {
     
@@ -36,15 +39,27 @@ public class CompanyMenuController implements ActionListener {
         if (focus) {
             switch (command) {
                 case "Employees":
-                    EmployeesTableController employeesTableController = new EmployeesTableController(this, command);
+                    {
+                        try {
+                            EmployeesTableController employeesTableController = new EmployeesTableController(this);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(CompanyMenuController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                     break;
                 case "Clients":
-                    ClientsTableController clientsTableController= new ClientsTableController(this, command);
+                    {
+                        try {
+                            ClientsTableController clientsTableController= new ClientsTableController(this);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(CompanyMenuController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                     break;
                 case "Requests":
-                    //ReportsTableController reportsTablesController = new ReportsTableController(this, command);
+                    //RequestsTableController requestsTablesController = new RequestsTableController(this, command);
                     break;
-                case "Back":
+                case "Log out":
                     form.setVisible(false);
                     form.dispose();
                     parentController.setWindowVisible();

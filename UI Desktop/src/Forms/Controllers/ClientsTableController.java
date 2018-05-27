@@ -23,9 +23,7 @@ public class ClientsTableController implements ActionListener {
     
     private CompanyMenuController parentController;
     
-    
-    
-    
+
     public ClientsTableController() {
     }
     
@@ -34,15 +32,10 @@ public class ClientsTableController implements ActionListener {
         this.parentController = parentController;
         this.parentController.setWindowInvisible();
         
-        form = new ClientsTable();
+        form = new ClientsTable(this);
         form.setVisible(true);
         
-        
         fillTable();
-    }
-
-    ClientsTableController(CompanyMenuController aThis, String command) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
