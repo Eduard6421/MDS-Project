@@ -1,11 +1,15 @@
 package com.cristidospra.publicsec;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import Controllers.ClientsController;
 
 public class UserCreateAccountActivity extends AppCompatActivity {
 
@@ -54,9 +58,23 @@ public class UserCreateAccountActivity extends AppCompatActivity {
         String phoneNumber = String.valueOf(phoneNumberEditText.getText());
         String email = String.valueOf(emailEditText.getText());
 
-        /* @TODO
-            register new account with given data.
-            check for unique username / email / strong pass?
-         */
+        boolean result = ClientsController.registerClient(firstName, lastName, username, password, address, phoneNumber, email);
+
+        if (result == false) {
+            createAlertDialog("Failed to create your account. Please try again.");
+        }
+    }
+
+    private void createAlertDialog(String errorMessage) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(errorMessage)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
