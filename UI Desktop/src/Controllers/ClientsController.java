@@ -15,10 +15,10 @@ public class ClientsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
 
-    public static boolean registerClient(String firstName, String lastName,String userName, String userPassword, String address, String phone, String email) {
-         
+    public static boolean registerClient(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
+
         try {
-            String query = "INSERT INTO Clients (FirstName, LastName, Username, Password, Address, Phone, Email) values (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO clients (FirstName, LastName, Username, Password, Address, Phone, Email) values (?,?,?,?,?,?,?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, firstName);
@@ -32,7 +32,7 @@ public class ClientsController {
             int result = statement.executeUpdate();
 
             statement.close();
-            
+
             return result > 0;
 
         } catch (SQLException e) {
@@ -47,7 +47,7 @@ public class ClientsController {
         Client client = null;
 
         try {
-            String query = "SELECT * FROM Clients WHERE Username = (?) AND Password = (?)";
+            String query = "SELECT * FROM clients WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -81,7 +81,7 @@ public class ClientsController {
         Client client = null;
 
         try {
-            String query = "SELECT * FROM Clients WHERE Username = (?)";
+            String query = "SELECT * FROM clients WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -114,7 +114,7 @@ public class ClientsController {
         Client client = null;
 
         try {
-            String query = "SELECT * FROM Clients WHERE Id = (?)";
+            String query = "SELECT * FROM clients WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -146,7 +146,7 @@ public class ClientsController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Clients SET Password = (?) WHERE Username = (?) AND Password = (?)";
+            String update = "UPDATE clients SET Password = (?) WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, newPassword);
@@ -168,7 +168,7 @@ public class ClientsController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Clients SET Email = (?), Phone = (?) WHERE Username = (?)";
+            String update = "UPDATE clients SET Email = (?), Phone = (?) WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, email);
@@ -187,16 +187,19 @@ public class ClientsController {
 
     }
 
-    public static List<Client> getAll() throws SQLException {
+    public static List<Client> getAll(String companyName) throws SQLException {
 
         Client client = null;
 
         List<Client> clients = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Clients";
+            String query = "select clt.FirstName,clt.LastName,clt.Username,clt.Password,clt.Address,clt.Phone,clt.Email from clients as clt  join client_contracts as cc on clt.id = cc.idClient join companies as cpy on cpy.id = cc.idCompany where cpy.name = (?);";
 
             PreparedStatement statement = conn.prepareStatement(query);
+
+            statement.setString(1, companyName);
+
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -222,23 +225,24 @@ public class ClientsController {
 
         return clients;
     }
-    
-    public static List<Pair<Integer, String>> getAllOnlyGeneralData() throws SQLException {
+
+    public static List<Pair<Integer, String>> getAllOnlyGeneralData(String companyName) throws SQLException {
 
         Pair<Integer, String> client = null;
 
         List<Pair<Integer, String>> clients = new ArrayList<>();
 
         try {
-            String query = "SELECT Id, Username FROM Clients";
+            String query = "select clt.Id,clt.Username from clients as clt  join client_contracts as cc on clt.id = cc.idClient join companies as cpy on cpy.id = cc.idCompany where cpy.name = (?);";
 
             PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, companyName);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
 
                 client = new Pair<Integer, String>(result.getInt("Id"),
-                                                   result.getString("Username"));
+                        result.getString("Username"));
 
                 clients.add(client);
             }
@@ -251,5 +255,5 @@ public class ClientsController {
 
         return clients;
     }
-    
+
 }

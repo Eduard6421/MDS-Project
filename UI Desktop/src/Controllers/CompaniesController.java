@@ -18,7 +18,7 @@ public class CompaniesController {
         Company company = null;
 
         try {
-            String query = "SELECT * FROM Companies WHERE Username = (?) AND Password = (?)";
+            String query = "SELECT * FROM companies WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -52,7 +52,7 @@ public class CompaniesController {
         Company company = null;
 
         try {
-            String query = "SELECT * FROM Companies WHERE Username = (?)";
+            String query = "SELECT * FROM companies WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -79,12 +79,44 @@ public class CompaniesController {
         return company;
     }
 
+    public static Company getByName(String name) {
+        Company company = null;
+
+        try {
+            String query = "SELECT * FROM companies WHERE name = (?)";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1,name);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                company = new Company(
+                        result.getInt("Id"),
+                        result.getString("Name"),
+                        result.getDate("ContractStartDate"),
+                        result.getDate("ContractEndDate"),
+                        result.getString("Description"),
+                        result.getString("Username"),
+                        result.getString("Password"));
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+
+        return company;
+
+    }
+
     public static Company getById(int id) {
 
         Company company = null;
 
         try {
-            String query = "SELECT * FROM Companies WHERE Id = (?)";
+            String query = "SELECT * FROM companies WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -118,7 +150,7 @@ public class CompaniesController {
         List<Company> companies = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Companies";
+            String query = "SELECT * FROM companies";
 
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();
@@ -144,5 +176,5 @@ public class CompaniesController {
 
         return companies;
     }
-    
+
 }

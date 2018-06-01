@@ -18,10 +18,10 @@ public class EmployeesController {
     public static boolean registerEmployee(String firstName, String lastName, String userName, String password, String phone, String email) {
 
         try {
-            String query = "INSERT INTO Employees (FirstName, LastName, Username, Password, Phone, Email, Rating) values (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO employees (FirstName, LastName, Username, Password, Phone, Email, Rating) values (?,?,?,?,?,?,?,?)";
 
             double rating = 0;
-            
+
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, firstName);
             statement.setString(2, lastName);
@@ -44,12 +44,36 @@ public class EmployeesController {
         }
     }
 
+    public static Double getAverageRating(int employeeId) {
+
+        Double rating = 0d;
+
+        try {
+            String query = "select avg(feedback) from meetings where idEmployee = ? ";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+
+            statement.setInt(1, employeeId);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                rating = result.getDouble("feedback");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e);
+        }
+        return rating;
+    }
+    
+    
     public static Employee getByAccount(String username, String password) {
 
         Employee employee = null;
 
         try {
-            String query = "SELECT * FROM Employees WHERE Username = (?) AND Password = (?)";
+            String query = "SELECT * FROM employees WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -83,7 +107,7 @@ public class EmployeesController {
         Employee employee = null;
 
         try {
-            String query = "SELECT * FROM Employees WHERE Username = (?)";
+            String query = "SELECT * FROM employees WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -116,7 +140,7 @@ public class EmployeesController {
         Employee employee = null;
 
         try {
-            String query = "SELECT * FROM Employees WHERE Id = (?)";
+            String query = "SELECT * FROM employees WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -148,7 +172,7 @@ public class EmployeesController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Employees SET Password = (?) WHERE Username = (?) AND Password = (?)";
+            String update = "UPDATE employees SET Password = (?) WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, newPassword);
@@ -170,7 +194,7 @@ public class EmployeesController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Employees SET Email = (?), Phone = (?) WHERE Username = (?)";
+            String update = "UPDATE employees SET Email = (?), Phone = (?) WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, email);
@@ -188,14 +212,14 @@ public class EmployeesController {
         return false;
     }
 
-    public static List<Employee> getAll() throws SQLException {
+    private static List<Employee> getAll() throws SQLException {
 
         Employee employee = null;
 
         List<Employee> employees = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Employees";
+            String query = "SELECT * FROM employees";
 
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();
@@ -222,7 +246,7 @@ public class EmployeesController {
 
         return employees;
     }
-    
+
     public static List<Pair<Integer, String>> getAllOnlyGeneralData() throws SQLException {
 
         Pair<Integer, String> employee = null;
@@ -230,7 +254,7 @@ public class EmployeesController {
         List<Pair<Integer, String>> employees = new ArrayList<>();
 
         try {
-            String query = "SELECT Id, Username FROM Employees";
+            String query = "SELECT Id, Username FROM employees";
 
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();
@@ -238,7 +262,7 @@ public class EmployeesController {
             while (result.next()) {
 
                 employee = new Pair<Integer, String>(result.getInt("Id"),
-                                                   result.getString("Username"));
+                        result.getString("Username"));
 
                 employees.add(employee);
             }
@@ -251,5 +275,5 @@ public class EmployeesController {
 
         return employees;
     }
-    
+
 }

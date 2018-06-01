@@ -17,7 +17,7 @@ public class ReportsController {
     public static boolean createReport(int idMeeting, String description) {
 
         try {
-            String query = "INSERT INTO Reports (IdMeeting, Description) VALUES (?,?)";
+            String query = "INSERT INTO reports (IdMeeting, Description) VALUES (?,?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, idMeeting);
@@ -44,7 +44,7 @@ public class ReportsController {
         List<Report> reports = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Reports";
+            String query = "SELECT * FROM reports";
 
             Statement statement = conn.createStatement();
 
@@ -74,7 +74,7 @@ public class ReportsController {
         Report report = null;
 
         try {
-            String query = "SELECT * FROM Reports WHERE Id = (?);";
+            String query = "SELECT * FROM reports WHERE Id = (?);";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -99,7 +99,7 @@ public class ReportsController {
         Report report = null;
 
         try {
-            String query = "SELECT * FROM Reports WHERE IdMeeting = (?)";
+            String query = "SELECT * FROM reports WHERE IdMeeting = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
