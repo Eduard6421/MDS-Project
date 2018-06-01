@@ -3,10 +3,11 @@ package Controllers;
 import Models.Client;
 import Models.Company;
 import Models.Employee;
+import Models.EmployeeContract;
 import Utils.GlobalData;
 
 public class LoginController {
-    
+
     public static boolean connectClient(String username, String password) {
 
         Client client = ClientsController.getByAccount(username, password);
@@ -29,6 +30,9 @@ public class LoginController {
             GlobalData.setUsername(username);
             GlobalData.setUserType("employee");
             GlobalData.setUserId(employee.getId());
+            EmployeeContract tmp = EmployeeContractsController.getById(employee.getId());
+            Company tmp1 = CompaniesController.getById(tmp.getIdCompany());
+            GlobalData.setCompanyName(tmp1.getName());
             return true;
         }
 

@@ -17,7 +17,7 @@ public class ClientContractsController {
     public static boolean createClientContract(int idClient, int idCompany, Date startDate, Date endDate) {
 
         try {
-            String query = "INSERT INTO Client_contracts (IdCompany, IdClient, StartDate, EndDate) values (?,?,?,?)";
+            String query = "INSERT INTO client_contracts (IdCompany, IdClient, StartDate, EndDate) values (?,?,?,?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
@@ -48,7 +48,7 @@ public class ClientContractsController {
 
         try {
 
-            String query = "SELECT * FROM Employee_contracts WHERE Id = (?)";
+            String query = "SELECT * FROM employee_contracts WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -80,7 +80,7 @@ public class ClientContractsController {
 
         try {
 
-            String query = "SELECT  * from Client_contracts WHERE IdClient = (?)";
+            String query = "SELECT  * from client_contracts WHERE IdClient = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -113,7 +113,7 @@ public class ClientContractsController {
 
         try {
 
-            String query = "SELECT  * FROM Client_contracts WHERE IdCompany = (?)";
+            String query = "SELECT  * FROM client_contracts WHERE IdCompany = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);

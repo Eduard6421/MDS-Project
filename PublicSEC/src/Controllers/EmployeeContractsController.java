@@ -20,7 +20,7 @@ public class EmployeeContractsController {
         java.sql.Date SQLEndDate = new java.sql.Date(endDate.getTime());
 
         try {
-            String query = "INSERT INTO Employee_contracts (IdCompany, IdEmployee, StartDate, EndDate) VALUES (?,?,?,?)";
+            String query = "INSERT INTO employee_contracts (IdCompany, IdEmployee, StartDate, EndDate) VALUES (?,?,?,?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
@@ -47,7 +47,7 @@ public class EmployeeContractsController {
         EmployeeContract employeeContract = null;
 
         try {
-            String query = "SELECT * FROM Employee_contracts WHERE Id = (?)";
+            String query = "SELECT * FROM employee_contracts WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -72,14 +72,13 @@ public class EmployeeContractsController {
         return employeeContract;
     }
 
-    public static List<EmployeeContract> getByEmployee(int id) {
+    public static EmployeeContract getByEmployee(int id) {
 
         EmployeeContract employeeContract = null;
 
-        List<EmployeeContract> employeeContracts = new ArrayList<>();
 
         try {
-            String query = "SELECT  * FROM Employee_contracts WHERE IdEmployee = (?)";
+            String query = "SELECT  * FROM employee_contracts WHERE IdEmployee = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -94,7 +93,6 @@ public class EmployeeContractsController {
                         result.getDate("StartDate"),
                         result.getDate("EndDate"));
 
-                employeeContracts.add(employeeContract);
 
                 statement.close();
             }
@@ -103,9 +101,9 @@ public class EmployeeContractsController {
             System.out.println(e);
         }
 
-        return employeeContracts;
+        return employeeContract;
     }
-
+    
     public static List<EmployeeContract> getByCompany(int id) {
 
         EmployeeContract employeeContract = null;
@@ -113,7 +111,7 @@ public class EmployeeContractsController {
         List<EmployeeContract> employeeContracts = new ArrayList<>();
 
         try {
-            String query = "SELECT  * FROM Employee_contracts WHERE IdCompany = (?)";
+            String query = "SELECT  * FROM employee_contracts WHERE IdCompany = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);

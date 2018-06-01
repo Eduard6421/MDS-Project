@@ -19,7 +19,7 @@ public class MeetingsController {
             Date date, String Description) {
 
         try {
-            String query = "INSERT INTO Meetings (IdClient, Idcompany,Date,Description) VALUES (?,?,?,?)";
+            String query = "INSERT INTO meetings (IdClient, Idcompany,Date,Description) VALUES (?,?,?,?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
@@ -87,7 +87,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Meetings where IsOpen = 1 and IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings where IsOpen = 1 and IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
@@ -126,7 +126,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Meetings where IsOpen = 0 and IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings where IsOpen = 0 and IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
@@ -164,7 +164,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Meetings WHERE IdEmployee = (?) and IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings WHERE IdEmployee = (?) and IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, employeeId);
@@ -199,7 +199,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Meetings WHERE IdEmployee = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings WHERE IdEmployee = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, employeeId);
@@ -234,7 +234,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Meetings WHERE IdEmployee = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings WHERE IdEmployee = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, employeeId);
@@ -269,7 +269,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Meetings WHERE IdClient = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, clientId);
@@ -305,7 +305,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Meetings WHERE IdClient = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, clientId);
@@ -340,7 +340,7 @@ public class MeetingsController {
 
         try {
 
-            String query = "SELECT * FROM Meetings WHERE IdMeeting = (?)";
+            String query = "SELECT * FROM meetings WHERE IdMeeting = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -371,7 +371,7 @@ public class MeetingsController {
         Meeting meeting = null;
 
         try {
-            String query = "SELECT * FROM Meetings WHERE IdClient = (?) and IdCompany = (select Id from companies where username = (?)";
+            String query = "SELECT * FROM meetings WHERE IdClient = (?) and IdCompany = (select Id from companies where username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, clientId);

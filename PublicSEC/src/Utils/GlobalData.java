@@ -9,13 +9,21 @@ package Utils;
  *
  * @author Eduard
  */
-
 public class GlobalData {
 
     private static String Username;
 
     private static String UserType;
-    
+    private static String companyName;
+
+    public static String getCompanyName() {
+        return companyName;
+    }
+
+    public static void setCompanyName(String companyName) {
+        GlobalData.companyName = companyName;
+    }
+
     private static int UserId;
 
     public static String getUsername() {
@@ -33,14 +41,13 @@ public class GlobalData {
     public static void setUserType(String userType) {
         GlobalData.UserType = userType;
     }
-    
+
     public static int getUserId() {
         return UserId;
     }
-    
+
     public static void setUserId(int userId) {
         GlobalData.UserId = userId;
     }
 
 }
-

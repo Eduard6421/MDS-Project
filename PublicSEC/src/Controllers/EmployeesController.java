@@ -18,7 +18,7 @@ public class EmployeesController {
     public static boolean registerEmployee(String firstName, String lastName, String userName, String password, String phone, String email) {
 
         try {
-            String query = "INSERT INTO Employees (FirstName, LastName, Username, Password, Phone, Email, Rating) values (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO employees (FirstName, LastName, Username, Password, Phone, Email, Rating) values (?,?,?,?,?,?,?,?)";
 
             double rating = 0;
 
@@ -73,7 +73,7 @@ public class EmployeesController {
         Employee employee = null;
 
         try {
-            String query = "SELECT * FROM Employees WHERE Username = (?) AND Password = (?)";
+            String query = "SELECT * FROM employees WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -107,7 +107,7 @@ public class EmployeesController {
         Employee employee = null;
 
         try {
-            String query = "SELECT * FROM Employees WHERE Username = (?)";
+            String query = "SELECT * FROM employees WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -140,7 +140,7 @@ public class EmployeesController {
         Employee employee = null;
 
         try {
-            String query = "SELECT * FROM Employees WHERE Id = (?)";
+            String query = "SELECT * FROM employees WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -172,7 +172,7 @@ public class EmployeesController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Employees SET Password = (?) WHERE Username = (?) AND Password = (?)";
+            String update = "UPDATE employees SET Password = (?) WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, newPassword);
@@ -194,7 +194,7 @@ public class EmployeesController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Employees SET Email = (?), Phone = (?) WHERE Username = (?)";
+            String update = "UPDATE employees SET Email = (?), Phone = (?) WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, email);
@@ -219,7 +219,7 @@ public class EmployeesController {
         List<Employee> employees = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM Employees";
+            String query = "SELECT * FROM employees";
 
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();
@@ -254,7 +254,7 @@ public class EmployeesController {
         List<Pair<Integer, String>> employees = new ArrayList<>();
 
         try {
-            String query = "SELECT Id, Username FROM Employees";
+            String query = "SELECT Id, Username FROM employees";
 
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet result = statement.executeQuery();

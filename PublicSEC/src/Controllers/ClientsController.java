@@ -18,7 +18,7 @@ public class ClientsController {
     public static boolean registerClient(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
 
         try {
-            String query = "INSERT INTO Clients (FirstName, LastName, Username, Password, Address, Phone, Email) values (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO clients (FirstName, LastName, Username, Password, Address, Phone, Email) values (?,?,?,?,?,?,?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, firstName);
@@ -47,7 +47,7 @@ public class ClientsController {
         Client client = null;
 
         try {
-            String query = "SELECT * FROM Clients WHERE Username = (?) AND Password = (?)";
+            String query = "SELECT * FROM clients WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -81,7 +81,7 @@ public class ClientsController {
         Client client = null;
 
         try {
-            String query = "SELECT * FROM Clients WHERE Username = (?)";
+            String query = "SELECT * FROM clients WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
@@ -114,7 +114,7 @@ public class ClientsController {
         Client client = null;
 
         try {
-            String query = "SELECT * FROM Clients WHERE Id = (?)";
+            String query = "SELECT * FROM clients WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
@@ -146,7 +146,7 @@ public class ClientsController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Clients SET Password = (?) WHERE Username = (?) AND Password = (?)";
+            String update = "UPDATE clients SET Password = (?) WHERE Username = (?) AND Password = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, newPassword);
@@ -168,7 +168,7 @@ public class ClientsController {
         String username = GlobalData.getUsername();
 
         try {
-            String update = "UPDATE Clients SET Email = (?), Phone = (?) WHERE Username = (?)";
+            String update = "UPDATE clients SET Email = (?), Phone = (?) WHERE Username = (?)";
 
             PreparedStatement statement = conn.prepareStatement(update);
             statement.setString(1, email);
