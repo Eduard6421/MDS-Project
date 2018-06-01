@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         signInButton = findViewById(R.id.login_button);
         createAccTextView = findViewById(R.id.create_account_text_view);
 
+        MySQLConnector.connectToDatabase();
+
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

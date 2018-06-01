@@ -44,6 +44,12 @@
             android:name=".UserCreateAccountActivity"
             android:label="@string/title_activity_user_create_account"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+        <activity
+            android:name=".UserAccountActivity"
+            android:label="@string/title_activity_user_account"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

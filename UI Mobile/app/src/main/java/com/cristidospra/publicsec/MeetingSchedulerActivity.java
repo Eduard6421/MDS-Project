@@ -14,6 +14,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
+import Controllers.CompaniesController;
+import Controllers.MeetingsController;
+import Controllers.ReportsController;
+import Models.Company;
+import Utils.GlobalData;
+
 public class MeetingSchedulerActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private Spinner companySpinner;
@@ -62,8 +73,16 @@ public class MeetingSchedulerActivity extends AppCompatActivity implements Popup
     }
 
     private void schedule() {
+
+        Company comp = CompaniesController.getByName(companySpinner.getSelectedItem().toString());
+
+        MeetingsController.createMeeting(GlobalData.getUserId(),
+                                         comp.getId(),
+                                         (java.sql.Date) new Date(dateEditText.getText().toString()),
+                                         issueEditText.getText().toString());
+
         /* @TODO
-        schedule a meeting
+            give confirmation
          */
     }
 

@@ -41,12 +41,13 @@ public class MeetingsActivity extends AppCompatActivity implements PopupMenu.OnM
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meetings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        menuBarsImageView = findViewById(R.id.employee_menu_bars_image_view);
+        menuBarsImageView = findViewById(R.id.meetings_menu_bars_image_view);
         historyButton = findViewById(R.id.meetings_history_button);
         meetingsTable = findViewById(R.id.meetings_table_layout);
 

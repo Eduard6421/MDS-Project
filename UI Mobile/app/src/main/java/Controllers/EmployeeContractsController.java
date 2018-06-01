@@ -1,5 +1,7 @@
 package Controllers;
 
+import android.os.AsyncTask;
+
 import Models.EmployeeContract;
 import Utils.MySQLConnector;
 import java.sql.Connection;
@@ -9,133 +11,209 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class EmployeeContractsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
 
-    public static boolean createEmployeeContract(int companyId, int employeeId, java.sql.Date startDate, java.sql.Date endDate) {
-
-        java.sql.Date SQLStartDate = new java.sql.Date(startDate.getTime());
-        java.sql.Date SQLEndDate = new java.sql.Date(endDate.getTime());
+    /********************************************************************************************************************************/
+    public static Boolean createEmployeeContract(Integer companyId, Integer employeeId, java.sql.Date startDate, java.sql.Date endDate) {
 
         try {
-            String query = "INSERT INTO Employee_contracts (IdCompany, IdEmployee, StartDate, EndDate) VALUES (?,?,?,?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-
-            statement.setInt(1, companyId);
-            statement.setInt(2, employeeId);
-            statement.setDate(3, SQLStartDate);
-            statement.setDate(4, SQLEndDate);
-
-            int result = statement.executeUpdate();
-
-            statement.close();
-
-            return result > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Exception : " + e);
+            AsyncCreateEmployeeContract asyncCreateEmployeeContract = new AsyncCreateEmployeeContract();
+            return asyncCreateEmployeeContract.execute(companyId, employeeId, startDate, endDate).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
         return false;
     }
 
-    public static EmployeeContract getById(int id) {
+    public static class AsyncCreateEmployeeContract extends AsyncTask<Object, String, Boolean> {
 
-        EmployeeContract employeeContract = null;
+        @Override
+        protected Boolean doInBackground(Object... objects) {
 
-        try {
-            String query = "SELECT * FROM Employee_contracts WHERE Id = (?)";
+            java.sql.Date SQLStartDate = new java.sql.Date(((java.sql.Date)objects[2]).getTime());
+            java.sql.Date SQLEndDate = new java.sql.Date(((java.sql.Date)objects[3]).getTime());
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
+            try {
+                String query = "INSERT INTO employee_contracts (IdCompany, IdEmployee, StartDate, EndDate) VALUES (?,?,?,?)";
 
-            while (result.next()) {
+                PreparedStatement statement = conn.prepareStatement(query);
 
-                employeeContract = new EmployeeContract(
-                        result.getInt("Id"),
-                        result.getInt("IdEmployee"),
-                        result.getInt("IdCompany"),
-                        result.getDate("StartDate"),
-                        result.getDate("EndDate"));
+                statement.setInt(1, (Integer)objects[0]);
+                statement.setInt(2, (Integer)objects[1]);
+                statement.setDate(3, SQLStartDate);
+                statement.setDate(4, SQLEndDate);
 
-                statement.close();
-            }
-            
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-        return employeeContract;
-    }
-
-    public static List<EmployeeContract> getByEmployee(int id) {
-
-        EmployeeContract employeeContract = null;
-
-        List<EmployeeContract> employeeContracts = new ArrayList<>();
-
-        try {
-            String query = "SELECT  * FROM Employee_contracts WHERE IdEmployee = (?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-
-                employeeContract = new EmployeeContract(
-                        result.getInt("Id"),
-                        result.getInt("IdEmployee"),
-                        result.getInt("IdCompany"),
-                        result.getDate("StartDate"),
-                        result.getDate("EndDate"));
-
-                employeeContracts.add(employeeContract);
+                int result = statement.executeUpdate();
 
                 statement.close();
+
+                return result > 0;
+
+            } catch (SQLException e) {
+                System.out.println("Exception : " + e);
             }
 
-        } catch (SQLException e) {
-            System.out.println(e);
+            return false;
         }
-
-        return employeeContracts;
     }
 
-    public static List<EmployeeContract> getByCompany(int id) {
-
-        EmployeeContract employeeContract = null;
-
-        List<EmployeeContract> employeeContracts = new ArrayList<>();
+    /**********************************************************************************************/
+    public static EmployeeContract getById(Integer id) {
 
         try {
-            String query = "SELECT  * FROM Employee_contracts WHERE IdCompany = (?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                employeeContract = new EmployeeContract(
-                        result.getInt("Id"),
-                        result.getInt("IdEmployee"),
-                        result.getInt("IdCompany"),
-                        result.getDate("StartDate"),
-                        result.getDate("EndDate"));
-
-                employeeContracts.add(employeeContract);
-            }
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println(e);
+            AsyncGetById asyncGetById = new AsyncGetById();
+            return asyncGetById.execute(id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return employeeContracts;
+        return null;
     }
-    
+
+    public static class AsyncGetById extends AsyncTask<Integer, String, EmployeeContract> {
+
+        @Override
+        protected EmployeeContract doInBackground(Integer... integers) {
+
+            EmployeeContract employeeContract = null;
+
+            try {
+                String query = "SELECT * FROM employee_contracts WHERE Id = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    employeeContract = new EmployeeContract(
+                            result.getInt("Id"),
+                            result.getInt("IdEmployee"),
+                            result.getInt("IdCompany"),
+                            result.getDate("StartDate"),
+                            result.getDate("EndDate"));
+
+                    statement.close();
+                }
+
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+            return employeeContract;
+        }
+    }
+
+    /************************************************************************/
+    public static List<EmployeeContract> getByEmployee(Integer id) {
+
+        try {
+            AsyncGetByEmployee asyncGetByEmployee = new AsyncGetByEmployee();
+            return asyncGetByEmployee.execute(id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static class AsyncGetByEmployee extends AsyncTask<Integer, String, List<EmployeeContract>> {
+
+        @Override
+        protected List<EmployeeContract> doInBackground(Integer... integers) {
+
+            EmployeeContract employeeContract = null;
+
+            List<EmployeeContract> employeeContracts = new ArrayList<>();
+
+            try {
+                String query = "SELECT * FROM employee_contracts WHERE IdEmployee = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    employeeContract = new EmployeeContract(
+                            result.getInt("Id"),
+                            result.getInt("IdEmployee"),
+                            result.getInt("IdCompany"),
+                            result.getDate("StartDate"),
+                            result.getDate("EndDate"));
+
+                    employeeContracts.add(employeeContract);
+
+                    statement.close();
+                }
+
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+            return employeeContracts;
+        }
+    }
+
+    /*************************************************************/
+    public static List<EmployeeContract> getByCompany(Integer id) {
+
+        try {
+            AsyncGetByCompany asyncGetByCompany = new AsyncGetByCompany();
+            return asyncGetByCompany.execute(id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static class AsyncGetByCompany extends AsyncTask<Integer, String, List<EmployeeContract>> {
+
+        @Override
+        protected List<EmployeeContract> doInBackground(Integer... integers) {
+
+            EmployeeContract employeeContract = null;
+
+            List<EmployeeContract> employeeContracts = new ArrayList<>();
+
+            try {
+                String query = "SELECT * FROM employee_contracts WHERE IdCompany = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+                    employeeContract = new EmployeeContract(
+                            result.getInt("Id"),
+                            result.getInt("IdEmployee"),
+                            result.getInt("IdCompany"),
+                            result.getDate("StartDate"),
+                            result.getDate("EndDate"));
+
+                    employeeContracts.add(employeeContract);
+                }
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+            return employeeContracts;
+        }
+    }
 }
