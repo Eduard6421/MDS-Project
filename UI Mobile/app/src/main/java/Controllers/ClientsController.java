@@ -1,5 +1,6 @@
 package Controllers;
 
+import android.os.AsyncTask;
 import android.util.Pair;
 
 import Models.Client;
@@ -11,247 +12,400 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ClientsController {
 
-    private static final Connection conn = MySQLConnector.getConnection();
+    private static Connection conn = MySQLConnector.getConnection();
 
-    public static boolean registerClient(String firstName, String lastName,String userName, String userPassword, String address, String phone, String email) {
-         
+    /*********************************************************************************************************************************************************/
+    public static Boolean registerClient(String firstName, String lastName,String userName, String userPassword, String address, String phone, String email) {
+
         try {
-            String query = "INSERT INTO Clients (FirstName, LastName, Username, Password, Address, Phone, Email) values (?,?,?,?,?,?,?)";
+            AsyncRegisterClient asyncRegisterClient = new AsyncRegisterClient();
+            return asyncRegisterClient.execute(firstName, lastName, userName, userPassword, address, phone, email).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
-            statement.setString(3, userName);
-            statement.setString(4, userPassword);
-            statement.setString(5, address);
-            statement.setString(6, phone);
-            statement.setString(7, email);
+        return false;
+    }
 
-            int result = statement.executeUpdate();
+    public static class AsyncRegisterClient extends AsyncTask<String, String, Boolean> {
 
-            statement.close();
-            
-            return result > 0;
+        @Override
+        protected Boolean doInBackground(String... strings) {
 
-        } catch (SQLException e) {
-            return false;
-        } finally {
-            return false;
+            try {
+                String query = "INSERT INTO clients (FirstName, LastName, Username, Password, Address, Phone, Email) values (?,?,?,?,?,?,?)";
 
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, strings[0]);
+                statement.setString(2, strings[1]);
+                statement.setString(3, strings[2]);
+                statement.setString(4, strings[3]);
+                statement.setString(5, strings[4]);
+                statement.setString(6, strings[5]);
+                statement.setString(7, strings[6]);
+
+                int result = statement.executeUpdate();
+
+                statement.close();
+
+                return result > 0;
+
+            } catch (SQLException e) {
+                return false;
+            } finally {
+                return false;
+
+            }
         }
     }
 
+    /******************************************************************************************/
     public static Client getByAccount(String username, String password) {
-        Client client = null;
 
         try {
-            String query = "SELECT * FROM Clients WHERE Username = (?) AND Password = (?)";
+            AsyncGetByAccount asyncGetByAccount = new AsyncGetByAccount();
+            return asyncGetByAccount.execute(username, password).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, username);
-            statement.setString(2, password);
-            ResultSet result = statement.executeQuery();
+        return null;
+    }
 
-            while (result.next()) {
+    public static class AsyncGetByAccount extends AsyncTask<String, String, Client> {
 
-                client = new Client(
-                        result.getInt("Id"),
-                        result.getString("FirstName"),
-                        result.getString("LastName"),
-                        result.getString("Username"),
-                        result.getString("Password"),
-                        result.getString("Address"),
-                        result.getString("Phone"),
-                        result.getString("Email"));
+        @Override
+        protected Client doInBackground(String... strings) {
+            Client client = null;
+
+            try {
+                String query = "SELECT * FROM clients WHERE Username = (?) AND Password = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, strings[0]);
+                statement.setString(2, strings[1]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    client = new Client(
+                            result.getInt("Id"),
+                            result.getString("FirstName"),
+                            result.getString("LastName"),
+                            result.getString("Username"),
+                            result.getString("Password"),
+                            result.getString("Address"),
+                            result.getString("Phone"),
+                            result.getString("Email"));
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
             }
 
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            return client;
         }
-
-        return client;
     }
 
+    /************************************************************************/
     public static Client getByUsername(String username) {
 
-        Client client = null;
-
         try {
-            String query = "SELECT * FROM Clients WHERE Username = (?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, username);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-
-                client = new Client(
-                        result.getInt("Id"),
-                        result.getString("FirstName"),
-                        result.getString("LastName"),
-                        result.getString("Username"),
-                        result.getString("Password"),
-                        result.getString("Address"),
-                        result.getString("Phone"),
-                        result.getString("Email"));
-            }
-
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            AsyncGetByUsername asyncGetByUsername = new AsyncGetByUsername();
+            return asyncGetByUsername.execute(username).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return client;
+        return null;
     }
 
-    public static Client getById(int id) {
+    public static class AsyncGetByUsername extends AsyncTask<String, String, Client> {
 
-        Client client = null;
+        @Override
+        protected Client doInBackground(String... strings) {
 
-        try {
-            String query = "SELECT * FROM Clients WHERE Id = (?)";
+            Client client = null;
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
+            try {
+                String query = "SELECT * FROM clients WHERE Username = (?)";
 
-            while (result.next()) {
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, strings[0]);
+                ResultSet result = statement.executeQuery();
 
-                client = new Client(
-                        result.getInt("Id"),
-                        result.getString("FirstName"),
-                        result.getString("LastName"),
-                        result.getString("Username"),
-                        result.getString("Password"),
-                        result.getString("Address"),
-                        result.getString("Phone"),
-                        result.getString("Email"));
+                while (result.next()) {
+
+                    client = new Client(
+                            result.getInt("Id"),
+                            result.getString("FirstName"),
+                            result.getString("LastName"),
+                            result.getString("Username"),
+                            result.getString("Password"),
+                            result.getString("Address"),
+                            result.getString("Phone"),
+                            result.getString("Email"));
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
             }
 
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            return client;
         }
-
-        return client;
     }
 
-    public static boolean changePassword(String oldPassword, String newPassword) {
-        String username = GlobalData.getUsername();
+    /************************************************************/
+    public static Client getById(Integer id) {
 
         try {
-            String update = "UPDATE Clients SET Password = (?) WHERE Username = (?) AND Password = (?)";
+            AsyncGetById asyncGetById = new AsyncGetById();
+            return asyncGetById.execute(id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-            PreparedStatement statement = conn.prepareStatement(update);
-            statement.setString(1, newPassword);
-            statement.setString(2, username);
-            statement.setString(3, oldPassword);
+        return null;
+    }
 
-            int result = statement.executeUpdate();
+    public static class AsyncGetById extends AsyncTask<Integer, String, Client> {
 
-            return result > 0;
+        @Override
+        protected Client doInBackground(Integer... integers) {
 
-        } catch (SQLException e) {
-            System.out.println("Wrong oldPassword : " + e);
+            Client client = null;
+
+            try {
+                String query = "SELECT * FROM clients WHERE Id = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    client = new Client(
+                            result.getInt("Id"),
+                            result.getString("FirstName"),
+                            result.getString("LastName"),
+                            result.getString("Username"),
+                            result.getString("Password"),
+                            result.getString("Address"),
+                            result.getString("Phone"),
+                            result.getString("Email"));
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
+            }
+
+            return client;
+        }
+    }
+
+    /**********************************************************************************/
+    public static Boolean changePassword(String oldPassword, String newPassword) {
+
+        try {
+            AsyncChangePassword asyncChangePassword = new AsyncChangePassword();
+            return asyncChangePassword.execute(oldPassword, newPassword).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
         return false;
     }
 
-    public static boolean updateData(String email, String phoneNumber, String address) {
-        String username = GlobalData.getUsername();
+    public static class AsyncChangePassword extends AsyncTask<String, String, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            String username = GlobalData.getUsername();
+
+            try {
+                String update = "UPDATE clients SET Password = (?) WHERE Username = (?) AND Password = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(update);
+                statement.setString(1, strings[1]);
+                statement.setString(2, username);
+                statement.setString(3, strings[0]);
+
+                int result = statement.executeUpdate();
+
+                return result > 0;
+
+            } catch (SQLException e) {
+                System.out.println("Wrong oldPassword : " + e);
+            }
+
+            return false;
+        }
+    }
+
+    /*********************************************************************************************/
+    public static Boolean updateData(String email, String phoneNumber, String address) {
 
         try {
-            String update = "UPDATE Clients SET Email = (?), Phone = (?), Address = (?) WHERE Username = (?)";
-
-            PreparedStatement statement = conn.prepareStatement(update);
-            statement.setString(1, email);
-            statement.setString(2, phoneNumber);
-            statement.setString(3, address);
-            statement.setString(4, username);
-
-            int result = statement.executeUpdate();
-
-            return result > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            AsyncUpdateData asyncUpdateData = new AsyncUpdateData();
+            return asyncUpdateData.execute(email, phoneNumber, address).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
         return false;
-
     }
 
-    public static List<Client> getAll() throws SQLException {
+    public static class AsyncUpdateData extends AsyncTask<String, String, Boolean> {
 
-        Client client = null;
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            String username = GlobalData.getUsername();
 
-        List<Client> clients = new ArrayList<>();
+            try {
+                String update = "UPDATE clients SET Email = (?), Phone = (?), Address = (?) WHERE Username = (?)";
 
-        try {
-            String query = "SELECT * FROM Clients";
+                PreparedStatement statement = conn.prepareStatement(update);
+                statement.setString(1, strings[0]);
+                statement.setString(2, strings[1]);
+                statement.setString(3, strings[2]);
+                statement.setString(4, username);
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            ResultSet result = statement.executeQuery();
+                int result = statement.executeUpdate();
 
-            while (result.next()) {
+                return result > 0;
 
-                client = new Client(
-                        result.getInt("Id"),
-                        result.getString("FirstName"),
-                        result.getString("LastName"),
-                        result.getString("Username"),
-                        result.getString("Password"),
-                        result.getString("Address"),
-                        result.getString("Phone"),
-                        result.getString("Email"));
-
-                clients.add(client);
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
             }
 
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            return false;
         }
-
-        return clients;
     }
-    
-    public static List<Pair<Integer, String>> getAllOnlyGeneralData() throws SQLException {
 
-        Pair<Integer, String> client = null;
-
-        List<Pair<Integer, String>> clients = new ArrayList<>();
+    /*************************************************************/
+    public static List<Client> getAll(String companyName) {
 
         try {
-            String query = "SELECT Id, Username FROM Clients";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-
-                client = new Pair<Integer, String>(result.getInt("Id"),
-                                                   result.getString("Username"));
-
-                clients.add(client);
-            }
-
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            AsyncGetAll asyncGetAll = new AsyncGetAll();
+            return asyncGetAll.execute(companyName).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return clients;
+        return null;
     }
-    
+
+    public static class AsyncGetAll extends AsyncTask<String, String, List<Client>> {
+
+        @Override
+        protected List<Client> doInBackground(String... strings) {
+
+            Client client = null;
+
+            List<Client> clients = new ArrayList<>();
+
+            try {
+                String query = "select clt.FirstName,clt.LastName,clt.Username,clt.Password,clt.Address,clt.Phone,clt.Email from clients as clt  join client_contracts as cc on clt.id = cc.idClient join companies as cpy on cpy.id = cc.idCompany where cpy.name = (?);";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                ResultSet result = statement.executeQuery();
+                statement.setString(1, strings[0]);
+
+                while (result.next()) {
+
+                    client = new Client(
+                            result.getInt("Id"),
+                            result.getString("FirstName"),
+                            result.getString("LastName"),
+                            result.getString("Username"),
+                            result.getString("Password"),
+                            result.getString("Address"),
+                            result.getString("Phone"),
+                            result.getString("Email"));
+
+                    clients.add(client);
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
+            }
+
+            return clients;
+        }
+    }
+
+    /***************************************************************************************/
+    public static List<Pair<Integer, String>> getAllOnlyGeneralData(String companyName) throws SQLException {
+
+        try {
+            AsyncGetAllOnlyGeneralData asyncGetAllOnlyGeneralData = new AsyncGetAllOnlyGeneralData();
+            return asyncGetAllOnlyGeneralData.execute(companyName).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static class AsyncGetAllOnlyGeneralData extends AsyncTask<String, String, List<Pair<Integer, String>>> {
+
+        @Override
+        protected List<Pair<Integer, String>> doInBackground(String... strings) {
+
+            Pair<Integer, String> client = null;
+
+            List<Pair<Integer, String>> clients = new ArrayList<>();
+
+            try {
+                String query = "select clt.Id,clt.Username from clients as clt join client_contracts as cc on clt.id = cc.idClient join companies as cpy on cpy.id = cc.idCompany where cpy.name = (?);";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                ResultSet result = statement.executeQuery();
+                statement.setString(1, strings[0]);
+
+                while (result.next()) {
+
+                    client = new Pair<Integer, String>(result.getInt("Id"),
+                            result.getString("Username"));
+
+                    clients.add(client);
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
+            }
+
+            return clients;
+        }
+    }
 }

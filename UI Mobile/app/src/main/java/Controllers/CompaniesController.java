@@ -1,5 +1,7 @@
 package Controllers;
 
+import android.os.AsyncTask;
+
 import Models.Company;
 import Utils.MySQLConnector;
 import java.sql.Connection;
@@ -8,141 +10,267 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class CompaniesController {
 
     private static final Connection conn = MySQLConnector.getConnection();
 
+    /*************************************************************************/
     public static Company getByAccount(String username, String password) {
 
-        Company company = null;
-
         try {
-            String query = "SELECT * FROM Companies WHERE Username = (?) AND Password = (?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, username);
-            statement.setString(2, password);
-
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-
-                company = new Company(
-                        result.getInt("Id"),
-                        result.getString("Name"),
-                        result.getDate("ContractStartDate"),
-                        result.getDate("ContractEndDate"),
-                        result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
-            }
-
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            AsyncGetByAccount asyncGetByAccount = new AsyncGetByAccount();
+            return asyncGetByAccount.execute(username, password).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return company;
+        return null;
     }
 
+    public static class AsyncGetByAccount extends AsyncTask<String, String, Company> {
+
+        @Override
+        protected Company doInBackground(String... strings) {
+            Company company = null;
+
+            try {
+                String query = "SELECT * FROM companies WHERE Username = (?) AND Password = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, strings[0]);
+                statement.setString(2, strings[1]);
+
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    company = new Company(
+                            result.getInt("Id"),
+                            result.getString("Name"),
+                            result.getDate("ContractStartDate"),
+                            result.getDate("ContractEndDate"),
+                            result.getString("Description"),
+                            result.getString("Username"),
+                            result.getString("Password"));
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
+            }
+
+            return company;
+        }
+    }
+
+    /**************************************************************************************/
     public static Company getByUsername(String username) {
 
-        Company company = null;
-
         try {
-            String query = "SELECT * FROM Companies WHERE Username = (?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, username);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-
-                company = new Company(
-                        result.getInt("Id"),
-                        result.getString("Name"),
-                        result.getDate("ContractStartDate"),
-                        result.getDate("ContractEndDate"),
-                        result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
-            }
-
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            AsyncGetByUsername asyncGetByUsername = new AsyncGetByUsername();
+            return asyncGetByUsername.execute(username).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return company;
+        return null;
     }
 
-    public static Company getById(int id) {
+    public static class AsyncGetByUsername extends AsyncTask<String, String, Company> {
 
-        Company company = null;
+        @Override
+        protected Company doInBackground(String... strings) {
 
-        try {
-            String query = "SELECT * FROM Companies WHERE Id = (?)";
+            Company company = null;
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
+            try {
+                String query = "SELECT * FROM companies WHERE Username = (?)";
 
-            while (result.next()) {
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1, strings[0]);
+                ResultSet result = statement.executeQuery();
 
-                company = new Company(
-                        result.getInt("Id"),
-                        result.getString("Name"),
-                        result.getDate("ContractStartDate"),
-                        result.getDate("ContractEndDate"),
-                        result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
+                while (result.next()) {
+
+                    company = new Company(
+                            result.getInt("Id"),
+                            result.getString("Name"),
+                            result.getDate("ContractStartDate"),
+                            result.getDate("ContractEndDate"),
+                            result.getString("Description"),
+                            result.getString("Username"),
+                            result.getString("Password"));
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
             }
 
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            return company;
         }
-
-        return company;
     }
 
+    /***************************************************************************************/
+    public static Company getById(Integer id) {
+
+        try {
+            AsyncGetById asyncGetById = new AsyncGetById();
+            return asyncGetById.execute(id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static class AsyncGetById extends AsyncTask<Integer, String, Company> {
+
+        @Override
+        protected Company doInBackground(Integer... integers) {
+
+            Company company = null;
+
+            try {
+                String query = "SELECT * FROM companies WHERE Id = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    company = new Company(
+                            result.getInt("Id"),
+                            result.getString("Name"),
+                            result.getDate("ContractStartDate"),
+                            result.getDate("ContractEndDate"),
+                            result.getString("Description"),
+                            result.getString("Username"),
+                            result.getString("Password"));
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
+            }
+
+            return company;
+        }
+    }
+
+    /******************************************************************************/
+    public static Company getByName(String name) {
+
+        try {
+            AsyncGetByName asyncGetByName = new AsyncGetByName();
+            return asyncGetByName.execute(name).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static class AsyncGetByName extends AsyncTask<String, String, Company> {
+
+        @Override
+        protected Company doInBackground(String... strings) {
+            Company company = null;
+
+            try {
+                String query = "SELECT * FROM companies WHERE name = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setString(1,strings[0]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    company = new Company(
+                            result.getInt("Id"),
+                            result.getString("Name"),
+                            result.getDate("ContractStartDate"),
+                            result.getDate("ContractEndDate"),
+                            result.getString("Description"),
+                            result.getString("Username"),
+                            result.getString("Password"));
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
+            }
+
+            return company;
+        }
+    }
+
+    /************************************************************************************/
     private static List<Company> getAll() {
 
-        Company company = null;
-
-        List<Company> companies = new ArrayList<>();
-
         try {
-            String query = "SELECT * FROM Companies";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-
-                company = new Company(
-                        result.getInt("Id"),
-                        result.getString("Name"),
-                        result.getDate("ContractStartDate"),
-                        result.getDate("ContractEndDate"),
-                        result.getString("Description"),
-                        result.getString("Username"),
-                        result.getString("Password"));
-
-                companies.add(company);
-            }
-            statement.close();
-        } catch (SQLException e) {
-
-            System.out.println(e);
+            AsyncGetAll asyncGetAll = new AsyncGetAll();
+            return asyncGetAll.execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return companies;
+        return null;
+    }
+
+    public static class AsyncGetAll extends AsyncTask<String, String, List<Company>> {
+
+        @Override
+        protected List<Company> doInBackground(String... strings) {
+
+            Company company = null;
+
+            List<Company> companies = new ArrayList<>();
+
+            try {
+                String query = "SELECT * FROM companies";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    company = new Company(
+                            result.getInt("Id"),
+                            result.getString("Name"),
+                            result.getDate("ContractStartDate"),
+                            result.getDate("ContractEndDate"),
+                            result.getString("Description"),
+                            result.getString("Username"),
+                            result.getString("Password"));
+
+                    companies.add(company);
+                }
+                statement.close();
+            } catch (SQLException e) {
+
+                System.out.println(e);
+            }
+
+            return companies;
+        }
     }
     
 }

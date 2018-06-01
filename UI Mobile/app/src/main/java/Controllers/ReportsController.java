@@ -1,5 +1,7 @@
 package Controllers;
 
+import android.os.AsyncTask;
+
 import Models.Report;
 import Utils.MySQLConnector;
 import java.sql.Connection;
@@ -9,116 +11,191 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ReportsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
 
-    public static boolean createReport(int idMeeting, String description) {
+    /*********************************************************************************************/
+    public static boolean createReport(Integer idMeeting, String description) {
 
         try {
-            String query = "INSERT INTO Reports (IdMeeting, Description) VALUES (?,?)";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, idMeeting);
-            statement.setString(2, description);
-
-            int result = statement.executeUpdate();
-
-            statement.close();
-
-            return result > 0;
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
-
+            AsyncCreateReport asyncCreateReport = new AsyncCreateReport();
+            return  asyncCreateReport.execute(idMeeting.toString(), description).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
-
         return false;
     }
 
-    public static List<Report> getAll() throws SQLException {
+    public static class AsyncCreateReport extends AsyncTask<String, String, Boolean> {
 
-        Report report = null;
+        @Override
+        protected Boolean doInBackground(String... strings) {
 
-        List<Report> reports = new ArrayList<>();
+            try {
+                String query = "INSERT INTO reports (IdMeeting, Description) VALUES (?,?)";
 
-        try {
-            String query = "SELECT * FROM Reports";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, Integer.parseInt(strings[0]));
+                statement.setString(2, strings[1]);
 
-            Statement statement = conn.createStatement();
+                int result = statement.executeUpdate();
 
-            ResultSet result = statement.executeQuery(query);
+                statement.close();
 
-            while (result.next()) {
+                return result > 0;
 
-                report = new Report(result.getInt("Id"),
-                        result.getInt("IdMeeting"),
-                        result.getString("Description"));
-
-                reports.add(report);
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
 
             }
 
-            statement.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error : " + e);
+            return false;
         }
-
-        return reports;
     }
 
-    public static Report getById(int id) {
-
-        Report report = null;
+    /*********************************************************************************************/
+    public static List<Report> getAll() {
 
         try {
-            String query = "SELECT * FROM Reports WHERE Id = (?);";
-
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
-
-            report = new Report(
-                    result.getInt("IdMeeting"),
-                    result.getString("Description"));
-
-            statement.close();
-
-        } catch (SQLException e) {
-
-            System.out.println("Error " + e);
+            AsyncGetAll asyncGetAll = new AsyncGetAll();
+            return asyncGetAll.execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return report;
+        return null;
     }
 
-    public static Report getByMeeting(int id) {
+    public static class AsyncGetAll extends AsyncTask<String, String, List<Report>> {
 
-        Report report = null;
+        @Override
+        protected List<Report> doInBackground(String... strings) {
+
+            Report report = null;
+
+            List<Report> reports = new ArrayList<>();
+
+            try {
+                String query = "SELECT * FROM reports";
+
+                Statement statement = conn.createStatement();
+
+                ResultSet result = statement.executeQuery(query);
+
+                while (result.next()) {
+
+                    report = new Report(result.getInt("Id"),
+                            result.getInt("IdMeeting"),
+                            result.getString("Description"));
+
+                    reports.add(report);
+
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error : " + e);
+            }
+
+            return reports;
+        }
+    }
+
+    /**********************************************************************************************/
+    public static Report getById(Integer id) {
 
         try {
-            String query = "SELECT * FROM Reports WHERE IdMeeting = (?)";
+            AsyncGetById asyncGetById = new AsyncGetById();
+            return asyncGetById.execute(id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
+        return null;
+    }
 
-            while (result.next()) {
+    public static class AsyncGetById extends AsyncTask<Integer, String, Report> {
+
+        @Override
+        protected Report doInBackground(Integer... integers) {
+
+            Report report = null;
+
+            try {
+                String query = "SELECT * FROM reports WHERE Id = (?);";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+                ResultSet result = statement.executeQuery();
 
                 report = new Report(
                         result.getInt("IdMeeting"),
                         result.getString("Description"));
 
-            }
-            statement.close();
+                statement.close();
 
-        } catch (SQLException e) {
-            System.out.println("Error " + e);
+            } catch (SQLException e) {
+
+                System.out.println("Error " + e);
+            }
+
+            return report;
+        }
+    }
+
+    /********************************************************************************************/
+    public static Report getByMeeting(Integer id) {
+
+        try {
+            AsyncGetByMeeting asyncGetByMeeting = new AsyncGetByMeeting();
+            return  asyncGetByMeeting.execute(id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        return report;
+        return null;
     }
-    
+
+    public static class AsyncGetByMeeting extends AsyncTask<Integer, String, Report> {
+
+        @Override
+        protected Report doInBackground(Integer... integers) {
+
+            Report report = null;
+
+            try {
+                String query = "SELECT * FROM reports WHERE IdMeeting = (?)";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    report = new Report(
+                            result.getInt("IdMeeting"),
+                            result.getString("Description"));
+
+                }
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error " + e);
+            }
+
+            return report;
+        }
+    }
 }

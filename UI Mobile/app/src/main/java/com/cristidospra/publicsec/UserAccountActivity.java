@@ -110,11 +110,11 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
         View dialogView = inflater.inflate(R.layout.password_change_popup, null);
         dialogBuilder.setView(dialogView);
 
-        final EditText oldPasswordEditText = findViewById(R.id.old_password_edit_text);
-        final EditText newPasswordEditText = findViewById(R.id.new_password_edit_text);
-        final EditText confirmPasswordEditText = findViewById(R.id.confirm_password_edit_text);
+        final EditText oldPasswordEditText = dialogView.findViewById(R.id.old_password_edit_text);
+        final EditText newPasswordEditText = dialogView.findViewById(R.id.new_password_edit_text);
+        final EditText confirmPasswordEditText = dialogView.findViewById(R.id.confirm_password_edit_text);
 
-        Button changePasswordButton = findViewById(R.id.change_password_button);
+        Button changePasswordButton = dialogView.findViewById(R.id.change_password_button);
 
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,13 +128,18 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
                     createAlertDialog("The inserted passwords do not match.");
                 }
                 else {
-                    boolean result = ClientsController.changePassword(oldPassword, newPassword);
 
-                    if (result == false) {
-                        createAlertDialog("Inserted password not correct.");
-                    }
-                    else {
-                        createAlertDialog("Password succesfully changed.");
+                    if (newPassword.length() < 1) {
+                        createAlertDialog("Password cant be empty.");
+                    } else {
+
+                        boolean result = ClientsController.changePassword(oldPassword, newPassword);
+
+                        if (result == false) {
+                            createAlertDialog("Inserted password not correct.");
+                        } else {
+                            createAlertDialog("Password succesfully changed.");
+                        }
                     }
                 }
             }
