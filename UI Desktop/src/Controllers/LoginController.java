@@ -45,6 +45,7 @@ public class LoginController {
 
         if (company != null) {
             GlobalData.setUsername(username);
+            GlobalData.setCompanyName(username);
             GlobalData.setUserType("company");
             GlobalData.setUserId(company.getId());
             return true;

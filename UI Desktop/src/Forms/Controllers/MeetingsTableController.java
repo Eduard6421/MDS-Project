@@ -62,7 +62,7 @@ public class MeetingsTableController implements ActionListener {
     
     public void populateClientsList() {
         try {
-            clients = ClientsController.getAllOnlyGeneralData();
+            clients = ClientsController.getAllOnlyGeneralData(GlobalData.getCompanyName());
         } catch (SQLException ex) {
             Logger.getLogger(MeetingsTableController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -101,13 +101,13 @@ public class MeetingsTableController implements ActionListener {
         
         switch (tableType) {
             case "View all meetings":
-                meetings = MeetingsController.getAllByEmployee(GlobalData.getUserId());
+                meetings = MeetingsController.getAllByEmployee(GlobalData.getCompanyName(), GlobalData.getUserId());
                 break;
             case "View closed meetings":
-                meetings = MeetingsController.getAllClosedByEmployee(GlobalData.getUserId());
+                meetings = MeetingsController.getAllClosedByEmployee(GlobalData.getCompanyName(), GlobalData.getUserId());
                 break;
             case "View opened meetings":
-                meetings = MeetingsController.getAllOpenedByEmployee(GlobalData.getUserId());
+                meetings = MeetingsController.getAllOpenedByEmployee(GlobalData.getCompanyName(), GlobalData.getUserId());
                 break;
         }
         

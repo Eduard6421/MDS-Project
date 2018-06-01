@@ -2,6 +2,7 @@ package Forms.Controllers;
 
 
 import Controllers.EmployeesController;
+import Forms.AddEditEmployee;
 import Forms.EmployeesTable;
 import Models.Employee;
 import Utils.Converters;
@@ -22,6 +23,8 @@ public class EmployeesTableController implements ActionListener {
     private boolean focus = true;
     
     private CompanyMenuController parentController;
+    
+    private AddEditEmployee addEditEmployeeForm;
     
     private List<Pair<Integer, String>> employeesIds = new ArrayList<>();
     
@@ -51,8 +54,50 @@ public class EmployeesTableController implements ActionListener {
                     form.dispose();
                     parentController.setWindowVisible();
                     break;
+                case "New Employee":
+                    addEditEmployeeForm = new AddEditEmployee(this);
+                    addEditEmployeeForm.setVisible(true);
+                    addEditEmployeeForm.formForUpdate(false);
+                    toggleFocus();
+                    break;
             }
-        }   
+        }
+        else {
+            switch (command) {
+                case "Exit":
+                    addEditEmployeeForm.setVisible(false);
+                    addEditEmployeeForm.dispose();
+                    toggleFocus();
+                    {
+                        try {
+                            fillTable();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(EmployeesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    break;
+
+                case "Insert":
+                    Employee newEmployee = addEditEmployeeForm.getNewEmployee();
+                    if (newEmployee != null) {
+                        addEditEmployeeForm.setVisible(false);
+                        addEditEmployeeForm.dispose();
+                        toggleFocus();
+                        EmployeesController.registerEmployee(newEmployee.getFirstName(), 
+                                                            newEmployee.getLastName(),
+                                                            newEmployee.getUsername(), 
+                                                            newEmployee.getUserPassword(), 
+                                                            newEmployee.getPhone(), 
+                                                            newEmployee.getEmail());
+                        try {
+                            fillTable();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(EmployeesTableController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    break;
+            }
+        }
     }
    
     
@@ -80,7 +125,7 @@ public class EmployeesTableController implements ActionListener {
         
         List<Employee> employees = new ArrayList<>();
         
-        employees = (List<Employee>) EmployeesController.getAll();
+        employees = (List<Employee>) EmployeesController.getAll(GlobalData.getCompanyName());
         
         for (Employee employee : employees) {
             

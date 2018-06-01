@@ -79,7 +79,7 @@ public class ClientsTableController implements ActionListener {
         
         List<Client> clients = new ArrayList<>();
         
-        clients = (List<Client>) ClientsController.getAll();
+        clients = (List<Client>) ClientsController.getAll(GlobalData.getCompanyName());
         
         for (Client client : clients) {
             

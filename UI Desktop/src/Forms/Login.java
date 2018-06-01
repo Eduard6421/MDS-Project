@@ -205,15 +205,10 @@ public class Login extends javax.swing.JFrame {
 
     private void buttonConnectEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectEmployeeActionPerformed
         // TODO add your handling code here:
-        CompanyMenu.form = new CompanyMenu();
-        form.dispose();
-        form.setVisible(false);
-        CompanyMenu.form.setVisible(true);
     }//GEN-LAST:event_buttonConnectEmployeeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-
     }//GEN-LAST:event_formWindowOpened
 
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed

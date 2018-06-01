@@ -6,6 +6,7 @@
 package Controllers;
 
 import Models.Meeting;
+import Utils.GlobalData;
 import java.sql.Date;
 import java.util.List;
 import org.junit.After;
@@ -48,7 +49,7 @@ public class MeetingsControllerTest {
     public void testGetAll1() {
         System.out.println("getAll");
         boolean expResult = true;
-        List<Meeting> result = MeetingsController.getAll();
+        List<Meeting> result = MeetingsController.getAll(GlobalData.getCompanyName());
         boolean trueResult = (result.size() == 2);
         assertEquals(expResult, trueResult);
 
@@ -63,7 +64,7 @@ public class MeetingsControllerTest {
         System.out.println("getByClient");
         int clientId = 1;
         boolean expResult = true;
-        Meeting result = MeetingsController.getByClient(clientId);
+        Meeting result = MeetingsController.getByClientId(GlobalData.getCompanyName(), clientId);
         boolean trueResult = (result != null);
 
         assertEquals(expResult, trueResult);
@@ -76,7 +77,7 @@ public class MeetingsControllerTest {
         System.out.println("getByClient");
         int clientId = 0;
         boolean expResult = true;
-        Meeting result = MeetingsController.getByClient(clientId);
+        Meeting result = MeetingsController.getByClientId(GlobalData.getCompanyName(), clientId);
         boolean trueResult = (result == null);
 
         assertEquals(expResult, trueResult);
@@ -92,7 +93,7 @@ public class MeetingsControllerTest {
         System.out.println("getAllByEmployee");
         int employeeId = 1;
         boolean expResult = false;
-        List<Meeting> result = MeetingsController.getAllByEmployee(employeeId);
+        List<Meeting> result = MeetingsController.getAllByEmployee(GlobalData.getCompanyName(), employeeId);
 
         boolean trueResult = (result.size() == 2);
         assertEquals(expResult, trueResult);
@@ -107,7 +108,7 @@ public class MeetingsControllerTest {
     public void testGetAllOpenedByEmployee1() {
         System.out.println("getAllOpenedByEmployee");
         int employeeId = 1;
-        List<Meeting> result = MeetingsController.getAllOpenedByEmployee(employeeId);
+        List<Meeting> result = MeetingsController.getAllOpenedByEmployee(GlobalData.getCompanyName(), employeeId);
         boolean expResult = true;
         boolean trueResult = (result.size() == 1);
 
@@ -120,7 +121,7 @@ public class MeetingsControllerTest {
     public void testGetAllOpenedByEmployee2() {
         System.out.println("getAllOpenedByEmployee");
         int employeeId = 2;
-        List<Meeting> result = MeetingsController.getAllOpenedByEmployee(employeeId);
+        List<Meeting> result = MeetingsController.getAllOpenedByEmployee(GlobalData.getCompanyName(), employeeId);
         boolean expResult = true;
         boolean trueResult = (result.size() == 1);
 
@@ -133,7 +134,7 @@ public class MeetingsControllerTest {
     public void testGetAllOpenedByEmployee3() {
         System.out.println("getAllOpenedByEmployee");
         int employeeId = 0;
-        List<Meeting> result = MeetingsController.getAllOpenedByEmployee(employeeId);
+        List<Meeting> result = MeetingsController.getAllOpenedByEmployee(GlobalData.getCompanyName(), employeeId);
         boolean expResult = true;
         boolean trueResult = (result.size() == 0);
 

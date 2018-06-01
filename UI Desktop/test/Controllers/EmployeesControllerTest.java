@@ -6,6 +6,7 @@
 package Controllers;
 
 import Models.Employee;
+import Utils.GlobalData;
 import java.util.List;
 import javafx.util.Pair;
 import org.junit.After;
@@ -157,7 +158,7 @@ public class EmployeesControllerTest {
     public void testGetAll() throws Exception {
         System.out.println("getAll");
 
-        List<Employee> result = EmployeesController.getAll();
+        List<Employee> result = EmployeesController.getAll(GlobalData.getCompanyName());
         boolean trueResult = result.size() == 2;
         boolean expResult = true;
         assertEquals(expResult, trueResult);

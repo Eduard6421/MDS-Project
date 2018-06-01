@@ -60,7 +60,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -99,7 +98,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -138,7 +136,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -175,7 +172,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -193,7 +189,7 @@ public class MeetingsController {
         return meetings;
     }
 
-    public static List<Meeting> getAllOpenByEmployee(String companyName, int employeeId) {
+    public static List<Meeting> getAllOpenedByEmployee(String companyName, int employeeId) {
         Meeting meeting = null;
 
         List<Meeting> meetings = new ArrayList<>();
@@ -210,7 +206,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -245,7 +240,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -280,7 +274,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -316,7 +309,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -350,7 +342,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),
@@ -381,7 +372,6 @@ public class MeetingsController {
 
                 meeting = new Meeting(
                         result.getInt("IdClient"),
-                        result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
                         result.getDate("Date"),
                         result.getDouble("Feedback"),

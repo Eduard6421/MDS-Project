@@ -151,18 +151,10 @@ public class CompanyMenu extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        form.getContentPane().setBackground(new Color(255, 255, 255));
-        form.getContentPane().add(form.jPanel1, BorderLayout.CENTER);
-        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
     private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
         // TODO add your handling code here:
-        form.setVisible(false);
-        form.dispose();
-        Login.form.getjTextField1().setText("");
-        Login.form.setLocationRelativeTo(null);
-        Login.form.setVisible(true);
     }//GEN-LAST:event_buttonLogOutActionPerformed
 
     /**

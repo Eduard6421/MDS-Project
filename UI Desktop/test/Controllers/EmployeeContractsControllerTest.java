@@ -77,9 +77,9 @@ public class EmployeeContractsControllerTest {
         System.out.println("getByEmployee");
         int id = 0;
 
-        List<EmployeeContract> result = EmployeeContractsController.getByEmployee(id);
+        EmployeeContract result = EmployeeContractsController.getByEmployee(id);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 0);
+        boolean trueResult = (result != null);
 
         assertEquals(expResult, trueResult);
     }
@@ -88,9 +88,9 @@ public class EmployeeContractsControllerTest {
         System.out.println("getByEmployee");
         int id = 1;
 
-        List<EmployeeContract> result = EmployeeContractsController.getByEmployee(id);
+        EmployeeContract result = EmployeeContractsController.getByEmployee(id);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = (result != null);
 
         assertEquals(expResult, trueResult);
     }

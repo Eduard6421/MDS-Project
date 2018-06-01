@@ -138,10 +138,6 @@ public class EmployeeMenu extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        form.getContentPane().setBackground(new Color(255, 255, 255));
-        form.getContentPane().add(form.jPanel1, BorderLayout.CENTER);
-        //form.setExtendedState(MAXIMIZED_BOTH);
-        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowOpened
 
 
