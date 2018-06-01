@@ -18,15 +18,16 @@ public class EmployeesController {
     public static boolean registerEmployee(String firstName, String lastName, String userName, String password, String phone, String email) {
 
         try {
-            String query = "INSERT INTO employees (FirstName, LastName, Username, Password, Phone, Email, Rating) values (?,?,?,?,?,?,?,?)";
-
-            double rating = 0;
+            String query = "INSERT INTO employees (Username, Password, FirstName, LastName, Phone, Email, Rating) values (?,?,?,?,?,?,?)";
+            
+            
+            float rating = 0;
 
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
-            statement.setString(3, userName);
-            statement.setString(4, password);
+            statement.setString(1, userName);
+            statement.setString(2, password);
+            statement.setString(3, firstName);
+            statement.setString(4, lastName);
             statement.setString(5, phone);
             statement.setString(6, email);
             statement.setDouble(7, rating);
@@ -38,6 +39,7 @@ public class EmployeesController {
             return result > 0;
 
         } catch (SQLException e) {
+            System.out.println(e);
             return false;
         } finally {
             return false;
@@ -77,7 +79,7 @@ public class EmployeesController {
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
-            statement.setString(2, username);
+            statement.setString(2, password);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -212,16 +214,21 @@ public class EmployeesController {
         return false;
     }
 
-    private static List<Employee> getAll() throws SQLException {
+    public static List<Employee> getAll(String companyName) throws SQLException {
 
         Employee employee = null;
 
         List<Employee> employees = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM employees";
+            String query = "SELECT e.Id, e.FirstName, e.LastName, e.Username, e.Password, e.Phone, e.Email, e.Rating FROM employees e " + 
+                            "JOIN employee_contracts ec ON ec.IdEmployee = e.Id " + 
+                            "JOIN companies c ON ec.IdCompany = c.Id " +
+                            "WHERE c.Username = (?);";
 
             PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, companyName);
+            
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {

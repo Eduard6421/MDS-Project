@@ -14,6 +14,9 @@ public class GlobalData {
     private static String Username;
 
     private static String UserType;
+    
+    private static int UserId;
+        
     private static String companyName;
 
     public static String getCompanyName() {
@@ -23,8 +26,6 @@ public class GlobalData {
     public static void setCompanyName(String companyName) {
         GlobalData.companyName = companyName;
     }
-
-    private static int UserId;
 
     public static String getUsername() {
         return Username;

@@ -193,7 +193,7 @@ public class MeetingsController {
         return meetings;
     }
 
-    public static List<Meeting> getAllOpenByEmployee(String companyName, int employeeId) {
+    public static List<Meeting> getAllOpenedByEmployee(String companyName, int employeeId) {
         Meeting meeting = null;
 
         List<Meeting> meetings = new ArrayList<>();
