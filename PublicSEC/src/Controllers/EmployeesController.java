@@ -21,7 +21,7 @@ public class EmployeesController {
             String query = "INSERT INTO Employees (FirstName, LastName, Username, Password, Phone, Email, Rating) values (?,?,?,?,?,?,?,?)";
 
             double rating = 0;
-            
+
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, firstName);
             statement.setString(2, lastName);
@@ -44,6 +44,30 @@ public class EmployeesController {
         }
     }
 
+    public static Double getAverageRating(int employeeId) {
+
+        Double rating = 0d;
+
+        try {
+            String query = "select avg(feedback) from meetings where idEmployee = ? ";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+
+            statement.setInt(1, employeeId);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                rating = result.getDouble("feedback");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e);
+        }
+        return rating;
+    }
+    
+    
     public static Employee getByAccount(String username, String password) {
 
         Employee employee = null;
@@ -222,7 +246,7 @@ public class EmployeesController {
 
         return employees;
     }
-    
+
     public static List<Pair<Integer, String>> getAllOnlyGeneralData() throws SQLException {
 
         Pair<Integer, String> employee = null;
@@ -238,7 +262,7 @@ public class EmployeesController {
             while (result.next()) {
 
                 employee = new Pair<Integer, String>(result.getInt("Id"),
-                                                   result.getString("Username"));
+                        result.getString("Username"));
 
                 employees.add(employee);
             }
@@ -251,5 +275,5 @@ public class EmployeesController {
 
         return employees;
     }
-    
+
 }

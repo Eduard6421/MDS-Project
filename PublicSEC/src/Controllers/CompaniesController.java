@@ -79,6 +79,38 @@ public class CompaniesController {
         return company;
     }
 
+    public static Company getByName(String name) {
+        Company company = null;
+
+        try {
+            String query = "SELECT * FROM Companies WHERE name = (?)";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1,name);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                company = new Company(
+                        result.getInt("Id"),
+                        result.getString("Name"),
+                        result.getDate("ContractStartDate"),
+                        result.getDate("ContractEndDate"),
+                        result.getString("Description"),
+                        result.getString("Username"),
+                        result.getString("Password"));
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+
+        return company;
+
+    }
+
     public static Company getById(int id) {
 
         Company company = null;
@@ -144,5 +176,5 @@ public class CompaniesController {
 
         return companies;
     }
-    
+
 }
