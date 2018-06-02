@@ -150,6 +150,7 @@ public class EmployeeContractsController {
 
         return employeeContracts;
     }
+<<<<<<< HEAD
     /**
      * Updates the startDate and endDate of an employee contract given by the id.
      * @param id
@@ -157,6 +158,10 @@ public class EmployeeContractsController {
      * @param endDate 
      */
     public static void updateContractById(int id, Date startDate, Date endDate) {
+=======
+    
+    public static boolean updateContractById(int id, Date startDate, Date endDate) {
+>>>>>>> eae33c5546fb8d883f502f550649fc617f63f23b
         try {
             String query = "UPDATE employee_contracts SET StartDate = (?), EndDate = (?) WHERE Id = (?)";
 
@@ -164,12 +169,16 @@ public class EmployeeContractsController {
             statement.setInt(1, id);
             statement.setDate(2, new java.sql.Date(startDate.getTime()));
             statement.setDate(3, new java.sql.Date(endDate.getTime()));
+            
             int result = statement.executeUpdate();
 
             statement.close();
+            
+            return result > 0;
 
         } catch (SQLException e) {
             System.out.println(e);
+            return false;
         }
     }
 
