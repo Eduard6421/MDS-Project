@@ -102,6 +102,26 @@ public class CompaniesControllerTest {
         boolean trueResult = result!= null;
         assertEquals(expResult, trueResult);
     }
+    /**
+     * Test of getByName method, of class CompaniesController.
+     */
+     @Test
+    public void testGetByName1() {
+        System.out.println("getByName");
+        String name = "%";
+        Company expResult = null;
+        Company result = CompaniesController.getByName(name);
+        assertEquals(expResult, result);
+    }
+    @Test
+    public void testGetByName2() {
+        System.out.println("getByName");
+        String name = "Firma1";
+        boolean expResult = true;
+        Company result = CompaniesController.getByName(name);
+        boolean trueResult = result!= null;
+        assertEquals(expResult, trueResult);
+    }
     
 
     /**
@@ -125,5 +145,6 @@ public class CompaniesControllerTest {
         boolean trueResult = result!=null;
         assertEquals(expResult, trueResult);
     }
+    
 
 }
