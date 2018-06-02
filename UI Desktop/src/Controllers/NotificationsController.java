@@ -199,7 +199,7 @@ public class NotificationsController {
         boolean result = false;
 
         try {
-            String query = "update notifications set NotifyClient = 1 where employeeId = ? and meetingId = ?";
+            String query = "update notifications set NotifyEmployee = 1 where employeeId = ? and meetingId = ?";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
