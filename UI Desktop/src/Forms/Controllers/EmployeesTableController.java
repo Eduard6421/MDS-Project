@@ -4,10 +4,12 @@ package Forms.Controllers;
 import Controllers.CompaniesController;
 import Controllers.EmployeeContractsController;
 import Controllers.EmployeesController;
-import Forms.AddEditEmployee;
+import Forms.AddEmployee;
+import Forms.EditEmployeeContract;
 import Forms.EmployeesTable;
 import Models.Company;
 import Models.Employee;
+import Models.EmployeeContract;
 import Utils.Converters;
 import Utils.GlobalData;
 import java.awt.event.ActionEvent;
@@ -29,7 +31,8 @@ public class EmployeesTableController implements ActionListener {
     
     private CompanyMenuController parentController;
     
-    private AddEditEmployee addEditEmployeeForm;
+    private AddEmployee addEmployeeForm;
+    private EditEmployeeContract editEmployeeContractForm;
     
     private List<Pair<Integer, String>> employeesIds = new ArrayList<>();
     
@@ -60,9 +63,19 @@ public class EmployeesTableController implements ActionListener {
                     parentController.setWindowVisible();
                     break;
                 case "New Employee":
-                    addEditEmployeeForm = new AddEditEmployee(this);
-                    addEditEmployeeForm.setVisible(true);
-                    addEditEmployeeForm.formForUpdate(false);
+                    addEmployeeForm = new AddEmployee(this);
+                    addEmployeeForm.setVisible(true);
+                    toggleFocus();
+                    break;
+                case "Edit Contract":
+                    if (getSelectedEmployeeGeneralData() != null) {
+                        String employeeUsername = getSelectedEmployeeGeneralData().getValue();
+                        EmployeeContract contract = getSelectedEmployeeContract();
+                        editEmployeeContractForm = new EditEmployeeContract(this, employeeUsername, contract);
+                        editEmployeeContractForm.setVisible(true);
+                        toggleFocus();                    }
+                    break;
+                case "View Details":
                     toggleFocus();
                     break;
             }
@@ -70,8 +83,10 @@ public class EmployeesTableController implements ActionListener {
         else {
             switch (command) {
                 case "Exit":
-                    addEditEmployeeForm.setVisible(false);
-                    addEditEmployeeForm.dispose();
+                    addEmployeeForm.setVisible(false);
+                    addEmployeeForm.dispose();
+                    editEmployeeContractForm.setVisible(false);
+                    editEmployeeContractForm.dispose();
                     toggleFocus();
                     {
                         try {
@@ -81,10 +96,20 @@ public class EmployeesTableController implements ActionListener {
                         }
                     }
                     break;
-
                 case "Insert":
-                    Triplet<Employee, Date, Date> newEmployeeTriplet = addEditEmployeeForm.getNewEmployee();
+                    Triplet<Employee, Date, Date> newEmployeeTriplet = addEmployeeForm.getNewEmployee();
                     tryInsertNewEmployee(newEmployeeTriplet);
+                    break;
+                case "Save Changes":
+                    EmployeeContract editedContract = editEmployeeContractForm.getEditedContract();
+                    if (editedContract != null) {
+                        if (EmployeeContractsController
+                                .updateContractById(editedContract.getId(), 
+                                                    editedContract.getStartDate(), 
+                                                    editedContract.getEndDate()))
+                            editEmployeeContractForm.setVisible(false);
+                            editEmployeeContractForm.dispose();
+                    }
                     break;
             }
         }
@@ -138,8 +163,8 @@ public class EmployeesTableController implements ActionListener {
     
     public void tryInsertNewEmployee(Triplet<Employee, Date, Date> newEmployeeTriplet) {
         if (newEmployeeTriplet != null) {
-            addEditEmployeeForm.setVisible(false);
-            addEditEmployeeForm.dispose();
+            addEmployeeForm.setVisible(false);
+            addEmployeeForm.dispose();
             toggleFocus();
             Employee newEmployee = newEmployeeTriplet.getValue0();
             int newEmployeeId = EmployeesController.registerEmployee(newEmployee.getFirstName(), 
@@ -161,6 +186,40 @@ public class EmployeesTableController implements ActionListener {
                 Logger.getLogger(EmployeesTableController.class.getName()).log(Level.SEVERE, null, ex);
            }
         }
+    }
+    
+    public Pair<Integer, String> getSelectedEmployeeGeneralData() {
+        int selectedIndex = form.getSelectedRowIndex();
+        if (selectedIndex == -1)
+            return null;     
+        
+        Pair<Integer, String> employeeGeneralData = employeesIds.get(selectedIndex);
+        
+        return employeeGeneralData;
+    }
+    
+    public Employee getSelectedEmployee() {
+        int selectedIndex = form.getSelectedRowIndex();
+        if (selectedIndex == -1)
+            return null;     
+        
+        int employeeId = employeesIds.get(selectedIndex).getKey();
+        
+        Employee employee = EmployeesController.getById(employeeId);
+        
+        return employee;
+    }
+    
+    public EmployeeContract getSelectedEmployeeContract() {
+        int selectedIndex = form.getSelectedRowIndex();
+        if (selectedIndex == -1)
+            return null;     
+        
+        int employeeId = employeesIds.get(selectedIndex ).getKey();
+        
+        EmployeeContract contract = EmployeeContractsController.getByEmployee(employeeId);
+        
+        return contract;
     }
 }
     

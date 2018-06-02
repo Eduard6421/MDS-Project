@@ -28,34 +28,22 @@ import org.javatuples.Triplet;
  *
  * @author user
  */
-public class AddEditEmployee extends javax.swing.JFrame {
+public class AddEmployee extends javax.swing.JFrame {
 
     private EmployeesTableController parentController;
-    static AddEditEmployee form;
+    static AddEmployee form;
 
-    public AddEditEmployee() {
+    public AddEmployee() {
         initComponents();
     }
 
-    public AddEditEmployee(EmployeesTableController controller) {
+    public AddEmployee(EmployeesTableController controller) {
         initComponents();
 
         parentController = controller;
 
         buttonExit.addActionListener(parentController);
-        buttonAddEdit.addActionListener(parentController);
-    }
-    
-    public void formForUpdate(boolean forUpdate)
-    {
-        if (forUpdate) {
-            buttonAddEdit.setActionCommand("Update");
-            buttonAddEdit.setText("Update");
-        }
-        else {
-            buttonAddEdit.setActionCommand("Insert");
-            buttonAddEdit.setText("Insert");
-        }
+        buttonAdd.addActionListener(parentController);
     }
     
     public Triplet<Employee, Date, Date>  getNewEmployee() {
@@ -66,7 +54,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
             String password = new String(inputPassword.getPassword());
             String confirmPassword = new String(inputConfirmPassword.getPassword());
             
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-mm-dd");
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
             
             if (!Arrays.equals(inputPassword.getPassword(), inputConfirmPassword.getPassword())) {
                 JOptionPane.showMessageDialog(null, "Passwords do not match.");
@@ -105,7 +93,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelAddEditEmployee = new javax.swing.JLabel();
+        labelAdd = new javax.swing.JLabel();
         labelUsername = new javax.swing.JLabel();
         labelPassword = new javax.swing.JLabel();
         labelFirstName = new javax.swing.JLabel();
@@ -121,7 +109,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
         inputPhone = new javax.swing.JTextField();
         inputEmail = new javax.swing.JTextField();
         buttonExit = new javax.swing.JButton();
-        buttonAddEdit = new javax.swing.JButton();
+        buttonAdd = new javax.swing.JButton();
         labelContractDetails = new javax.swing.JLabel();
         labelStartDate = new javax.swing.JLabel();
         labelEndDate = new javax.swing.JLabel();
@@ -139,8 +127,8 @@ public class AddEditEmployee extends javax.swing.JFrame {
             }
         });
 
-        labelAddEditEmployee.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelAddEditEmployee.setText("Add new employee");
+        labelAdd.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labelAdd.setText("Add new employee");
 
         labelUsername.setText("Username");
 
@@ -165,10 +153,10 @@ public class AddEditEmployee extends javax.swing.JFrame {
             }
         });
 
-        buttonAddEdit.setText("Insert");
-        buttonAddEdit.addActionListener(new java.awt.event.ActionListener() {
+        buttonAdd.setText("Insert");
+        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddEditActionPerformed(evt);
+                buttonAddActionPerformed(evt);
             }
         });
 
@@ -191,7 +179,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
                         .addGap(115, 115, 115)
                         .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(buttonAddEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,14 +216,14 @@ public class AddEditEmployee extends javax.swing.JFrame {
                 .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(labelAddEditEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(135, 135, 135))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(labelAddEditEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelUsername)
@@ -277,7 +265,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonAddEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
         );
 
@@ -292,9 +280,9 @@ public class AddEditEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonExitActionPerformed
 
-    private void buttonAddEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddEditActionPerformed
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAddEditActionPerformed
+    }//GEN-LAST:event_buttonAddActionPerformed
 
 
     /**
@@ -314,21 +302,23 @@ public class AddEditEmployee extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddEditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddEditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddEditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddEditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                form = new AddEditEmployee();
+                form = new AddEmployee();
 
                 form.setVisible(true);
                 
@@ -338,7 +328,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAddEdit;
+    private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonExit;
     private javax.swing.JPasswordField inputConfirmPassword;
     private javax.swing.JTextField inputEmail;
@@ -349,7 +339,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField inputPhone;
     private javax.swing.JTextField inputStartDate;
     private javax.swing.JTextField inputUsername;
-    private javax.swing.JLabel labelAddEditEmployee;
+    private javax.swing.JLabel labelAdd;
     private javax.swing.JLabel labelConfirmPassword;
     private javax.swing.JLabel labelContractDetails;
     private javax.swing.JLabel labelEmail;
