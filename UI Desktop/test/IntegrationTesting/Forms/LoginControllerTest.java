@@ -5,6 +5,7 @@
  */
 package IntegrationTesting.Forms;
 
+import Forms.Controllers.CompanyMenuController;
 import Forms.Controllers.LoginController;
 import java.awt.event.ActionEvent;
 import org.junit.After;
@@ -42,74 +43,41 @@ public class LoginControllerTest {
     /**
      * Test of actionPerformed method, of class LoginController.
      */
-    @Test
-    public void testActionPerformed() {
-        System.out.println("actionPerformed");
-        ActionEvent evt = null;
-        LoginController instance = new LoginController();
-        instance.actionPerformed(evt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of setWindowInvisible method, of class LoginController.
-     */
     @Test
-    public void testSetWindowInvisible() {
-        System.out.println("setWindowInvisible");
-        LoginController instance = new LoginController();
-        instance.setWindowInvisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testLogin1()
+    {
+        LoginController controller = new LoginController();
+        String user = controller.getForm().getUsername();
+        String pass = controller.getForm().getPassword();
+        boolean expResult = false;
+        boolean trueResult = Controllers.LoginController.connectCompany(user, pass);
+        CompanyMenuController companyMenuController = new CompanyMenuController(controller);
+        
+        assertEquals(expResult,trueResult);   
     }
-
-    /**
-     * Test of setWindowVisible method, of class LoginController.
-     */
     @Test
-    public void testSetWindowVisible() {
-        System.out.println("setWindowVisible");
-        LoginController instance = new LoginController();
-        instance.setWindowVisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testLogin2()
+    {
+        LoginController controller = new LoginController();
+        String user = "firma1";
+        String pass = "parola1";
+        boolean expResult = true;
+        boolean trueResult = Controllers.LoginController.connectCompany(user, pass);
+        CompanyMenuController companyMenuController = new CompanyMenuController(controller);
+        
+        assertEquals(expResult,trueResult);   
     }
-
-    /**
-     * Test of closeWindow method, of class LoginController.
-     */
-    @Test
-    public void testCloseWindow() {
-        System.out.println("closeWindow");
-        LoginController instance = new LoginController();
-        instance.closeWindow();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toggleFocus method, of class LoginController.
-     */
-    @Test
-    public void testToggleFocus() {
-        System.out.println("toggleFocus");
-        LoginController instance = new LoginController();
-        instance.toggleFocus();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of displayConnectionError method, of class LoginController.
-     */
-    @Test
-    public void testDisplayConnectionError() {
-        System.out.println("displayConnectionError");
-        LoginController instance = new LoginController();
-        instance.displayConnectionError();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+     public void testLogin3()
+    {
+        LoginController controller = new LoginController();
+        String user = "firma2";
+        String pass = "parola2";
+        boolean expResult = true;
+        boolean trueResult = Controllers.LoginController.connectCompany(user, pass);
+        CompanyMenuController companyMenuController = new CompanyMenuController(controller);
+        
+        assertEquals(expResult,trueResult);   
     }
     
 }

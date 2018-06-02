@@ -6,8 +6,13 @@
 package IntegrationTesting.Forms;
 
 import Forms.Controllers.ClientsTableController;
+import Utils.GlobalData;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,77 +45,76 @@ public class ClientsTableControllerTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of actionPerformed method, of class ClientsTableController.
-     */
     @Test
-    public void testActionPerformed() throws SQLException {
-        System.out.println("actionPerformed");
-        ActionEvent evt = null;
-        ClientsTableController instance = new ClientsTableController();
-        instance.actionPerformed(evt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCleintsTableController1()
+    {
+        GlobalData.setCompanyName("Firma1");
+        try {
+            ClientsTableController controller = new ClientsTableController();
+            boolean expResult = true;
+            DefaultTableModel tm = (DefaultTableModel)controller.getForm().getjTable1().getModel();
+            Vector<Vector> aux1 =(Vector<Vector>) tm.getDataVector();
+            Vector<Vector> aux2 = new Vector<Vector>();
+            Vector aux3 = new Vector();
+            aux3.add("client1");
+            aux3.add("NumeClient1");
+            aux3.add("PrenumeClient1");
+            aux3.add("Strada Clientului Nr.7");
+            aux3.add("0711223344");
+            aux3.add("client@hotmail.com");
+            aux2.add(aux3);
+            Vector aux4 = new Vector();
+            aux4.add("client2");
+            aux4.add("NumeClient1");
+            aux4.add("PrenumeClient2");
+            aux4.add("Strada Clientului nr 2");
+            aux4.add("07112234");
+            aux4.add("client2@hotmail.com");
+            aux2.add(aux4);
+            boolean trueResult = aux1.equals(aux2);
+            assertEquals(expResult,trueResult);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ClientsTableControllerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
-
-    /**
-     * Test of toggleFocus method, of class ClientsTableController.
-     */
     @Test
-    public void testToggleFocus() throws SQLException {
-        System.out.println("toggleFocus");
-        ClientsTableController instance = new ClientsTableController();
-        instance.toggleFocus();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCleintsTableController2()
+    {
+        GlobalData.setCompanyName("FUNFFEEQ");
+        try {
+            ClientsTableController controller = new ClientsTableController();
+            boolean expResult = true;
+            DefaultTableModel tm = (DefaultTableModel)controller.getForm().getjTable1().getModel();
+            Vector<Vector> aux1 =(Vector<Vector>) tm.getDataVector();
+            
+            boolean trueResult = aux1.size() == 0;
+            assertEquals(expResult,trueResult);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ClientsTableControllerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
-
-    /**
-     * Test of setWindowInvisible method, of class ClientsTableController.
-     */
     @Test
-    public void testSetWindowInvisible() throws SQLException {
-        System.out.println("setWindowInvisible");
-        ClientsTableController instance = new ClientsTableController();
-        instance.setWindowInvisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCleintsTableController3()
+    {
+        GlobalData.setCompanyName("");
+        try {
+            ClientsTableController controller = new ClientsTableController();
+            boolean expResult = true;
+            DefaultTableModel tm = (DefaultTableModel)controller.getForm().getjTable1().getModel();
+            Vector<Vector> aux1 =(Vector<Vector>) tm.getDataVector();
+            
+            boolean trueResult = aux1.size() == 0;
+            assertEquals(expResult,trueResult);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(ClientsTableControllerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
-
-    /**
-     * Test of setWindowVisible method, of class ClientsTableController.
-     */
-    @Test
-    public void testSetWindowVisible() throws SQLException {
-        System.out.println("setWindowVisible");
-        ClientsTableController instance = new ClientsTableController();
-        instance.setWindowVisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of closeWindow method, of class ClientsTableController.
-     */
-    @Test
-    public void testCloseWindow() throws SQLException{
-        System.out.println("closeWindow");
-        ClientsTableController instance = new ClientsTableController();
-        instance.closeWindow();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of fillTable method, of class ClientsTableController.
-     */
-    @Test
-    public void testFillTable() throws Exception {
-        System.out.println("fillTable");
-        ClientsTableController instance = new ClientsTableController();
-        instance.fillTable();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+   
     
 }

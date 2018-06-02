@@ -6,7 +6,10 @@
 package IntegrationTesting.Forms;
 
 import Forms.Controllers.MeetingsTableController;
+import Utils.GlobalData;
 import java.awt.event.ActionEvent;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,132 +42,117 @@ public class MeetingsTableControllerTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of actionPerformed method, of class MeetingsTableController.
-     */
     @Test
-    public void testActionPerformed() {
-        System.out.println("actionPerformed");
-        ActionEvent evt = null;
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.actionPerformed(evt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    public void testMeetingTableController1()
+    {
+        GlobalData.setCompanyName("Firma1");
+        GlobalData.setUserId(1);
+        MeetingsTableController controller = new MeetingsTableController("View all meetings");
+        boolean expResult = true;
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTable().getModel();
+        Vector aux1 =(Vector) tm.getDataVector().get(0);
+        Vector aux2 = new Vector();
+      
+        aux2.add(false);
+      
+        aux2.add("client1");
+     
+        aux2.add("employee1");
 
-    /**
-     * Test of populateClientsList method, of class MeetingsTableController.
-     */
-    @Test
-    public void testPopulateClientsList() {
-        System.out.println("populateClientsList");
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.populateClientsList();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        aux2.add("2010-01-01");
+   
+        aux2.add("da");
+      
+        boolean trueResult = aux1.equals(aux2);
+        
+        assertEquals(expResult,trueResult);
+                
+        
     }
+    @Test
+    public void testMeetingTableController2()
+    {
+        GlobalData.setCompanyName("Firma2");
+        GlobalData.setUserId(2);
+        MeetingsTableController controller = new MeetingsTableController("View all meetings");
+        boolean expResult = false;
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTable().getModel();
+        Vector aux1 =(Vector) tm.getDataVector().get(0);
+ 
+        Vector aux2 = new Vector();
+        aux2.add(false);
+        aux2.add("client1");
+        aux2.add("employee");
+        aux2.add("2010-04-02");
+        aux2.add("nu");
+        boolean trueResult = aux1.equals(aux2);
+        
+        assertEquals(expResult,trueResult);
+                
+        
+    }
+     @Test
+    public void testMeetingTableController3()
+    {
+        
+        MeetingsTableController controller = new MeetingsTableController("View all meetings");
+        boolean expResult = false;
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTable().getModel();
+        Vector aux1 =(Vector) tm.getDataVector().get(0);
+ 
+        boolean trueResult = aux1.size() == 0;
+        
+        assertEquals(expResult,trueResult);
+                
+        
+    }
+    @Test
+    public void testMeetingTableController4()
+    {
+        GlobalData.setCompanyName("Firma1");
+        GlobalData.setUserId(1);
+        MeetingsTableController controller = new MeetingsTableController("View closed meetings");
+        boolean expResult = false;
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTable().getModel();
+        Vector aux1 =(Vector) tm.getDataVector().get(0);
+ 
+        Vector aux2 = new Vector();
+        aux2.add(false);
+        aux2.add("client1");
+        aux2.add("employee");
+        aux2.add("2010-04-02");
+        aux2.add("nu");
+        boolean trueResult = aux1.equals(aux2);
+        
+        assertEquals(expResult,trueResult);
+                
+        
+    }   
+     @Test
+    public void testMeetingTableController5()
+    {
+        GlobalData.setCompanyName("Firma1");
+        GlobalData.setUserId(1);
+        MeetingsTableController controller = new MeetingsTableController("View closed meetings");
+        boolean expResult = true;
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTable().getModel();
+        Vector aux1 =(Vector) tm.getDataVector().get(0);
+        Vector aux2 = new Vector();
+      
+        aux2.add(false);
+      
+        aux2.add("client1");
+     
+        aux2.add("employee1");
 
-    /**
-     * Test of populateEmployeesList method, of class MeetingsTableController.
-     */
-    @Test
-    public void testPopulateEmployeesList() {
-        System.out.println("populateEmployeesList");
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.populateEmployeesList();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        aux2.add("2010-01-01");
+   
+        aux2.add("da");
+      
+        boolean trueResult = aux1.equals(aux2);
+        
+        assertEquals(expResult,trueResult);
+                
+        
     }
-
-    /**
-     * Test of toggleFocus method, of class MeetingsTableController.
-     */
-    @Test
-    public void testToggleFocus() {
-        System.out.println("toggleFocus");
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.toggleFocus();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setWindowInvisible method, of class MeetingsTableController.
-     */
-    @Test
-    public void testSetWindowInvisible() {
-        System.out.println("setWindowInvisible");
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.setWindowInvisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setWindowVisible method, of class MeetingsTableController.
-     */
-    @Test
-    public void testSetWindowVisible() {
-        System.out.println("setWindowVisible");
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.setWindowVisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of closeWindow method, of class MeetingsTableController.
-     */
-    @Test
-    public void testCloseWindow() {
-        System.out.println("closeWindow");
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.closeWindow();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of fillTable method, of class MeetingsTableController.
-     */
-    @Test
-    public void testFillTable() {
-        System.out.println("fillTable");
-        String tableType = "";
-        MeetingsTableController instance = new MeetingsTableController();
-        instance.fillTable(tableType);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of findEmployeeNameById method, of class MeetingsTableController.
-     */
-    @Test
-    public void testFindEmployeeNameById() {
-        System.out.println("findEmployeeNameById");
-        int id = 0;
-        MeetingsTableController instance = new MeetingsTableController();
-        String expResult = "";
-        String result = instance.findEmployeeNameById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of findClientNameById method, of class MeetingsTableController.
-     */
-    @Test
-    public void testFindClientNameById() {
-        System.out.println("findClientNameById");
-        int id = 0;
-        MeetingsTableController instance = new MeetingsTableController();
-        String expResult = "";
-        String result = instance.findClientNameById(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
