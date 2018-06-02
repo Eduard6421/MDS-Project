@@ -50,18 +50,65 @@ public class MeetingsControllerTest {
         System.out.println("getAll");
         boolean expResult = true;
         List<Meeting> result = MeetingsController.getAll(GlobalData.getCompanyName());
-        boolean trueResult = (result.size() == 2);
+        boolean trueResult = (result.size() != 0);
+        assertEquals(expResult, trueResult);
+
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    /**
+     * Test of getAllOpen method, of class MeetingsController.
+     */
+    @Test
+    public void testGetAllOpen1() {
+        System.out.println("getAllOpen");
+        boolean expResult = true;
+        List<Meeting> result = MeetingsController.getAllOpen(GlobalData.getCompanyName());
+        boolean trueResult = (result.size() != 0);
+        assertEquals(expResult, trueResult);
+
+        // TODO review the generated test code and remove the default call to fail.
+    }
+     @Test
+    public void testGetAllOpen2() {
+        System.out.println("getAllOpen");
+        boolean expResult = false;
+        List<Meeting> result = MeetingsController.getAllOpen(GlobalData.getCompanyName());
+        boolean trueResult = (result.size() != 0);
+        assertEquals(expResult, trueResult);
+
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    /**
+     * Test of getAllClosed method, of class MeetingsController.
+     */
+    @Test
+    public void testGetAllClosed1() {
+        System.out.println("getAllClosed");
+        boolean expResult = true;
+        List<Meeting> result = MeetingsController.getAllClosed(GlobalData.getCompanyName());
+        boolean trueResult = (result.size() != 0);
+        assertEquals(expResult, trueResult);
+
+        // TODO review the generated test code and remove the default call to fail.
+    }
+
+    @Test
+    public void testGetAllClosed2() {
+        System.out.println("getAllClosed");
+        boolean expResult = false;
+        List<Meeting> result = MeetingsController.getAllClosed(GlobalData.getCompanyName());
+        boolean trueResult = (result.size() != 0);
         assertEquals(expResult, trueResult);
 
         // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
-     * Test of getByClient method, of class MeetingsController.
+     * Test of getByClientId method, of class MeetingsController.
      */
     @Test
-    public void testGetByClient1() {
-        System.out.println("getByClient");
+    public void testGetByClientId1() {
+        System.out.println("getByClientId");
         int clientId = 1;
         boolean expResult = true;
         Meeting result = MeetingsController.getByClientId(GlobalData.getCompanyName(), clientId);
@@ -73,8 +120,8 @@ public class MeetingsControllerTest {
     }
 
     @Test
-    public void testGetByClient2() {
-        System.out.println("getByClient");
+    public void testGetByClientId2() {
+        System.out.println("getByClientId");
         int clientId = 0;
         boolean expResult = true;
         Meeting result = MeetingsController.getByClientId(GlobalData.getCompanyName(), clientId);
@@ -141,6 +188,181 @@ public class MeetingsControllerTest {
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
 
+    }
+    /**
+     * Test of getAllClosedByEmployee method, of class MeetingsController.
+     */
+    @Test
+    public void testGetAllClosedByEmployee1() {
+        System.out.println("getAllClosedByEmployee");
+        int employeeId = 1;
+        List<Meeting> result = MeetingsController.getAllClosedByEmployee(GlobalData.getCompanyName(), employeeId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 1);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    @Test
+    public void testGetAllClosedByEmployee2() {
+        System.out.println("getAllClosedByEmployee");
+        int employeeId = 2;
+        List<Meeting> result = MeetingsController.getAllClosedByEmployee(GlobalData.getCompanyName(), employeeId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 1);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    @Test
+    public void testGetAllClosedByEmployee3() {
+        System.out.println("getAllClosedByEmployee");
+        int employeeId = 0;
+        List<Meeting> result = MeetingsController.getAllClosedByEmployee(GlobalData.getCompanyName(), employeeId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 0);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+    /**
+     * Test of getAllOpenByClient method, of class MeetingsController.
+     */
+    @Test
+    public void testGetAllOpenByClient1() {
+        System.out.println("getAllOpenByClient");
+        int clientId = 1;
+        List<Meeting> result = MeetingsController.getAllOpenByClient(GlobalData.getCompanyName(), clientId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 1);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    @Test
+    public void testGetAllOpenByClient2() {
+        System.out.println("getAllOpenByClient");
+        int clientId = 2;
+        List<Meeting> result = MeetingsController.getAllOpenByClient(GlobalData.getCompanyName(), clientId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 1);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    @Test
+    public void testGetAllOpenByClient3() {
+        System.out.println("getAllOpenByClient");
+        int clientId = 0;
+        List<Meeting> result = MeetingsController.getAllOpenedByEmployee(GlobalData.getCompanyName(), clientId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 0);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    /**
+     * Test of getAllClosedByClient method, of class MeetingsController.
+     */
+    @Test
+    public void testGetAllClosedByClient1() {
+        System.out.println("getAllClosedByClient");
+        int clientId = 1;
+        List<Meeting> result = MeetingsController.getAllClosedByClient(GlobalData.getCompanyName(), clientId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 1);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    @Test
+    public void testGetAllClosedByClient2() {
+        System.out.println("getAllClosedByClient");
+        int clientId = 2;
+        List<Meeting> result = MeetingsController.getAllClosedByClient(GlobalData.getCompanyName(), clientId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 1);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    @Test
+    public void testGetAllClosedByClient3() {
+        System.out.println("getAllClosedByClient");
+        int clientId = 0;
+        List<Meeting> result = MeetingsController.getAllClosedByClient(GlobalData.getCompanyName(), clientId);
+        boolean expResult = true;
+        boolean trueResult = (result.size() == 0);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+    /**
+     * Test of getByMeeting method, of class MeetingsController.
+     */
+    @Test
+    public void testGetByMeeting1() {
+        System.out.println("getByMeeting");
+        int meetingId = 1;
+        boolean expResult = true;
+        Meeting result = MeetingsController.getByMeeting(meetingId);
+        boolean trueResult = (result != null);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    @Test
+    public void testGetByMeeting2() {
+        System.out.println("getByMeeting");
+        int meetingId = 0;
+        boolean expResult = true;
+        Meeting result = MeetingsController.getByMeeting(meetingId);
+        boolean trueResult = (result == null);
+
+        assertEquals(expResult, trueResult);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+    /**
+     * Test of getPercentUnassigned method, of class MeetingsController.
+     */
+    @Test
+    public void testGetPercentUnassigned1()
+    {
+        System.out.println("getPercentUnassigned");
+        Double result = MeetingsController.getPercentUnassigned(GlobalData.getCompanyName());
+        boolean expResult = true;
+        boolean trueResult = (result != 0d);
+
+        assertEquals(expResult, trueResult);
+    }
+     @Test
+    public void testGetPercentUnassigned2()
+    {
+        System.out.println("getPercentUnassigned");
+        Double result = MeetingsController.getPercentUnassigned(GlobalData.getCompanyName());
+        boolean expResult = true;
+        boolean trueResult = (result == 0d);
+
+        assertEquals(expResult, trueResult);
     }
 
 }

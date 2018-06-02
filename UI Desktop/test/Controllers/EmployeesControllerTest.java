@@ -44,6 +44,41 @@ public class EmployeesControllerTest {
     /**
      * Test of registerEmployee method, of class EmployeesController.
      */
+    
+     /**
+     * Test of getAverageRating method, of class EmployeesController.
+     */
+    @Test
+    public void testGetAverageRating1(int employeeId)
+    {
+        System.out.println("getAverageRating");
+        int id = 0;
+        Double expResult = 0d;
+        Double result = EmployeesController.getAverageRating(id);
+        assertEquals(expResult, result);
+        
+    }
+    @Test
+    public void testGetAverageRating2(int employeeId)
+    {
+        System.out.println("getAverageRating");
+        int id = 100;
+        Double expResult = 0d;
+        Double result = EmployeesController.getAverageRating(id);
+        assertEquals(expResult, result);
+        
+    }
+     @Test
+    public void testGetAverageRating3(int employeeId)
+    {
+        System.out.println("getAverageRating");
+        int id = 100;
+        boolean expResult = true;
+        boolean result = (EmployeesController.getAverageRating(id) != 0d);
+        assertEquals(expResult, result);
+        
+    }
+        
 
     /**
      * Test of getByAccount method, of class EmployeesController.
@@ -136,7 +171,7 @@ public class EmployeesControllerTest {
     /**
      * Test of changePassword method, of class EmployeesController.
      */
-
+      
     /**
      * Test of updateData method, of class EmployeesController.
      */
@@ -159,7 +194,7 @@ public class EmployeesControllerTest {
         System.out.println("getAll");
 
         List<Employee> result = EmployeesController.getAll(GlobalData.getCompanyName());
-        boolean trueResult = result.size() == 2;
+        boolean trueResult = result.size() != 0;
         boolean expResult = true;
         assertEquals(expResult, trueResult);
 
@@ -168,4 +203,13 @@ public class EmployeesControllerTest {
     /**
      * Test of getAllOnlyGeneralData method, of class EmployeesController.
      */
+    @Test
+    public void testGetAllOnlyGeneralData() throws Exception {
+        System.out.println("getAll");
+        List<Pair<Integer, String>> result = EmployeesController.getAllOnlyGeneralData();
+        boolean trueResult = result.size() != 0;
+        boolean expResult = true;
+        assertEquals(expResult, trueResult);
+
+    }
 }
