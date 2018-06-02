@@ -143,7 +143,7 @@ public class CompaniesController {
         return company;
     }
 
-    private static List<Company> getAll() {
+    public static List<Company> getAll() {
 
         Company company = null;
 

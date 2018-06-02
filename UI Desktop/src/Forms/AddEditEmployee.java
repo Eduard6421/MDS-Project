@@ -15,9 +15,14 @@ import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import javafx.util.Pair;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.javatuples.Triplet;
 
 /**
  *
@@ -53,7 +58,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
         }
     }
     
-    public Employee getNewEmployee() {
+    public Triplet<Employee, Date, Date>  getNewEmployee() {
         
         Employee employee = null;
    
@@ -61,10 +66,15 @@ public class AddEditEmployee extends javax.swing.JFrame {
             String password = new String(inputPassword.getPassword());
             String confirmPassword = new String(inputConfirmPassword.getPassword());
             
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-mm-dd");
+            
             if (!Arrays.equals(inputPassword.getPassword(), inputConfirmPassword.getPassword())) {
                 JOptionPane.showMessageDialog(null, "Passwords do not match.");
                 return null;
             }
+            
+            Date startDate = dateFormatter.parse(inputStartDate.getText());
+            Date endDate = dateFormatter.parse(inputEndDate.getText());
             
             String username = inputUsername.getText();
             String firstName = inputFirstName.getText();
@@ -74,7 +84,10 @@ public class AddEditEmployee extends javax.swing.JFrame {
             
             employee = new Employee(firstName, lastName, username, password, phone, email, 0);
             
-            return employee;
+            return new Triplet<>(employee, startDate, endDate);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
         }
         catch (Exception e) {
             System.out.println(e);
@@ -92,7 +105,7 @@ public class AddEditEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelAddEditEmployee = new javax.swing.JLabel();
         labelUsername = new javax.swing.JLabel();
         labelPassword = new javax.swing.JLabel();
         labelFirstName = new javax.swing.JLabel();
@@ -109,6 +122,11 @@ public class AddEditEmployee extends javax.swing.JFrame {
         inputEmail = new javax.swing.JTextField();
         buttonExit = new javax.swing.JButton();
         buttonAddEdit = new javax.swing.JButton();
+        labelContractDetails = new javax.swing.JLabel();
+        labelStartDate = new javax.swing.JLabel();
+        labelEndDate = new javax.swing.JLabel();
+        inputStartDate = new javax.swing.JTextField();
+        inputEndDate = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PublicSEC");
@@ -121,8 +139,8 @@ public class AddEditEmployee extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Add new employee");
+        labelAddEditEmployee.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labelAddEditEmployee.setText("Add new employee");
 
         labelUsername.setText("Username");
 
@@ -154,6 +172,15 @@ public class AddEditEmployee extends javax.swing.JFrame {
             }
         });
 
+        labelContractDetails.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        labelContractDetails.setText("Contract details");
+
+        labelStartDate.setText("Start Date");
+        labelStartDate.setToolTipText("");
+
+        labelEndDate.setText("End Date");
+        labelEndDate.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,34 +195,47 @@ public class AddEditEmployee extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelUsername)
-                            .addComponent(labelPassword)
-                            .addComponent(labelConfirmPassword)
-                            .addComponent(labelFirstName)
-                            .addComponent(labelLastName)
-                            .addComponent(labelPhone)
-                            .addComponent(labelEmail))
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(inputPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(inputLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(inputFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(inputUsername)
-                                .addComponent(inputPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                                .addComponent(inputConfirmPassword)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelUsername)
+                                    .addComponent(labelPassword)
+                                    .addComponent(labelConfirmPassword)
+                                    .addComponent(labelFirstName)
+                                    .addComponent(labelLastName)
+                                    .addComponent(labelPhone)
+                                    .addComponent(labelEmail))
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(inputPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(inputLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(inputFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(inputUsername)
+                                        .addComponent(inputPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                        .addComponent(inputConfirmPassword))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelContractDetails)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelStartDate)
+                                .addGap(95, 95, 95)
+                                .addComponent(inputStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelEndDate)
+                                .addGap(102, 102, 102)
+                                .addComponent(inputEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))))
                 .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAddEditEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(135, 135, 135))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelAddEditEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelUsername)
@@ -224,7 +264,17 @@ public class AddEditEmployee extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEmail)
                     .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(labelContractDetails)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelStartDate)
+                    .addComponent(inputStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEndDate)
+                    .addComponent(inputEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonAddEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,18 +342,23 @@ public class AddEditEmployee extends javax.swing.JFrame {
     private javax.swing.JButton buttonExit;
     private javax.swing.JPasswordField inputConfirmPassword;
     private javax.swing.JTextField inputEmail;
+    private javax.swing.JTextField inputEndDate;
     private javax.swing.JTextField inputFirstName;
     private javax.swing.JTextField inputLastName;
     private javax.swing.JPasswordField inputPassword;
     private javax.swing.JTextField inputPhone;
+    private javax.swing.JTextField inputStartDate;
     private javax.swing.JTextField inputUsername;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labelAddEditEmployee;
     private javax.swing.JLabel labelConfirmPassword;
+    private javax.swing.JLabel labelContractDetails;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelEndDate;
     private javax.swing.JLabel labelFirstName;
     private javax.swing.JLabel labelLastName;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelPhone;
+    private javax.swing.JLabel labelStartDate;
     private javax.swing.JLabel labelUsername;
     // End of variables declaration//GEN-END:variables
 }

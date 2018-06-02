@@ -1,9 +1,12 @@
 package Forms.Controllers;
 
 
+import Controllers.CompaniesController;
+import Controllers.EmployeeContractsController;
 import Controllers.EmployeesController;
 import Forms.AddEditEmployee;
 import Forms.EmployeesTable;
+import Models.Company;
 import Models.Employee;
 import Utils.Converters;
 import Utils.GlobalData;
@@ -11,10 +14,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Pair;
+import org.javatuples.Triplet;
 
 public class EmployeesTableController implements ActionListener {
     
@@ -78,23 +83,8 @@ public class EmployeesTableController implements ActionListener {
                     break;
 
                 case "Insert":
-                    Employee newEmployee = addEditEmployeeForm.getNewEmployee();
-                    if (newEmployee != null) {
-                        addEditEmployeeForm.setVisible(false);
-                        addEditEmployeeForm.dispose();
-                        toggleFocus();
-                        EmployeesController.registerEmployee(newEmployee.getFirstName(), 
-                                                            newEmployee.getLastName(),
-                                                            newEmployee.getUsername(), 
-                                                            newEmployee.getUserPassword(), 
-                                                            newEmployee.getPhone(), 
-                                                            newEmployee.getEmail());
-                        try {
-                            fillTable();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(EmployeesTableController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
+                    Triplet<Employee, Date, Date> newEmployeeTriplet = addEditEmployeeForm.getNewEmployee();
+                    tryInsertNewEmployee(newEmployeeTriplet);
                     break;
             }
         }
@@ -144,6 +134,33 @@ public class EmployeesTableController implements ActionListener {
           
         form.showPopulation(rows);
         
+    }
+    
+    public void tryInsertNewEmployee(Triplet<Employee, Date, Date> newEmployeeTriplet) {
+        if (newEmployeeTriplet != null) {
+            addEditEmployeeForm.setVisible(false);
+            addEditEmployeeForm.dispose();
+            toggleFocus();
+            Employee newEmployee = newEmployeeTriplet.getValue0();
+            int newEmployeeId = EmployeesController.registerEmployee(newEmployee.getFirstName(), 
+                                                                     newEmployee.getLastName(),
+                                                                     newEmployee.getUsername(), 
+                                                                     newEmployee.getUserPassword(), 
+                                                                     newEmployee.getPhone(), 
+                                                                     newEmployee.getEmail());
+            if (newEmployeeId != -1) {
+                Company company = CompaniesController.getByUsername(GlobalData.getCompanyName());
+                EmployeeContractsController.createEmployeeContract(company.getId(), 
+                                                                   newEmployeeId, 
+                                                                   new java.sql.Date(newEmployeeTriplet.getValue1().getTime()), 
+                                                                   new java.sql.Date(newEmployeeTriplet.getValue2().getTime()));
+            }
+            try {
+                fillTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(EmployeesTableController.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }
     }
 }
     
