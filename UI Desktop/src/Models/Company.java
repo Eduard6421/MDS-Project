@@ -11,9 +11,8 @@ import java.util.Date;
  *
  * @author t-edpoes
  */
-public class Company extends Entity{
-    
-    
+public class Company extends Entity {
+
     String Name;
     String Username;
     String Password;
@@ -22,24 +21,23 @@ public class Company extends Entity{
     String Description;
 
     public Company(int Id, String name, Date contractStartDate, Date contractEndDate, String Description, String Username, String Password) {
-     this.Id = Id;
-     this.Name = name;
-     this.ContractStartDate = contractStartDate;
-     this.ContractEndDate   = contractEndDate;
-     this.Description = Description;
-     this.Username = Username;
-     this.Password = Password;
+        this.Name = name;
+        this.ContractStartDate = contractStartDate;
+        this.ContractEndDate = contractEndDate;
+        this.Description = Description;
+        this.Username = Username;
+        this.Password = Password;
     }
-    
+
     public Company(String name, Date contractStartDate, Date contractEndDate, String Description, String Username, String Password) {
-     this.Name = name;
-     this.ContractStartDate = contractStartDate;
-     this.ContractEndDate   = contractEndDate;
-     this.Description = Description;
-     this.Username = Username;
-     this.Password = Password;
-    } 
-      
+        this.Name = name;
+        this.ContractStartDate = contractStartDate;
+        this.ContractEndDate = contractEndDate;
+        this.Description = Description;
+        this.Username = Username;
+        this.Password = Password;
+    }
+
     public String getName() {
         return Name;
     }
@@ -87,6 +85,5 @@ public class Company extends Entity{
     public void setPassword(String Password) {
         this.Password = Password;
     }
-      
-    
+
 }
