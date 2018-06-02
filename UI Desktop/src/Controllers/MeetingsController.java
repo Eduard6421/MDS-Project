@@ -14,7 +14,14 @@ import java.util.List;
 public class MeetingsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
-
+    /**
+     * Creates a new meeting in the data base with the given parameters.
+     * @param clientId
+     * @param companyId
+     * @param date
+     * @param Description
+     * @return 
+     */
     public static boolean createMeeting(int clientId, int companyId,
             Date date, String Description) {
 
@@ -41,7 +48,11 @@ public class MeetingsController {
 
         return false;
     }
-
+    /**
+     * Creates a list of all the meetings of a given company name.
+     * @param companyName
+     * @return 
+     */
     public static List<Meeting> getAll(String companyName) {
         Meeting meeting = null;
 
@@ -79,7 +90,11 @@ public class MeetingsController {
 
         return meetings;
     }
-
+    /**
+     * Creates a list of all the open meetings of a given company name.
+     * @param companyName
+     * @return 
+     */
     public static List<Meeting> getAllOpen(String companyName) {
 
         Meeting meeting = null;
@@ -119,7 +134,11 @@ public class MeetingsController {
         return meetings;
 
     }
-
+    /**
+     * Creates a list of all the closed meetings of a given company name.
+     * @param companyName
+     * @return 
+     */
     public static List<Meeting> getAllClosed(String companyName) {
         Meeting meeting = null;
 
@@ -157,7 +176,12 @@ public class MeetingsController {
 
         return meetings;
     }
-
+    /**
+     * Creates a list of all the open meetings of a given company name and employee id.
+     * @param companyName
+     * @param employeeId
+     * @return 
+     */
     public static List<Meeting> getAllByEmployee(String companyName, int employeeId) {
         Meeting meeting = null;
 
@@ -192,7 +216,12 @@ public class MeetingsController {
 
         return meetings;
     }
-
+    /**
+     * Creates a list of all the open meetings of a given company name and employee id.
+     * @param companyName
+     * @param employeeId
+     * @return 
+     */
     public static List<Meeting> getAllOpenedByEmployee(String companyName, int employeeId) {
         Meeting meeting = null;
 
@@ -227,7 +256,12 @@ public class MeetingsController {
 
         return meetings;
     }
-
+    /**
+     * Creates a list of all the closed meetings of a given company name and employee id.
+     * @param companyName
+     * @param employeeId
+     * @return 
+     */
     public static List<Meeting> getAllClosedByEmployee(String companyName, int employeeId) {
         Meeting meeting = null;
 
@@ -262,7 +296,12 @@ public class MeetingsController {
 
         return meetings;
     }
-
+    /**
+     * Creates a list of all the open meetings of a given company name and client id.
+     * @param companyName
+     * @param clientId
+     * @return 
+     */
     public static List<Meeting> getAllOpenByClient(String companyName, int clientId) {
         Meeting meeting = null;
 
@@ -298,7 +337,12 @@ public class MeetingsController {
         return meetings;
 
     }
-
+    /**
+     * Creates a list of all the closed meetings of a given company name and client id.
+     * @param companyName
+     * @param clientId
+     * @return 
+     */
     public static List<Meeting> getAllClosedByClient(String companyName, int clientId) {
         Meeting meeting = null;
 
@@ -333,7 +377,11 @@ public class MeetingsController {
 
         return meetings;
     }
-
+    /**
+     * Selects a meeting by its id.
+     * @param id
+     * @return 
+     */
     public static Meeting getByMeeting(int id) {
 
         Meeting meeting = null;
@@ -366,7 +414,12 @@ public class MeetingsController {
 
         return meeting;
     }
-
+    /**
+     * Selects a meeting by the company name and client id.
+     * @param companyName
+     * @param clientId
+     * @return 
+     */
     public static Meeting getByClientId(String companyName, int clientId) {
         Meeting meeting = null;
 
@@ -398,7 +451,11 @@ public class MeetingsController {
 
         return meeting;
     }
-
+    /**
+     * Returns the percent of unassigned requests of a company.
+     * @param companyName
+     * @return 
+     */
     public static Double getPercentUnassigned(String companyName) {
 
         Double answer = 0d;
@@ -425,7 +482,11 @@ public class MeetingsController {
         return answer;
 
     }
-
+    /**
+     * It reopens an existing closed meeting.
+     * @param meetingId
+     * @return 
+     */
     public static boolean reopenMeeting(int meetingId) {
         try {
 
@@ -448,7 +509,11 @@ public class MeetingsController {
         return false;
 
     }
-
+    /**
+     * It closes an existing meeting.
+     * @param meetingId
+     * @return 
+     */
     public static boolean closeMeeting(int meetingId) {
 
         try {
@@ -472,7 +537,12 @@ public class MeetingsController {
         return false;
 
     }
-
+    /**
+     * Updates the meeting by setting the feedback.
+     * @param meetingId
+     * @param feedback
+     * @return 
+     */
     public static boolean giveFeedback(int meetingId, Double feedback) {
 
         try {
