@@ -7,7 +7,12 @@ import Models.EmployeeContract;
 import Utils.GlobalData;
 
 public class LoginController {
-
+    /**
+     * Connects a client to the database with the given username and password.
+     * @param username
+     * @param password
+     * @return 
+     */
     public static boolean connectClient(String username, String password) {
 
         Client client = ClientsController.getByAccount(username, password);
@@ -21,7 +26,12 @@ public class LoginController {
 
         return false;
     }
-
+    /**
+     * Connects an employee to the database with the given username and password.
+     * @param username
+     * @param password
+     * @return 
+     */
     public static boolean connectEmployee(String username, String password) {
 
         Employee employee = EmployeesController.getByAccount(username, password);
@@ -38,7 +48,12 @@ public class LoginController {
 
         return false;
     }
-
+    /**
+     * Connects a company to the database with the given username and password.
+     * @param username
+     * @param password
+     * @return 
+     */
     public static boolean connectCompany(String username, String password) {
 
         Company company = CompaniesController.getByAccount(username, password);

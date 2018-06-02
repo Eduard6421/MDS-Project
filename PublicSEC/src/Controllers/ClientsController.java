@@ -14,7 +14,17 @@ import javafx.util.Pair;
 public class ClientsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
-
+    /**
+     * Creates a new client with the given parameters.
+     * @param firstName
+     * @param lastName
+     * @param userName
+     * @param userPassword
+     * @param address
+     * @param phone
+     * @param email
+     * @return 
+     */
     public static boolean registerClient(String firstName, String lastName, String userName, String userPassword, String address, String phone, String email) {
 
         try {
@@ -42,7 +52,12 @@ public class ClientsController {
 
         }
     }
-
+    /**
+     * Selects a client by its username and password.
+     * @param username
+     * @param password
+     * @return 
+     */
     public static Client getByAccount(String username, String password) {
         Client client = null;
 
@@ -75,7 +90,11 @@ public class ClientsController {
 
         return client;
     }
-
+    /**
+     * Selects a client by its username.
+     * @param username
+     * @return 
+     */
     public static Client getByUsername(String username) {
 
         Client client = null;
@@ -108,7 +127,11 @@ public class ClientsController {
 
         return client;
     }
-
+    /**
+     * Selects a client by its id.
+     * @param id
+     * @return 
+     */
     public static Client getById(int id) {
 
         Client client = null;
@@ -141,7 +164,12 @@ public class ClientsController {
 
         return client;
     }
-
+    /**
+     * It changes the password of a client with a new one.
+     * @param oldPassword
+     * @param newPassword
+     * @return 
+     */
     public static boolean changePassword(String oldPassword, String newPassword) {
         String username = GlobalData.getUsername();
 
@@ -163,7 +191,12 @@ public class ClientsController {
 
         return false;
     }
-
+    /**
+     * Updates the email and the phone number of a client.
+     * @param email
+     * @param phoneNumber
+     * @return 
+     */
     public static boolean updateData(String email, String phoneNumber) {
         String username = GlobalData.getUsername();
 
@@ -186,7 +219,12 @@ public class ClientsController {
         return false;
 
     }
-
+    /**
+     * Creates a list of clients of a given company name.
+     * @param companyName
+     * @return
+     * @throws SQLException 
+     */
     public static List<Client> getAll(String companyName) throws SQLException {
 
         Client client = null;
@@ -225,7 +263,12 @@ public class ClientsController {
 
         return clients;
     }
-
+    /**
+     * Creates a list of pairs containing the id and the username of the clients.
+     * @param companyName
+     * @return
+     * @throws SQLException 
+     */
     public static List<Pair<Integer, String>> getAllOnlyGeneralData(String companyName) throws SQLException {
 
         Pair<Integer, String> client = null;

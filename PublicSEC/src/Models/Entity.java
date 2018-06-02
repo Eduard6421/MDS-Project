@@ -10,15 +10,23 @@ package Models;
  * @author t-edpoes
  */
 public class Entity {
-    
+
     protected int Id;
-    
-    public void setId(int id){
+
+    Entity() {
+        this.Id = 0;
+    }
+
+    Entity(int Id) {
+        this.Id = Id;
+    }
+
+    public void setId(int id) {
         Id = id;
     }
-    
-    public int getId(){
+
+    public int getId() {
         return Id;
     }
-    
+
 }

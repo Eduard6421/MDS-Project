@@ -13,7 +13,12 @@ import java.util.List;
 public class ReportsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
-
+    /**
+     * Creates a new report with the given parameters.
+     * @param idMeeting
+     * @param description
+     * @return 
+     */
     public static boolean createReport(int idMeeting, String description) {
 
         try {
@@ -36,7 +41,11 @@ public class ReportsController {
 
         return false;
     }
-
+    /**
+     * Creates a list of all the reports.
+     * @return
+     * @throws SQLException 
+     */
     public static List<Report> getAll() throws SQLException {
 
         Report report = null;
@@ -68,7 +77,11 @@ public class ReportsController {
 
         return reports;
     }
-
+    /**
+     * Selects a report by its id.
+     * @param id
+     * @return 
+     */
     public static Report getById(int id) {
 
         Report report = null;
@@ -93,7 +106,11 @@ public class ReportsController {
 
         return report;
     }
-
+    /**
+     * Selects a report by the id of the meeting.
+     * @param id
+     * @return 
+     */
     public static Report getByMeeting(int id) {
 
         Report report = null;

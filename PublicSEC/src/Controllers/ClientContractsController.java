@@ -13,7 +13,14 @@ import java.util.List;
 public class ClientContractsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
-
+    /**
+     * Creates a new client contract with the given parameters.
+     * @param idClient
+     * @param idCompany
+     * @param startDate
+     * @param endDate
+     * @return 
+     */
     public static boolean createClientContract(int idClient, int idCompany, Date startDate, Date endDate) {
 
         try {
@@ -41,7 +48,11 @@ public class ClientContractsController {
 
         return false;
     }
-
+    /**
+     * Selects a client contract with the given id from the database.
+     * @param id
+     * @return 
+     */
     public static ClientContract getById(int id) {
 
         ClientContract clientContract = null;
@@ -71,8 +82,12 @@ public class ClientContractsController {
 
         return clientContract;
     }
-
-    public static List<ClientContract> getByClient(int id) {
+    /**
+     * Creates a list of client contracts of a given client id.
+     * @param idClient
+     * @return 
+     */
+    public static List<ClientContract> getByClient(int idClient) {
 
         ClientContract clientContract = null;
 
@@ -80,10 +95,10 @@ public class ClientContractsController {
 
         try {
 
-            String query = "SELECT  * from client_contracts WHERE Id = (?)";
+            String query = "SELECT  * from client_contracts WHERE IdClient = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setInt(1, idClient);
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -104,7 +119,11 @@ public class ClientContractsController {
 
         return contractList;
     }
-
+    /**
+     * Creates a list of client contracts of a given company id.
+     * @param id
+     * @return 
+     */
     public static List<ClientContract> getByCompany(int id) {
 
         ClientContract clientContract = null;

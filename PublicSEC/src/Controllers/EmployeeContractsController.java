@@ -13,7 +13,14 @@ import java.util.Date;
 public class EmployeeContractsController {
 
     private static final Connection conn = MySQLConnector.getConnection();
-
+    /**
+     * Creates a new employee contract with the given parameters.
+     * @param companyId
+     * @param employeeId
+     * @param startDate
+     * @param endDate
+     * @return 
+     */
     public static boolean createEmployeeContract(int companyId, int employeeId, java.sql.Date startDate, java.sql.Date endDate) {
 
         java.sql.Date SQLStartDate = new java.sql.Date(startDate.getTime());
@@ -41,7 +48,11 @@ public class EmployeeContractsController {
 
         return false;
     }
-
+    /**
+     * Selects an employee contract by its id.
+     * @param id
+     * @return 
+     */
     public static EmployeeContract getById(int id) {
 
         EmployeeContract employeeContract = null;
@@ -70,7 +81,11 @@ public class EmployeeContractsController {
 
         return employeeContract;
     }
-
+    /**
+     * Selects an employee contract by the employee's id.
+     * @param id
+     * @return 
+     */
     public static EmployeeContract getByEmployee(int id) {
 
         EmployeeContract employeeContract = null;
@@ -99,7 +114,11 @@ public class EmployeeContractsController {
 
         return employeeContract;
     }
-
+    /**
+     * Creates a list of employee contracts of a given company id.
+     * @param id
+     * @return 
+     */
     public static List<EmployeeContract> getByCompany(int id) {
 
         EmployeeContract employeeContract = null;
@@ -131,7 +150,12 @@ public class EmployeeContractsController {
 
         return employeeContracts;
     }
-    
+    /**
+     * Updates the startDate and endDate of an employee contract given by the id.
+     * @param id
+     * @param startDate
+     * @param endDate 
+     */
     public static void updateContractById(int id, Date startDate, Date endDate) {
         try {
             String query = "UPDATE employee_contracts SET StartDate = (?), EndDate = (?) WHERE Id = (?)";

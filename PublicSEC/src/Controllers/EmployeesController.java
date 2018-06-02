@@ -15,7 +15,16 @@ import javafx.util.Pair;
 public class EmployeesController {
 
     private static final Connection conn = MySQLConnector.getConnection();
-
+    /**
+     * Creates a new employee with the given parameters.
+     * @param firstName
+     * @param lastName
+     * @param userName
+     * @param password
+     * @param phone
+     * @param email
+     * @return 
+     */
     public static int registerEmployee(String firstName, String lastName, String userName, String password, String phone, String email) {
 
         try {
@@ -50,7 +59,11 @@ public class EmployeesController {
         } 
     }
     
-
+    /**
+     * Returns the average rating of an employee.
+     * @param employeeId
+     * @return 
+     */
     public static Double getAverageRating(int employeeId) {
 
         Double rating = 0d;
@@ -74,7 +87,12 @@ public class EmployeesController {
         return rating;
     }
     
-    
+    /**
+     * Selects an employee by its username and password.
+     * @param username
+     * @param password
+     * @return 
+     */
     public static Employee getByAccount(String username, String password) {
 
         Employee employee = null;
@@ -108,8 +126,12 @@ public class EmployeesController {
 
         return employee;
     }
-
-    public static Employee getByUsername(String username) {
+    /**
+     * Selects an employee by its username.
+     * @param username
+     * @return 
+     */
+      public static Employee getByUsername(String username) {
 
         Employee employee = null;
 
@@ -141,7 +163,9 @@ public class EmployeesController {
 
         return employee;
     }
-
+    /**
+     * Selects an employee by its id.
+    */
     public static Employee getById(int id) {
 
         Employee employee = null;
@@ -174,7 +198,9 @@ public class EmployeesController {
 
         return employee;
     }
-
+    /**
+     * It changes the password of an employee with a new one.
+    */
     public static boolean changePassword(String oldPassword, String newPassword) {
         String username = GlobalData.getUsername();
 
@@ -196,7 +222,11 @@ public class EmployeesController {
 
         return false;
     }
-
+    /**Updates the email and the phone number of an employee.
+     * @param email
+     * @param phoneNumber
+     * @return 
+     */
     public static boolean updateData(String email, String phoneNumber) {
         String username = GlobalData.getUsername();
 
@@ -218,7 +248,12 @@ public class EmployeesController {
 
         return false;
     }
-
+    /**
+     * Creates a list of employees of a given company name.
+     * @param companyName
+     * @return
+     * @throws SQLException 
+     */
     public static List<Employee> getAll(String companyName) throws SQLException {
 
         Employee employee = null;
@@ -258,7 +293,11 @@ public class EmployeesController {
 
         return employees;
     }
-
+    /**
+     * Creates a list of pairs containing the id and the username of all the employees.
+     * @return
+     * @throws SQLException 
+     */
     public static List<Pair<Integer, String>> getAllOnlyGeneralData() throws SQLException {
 
         Pair<Integer, String> employee = null;
