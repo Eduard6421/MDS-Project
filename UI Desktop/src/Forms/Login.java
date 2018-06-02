@@ -33,7 +33,8 @@ public class Login extends javax.swing.JFrame {
     public Login(LoginController controller) {
 
         initComponents();
-        buttonConnectEmployee.addActionListener(controller);
+        buttonConnectEmployee.setVisible(false);
+        //buttonConnectEmployee.addActionListener(controller);
         buttonConnectCompany.addActionListener(controller);
         buttonExit.addActionListener(controller);
 
@@ -139,7 +140,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(177, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -151,13 +152,14 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(inputPassword)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(buttonConnectEmployee)
-                        .addGap(57, 57, 57)
-                        .addComponent(buttonConnectCompany)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonConnectCompany)
+                        .addGap(60, 60, 60)))
                 .addGap(184, 184, 184))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(303, 303, 303)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(267, 267, 267))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
