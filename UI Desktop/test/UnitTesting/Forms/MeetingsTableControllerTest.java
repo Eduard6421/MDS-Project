@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Forms.Controllers;
+package UnitTesting.Forms;
 
+import Forms.Controllers.MeetingsTableController;
 import java.awt.event.ActionEvent;
 import org.junit.After;
 import org.junit.AfterClass;

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package UnitTesting.Controllers;
 
+import Controllers.ClientsController;
 import Models.Client;
 import java.util.List;
 import javafx.util.Pair;

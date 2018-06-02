@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package UnitTesting.Controllers;
 
+import Controllers.LoginController;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

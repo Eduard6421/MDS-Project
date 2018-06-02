@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Forms.Controllers;
+package UnitTesting.Forms;
 
+import Forms.Controllers.EmployeesTableController;
 import java.awt.event.ActionEvent;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,9 +18,9 @@ import static org.junit.Assert.*;
  *
  * @author Eduard
  */
-public class ClientsTableControllerTest {
+public class EmployeesTableControllerTest {
     
-    public ClientsTableControllerTest() {
+    public EmployeesTableControllerTest() {
     }
     
     @BeforeClass
@@ -39,73 +40,73 @@ public class ClientsTableControllerTest {
     }
 
     /**
-     * Test of actionPerformed method, of class ClientsTableController.
+     * Test of actionPerformed method, of class EmployeesTableController.
      */
     @Test
     public void testActionPerformed() {
         System.out.println("actionPerformed");
         ActionEvent evt = null;
-        ClientsTableController instance = new ClientsTableController();
+        EmployeesTableController instance = new EmployeesTableController();
         instance.actionPerformed(evt);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of toggleFocus method, of class ClientsTableController.
+     * Test of toggleFocus method, of class EmployeesTableController.
      */
     @Test
     public void testToggleFocus() {
         System.out.println("toggleFocus");
-        ClientsTableController instance = new ClientsTableController();
+        EmployeesTableController instance = new EmployeesTableController();
         instance.toggleFocus();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of setWindowInvisible method, of class ClientsTableController.
+     * Test of setWindowInvisible method, of class EmployeesTableController.
      */
     @Test
     public void testSetWindowInvisible() {
         System.out.println("setWindowInvisible");
-        ClientsTableController instance = new ClientsTableController();
+        EmployeesTableController instance = new EmployeesTableController();
         instance.setWindowInvisible();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
+    }   
 
     /**
-     * Test of setWindowVisible method, of class ClientsTableController.
+     * Test of setWindowVisible method, of class EmployeesTableController.
      */
     @Test
     public void testSetWindowVisible() {
         System.out.println("setWindowVisible");
-        ClientsTableController instance = new ClientsTableController();
+        EmployeesTableController instance = new EmployeesTableController();
         instance.setWindowVisible();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of closeWindow method, of class ClientsTableController.
+     * Test of closeWindow method, of class EmployeesTableController.
      */
     @Test
     public void testCloseWindow() {
         System.out.println("closeWindow");
-        ClientsTableController instance = new ClientsTableController();
+        EmployeesTableController instance = new EmployeesTableController();
         instance.closeWindow();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of fillTable method, of class ClientsTableController.
+     * Test of fillTable method, of class EmployeesTableController.
      */
     @Test
     public void testFillTable() throws Exception {
         System.out.println("fillTable");
-        ClientsTableController instance = new ClientsTableController();
+        EmployeesTableController instance = new EmployeesTableController();
         instance.fillTable();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

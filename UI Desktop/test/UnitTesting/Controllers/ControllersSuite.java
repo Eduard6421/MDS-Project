@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controllers;
+package UnitTesting.Controllers;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author Eduard
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({Controllers.MeetingsControllerTest.class, Controllers.ClientContractsControllerTest.class, Controllers.EmployeesControllerTest.class, Controllers.ReportsControllerTest.class, Controllers.CompaniesControllerTest.class, Controllers.LoginControllerTest.class, Controllers.EmployeeContractsControllerTest.class, Controllers.ClientsControllerTest.class})
+@Suite.SuiteClasses({UnitTesting.Controllers.MeetingsControllerTest.class, UnitTesting.Controllers.ClientContractsControllerTest.class, UnitTesting.Controllers.EmployeesControllerTest.class, UnitTesting.Controllers.ReportsControllerTest.class, UnitTesting.Controllers.CompaniesControllerTest.class, UnitTesting.Controllers.LoginControllerTest.class, UnitTesting.Controllers.EmployeeContractsControllerTest.class, UnitTesting.Controllers.ClientsControllerTest.class})
 public class ControllersSuite {
 
     @BeforeClass

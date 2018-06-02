@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Forms.Controllers;
+package UnitTesting.Forms;
 
+import Forms.Controllers.CompanyMenuController;
 import java.awt.event.ActionEvent;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,9 +18,9 @@ import static org.junit.Assert.*;
  *
  * @author Eduard
  */
-public class LoginControllerTest {
+public class CompanyMenuControllerTest {
     
-    public LoginControllerTest() {
+    public CompanyMenuControllerTest() {
     }
     
     @BeforeClass
@@ -39,74 +40,62 @@ public class LoginControllerTest {
     }
 
     /**
-     * Test of actionPerformed method, of class LoginController.
+     * Test of actionPerformed method, of class CompanyMenuController.
      */
     @Test
     public void testActionPerformed() {
         System.out.println("actionPerformed");
         ActionEvent evt = null;
-        LoginController instance = new LoginController();
+        CompanyMenuController instance = new CompanyMenuController();
         instance.actionPerformed(evt);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of setWindowInvisible method, of class LoginController.
-     */
-    @Test
-    public void testSetWindowInvisible() {
-        System.out.println("setWindowInvisible");
-        LoginController instance = new LoginController();
-        instance.setWindowInvisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setWindowVisible method, of class LoginController.
-     */
-    @Test
-    public void testSetWindowVisible() {
-        System.out.println("setWindowVisible");
-        LoginController instance = new LoginController();
-        instance.setWindowVisible();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of closeWindow method, of class LoginController.
-     */
-    @Test
-    public void testCloseWindow() {
-        System.out.println("closeWindow");
-        LoginController instance = new LoginController();
-        instance.closeWindow();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toggleFocus method, of class LoginController.
+     * Test of toggleFocus method, of class CompanyMenuController.
      */
     @Test
     public void testToggleFocus() {
         System.out.println("toggleFocus");
-        LoginController instance = new LoginController();
+        CompanyMenuController instance = new CompanyMenuController();
         instance.toggleFocus();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of displayConnectionError method, of class LoginController.
+     * Test of setWindowInvisible method, of class CompanyMenuController.
      */
     @Test
-    public void testDisplayConnectionError() {
-        System.out.println("displayConnectionError");
-        LoginController instance = new LoginController();
-        instance.displayConnectionError();
+    public void testSetWindowInvisible() {
+        System.out.println("setWindowInvisible");
+        CompanyMenuController instance = new CompanyMenuController();
+        instance.setWindowInvisible();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setWindowVisible method, of class CompanyMenuController.
+     */
+    @Test
+    public void testSetWindowVisible() {
+        System.out.println("setWindowVisible");
+        CompanyMenuController instance = new CompanyMenuController();
+        instance.setWindowVisible();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of closeWindow method, of class CompanyMenuController.
+     */
+    @Test
+    public void testCloseWindow() {
+        System.out.println("closeWindow");
+        CompanyMenuController instance = new CompanyMenuController();
+        instance.closeWindow();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
