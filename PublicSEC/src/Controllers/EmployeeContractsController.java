@@ -131,5 +131,22 @@ public class EmployeeContractsController {
 
         return employeeContracts;
     }
+    
+    public static void updateContractById(int id, Date startDate, Date endDate) {
+        try {
+            String query = "UPDATE employee_contracts SET StartDate = (?), EndDate = (?) WHERE Id = (?)";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, id);
+            statement.setDate(2, new java.sql.Date(startDate.getTime()));
+            statement.setDate(3, new java.sql.Date(endDate.getTime()));
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
 }
