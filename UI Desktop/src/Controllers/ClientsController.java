@@ -194,7 +194,7 @@ public class ClientsController {
         List<Client> clients = new ArrayList<>();
 
         try {
-            String query = "select clt.FirstName,clt.LastName,clt.Username,clt.Password,clt.Address,clt.Phone,clt.Email from clients as clt  join client_contracts as cc on clt.id = cc.idClient join companies as cpy on cpy.id = cc.idCompany where cpy.name = (?);";
+            String query = "select clt.Id,clt.FirstName,clt.LastName,clt.Username,clt.Password,clt.Address,clt.Phone,clt.Email from clients as clt  join client_contracts as cc on clt.id = cc.idClient join companies as cpy on cpy.id = cc.idCompany where cpy.name = (?);";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
@@ -205,6 +205,7 @@ public class ClientsController {
             while (result.next()) {
 
                 client = new Client(
+                        result.getInt("Id"),
                         result.getString("FirstName"),
                         result.getString("LastName"),
                         result.getString("Username"),
