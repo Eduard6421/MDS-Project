@@ -12,7 +12,12 @@ import java.util.List;
 public class CompaniesController {
 
     private static final Connection conn = MySQLConnector.getConnection();
-
+    /**
+     * Selects a company by its username and password.
+     * @param username
+     * @param password
+     * @return 
+     */
     public static Company getByAccount(String username, String password) {
 
         Company company = null;
@@ -46,7 +51,11 @@ public class CompaniesController {
 
         return company;
     }
-
+    /**
+     * Selects a company by its username.
+     * @param username
+     * @return 
+     */
     public static Company getByUsername(String username) {
 
         Company company = null;
@@ -78,7 +87,11 @@ public class CompaniesController {
 
         return company;
     }
-
+    /**
+     * Selects a company by its name.
+     * @param name
+     * @return 
+     */
     public static Company getByName(String name) {
         Company company = null;
 
@@ -110,7 +123,11 @@ public class CompaniesController {
         return company;
 
     }
-
+    /**
+     * Selects a company by its id.
+     * @param id
+     * @return 
+     */
     public static Company getById(int id) {
 
         Company company = null;
@@ -142,7 +159,10 @@ public class CompaniesController {
 
         return company;
     }
-
+    /**
+     * Creates a list of all the companies.
+     * @return 
+     */
     public static List<Company> getAll() {
 
         Company company = null;
