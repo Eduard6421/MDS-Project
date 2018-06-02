@@ -127,7 +127,18 @@ public class ClientsControllerTest {
 
         assertEquals(expResult, trueResult);
     }
+     /**
+     * Test of getById method, of class ClientsController.
+     */
+    @Test
+    public void testGetAll() throws Exception {
+        System.out.println("getAll");
+        String companyname="Firma1";
+        List <Client> result = ClientsController.getAll(companyname);
+        boolean expResult = true;
+        boolean trueResult = result.size() == 2;
 
-
+        assertEquals(expResult, trueResult);
+    }
 
 }
