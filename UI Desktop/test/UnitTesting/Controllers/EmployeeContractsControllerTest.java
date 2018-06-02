@@ -80,7 +80,7 @@ public class EmployeeContractsControllerTest {
 
         EmployeeContract result = EmployeeContractsController.getByEmployee(id);
         boolean expResult = true;
-        boolean trueResult = (result != null);
+        boolean trueResult = (result == null);
 
         assertEquals(expResult, trueResult);
     }
@@ -99,14 +99,27 @@ public class EmployeeContractsControllerTest {
     @Test
     public void testGetByEmployee3() {
         System.out.println("getByEmployee");
-        int id = 100;
+        int id = -1;
 
         EmployeeContract result = EmployeeContractsController.getByEmployee(id);
         boolean expResult = true;
-        boolean trueResult = (result != null);
+        boolean trueResult = (result == null);
 
         assertEquals(expResult, trueResult);
     }
+    
+    @Test
+    public void testGetByEmployee4() {
+        System.out.println("getByEmployee");
+        int id = 10000;
+
+        EmployeeContract result = EmployeeContractsController.getByEmployee(id);
+        boolean expResult = true;
+        boolean trueResult = (result == null);
+
+        assertEquals(expResult, trueResult);
+    }
+    
     /**
      * Test of getByCompany method, of class EmployeeContractsController.
      */
@@ -129,7 +142,7 @@ public class EmployeeContractsControllerTest {
         
         List<EmployeeContract> result = EmployeeContractsController.getByCompany(id);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = (result.size() == 2);
 
         assertEquals(expResult, trueResult);
     }
