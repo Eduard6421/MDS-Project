@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UnitTesting.Controllers;
+package IntegrationTesting.Controllers;
 
 import Controllers.ClientContractsController;
 import Models.ClientContract;
@@ -72,7 +72,7 @@ public class ClientContractsControllerTest {
         System.out.println("getByClient");
         int id = 0;
         List<ClientContract> result = ClientContractsController.getByClient(id);
-        boolean trueResult = result.isEmpty();
+        boolean trueResult = result.size() == 0;
         boolean expResult = true;
         assertEquals(expResult, trueResult);
     }

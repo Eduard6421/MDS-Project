@@ -80,7 +80,7 @@ public class ClientContractsController {
 
         try {
 
-            String query = "SELECT  * from client_contracts WHERE IdClient = (?)";
+            String query = "SELECT  * from client_contracts WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, id);
