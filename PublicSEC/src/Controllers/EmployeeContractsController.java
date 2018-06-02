@@ -150,25 +150,20 @@ public class EmployeeContractsController {
 
         return employeeContracts;
     }
-<<<<<<< HEAD
     /**
      * Updates the startDate and endDate of an employee contract given by the id.
      * @param id
      * @param startDate
      * @param endDate 
      */
-    public static void updateContractById(int id, Date startDate, Date endDate) {
-=======
-    
     public static boolean updateContractById(int id, Date startDate, Date endDate) {
->>>>>>> eae33c5546fb8d883f502f550649fc617f63f23b
         try {
             String query = "UPDATE employee_contracts SET StartDate = (?), EndDate = (?) WHERE Id = (?)";
 
             PreparedStatement statement = conn.prepareStatement(query);
-            statement.setInt(1, id);
-            statement.setDate(2, new java.sql.Date(startDate.getTime()));
-            statement.setDate(3, new java.sql.Date(endDate.getTime()));
+            statement.setInt(3, id);
+            statement.setDate(1, new java.sql.Date(startDate.getTime()));
+            statement.setDate(2, new java.sql.Date(endDate.getTime()));
             
             int result = statement.executeUpdate();
 
