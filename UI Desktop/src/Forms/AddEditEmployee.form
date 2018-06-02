@@ -45,24 +45,42 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelUsername" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelConfirmPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelPhone" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="inputEmail" pref="177" max="32767" attributes="0"/>
-                          <Component id="inputPhone" pref="177" max="32767" attributes="0"/>
-                          <Component id="inputLastName" pref="177" max="32767" attributes="0"/>
-                          <Component id="inputFirstName" pref="177" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="inputUsername" max="32767" attributes="0"/>
-                              <Component id="inputPassword" pref="177" max="32767" attributes="0"/>
-                              <Component id="inputConfirmPassword" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelUsername" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelConfirmPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelPhone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="inputEmail" pref="177" max="32767" attributes="0"/>
+                                  <Component id="inputPhone" pref="177" max="32767" attributes="0"/>
+                                  <Component id="inputLastName" pref="177" max="32767" attributes="0"/>
+                                  <Component id="inputFirstName" pref="177" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="inputUsername" max="32767" attributes="0"/>
+                                      <Component id="inputPassword" pref="177" max="32767" attributes="0"/>
+                                      <Component id="inputConfirmPassword" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="labelContractDetails" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="labelStartDate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                              <Component id="inputStartDate" pref="177" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="labelEndDate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="inputEndDate" pref="177" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -71,7 +89,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="214" max="-2" attributes="0"/>
+              <Component id="labelAddEditEmployee" min="-2" pref="214" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -80,7 +98,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="labelAddEditEmployee" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelUsername" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,7 +134,19 @@
                   <Component id="labelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="inputEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="164" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="labelContractDetails" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelEndDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputEndDate" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="buttonExit" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="buttonAddEdit" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
@@ -127,7 +157,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="labelAddEditEmployee">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
@@ -202,6 +232,30 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddEditActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelContractDetails">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="16" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Contract details"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelStartDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Date"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelEndDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="End Date"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputStartDate">
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputEndDate">
     </Component>
   </SubComponents>
 </Form>

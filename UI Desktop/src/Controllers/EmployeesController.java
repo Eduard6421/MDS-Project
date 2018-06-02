@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
@@ -15,7 +16,7 @@ public class EmployeesController {
 
     private static final Connection conn = MySQLConnector.getConnection();
 
-    public static boolean registerEmployee(String firstName, String lastName, String userName, String password, String phone, String email) {
+    public static int registerEmployee(String firstName, String lastName, String userName, String password, String phone, String email) {
 
         try {
             String query = "INSERT INTO employees (Username, Password, FirstName, LastName, Phone, Email, Rating) values (?,?,?,?,?,?,?)";
@@ -23,7 +24,7 @@ public class EmployeesController {
             
             float rating = 0;
 
-            PreparedStatement statement = conn.prepareStatement(query);
+            PreparedStatement statement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, userName);
             statement.setString(2, password);
             statement.setString(3, firstName);
@@ -33,18 +34,22 @@ public class EmployeesController {
             statement.setDouble(7, rating);
 
             int result = statement.executeUpdate();
+            ResultSet rs = statement.getGeneratedKeys();
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
 
             statement.close();
 
-            return result > 0;
+            return -1;
 
         } catch (SQLException e) {
             System.out.println(e);
-            return false;
-        } finally {
-            return false;
-        }
+            return -1;
+        } 
     }
+    
 
     public static Double getAverageRating(int employeeId) {
 
