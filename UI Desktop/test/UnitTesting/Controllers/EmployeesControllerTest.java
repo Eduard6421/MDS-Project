@@ -50,7 +50,7 @@ public class EmployeesControllerTest {
      * Test of getAverageRating method, of class EmployeesController.
      */
     @Test
-    public void testGetAverageRating1(int employeeId)
+    public void testGetAverageRating1()
     {
         System.out.println("getAverageRating");
         int id = 0;
@@ -60,20 +60,20 @@ public class EmployeesControllerTest {
         
     }
     @Test
-    public void testGetAverageRating2(int employeeId)
+    public void testGetAverageRating2()
     {
         System.out.println("getAverageRating");
-        int id = 100;
-        Double expResult = 0d;
+        int id = 1;
+        Double expResult = 5d;
         Double result = EmployeesController.getAverageRating(id);
         assertEquals(expResult, result);
         
     }
      @Test
-    public void testGetAverageRating3(int employeeId)
+    public void testGetAverageRating3()
     {
         System.out.println("getAverageRating");
-        int id = 100;
+        int id = 2;
         boolean expResult = true;
         boolean result = (EmployeesController.getAverageRating(id) != 0d);
         assertEquals(expResult, result);
@@ -132,9 +132,9 @@ public class EmployeesControllerTest {
         String username = "employee1";
         boolean expResult = true;
         Employee result = EmployeesController.getByUsername(username);
-        boolean trueResult = result     != null;
+        boolean trueResult = result!= null;
         
-        assertEquals(expResult, result);
+        assertEquals(expResult, trueResult);
     }
        @Test
     public void testGetByUsername3() {
@@ -194,9 +194,10 @@ public class EmployeesControllerTest {
     public void testGetAll() throws Exception {
         System.out.println("getAll");
 
+        GlobalData.setCompanyName("Firma1");
         List<Employee> result = EmployeesController.getAll(GlobalData.getCompanyName());
-        boolean trueResult = result.size() != 0;
-        boolean expResult = true;
+        boolean trueResult = result.isEmpty();
+        boolean expResult = false;
         assertEquals(expResult, trueResult);
 
     }

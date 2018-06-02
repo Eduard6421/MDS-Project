@@ -56,7 +56,7 @@ public class EmployeesController {
         Double rating = 0d;
 
         try {
-            String query = "select avg(feedback) from meetings where idEmployee = ? ";
+            String query = "select avg(feedback) as feedback from meetings where idEmployee = ? ";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
