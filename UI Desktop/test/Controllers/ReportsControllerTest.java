@@ -79,12 +79,22 @@ public class ReportsControllerTest {
      * Test of getByMeeting method, of class ReportsController.
      */
     @Test
-    public void testGetByMeeting() {
+    public void testGetByMeeting1() {
         System.out.println("getByMeeting");
         int id = 0;
         Report expResult = null;
         Report result = ReportsController.getByMeeting(id);
         assertEquals(expResult, result);
+    }
+    @Test
+    public void testGetByMeeting2() {
+        System.out.println("getByMeeting");
+        int id = 1;
+        boolean expResult = true;
+        Report result = ReportsController.getByMeeting(id);
+        boolean trueResult = result == null;
+
+        assertEquals(expResult, trueResult);
     }
 
 }
