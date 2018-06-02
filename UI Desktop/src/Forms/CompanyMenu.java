@@ -83,6 +83,11 @@ public class CompanyMenu extends javax.swing.JFrame {
         buttonEmployees.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         buttonEmployees.setText("Employees");
         buttonEmployees.setAlignmentX(0.5F);
+        buttonEmployees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEmployeesActionPerformed(evt);
+            }
+        });
 
         buttonClients.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         buttonClients.setText("Clients");
@@ -156,6 +161,10 @@ public class CompanyMenu extends javax.swing.JFrame {
     private void buttonLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogOutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonLogOutActionPerformed
+
+    private void buttonEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEmployeesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEmployeesActionPerformed
 
     /**
      * @param args the command line arguments

@@ -205,7 +205,6 @@ public class ClientsController {
             while (result.next()) {
 
                 client = new Client(
-                        result.getInt("Id"),
                         result.getString("FirstName"),
                         result.getString("LastName"),
                         result.getString("Username"),

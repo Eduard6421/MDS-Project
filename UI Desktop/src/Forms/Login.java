@@ -139,17 +139,13 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(177, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labelPassword)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 8, Short.MAX_VALUE)
-                                .addComponent(labelUsername)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelPassword)
+                            .addComponent(labelUsername))
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(inputUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                             .addComponent(inputPassword)))
@@ -203,10 +199,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonConnectEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectEmployeeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonConnectEmployeeActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
@@ -219,6 +211,10 @@ public class Login extends javax.swing.JFrame {
     private void buttonConnectCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectCompanyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonConnectCompanyActionPerformed
+
+    private void buttonConnectEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectEmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonConnectEmployeeActionPerformed
 
     public JTextField getjTextField1() {
         return inputUsername;

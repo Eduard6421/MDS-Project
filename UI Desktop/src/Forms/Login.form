@@ -88,20 +88,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="177" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="labelPassword" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
-                                  <Component id="labelUsername" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="labelPassword" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelUsername" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="inputUsername" pref="247" max="32767" attributes="0"/>
                               <Component id="inputPassword" max="32767" attributes="0"/>
