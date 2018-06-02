@@ -62,9 +62,8 @@ public class EmployeeContractsController {
                         result.getDate("StartDate"),
                         result.getDate("EndDate"));
 
-                statement.close();
             }
-            
+            statement.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -75,7 +74,6 @@ public class EmployeeContractsController {
     public static EmployeeContract getByEmployee(int id) {
 
         EmployeeContract employeeContract = null;
-
 
         try {
             String query = "SELECT  * FROM employee_contracts WHERE IdEmployee = (?)";
@@ -93,17 +91,15 @@ public class EmployeeContractsController {
                         result.getDate("StartDate"),
                         result.getDate("EndDate"));
 
-
-                statement.close();
             }
-
+            statement.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
 
         return employeeContract;
     }
-    
+
     public static List<EmployeeContract> getByCompany(int id) {
 
         EmployeeContract employeeContract = null;
@@ -135,5 +131,5 @@ public class EmployeeContractsController {
 
         return employeeContracts;
     }
-    
+
 }

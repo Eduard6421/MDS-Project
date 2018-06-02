@@ -7,6 +7,7 @@ package IntegrationTesting.Forms;
 
 import Forms.Controllers.ClientsTableController;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,7 +44,7 @@ public class ClientsTableControllerTest {
      * Test of actionPerformed method, of class ClientsTableController.
      */
     @Test
-    public void testActionPerformed() {
+    public void testActionPerformed() throws SQLException {
         System.out.println("actionPerformed");
         ActionEvent evt = null;
         ClientsTableController instance = new ClientsTableController();
@@ -56,7 +57,7 @@ public class ClientsTableControllerTest {
      * Test of toggleFocus method, of class ClientsTableController.
      */
     @Test
-    public void testToggleFocus() {
+    public void testToggleFocus() throws SQLException {
         System.out.println("toggleFocus");
         ClientsTableController instance = new ClientsTableController();
         instance.toggleFocus();
@@ -68,7 +69,7 @@ public class ClientsTableControllerTest {
      * Test of setWindowInvisible method, of class ClientsTableController.
      */
     @Test
-    public void testSetWindowInvisible() {
+    public void testSetWindowInvisible() throws SQLException {
         System.out.println("setWindowInvisible");
         ClientsTableController instance = new ClientsTableController();
         instance.setWindowInvisible();
@@ -80,7 +81,7 @@ public class ClientsTableControllerTest {
      * Test of setWindowVisible method, of class ClientsTableController.
      */
     @Test
-    public void testSetWindowVisible() {
+    public void testSetWindowVisible() throws SQLException {
         System.out.println("setWindowVisible");
         ClientsTableController instance = new ClientsTableController();
         instance.setWindowVisible();
@@ -92,7 +93,7 @@ public class ClientsTableControllerTest {
      * Test of closeWindow method, of class ClientsTableController.
      */
     @Test
-    public void testCloseWindow() {
+    public void testCloseWindow() throws SQLException{
         System.out.println("closeWindow");
         ClientsTableController instance = new ClientsTableController();
         instance.closeWindow();

@@ -130,7 +130,7 @@ public class EmployeeContractsControllerTest {
         
         List<EmployeeContract> result = EmployeeContractsController.getByCompany(id);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 0);
+        boolean trueResult = (result.isEmpty());
 
         assertEquals(expResult, trueResult);
     }
@@ -142,7 +142,7 @@ public class EmployeeContractsControllerTest {
         
         List<EmployeeContract> result = EmployeeContractsController.getByCompany(id);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 2);
+        boolean trueResult = (result.size() == 1);
 
         assertEquals(expResult, trueResult);
     }
@@ -153,7 +153,7 @@ public class EmployeeContractsControllerTest {
 
         List<EmployeeContract> result = EmployeeContractsController.getByCompany(id);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 0);
+        boolean trueResult = (result.isEmpty());
 
         assertEquals(expResult, trueResult);
     }
