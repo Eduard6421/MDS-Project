@@ -19,6 +19,7 @@ import java.util.List;
 import Controllers.MeetingsController;
 import Controllers.ReportsController;
 import Models.Meeting;
+import Utils.GlobalData;
 
 public class WriteReportActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
@@ -81,7 +82,7 @@ public class WriteReportActivity extends AppCompatActivity implements PopupMenu.
 
     private void populateSpinnerValues() {
 
-        List<Meeting> meetings = MeetingsController.getAll();
+        List<Meeting> meetings = MeetingsController.getAllByClient(GlobalData.getUserId());
         ArrayList<Integer> meetingIDs = new ArrayList<>();
 
         for (Meeting meet : meetings) {
@@ -116,7 +117,7 @@ public class WriteReportActivity extends AppCompatActivity implements PopupMenu.
 
             case R.id.employee_overflow_meetings:
 
-                intent = new Intent(this, MeetingsActivity.class);
+                intent = new Intent(this, ClientsMeetingsActivity.class);
                 startActivity(intent);
 
                 return true;

@@ -9,45 +9,46 @@ import java.util.Date;
 
 public class Meeting extends Entity {
 
-    private int IdClient;
-    private int IdEmployee;
-    private int IdCompany;
+    private Integer IdClient;
+    private Integer IdEmployee;
+    private Integer IdCompany;
     private Date MeetingDate;
-    private double Feedback;
+    private Float Rating;
     private String Description;
     private boolean IsOpen;
 
-    public Meeting(int idClient, int idCompany, int idEmployee, Date meetingDate, double feedback, String description, boolean isOpen) {
+    public Meeting(Integer id, Integer idClient, Integer idCompany, Integer idEmployee, Date meetingDate, Float rating, String description, boolean isOpen) {
+        super(id);
         this.IdClient = idClient;
         this.IdCompany = idCompany;
         this.IdEmployee = idEmployee;
         this.MeetingDate = meetingDate;
-        this.Feedback = feedback;
+        this.Rating = rating;
         this.Description = description;
         this.IsOpen = isOpen;
     }
 
-    public int getIdCompany() {
+    public Integer getIdCompany() {
         return IdCompany;
     }
 
-    public void setIdCompany(int IdCompany) {
+    public void setIdCompany(Integer IdCompany) {
         this.IdCompany = IdCompany;
     }
 
-    public int getIdClient() {
+    public Integer getIdClient() {
         return IdClient;
     }
 
-    public void setIdClient(int idClient) {
+    public void setIdClient(Integer idClient) {
         this.IdClient = idClient;
     }
 
-    public int getIdEmployee() {
+    public Integer getIdEmployee() {
         return IdEmployee;
     }
 
-    public void setIdEmployee(int idEmployee) {
+    public void setIdEmployee(Integer idEmployee) {
         this.IdEmployee = idEmployee;
     }
 
@@ -59,12 +60,12 @@ public class Meeting extends Entity {
         this.MeetingDate = meetingDate;
     }
 
-    public double getFeedback() {
-        return Feedback;
+    public Float getRating() {
+        return Rating;
     }
 
-    public void setFeedback(double feedback) {
-        this.Feedback = feedback;
+    public void setRating(Float rating) {
+        this.Rating = rating;
     }
 
     public String getDescription() {

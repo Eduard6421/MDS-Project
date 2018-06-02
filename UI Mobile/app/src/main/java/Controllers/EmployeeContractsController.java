@@ -101,9 +101,9 @@ public class EmployeeContractsController {
                             result.getInt("IdCompany"),
                             result.getDate("StartDate"),
                             result.getDate("EndDate"));
-
-                    statement.close();
                 }
+
+                statement.close();
 
             } catch (SQLException e) {
                 System.out.println(e);
@@ -155,8 +155,9 @@ public class EmployeeContractsController {
 
                     employeeContracts.add(employeeContract);
 
-                    statement.close();
                 }
+
+                statement.close();
 
             } catch (SQLException e) {
                 System.out.println(e);

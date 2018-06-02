@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClientsMeetingsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/meetings_appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/meetings_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageView
+                android:id="@+id/meetings_menu_bars_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu_bars" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_meetings" />
+
+    <LinearLayout
+        android:id="@+id/meetings_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <TableLayout
+            android:id="@+id/meetings_table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_weight="80"
+            android:stretchColumns="*">
+
+            <TableRow
+                android:id="@+id/meetings_table_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="Date"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="Company"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="Employee"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="Reason"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+
+
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/meetings_history_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_weight="10"
+            android:layout_marginLeft="200dp"
+            android:text="history" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

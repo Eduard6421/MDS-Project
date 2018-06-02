@@ -221,7 +221,7 @@ public class CompaniesController {
     }
 
     /************************************************************************************/
-    private static List<Company> getAll() {
+    public static List<Company> getAll() {
 
         try {
             AsyncGetAll asyncGetAll = new AsyncGetAll();

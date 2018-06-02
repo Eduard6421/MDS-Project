@@ -3,11 +3,8 @@ package com.cristidospra.publicsec;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -18,9 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
-import Controllers.ClientsController;
 import Controllers.EmployeesController;
-import Models.Client;
 import Models.Employee;
 import Utils.GlobalData;
 
@@ -184,7 +179,7 @@ public class EmployeeAccountActivity extends AppCompatActivity implements PopupM
 
             case R.id.employee_overflow_meetings:
 
-                intent = new Intent(this, MeetingsActivity.class);
+                intent = new Intent(this, ClientsMeetingsActivity.class);
                 startActivity(intent);
 
                 return true;

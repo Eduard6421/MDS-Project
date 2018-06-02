@@ -2865,7 +2865,7 @@ nn-nn-07 - Version 3.1.15
 	  only). Enable by using "rewriteBatchedStatements=true" in your JDBC URL.
 
 	- Fixed BUG#17898 - registerOutParameter not working when some
-	  parameters pre-populated. Still waiting for feedback from JDBC experts
+	  parameters pre-populated. Still waiting for rating from JDBC experts
 	  group to determine what correct parameter count from getMetaData()
 	  should be, however.
 

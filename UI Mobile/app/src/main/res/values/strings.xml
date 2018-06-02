@@ -9,4 +9,5 @@
     <string name="title_activity_write_report_activty">WriteReportActivty</string>
     <string name="title_activity_google_maps">Map</string>
     <string name="title_activity_user_create_account">UserCreateAccountActivity</string>
+    <string name="title_activity_employees_meetings">EmployeesMeetingsActivity</string>
 </resources>

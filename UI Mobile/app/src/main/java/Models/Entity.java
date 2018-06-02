@@ -11,13 +11,21 @@ package Models;
  */
 public class Entity {
     
-    protected int Id;
-    
-    public void setId(int id){
+    protected Integer Id;
+
+    public Entity() {
+
+    }
+
+    public Entity(Integer id) {
+        this.Id = id;
+    }
+
+    public void setId(Integer id){
         Id = id;
     }
     
-    public int getId(){
+    public Integer getId(){
         return Id;
     }
     

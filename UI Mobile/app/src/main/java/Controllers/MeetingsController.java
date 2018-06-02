@@ -63,11 +63,11 @@ public class MeetingsController {
     }
 
     /***********************************************************************************************/
-    public static Boolean giveFeedback(Integer meetingId, Double feedback) {
+    public static Boolean giveFeedback(Integer meetingId, Float feedback, String description) {
 
         try {
             AsyncGiveFeedback asyncGiveFeedback = new AsyncGiveFeedback();
-            return asyncGiveFeedback.execute(meetingId, feedback).get();
+            return asyncGiveFeedback.execute(meetingId, feedback, description).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -83,11 +83,12 @@ public class MeetingsController {
         protected Boolean doInBackground(Object... objects) {
 
             try {
-                String query = "update meetings set Feedback = ? where Id = ?";
+                String query = "update meetings set Feedback = ?, Description = ? where Id = ?";
 
                 PreparedStatement statement = conn.prepareStatement(query);
-                statement.setInt(1, (Integer)objects[0]);
-                statement.setDouble(2, (Double)objects[1]);
+                statement.setFloat(1, (Float)objects[1]);
+                statement.setString(2, (String)objects[2]);
+                statement.setInt(3, (Integer)objects[0]);
 
                 int result = statement.executeUpdate();
 
@@ -103,13 +104,12 @@ public class MeetingsController {
             return false;
         }
     }
-
     /**********************************************************************************************/
-    public static List<Meeting> getAll(String companyName) {
+    public static List<Meeting> getAllByClient(Integer clientId) {
 
         try {
-            AsyncGetAll asyncGetAll = new AsyncGetAll();
-            return asyncGetAll.execute(companyName).get();
+            AsyncGetAllByClient asyncGetAllByClient = new AsyncGetAllByClient();
+            return asyncGetAllByClient.execute(clientId).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -119,7 +119,65 @@ public class MeetingsController {
         return null;
     }
 
-    public static class AsyncGetAll extends AsyncTask<String, String, List<Meeting>> {
+    public static class AsyncGetAllByClient extends AsyncTask<Integer, String, List<Meeting>> {
+
+        @Override
+        protected List<Meeting> doInBackground(Integer... integers) {
+            Meeting meeting = null;
+
+            List<Meeting> meetings = new ArrayList<>();
+
+            try {
+                String query = "select * from meetings where IdClient = (?);";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+
+                statement.setInt(1, integers[0]);
+
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    meeting = new Meeting(
+                            result.getInt("Id"),
+                            result.getInt("IdClient"),
+                            result.getInt("IdCompany"),
+                            result.getInt("IdEmployee"),
+                            result.getDate("Date"),
+                            result.getFloat("Feedback"),
+                            result.getString("Description"),
+                            result.getBoolean("IsOpen"));
+
+                    meetings.add(meeting);
+
+                }
+
+                statement.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error " + e);
+            }
+
+            return meetings;
+        }
+    }
+
+    /**********************************************************************************************/
+    public static List<Meeting> getAllByCompany(String companyName) {
+
+        try {
+            AsyncGetAllByCompany asyncGetAllByCompany = new AsyncGetAllByCompany();
+            return asyncGetAllByCompany.execute(companyName).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static class AsyncGetAllByCompany extends AsyncTask<String, String, List<Meeting>> {
 
         @Override
         protected List<Meeting> doInBackground(String... strings) {
@@ -139,11 +197,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -183,7 +242,7 @@ public class MeetingsController {
             Meeting meeting = null;
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdClient = (?) and IdCompany = (select Id from companies where username = (?)";
+                String query = "SELECT * FROM meetings WHERE IdClient = (?) and IdCompany = (select Id from companies where username = (?))";
 
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, Integer.parseInt(strings[1]));
@@ -193,11 +252,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -237,7 +297,7 @@ public class MeetingsController {
             List<Meeting> meetings = new ArrayList<>();
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdEmployee = (?) and IdCompany = (select Id from companies where username = (?)";
+                String query = "SELECT * FROM meetings WHERE IdEmployee = (?) and IdCompany = (select Id from companies where username = (?))";
 
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, Integer.parseInt(strings[1]));
@@ -248,11 +308,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -293,7 +354,7 @@ public class MeetingsController {
             List<Meeting> meetings = new ArrayList<>();
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?)";
+                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?))";
 
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, Integer.parseInt(strings[1]));
@@ -303,11 +364,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -347,7 +409,7 @@ public class MeetingsController {
             List<Meeting> meetings = new ArrayList<>();
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?)";
+                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?))";
 
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, Integer.parseInt(strings[1]));
@@ -357,11 +419,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -401,7 +464,7 @@ public class MeetingsController {
 
             try {
 
-                String query = "SELECT * FROM meetings WHERE IdMeeting = (?)";
+                String query = "SELECT * FROM meetings WHERE Id = (?)";
 
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setInt(1, integers[0]);
@@ -410,11 +473,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -465,11 +529,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -524,11 +589,12 @@ public class MeetingsController {
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -547,11 +613,11 @@ public class MeetingsController {
     }
 
     /**********************************************************************************************/
-    public static List<Meeting> getAllOpenedByClient(String companyName, Integer clientId) {
+    public static List<Meeting> getAllOpenedByClient(Integer clientId) {
 
         try {
             AsyncGetAllOpenedByClient asyncGetAllOpenedByClient = new AsyncGetAllOpenedByClient();
-            return asyncGetAllOpenedByClient.execute(companyName, clientId.toString()).get();
+            return asyncGetAllOpenedByClient.execute(clientId).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -561,30 +627,30 @@ public class MeetingsController {
         return null;
     }
 
-    public static class AsyncGetAllOpenedByClient extends AsyncTask<String, String, List<Meeting>> {
+    public static class AsyncGetAllOpenedByClient extends AsyncTask<Integer, String, List<Meeting>> {
 
         @Override
-        protected List<Meeting> doInBackground(String... strings) {
+        protected List<Meeting> doInBackground(Integer... integers) {
             Meeting meeting = null;
 
             List<Meeting> meetings = new ArrayList<>();
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?)";
+                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 1";
 
                 PreparedStatement statement = conn.prepareStatement(query);
-                statement.setInt(1, Integer.parseInt(strings[1]));
-                statement.setString(2, strings[0]);
+                statement.setInt(1, integers[0]);
                 ResultSet result = statement.executeQuery();
 
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 
@@ -601,11 +667,11 @@ public class MeetingsController {
     }
 
     /************************************************************************************************/
-    public static List<Meeting> getAllClosedByClient(String companyName, Integer clientId) {
+    public static List<Meeting> getAllClosedByClient(Integer clientId) {
 
         try {
             AsyncGetAllClosedByClient asyncGetAllClosedByClient = new AsyncGetAllClosedByClient();
-            return asyncGetAllClosedByClient.execute(companyName, clientId.toString()).get();
+            return asyncGetAllClosedByClient.execute(clientId).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -615,31 +681,31 @@ public class MeetingsController {
         return null;
     }
 
-    public static class AsyncGetAllClosedByClient extends AsyncTask<String, String, List<Meeting>> {
+    public static class AsyncGetAllClosedByClient extends AsyncTask<Integer, String, List<Meeting>> {
 
         @Override
-        protected List<Meeting> doInBackground(String... strings) {
+        protected List<Meeting> doInBackground(Integer... integers) {
 
             Meeting meeting = null;
 
             List<Meeting> meetings = new ArrayList<>();
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?)";
+                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 0";
 
                 PreparedStatement statement = conn.prepareStatement(query);
-                statement.setInt(1, Integer.parseInt(strings[1]));
-                statement.setString(2, strings[0]);
+                statement.setInt(1, integers[0]);
                 ResultSet result = statement.executeQuery();
 
                 while (result.next()) {
 
                     meeting = new Meeting(
+                            result.getInt("Id"),
                             result.getInt("IdClient"),
                             result.getInt("IdCompany"),
                             result.getInt("IdEmployee"),
                             result.getDate("Date"),
-                            result.getDouble("Feedback"),
+                            result.getFloat("Feedback"),
                             result.getString("Description"),
                             result.getBoolean("IsOpen"));
 

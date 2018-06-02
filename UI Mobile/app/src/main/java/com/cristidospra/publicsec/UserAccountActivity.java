@@ -30,6 +30,7 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
 
     private ImageView menuBarsImageView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +86,8 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
         Client myClient = ClientsController.getByUsername(GlobalData.getUsername());
 
         usernameEditText.setClickable(false);
-        //usernameEditText.setActivated(false);
+        usernameEditText.setActivated(false);
+        usernameEditText.setFocusable(false);
 
         usernameEditText.setText(myClient.getUsername());
         emailEditText.setText(myClient.getEmail());
@@ -101,6 +103,8 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
         String currentAddress = String.valueOf(addressEditText.getText());
 
         ClientsController.updateData(currentEmail, currentPhoneNr, currentAddress);
+
+        createAlertDialog("Data succesfully updated.");
     }
 
     private void changePassword() {
@@ -115,6 +119,9 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
         final EditText confirmPasswordEditText = dialogView.findViewById(R.id.confirm_password_edit_text);
 
         Button changePasswordButton = dialogView.findViewById(R.id.change_password_button);
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
 
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,17 +146,15 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
                             createAlertDialog("Inserted password not correct.");
                         } else {
                             createAlertDialog("Password succesfully changed.");
+                            alertDialog.dismiss();
                         }
                     }
                 }
             }
         });
-
-        AlertDialog alertDialog = dialogBuilder.create();
-        alertDialog.show();
     }
 
-    private void createAlertDialog(String errorMessage) {
+    private AlertDialog createAlertDialog(String errorMessage) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(errorMessage)
                 .setCancelable(false)
@@ -160,6 +165,8 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
                 });
         AlertDialog alert = builder.create();
         alert.show();
+
+        return alert;
     }
 
     @Override
@@ -177,7 +184,7 @@ public class UserAccountActivity extends AppCompatActivity implements PopupMenu.
 
             case R.id.user_overflow_meetings:
 
-                intent = new Intent(this, MeetingsActivity.class);
+                intent = new Intent(this, ClientsMeetingsActivity.class);
                 startActivity(intent);
 
                 return true;
