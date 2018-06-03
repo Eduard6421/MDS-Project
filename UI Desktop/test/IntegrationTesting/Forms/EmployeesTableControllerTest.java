@@ -56,7 +56,7 @@ public class EmployeesTableControllerTest {
         GlobalData.setCompanyName(companyName);
         EmployeesTableController controller = new EmployeesTableController();   
         boolean expResult = true;
-        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getjTable2().getModel();
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTableEmployees().getModel();
         Vector aux1 =(Vector) tm.getDataVector().get(0);
         Vector aux2 = new Vector();
         aux2.addAll(aux1);
@@ -80,7 +80,7 @@ public class EmployeesTableControllerTest {
         GlobalData.setCompanyName(companyName);
         EmployeesTableController controller = new EmployeesTableController();   
         boolean expResult = true;
-        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getjTable2().getModel();
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTableEmployees().getModel();
         Vector aux1 =(Vector) tm.getDataVector().get(0);
         Vector aux2 = new Vector();
         aux2.addAll(aux1);
@@ -105,7 +105,7 @@ public class EmployeesTableControllerTest {
         GlobalData.setCompanyName(companyName);
         EmployeesTableController controller = new EmployeesTableController();   
         boolean expResult = true;
-        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getjTable2().getModel();
+        DefaultTableModel tm = (DefaultTableModel)controller.getForm().getTableEmployees().getModel();
      
         boolean trueResult = tm.getDataVector().size() == 0;
              

@@ -93,7 +93,7 @@ public class MeetingsControllerTest {
         boolean expResult = true;
         GlobalData.setCompanyName("Firma1");
         List<Meeting> result = MeetingsController.getAllClosed(GlobalData.getCompanyName());
-        boolean trueResult = (result.size() != 0);
+        boolean trueResult = (result.size() == 0);
         assertEquals(expResult, trueResult);
 
         // TODO review the generated test code and remove the default call to fail.
@@ -160,7 +160,7 @@ public class MeetingsControllerTest {
     public void testGetAllByEmployee() {
         System.out.println("getAllByEmployee");
         int employeeId = 1;
-        boolean expResult = false;
+        boolean expResult = true;
         List<Meeting> result = MeetingsController.getAllByEmployee(GlobalData.getCompanyName(), employeeId);
 
         boolean trueResult = (result.size() == 1);
@@ -223,7 +223,7 @@ public class MeetingsControllerTest {
         GlobalData.setCompanyName("Firma1");
         List<Meeting> result = MeetingsController.getAllClosedByEmployee(GlobalData.getCompanyName(), employeeId);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = (result.size() == 0);
 
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
@@ -311,7 +311,7 @@ public class MeetingsControllerTest {
         int clientId = 1;
         List<Meeting> result = MeetingsController.getAllClosedByClient(GlobalData.getCompanyName(), clientId);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = (result.size() == 0);
 
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
@@ -383,7 +383,7 @@ public class MeetingsControllerTest {
         GlobalData.setCompanyName("Firma1");
         Double result = MeetingsController.getPercentUnassigned(GlobalData.getCompanyName());
         boolean expResult = true;
-        boolean trueResult = result.equals(50.0d);
+        boolean trueResult = result.equals(100.0d);
 
         assertEquals(expResult, trueResult);
     }
