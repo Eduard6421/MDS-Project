@@ -20,7 +20,8 @@ public class Company extends Entity {
     Date ContractEndDate;
     String Description;
 
-    public Company(int Id, String name, Date contractStartDate, Date contractEndDate, String Description, String Username, String Password) {
+    public Company(int id, String name, Date contractStartDate, Date contractEndDate, String Description, String Username, String Password) {
+        this.Id = id;
         this.Name = name;
         this.ContractStartDate = contractStartDate;
         this.ContractEndDate = contractEndDate;
