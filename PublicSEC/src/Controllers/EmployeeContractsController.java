@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.EmployeeContract;
+import Utils.GlobalData;
 import Utils.MySQLConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -171,6 +172,28 @@ public class EmployeeContractsController {
             
             return result > 0;
 
+        } catch (SQLException e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public static boolean deleteContractByEmployee(int employeeId, String companyName) {
+        try {
+            String query = "DELETE FROM employee_contracts " +
+                           "WHERE IdEmployee = (?) AND " + 
+                           "IdCompany = (SELECT c.Id FROM companies c WHERE c.Username = (?))";
+            
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            statement.setString(2, companyName);
+            
+            int result = statement.executeUpdate();
+
+            statement.close();
+            
+            return result > 0;
+            
         } catch (SQLException e) {
             System.out.println(e);
             return false;

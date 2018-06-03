@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Pair;
+import javax.swing.JOptionPane;
 import org.javatuples.Triplet;
 
 public class EmployeesTableController implements ActionListener {
@@ -98,6 +99,11 @@ public class EmployeesTableController implements ActionListener {
                         employeeDetailsForm.setVisible(true);
                         toggleFocus();
                     }                  
+                    break;
+                case "Delete Contract":
+                    if (getSelectedEmployeeGeneralData() != null) {
+                        tryDeleteEmployeeContract();
+                    }
                     break;
             }
         }
@@ -252,6 +258,24 @@ public class EmployeesTableController implements ActionListener {
         EmployeeContract contract = EmployeeContractsController.getByEmployee(employeeId);
         
         return contract;
+    }
+    
+    public void tryDeleteEmployeeContract() {
+        Pair<Integer, String> employee = getSelectedEmployeeGeneralData();
+        
+        int confirmationDialog = JOptionPane
+                                    .showConfirmDialog(null, 
+                                                       "Do you want to delete the contract with employee " + employee.getValue() + "?",
+                                                       "Delete contract", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmationDialog == JOptionPane.YES_OPTION) {
+            EmployeeContractsController.deleteContractByEmployee(employee.getKey(), GlobalData.getCompanyName());
+            try {
+                fillTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(EmployeesTableController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
     

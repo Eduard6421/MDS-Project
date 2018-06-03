@@ -33,7 +33,7 @@ public class EmployeesTable extends javax.swing.JFrame {
         buttonNewEmployee.addActionListener(controller);
         buttonEditContract.addActionListener(controller);
         buttonViewDetails.addActionListener(controller);
-        buttonDelete.addActionListener(controller);
+        buttonDeleteContract.addActionListener(controller);
     }
     
     public void showPopulation(List<Object[]> rows) {
@@ -75,7 +75,7 @@ public class EmployeesTable extends javax.swing.JFrame {
         buttonEditContract = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         buttonViewDetails = new javax.swing.JButton();
-        buttonDelete = new javax.swing.JButton();
+        buttonDeleteContract = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,8 +137,8 @@ public class EmployeesTable extends javax.swing.JFrame {
         buttonViewDetails.setText("View Details");
         buttonViewDetails.setToolTipText("");
 
-        buttonDelete.setText("Delete");
-        buttonDelete.setToolTipText("");
+        buttonDeleteContract.setText("Delete Contract");
+        buttonDeleteContract.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,7 +160,7 @@ public class EmployeesTable extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonViewDetails)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonDelete)))
+                        .addComponent(buttonDeleteContract)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,7 +177,7 @@ public class EmployeesTable extends javax.swing.JFrame {
                     .addComponent(buttonEditContract)
                     .addComponent(jLabel2)
                     .addComponent(buttonViewDetails)
-                    .addComponent(buttonDelete))
+                    .addComponent(buttonDeleteContract))
                 .addGap(35, 35, 35))
         );
 
@@ -225,7 +225,7 @@ public class EmployeesTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton buttonDelete;
+    private javax.swing.JButton buttonDeleteContract;
     private javax.swing.JButton buttonEditContract;
     private javax.swing.JButton buttonNewEmployee;
     private javax.swing.JButton buttonViewDetails;
