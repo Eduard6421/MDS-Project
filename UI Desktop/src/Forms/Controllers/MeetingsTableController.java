@@ -21,7 +21,7 @@ public class MeetingsTableController implements ActionListener {
     private MeetingsTable form;
     
     private boolean focus = true;
-    
+    int a;
     private EmployeeMenuController parentController;
     
     private List<Pair<Integer, String>> employees;
@@ -36,6 +36,7 @@ public class MeetingsTableController implements ActionListener {
         
         populateClientsList();
         populateEmployeesList();
+
         
         fillTable(tableType);
     }

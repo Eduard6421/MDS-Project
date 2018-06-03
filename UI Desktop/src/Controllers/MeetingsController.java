@@ -268,7 +268,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM meetings WHERE IdEmployee = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?) )";
+            String query = "SELECT * FROM meetings WHERE IdEmployee = ? AND IsOpen = 0 AND IdCompany = (select Id from companies where username = ? )";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, employeeId);
