@@ -31,8 +31,7 @@ public class CompanyMenu extends javax.swing.JFrame {
         initComponents();
         buttonLogOut.addActionListener(controller);
         buttonEmployees.addActionListener(controller);
-        buttonClients.addActionListener(controller);
-        buttonRequests.addActionListener(controller);
+        buttonMeetings.addActionListener(controller);
     }
 
     /**
@@ -47,8 +46,7 @@ public class CompanyMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         buttonEmployees = new javax.swing.JButton();
-        buttonClients = new javax.swing.JButton();
-        buttonRequests = new javax.swing.JButton();
+        buttonMeetings = new javax.swing.JButton();
         buttonLogOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,13 +87,10 @@ public class CompanyMenu extends javax.swing.JFrame {
             }
         });
 
-        buttonClients.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        buttonClients.setText("Clients");
-        buttonClients.setAlignmentX(0.5F);
-
-        buttonRequests.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        buttonRequests.setText("Requests");
-        buttonRequests.setAlignmentX(0.5F);
+        buttonMeetings.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        buttonMeetings.setText("Meetings");
+        buttonMeetings.setToolTipText("");
+        buttonMeetings.setAlignmentX(0.5F);
 
         buttonLogOut.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         buttonLogOut.setText("Log out");
@@ -114,11 +109,10 @@ public class CompanyMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(239, 239, 239)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(buttonRequests, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                     .addComponent(buttonEmployees, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonClients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonMeetings, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                     .addComponent(buttonLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,10 +120,8 @@ public class CompanyMenu extends javax.swing.JFrame {
                 .addGap(120, 120, 120)
                 .addComponent(buttonEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonClients, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonRequests, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addComponent(buttonMeetings, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
                 .addComponent(buttonLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -204,10 +196,9 @@ public class CompanyMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonClients;
     private javax.swing.JButton buttonEmployees;
     private javax.swing.JButton buttonLogOut;
-    private javax.swing.JButton buttonRequests;
+    private javax.swing.JButton buttonMeetings;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

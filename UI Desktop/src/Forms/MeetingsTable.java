@@ -27,12 +27,10 @@ public class MeetingsTable extends javax.swing.JFrame {
         initComponents();
     }
     
-    public MeetingsTable(MeetingsTableController controller, String tableType) {
+    public MeetingsTable(MeetingsTableController controller) {
 
         initComponents();
-        buttonBack.addActionListener(controller);
-        labelMeetingsType.setText(tableType);
-        
+        buttonBack.addActionListener(controller);     
     }
     
     public void showPopulation(List<Object[]> rows) {
@@ -66,7 +64,6 @@ public class MeetingsTable extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         buttonBack = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         labelMeetingsType = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,16 +120,6 @@ public class MeetingsTable extends javax.swing.JFrame {
         });
         jPanel1.add(buttonBack);
 
-        jButton5.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        jButton5.setText("Exit");
-        jButton5.setAlignmentX(0.5F);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton5);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -186,17 +173,7 @@ public class MeetingsTable extends javax.swing.JFrame {
 
     private void buttonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBackActionPerformed
         // TODO add your handling code here:
-        form.setVisible(false);
-        form.dispose();
-        Clients.form.setLocationRelativeTo(null);
-        Clients.form.setVisible(true);
     }//GEN-LAST:event_buttonBackActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        WindowEvent closingEvent = new WindowEvent(form, WindowEvent.WINDOW_CLOSING);
-        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closingEvent);
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -247,7 +224,6 @@ public class MeetingsTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

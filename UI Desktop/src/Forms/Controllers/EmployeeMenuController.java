@@ -36,13 +36,13 @@ public class EmployeeMenuController implements ActionListener {
         if (focus) {
             switch (command) {
                 case "View all meetings":
-                    MeetingsTableController meetingsTableController = new MeetingsTableController(this, command);
+                    //MeetingsTableController meetingsTableController = new MeetingsTableController(this, command);
                     break;
                 case "View closed meetings":
-                    meetingsTableController = new MeetingsTableController(this, command);
+                    //meetingsTableController = new MeetingsTableController(this, command);
                     break;
                 case "View opened meetings":
-                    meetingsTableController = new MeetingsTableController(this, command);
+                    //meetingsTableController = new MeetingsTableController(this, command);
                     break;
                 case "Log out":
                     form.setVisible(false);

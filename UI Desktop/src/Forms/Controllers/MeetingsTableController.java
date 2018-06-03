@@ -22,7 +22,7 @@ public class MeetingsTableController implements ActionListener {
     
     private boolean focus = true;
     int a;
-    private EmployeeMenuController parentController;
+    private CompanyMenuController parentController;
     
     private List<Pair<Integer, String>> employees;
     private List<Pair<Integer, String>> clients;
@@ -31,32 +31,32 @@ public class MeetingsTableController implements ActionListener {
     }
     public MeetingsTableController(String tableType)
     {
-        form = new MeetingsTable(this, tableType);
+        form = new MeetingsTable(this);
         form.setVisible(true);
         
         populateClientsList();
         populateEmployeesList();
 
         
-        fillTable(tableType);
+        fillTable();
     }
 
     public MeetingsTable getForm() {
         return form;
     }
     
-    public MeetingsTableController(EmployeeMenuController parentController, String tableType) {
+    public MeetingsTableController(CompanyMenuController parentController) {
         
         this.parentController = parentController;
         this.parentController.setWindowInvisible();
         
-        form = new MeetingsTable(this, tableType);
+        form = new MeetingsTable(this);
         form.setVisible(true);
         
         populateClientsList();
         populateEmployeesList();
         
-        fillTable(tableType);
+        fillTable();
     }
     
     @Override
@@ -108,23 +108,13 @@ public class MeetingsTableController implements ActionListener {
         form.dispose();
     }
     
-    public void fillTable(String tableType) {
+    public void fillTable() {
         
         List<Object[]> rows = new ArrayList<>();
         
         List<Meeting> meetings = new ArrayList<>();
         
-        switch (tableType) {
-            case "View all meetings":
-                meetings = MeetingsController.getAllByEmployee(GlobalData.getCompanyName(), GlobalData.getUserId());
-                break;
-            case "View closed meetings":
-                meetings = MeetingsController.getAllClosedByEmployee(GlobalData.getCompanyName(), GlobalData.getUserId());
-                break;
-            case "View opened meetings":
-                meetings = MeetingsController.getAllOpenedByEmployee(GlobalData.getCompanyName(), GlobalData.getUserId());
-                break;
-        }
+        meetings = MeetingsController.getAll(GlobalData.getCompanyName());
         
         for (Meeting meeting : meetings) {
             String employeeName = findEmployeeNameById(meeting.getIdEmployee());

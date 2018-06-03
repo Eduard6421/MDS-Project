@@ -47,17 +47,10 @@ public class CompanyMenuController implements ActionListener {
                         }
                     }
                     break;
-                case "Clients":
+                case "Meetings":
                     {
-                        try {
-                            ClientsTableController clientsTableController= new ClientsTableController(this);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(CompanyMenuController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        MeetingsTableController meetingsTableController = new MeetingsTableController(this);
                     }
-                    break;
-                case "Requests":
-                    //RequestsTableController requestsTablesController = new RequestsTableController(this, command);
                     break;
                 case "Log out":
                     form.setVisible(false);

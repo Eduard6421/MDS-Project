@@ -95,12 +95,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="buttonRequests" pref="124" max="32767" attributes="0"/>
                       <Component id="buttonEmployees" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                      <Component id="buttonClients" alignment="1" max="32767" attributes="0"/>
+                      <Component id="buttonMeetings" alignment="1" pref="124" max="32767" attributes="0"/>
                       <Component id="buttonLogOut" alignment="1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="239" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,10 +109,8 @@
                   <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                   <Component id="buttonEmployees" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="buttonClients" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="buttonRequests" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="buttonMeetings" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                   <Component id="buttonLogOut" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace pref="42" max="32767" attributes="0"/>
               </Group>
@@ -133,21 +130,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEmployeesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonClients">
+        <Component class="javax.swing.JButton" name="buttonMeetings">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Clients"/>
-            <Property name="alignmentX" type="float" value="0.5"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="buttonRequests">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Requests"/>
+            <Property name="text" type="java.lang.String" value="Meetings"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="alignmentX" type="float" value="0.5"/>
           </Properties>
         </Component>
