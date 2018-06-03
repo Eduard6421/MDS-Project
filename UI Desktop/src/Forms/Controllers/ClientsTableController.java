@@ -31,6 +31,10 @@ public class ClientsTableController implements ActionListener {
 
     }
 
+    public ClientsTable getForm() {
+        return form;
+    }
+
     public ClientsTableController(CompanyMenuController parentController) throws SQLException {
 
         this.parentController = parentController;

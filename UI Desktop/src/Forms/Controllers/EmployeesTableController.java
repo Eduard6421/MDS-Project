@@ -37,6 +37,18 @@ public class EmployeesTableController implements ActionListener {
     private List<Pair<Integer, String>> employeesIds = new ArrayList<>();
     
     public EmployeesTableController() {
+        form = new EmployeesTable(this);
+        form.setVisible(true);
+
+        try {
+            fillTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeesTableController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public EmployeesTable getForm() {
+        return form;
     }
     
     public EmployeesTableController(CompanyMenuController parentController) throws SQLException {

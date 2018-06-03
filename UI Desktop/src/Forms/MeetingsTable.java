@@ -9,6 +9,7 @@ import Forms.Controllers.MeetingsTableController;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -238,6 +239,10 @@ public class MeetingsTable extends javax.swing.JFrame {
                 new MeetingsTable().setVisible(true);
             }
         });
+    }
+
+    public JTable getTable() {
+        return table;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

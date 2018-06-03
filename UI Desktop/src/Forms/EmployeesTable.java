@@ -9,6 +9,7 @@ import Forms.Controllers.EmployeesTableController;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -216,6 +217,10 @@ public class EmployeesTable extends javax.swing.JFrame {
                 new EmployeesTable().setVisible(true);
             }
         });
+    }
+
+    public JTable getTableEmployees() {
+        return tableEmployees;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

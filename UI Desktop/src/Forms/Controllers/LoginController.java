@@ -17,6 +17,10 @@ public class LoginController implements ActionListener {
         form = new Login(this);
         form.setVisible(true);
     }
+
+    public Login getForm() {
+        return form;
+    }
     
     @Override
     public void actionPerformed(ActionEvent evt) {     

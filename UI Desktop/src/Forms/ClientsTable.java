@@ -8,6 +8,7 @@ import Forms.Controllers.ClientsTableController;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -27,6 +28,10 @@ public class ClientsTable extends javax.swing.JFrame {
         initComponents();
         buttonBack.addActionListener(controller);
   
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
     }
     
     public void showPopulation(List<Object[]> rows) {

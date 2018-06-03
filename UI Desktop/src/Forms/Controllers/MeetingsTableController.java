@@ -29,6 +29,20 @@ public class MeetingsTableController implements ActionListener {
     
     public MeetingsTableController() {
     }
+    public MeetingsTableController(String tableType)
+    {
+        form = new MeetingsTable(this, tableType);
+        form.setVisible(true);
+        
+        populateClientsList();
+        populateEmployeesList();
+        
+        fillTable(tableType);
+    }
+
+    public MeetingsTable getForm() {
+        return form;
+    }
     
     public MeetingsTableController(EmployeeMenuController parentController, String tableType) {
         
