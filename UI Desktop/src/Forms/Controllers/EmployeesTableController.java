@@ -6,6 +6,7 @@ import Controllers.EmployeeContractsController;
 import Controllers.EmployeesController;
 import Forms.AddEmployee;
 import Forms.EditEmployeeContract;
+import Forms.EmployeeDetails;
 import Forms.EmployeesTable;
 import Models.Company;
 import Models.Employee;
@@ -33,6 +34,7 @@ public class EmployeesTableController implements ActionListener {
     
     private AddEmployee addEmployeeForm = null;
     private EditEmployeeContract editEmployeeContractForm = null;
+    private EmployeeDetails employeeDetailsForm = null;
     
     private List<Pair<Integer, String>> employeesIds = new ArrayList<>();
     
@@ -85,10 +87,17 @@ public class EmployeesTableController implements ActionListener {
                         EmployeeContract contract = getSelectedEmployeeContract();
                         editEmployeeContractForm = new EditEmployeeContract(this, employeeUsername, contract);
                         editEmployeeContractForm.setVisible(true);
-                        toggleFocus();                    }
+                        toggleFocus();                    
+                    }
                     break;
                 case "View Details":
-                    toggleFocus();
+                    if (getSelectedEmployeeGeneralData() != null) {
+                        Employee employee = getSelectedEmployee();
+                        EmployeeContract contract = getSelectedEmployeeContract();
+                        employeeDetailsForm = new EmployeeDetails(this, employee, contract);
+                        employeeDetailsForm.setVisible(true);
+                        toggleFocus();
+                    }                  
                     break;
             }
         }
@@ -104,6 +113,11 @@ public class EmployeesTableController implements ActionListener {
                         editEmployeeContractForm.setVisible(false);
                         editEmployeeContractForm.dispose();
                         editEmployeeContractForm = null;
+                    }
+                    if (employeeDetailsForm != null) {
+                        employeeDetailsForm.setVisible(false);
+                        employeeDetailsForm.dispose();
+                        employeeDetailsForm = null;
                     }
                     toggleFocus();
                     {
