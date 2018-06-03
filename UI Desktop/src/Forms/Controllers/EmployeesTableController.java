@@ -31,8 +31,8 @@ public class EmployeesTableController implements ActionListener {
     
     private CompanyMenuController parentController;
     
-    private AddEmployee addEmployeeForm;
-    private EditEmployeeContract editEmployeeContractForm;
+    private AddEmployee addEmployeeForm = null;
+    private EditEmployeeContract editEmployeeContractForm = null;
     
     private List<Pair<Integer, String>> employeesIds = new ArrayList<>();
     
@@ -95,10 +95,16 @@ public class EmployeesTableController implements ActionListener {
         else {
             switch (command) {
                 case "Exit":
-                    addEmployeeForm.setVisible(false);
-                    addEmployeeForm.dispose();
-                    editEmployeeContractForm.setVisible(false);
-                    editEmployeeContractForm.dispose();
+                    if (addEmployeeForm != null) {
+                        addEmployeeForm.setVisible(false);
+                        addEmployeeForm.dispose();
+                        addEmployeeForm = null;
+                    }
+                    if (editEmployeeContractForm != null) {
+                        editEmployeeContractForm.setVisible(false);
+                        editEmployeeContractForm.dispose();
+                        editEmployeeContractForm = null;
+                    }
                     toggleFocus();
                     {
                         try {
