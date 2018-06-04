@@ -8,6 +8,7 @@ package Forms;
 import Forms.Controllers.EmployeesTableController;
 import Models.EmployeeContract;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,14 +54,24 @@ public class EditEmployeeContract extends javax.swing.JFrame {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         
         try {
+            if((dateFormatter.parse(inputStartDate.getText())).after(dateFormatter.parse(inputEndDate.getText()))){
+                JOptionPane.showMessageDialog(null,"The start date is after the end date! Please enter a valid start date");
+            }
+            else
+            {
             contract.setStartDate(dateFormatter.parse(inputStartDate.getText()));
             contract.setEndDate(dateFormatter.parse(inputEndDate.getText()));
-            
             return contract;
+            }
+            
+            
+            
         }
         catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"The format of the date is not legal!");
             return null;
         }
+        return null;
     }
 
     /**
