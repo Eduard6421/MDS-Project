@@ -60,22 +60,52 @@ public class AddEmployee extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Passwords do not match.");
                 return null;
             }
-            
+            Boolean check=true;
             Date startDate = dateFormatter.parse(inputStartDate.getText());
             Date endDate = dateFormatter.parse(inputEndDate.getText());
+            if(startDate.after(endDate)){
+                JOptionPane.showMessageDialog(this,"The start date is after the end date! Please enter a valid start date");
+                check=false;
+            }
+                
+            
             
             String username = inputUsername.getText();
+            if(!username.matches("[a-zA-Z0-9]+$")){
+                JOptionPane.showMessageDialog(this,"The username contains illegal characters");
+                check=false;
+            }
             String firstName = inputFirstName.getText();
+            if(!firstName.matches("[a-zA-Z0-9]+$")){
+                JOptionPane.showMessageDialog(this,"The firstName contains illegal characters!");
+                check=false;
+            }
             String lastName = inputLastName.getText();
+            if(!lastName.matches("[a-zA-Z0-9]+$")){
+                JOptionPane.showMessageDialog(this,"The lastName contains illegal characters!");
+                check=false;
+            }
             String email = inputEmail.getText();
+            if(!email.matches("a-zA-Z0-9.")&&(!email.contains("@"))){
+                JOptionPane.showMessageDialog(this,"The email is not valid!");
+                check=false;
+            }
             String phone = inputPhone.getText();
+            if(!phone.matches("[0-9]+$")||phone.length()!=10){
+                JOptionPane.showMessageDialog(this,"The phone number is not valid!");
+                check=false;
+            }
+            if(check==true)
             
-            employee = new Employee(firstName, lastName, username, password, phone, email, 0);
+            {employee = new Employee(firstName, lastName, username, password, phone, email, 0);
             
             return new Triplet<>(employee, startDate, endDate);
+            }
+        
         }
         catch (ParseException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"The format of the date is not legal! It should be like this: yyyy-mm-dd");
         }
         catch (Exception e) {
             System.out.println(e);
