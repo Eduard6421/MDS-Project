@@ -39,18 +39,17 @@ public class CompanyMenuController implements ActionListener {
         if (focus) {
             switch (command) {
                 case "Employees":
-                    {
-                        try {
-                            EmployeesTableController employeesTableController = new EmployeesTableController(this);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(CompanyMenuController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                    try {
+                        EmployeesTableController employeesTableController = new EmployeesTableController(this);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CompanyMenuController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     break;
                 case "Assigned Meetings":
-                    {
-                        AssignedMeetingsController assignedMeetingsController = new AssignedMeetingsController(this);
-                    }
+                    AssignedMeetingsController assignedMeetingsController = new AssignedMeetingsController(this);
+                    break;
+                case "Pending Meetings":
+                    PendingMeetingsController pendingMeetingsController = new PendingMeetingsController(this);
                     break;
                 case "Log out":
                     form.setVisible(false);

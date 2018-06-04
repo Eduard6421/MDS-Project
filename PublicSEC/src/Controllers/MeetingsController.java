@@ -567,7 +567,7 @@ public class MeetingsController {
      * @param meetingId
      * @return 
      */
-    public static boolean reopenMeeting(int meetingId) {
+    public static boolean markAsOpen(int meetingId) {
         try {
 
             String query = "update meetings set isopen = 1 where id = ?";
@@ -617,7 +617,7 @@ public class MeetingsController {
      * @param meetingId
      * @return 
      */
-    public static boolean closeMeeting(int meetingId) {
+    public static boolean markAsFinished(int meetingId) {
 
         try {
 
@@ -668,6 +668,26 @@ public class MeetingsController {
 
         return false;
 
+    }
+    
+    public static boolean assignMeetingToEmployee(int meetingId, int employeeId) {
+        
+        try {
+            String query = "update meetings set IdEmployee = ? where Id = ?";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            statement.setInt(2, meetingId);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+            return result > 0;
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+        return false;
     }
 
 }

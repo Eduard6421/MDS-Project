@@ -669,5 +669,25 @@ public class MeetingsController {
         return false;
 
     }
+    
+    public static boolean assignMeetingToEmployee(int meetingId, int employeeId) {
+        
+        try {
+            String query = "update meetings set IdEmployee = ? where Id = ?";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, employeeId);
+            statement.setInt(2, meetingId);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+            return result > 0;
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+        return false;
+    }
 
 }

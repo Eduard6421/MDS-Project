@@ -31,8 +31,8 @@
           <Component id="jLabel1" pref="1195" max="32767" attributes="0"/>
           <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="558" max="-2" attributes="0"/>
-              <Component id="labelMeetings" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="506" max="-2" attributes="0"/>
+              <Component id="labelAssignedMeetings" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -43,7 +43,7 @@
               <EmptySpace pref="62" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="labelMeetings" min="-2" max="-2" attributes="0"/>
+              <Component id="labelAssignedMeetings" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -235,12 +235,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="labelMeetings">
+    <Component class="javax.swing.JLabel" name="labelAssignedMeetings">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Meetings"/>
+        <Property name="text" type="java.lang.String" value="Assigned Meetings"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
   </SubComponents>

@@ -77,7 +77,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         labelSelectedMeeting = new javax.swing.JLabel();
         buttonMarkAsFinished = new javax.swing.JButton();
         buttonMarkAsOpen = new javax.swing.JButton();
-        labelMeetings = new javax.swing.JLabel();
+        labelAssignedMeetings = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PublicSEC - Client_Meetings");
@@ -194,8 +194,9 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        labelMeetings.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelMeetings.setText("Meetings");
+        labelAssignedMeetings.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labelAssignedMeetings.setText("Assigned Meetings");
+        labelAssignedMeetings.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,8 +205,8 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1195, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(558, 558, 558)
-                .addComponent(labelMeetings)
+                .addGap(506, 506, 506)
+                .addComponent(labelAssignedMeetings)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -214,7 +215,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                 .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(labelMeetings)
+                .addComponent(labelAssignedMeetings)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -287,7 +288,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelMeetings;
+    private javax.swing.JLabel labelAssignedMeetings;
     private javax.swing.JLabel labelSelectedMeeting;
     private javax.swing.JTable tableAssignedMeetings;
     // End of variables declaration//GEN-END:variables

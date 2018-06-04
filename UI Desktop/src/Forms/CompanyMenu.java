@@ -32,6 +32,7 @@ public class CompanyMenu extends javax.swing.JFrame {
         buttonLogOut.addActionListener(controller);
         buttonEmployees.addActionListener(controller);
         buttonAssignedMeetings.addActionListener(controller);
+        buttonPendingMeetings.addActionListener(controller);
     }
 
     /**
