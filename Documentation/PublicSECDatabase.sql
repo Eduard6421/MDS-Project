@@ -191,7 +191,7 @@ CREATE TABLE `meetings` (
   KEY `Foreign_Key_Client_idx` (`IdClient`),
   KEY `Foreign_Key_Employee_idx` (`IdEmployee`),
   CONSTRAINT `Foreign_Key_Client1` FOREIGN KEY (`IdClient`) REFERENCES `clients` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Foreign_Key_Employee1` FOREIGN KEY (`IdEmployee`) REFERENCES `companies` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `Foreign_Key_Employee1` FOREIGN KEY (`IdEmployee`) REFERENCES `employees` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

@@ -90,6 +90,83 @@ public class MeetingsController {
 
         return meetings;
     }
+    
+    public static List<Meeting> getAllAssigned(String companyName) {
+        Meeting meeting = null;
+
+        List<Meeting> meetings = new ArrayList<>();
+
+        try {
+            String query = "select * from meetings where IdCompany = (select Id from companies where username = (?)) AND IdEmployee IS NOT NULL;";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+
+            statement.setString(1, companyName);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                meeting = new Meeting(
+                        result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
+                        result.getInt("IdEmployee"),
+                        result.getDate("Date"),
+                        result.getDouble("Feedback"),
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
+
+                meetings.add(meeting);
+
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e);
+        }
+
+        return meetings;
+    }
+    
+    public static List<Meeting> getAllPending(String companyName) {
+        Meeting meeting = null;
+
+        List<Meeting> meetings = new ArrayList<>();
+
+        try {
+            String query = "select * from meetings where IdCompany = (select Id from companies where username = (?)) AND IdEmployee IS NULL;";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+
+            statement.setString(1, companyName);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                meeting = new Meeting(
+                        result.getInt("IdClient"),
+                        result.getInt("IdCompany"),
+                        result.getInt("IdEmployee"),
+                        result.getDate("Date"),
+                        result.getDouble("Feedback"),
+                        result.getString("Description"),
+                        result.getBoolean("IsOpen"));
+
+                meetings.add(meeting);
+
+            }
+
+            statement.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e);
+        }
+
+        return meetings;
+    }
+        
     /**
      * Creates a list of all the open meetings of a given company name.
      * @param companyName
@@ -268,7 +345,7 @@ public class MeetingsController {
         List<Meeting> meetings = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM meetings WHERE IdEmployee = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?) )";
+            String query = "SELECT * FROM meetings WHERE IdEmployee = ? AND IsOpen = 0 AND IdCompany = (select Id from companies where username = ? )";
 
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setInt(1, employeeId);
@@ -509,6 +586,29 @@ public class MeetingsController {
         return false;
 
     }
+    
+    public static boolean cancelMeetingById(int meetingId) {
+        try {
+
+            String query = "update meetings set IdEmployee = NULL where id = ?";
+
+            PreparedStatement statement = conn.prepareStatement(query);
+
+            statement.setInt(1, 1);
+
+            int result = statement.executeUpdate();
+
+            statement.close();
+
+            return result > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error : " + e);
+        }
+
+        return false;
+
+    }    
     /**
      * It closes an existing meeting.
      * @param meetingId

@@ -4,6 +4,7 @@ import Controllers.ClientsController;
 import Controllers.EmployeesController;
 import Controllers.MeetingsController;
 import Forms.AssignedMeetingsTable;
+import Models.Employee;
 import Models.Meeting;
 import Utils.Converters;
 import Utils.GlobalData;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Pair;
+import javax.swing.JOptionPane;
 
 public class AssignedMeetingsController implements ActionListener {
     
@@ -25,6 +27,7 @@ public class AssignedMeetingsController implements ActionListener {
     
     private List<Pair<Integer, String>> employees;
     private List<Pair<Integer, String>> clients;
+    private List<Meeting> meetingsList;
     
     public AssignedMeetingsController() {
     }
@@ -35,7 +38,6 @@ public class AssignedMeetingsController implements ActionListener {
         
         populateClientsList();
         populateEmployeesList();
-
         
         fillTable();
     }
@@ -69,6 +71,12 @@ public class AssignedMeetingsController implements ActionListener {
                     form.setVisible(false);
                     form.dispose();
                     parentController.setWindowVisible();
+                    break;
+                case "Cancel Meeting":
+                    if (getSelectedMeeting() != null) {
+                        Meeting selectedMeeting = getSelectedMeeting();
+                        tryCancelMeeting(selectedMeeting);
+                    }
                     break;
             }
         }   
@@ -112,8 +120,12 @@ public class AssignedMeetingsController implements ActionListener {
         List<Object[]> rows = new ArrayList<>();
         
         List<Meeting> meetings = new ArrayList<>();
+        meetingsList = new ArrayList<>();
         
-        meetings = MeetingsController.getAll(GlobalData.getCompanyName());
+        meetings = MeetingsController.getAllAssigned(GlobalData.getCompanyName());
+        for (Meeting meeting : meetings) {
+            meetingsList.add(meeting);
+        }
         
         for (Meeting meeting : meetings) {
             String employeeName = findEmployeeNameById(meeting.getIdEmployee());
@@ -151,4 +163,25 @@ public class AssignedMeetingsController implements ActionListener {
         return null;
     }
     
+    public Meeting getSelectedMeeting() {
+        int selectedIndex = form.getSelectedRowIndex();
+        if (selectedIndex == -1)
+            return null; 
+
+        Meeting meeting = meetingsList.get(selectedIndex);
+        
+        return meeting;
+    }
+    
+    public void tryCancelMeeting(Meeting meeting) {
+        int confirmationDialog = JOptionPane
+                                    .showConfirmDialog(null, 
+                                                       "Do you want to cancel this meeting?",
+                                                       "Cancel meeting", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmationDialog == JOptionPane.YES_OPTION) {
+            MeetingsController.cancelMeetingById(meeting.getId());
+            fillTable();
+        }
+    }
 }

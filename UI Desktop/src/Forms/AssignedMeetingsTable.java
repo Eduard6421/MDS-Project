@@ -18,25 +18,28 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AssignedMeetingsTable extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Client_Meetings
-     */
     static AssignedMeetingsTable form;
+    static AssignedMeetingsController parentController;
 
     public AssignedMeetingsTable() {
         initComponents();
     }
     
     public AssignedMeetingsTable(AssignedMeetingsController controller) {
-
         initComponents();
-        buttonBack.addActionListener(controller);     
+        
+        parentController = controller;
+        
+        buttonBack.addActionListener(parentController);
+        buttonReassignEmployee.addActionListener(parentController);
+        buttonCancelMeeting.addActionListener(parentController);
+        
     }
     
     public void showPopulation(List<Object[]> rows) {
         
-        DefaultTableModel tModel = (DefaultTableModel) table.getModel();
-        table.setDefaultEditor(Object.class, null);
+        DefaultTableModel tModel = (DefaultTableModel) tableAssignedMeetings.getModel();
+        tableAssignedMeetings.setDefaultEditor(Object.class, null);
 
         while (tModel.getRowCount() > 0) {
             tModel.removeRow(0);
@@ -47,6 +50,10 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
             tModel.addRow(row);
         }
         
+    }
+    
+    public int getSelectedRowIndex() {
+        return tableAssignedMeetings.getSelectedRow();     
     }
 
     /**
@@ -61,11 +68,11 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableAssignedMeetings = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         buttonBack = new javax.swing.JButton();
         buttonCancelMeeting = new javax.swing.JButton();
-        buttonAssignEmployee = new javax.swing.JButton();
+        buttonReassignEmployee = new javax.swing.JButton();
         labelMeetings = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,12 +96,9 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         jLabel1.setMaximumSize(new java.awt.Dimension(232323, 30));
         jLabel1.setOpaque(true);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableAssignedMeetings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Finished", "Client", "Employee", "Date", "Description"
@@ -103,14 +107,21 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        table.setMaximumSize(new java.awt.Dimension(450, 64));
-        table.setPreferredSize(new java.awt.Dimension(450, 64));
-        jScrollPane1.setViewportView(table);
+        tableAssignedMeetings.setMaximumSize(new java.awt.Dimension(450, 64));
+        tableAssignedMeetings.setPreferredSize(new java.awt.Dimension(450, 64));
+        jScrollPane1.setViewportView(tableAssignedMeetings);
 
         buttonBack.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         buttonBack.setText("Back");
@@ -124,8 +135,8 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         buttonCancelMeeting.setText("Cancel Meeting");
         buttonCancelMeeting.setToolTipText("");
 
-        buttonAssignEmployee.setText("Assign Employee");
-        buttonAssignEmployee.setToolTipText("");
+        buttonReassignEmployee.setText("Reassign Employee");
+        buttonReassignEmployee.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,7 +153,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(buttonBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonAssignEmployee)
+                        .addComponent(buttonReassignEmployee)
                         .addGap(27, 27, 27)
                         .addComponent(buttonCancelMeeting)))
                 .addContainerGap())
@@ -155,7 +166,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonBack)
-                    .addComponent(buttonAssignEmployee)
+                    .addComponent(buttonReassignEmployee)
                     .addComponent(buttonCancelMeeting))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,18 +253,18 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
     }
 
     public JTable getTable() {
-        return table;
+        return tableAssignedMeetings;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAssignEmployee;
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonCancelMeeting;
+    private javax.swing.JButton buttonReassignEmployee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelMeetings;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableAssignedMeetings;
     // End of variables declaration//GEN-END:variables
 }

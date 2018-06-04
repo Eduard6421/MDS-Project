@@ -91,7 +91,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="buttonBack" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="buttonAssignEmployee" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonReassignEmployee" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="buttonCancelMeeting" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -108,7 +108,7 @@
                   <EmptySpace pref="27" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="buttonBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonAssignEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonReassignEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonCancelMeeting" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -126,11 +126,11 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="table">
+            <Component class="javax.swing.JTable" name="tableAssignedMeetings">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
-                    <Column editable="true" title="Finished" type="java.lang.Boolean"/>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="false" title="Finished" type="java.lang.Boolean"/>
                     <Column editable="true" title="Client" type="java.lang.String"/>
                     <Column editable="true" title="Employee" type="java.lang.String"/>
                     <Column editable="true" title="Date" type="java.lang.String"/>
@@ -201,9 +201,9 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonAssignEmployee">
+        <Component class="javax.swing.JButton" name="buttonReassignEmployee">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Assign Employee"/>
+            <Property name="text" type="java.lang.String" value="Reassign Employee"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
