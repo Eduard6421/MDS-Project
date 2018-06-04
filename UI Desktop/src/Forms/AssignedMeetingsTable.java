@@ -33,7 +33,8 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         buttonBack.addActionListener(parentController);
         buttonReassignEmployee.addActionListener(parentController);
         buttonCancelMeeting.addActionListener(parentController);
-        
+        buttonMarkAsFinished.addActionListener(parentController);
+        buttonMarkAsOpen.addActionListener(parentController);
     }
     
     public void showPopulation(List<Object[]> rows) {
@@ -73,6 +74,9 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         buttonBack = new javax.swing.JButton();
         buttonCancelMeeting = new javax.swing.JButton();
         buttonReassignEmployee = new javax.swing.JButton();
+        labelSelectedMeeting = new javax.swing.JLabel();
+        buttonMarkAsFinished = new javax.swing.JButton();
+        buttonMarkAsOpen = new javax.swing.JButton();
         labelMeetings = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,6 +142,14 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         buttonReassignEmployee.setText("Reassign Employee");
         buttonReassignEmployee.setToolTipText("");
 
+        labelSelectedMeeting.setText("Selected meeting: ");
+        labelSelectedMeeting.setToolTipText("");
+
+        buttonMarkAsFinished.setText("Mark as Finished");
+        buttonMarkAsFinished.setToolTipText("");
+
+        buttonMarkAsOpen.setText("Mark as Open");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -153,9 +165,15 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(buttonBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelSelectedMeeting)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonReassignEmployee)
-                        .addGap(27, 27, 27)
-                        .addComponent(buttonCancelMeeting)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonCancelMeeting)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonMarkAsFinished)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonMarkAsOpen)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -167,7 +185,10 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonBack)
                     .addComponent(buttonReassignEmployee)
-                    .addComponent(buttonCancelMeeting))
+                    .addComponent(buttonCancelMeeting)
+                    .addComponent(labelSelectedMeeting)
+                    .addComponent(buttonMarkAsFinished)
+                    .addComponent(buttonMarkAsOpen))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -259,12 +280,15 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBack;
     private javax.swing.JButton buttonCancelMeeting;
+    private javax.swing.JButton buttonMarkAsFinished;
+    private javax.swing.JButton buttonMarkAsOpen;
     private javax.swing.JButton buttonReassignEmployee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelMeetings;
+    private javax.swing.JLabel labelSelectedMeeting;
     private javax.swing.JTable tableAssignedMeetings;
     // End of variables declaration//GEN-END:variables
 }

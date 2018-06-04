@@ -78,6 +78,22 @@ public class AssignedMeetingsController implements ActionListener {
                         tryCancelMeeting(selectedMeeting);
                     }
                     break;
+                case "Mark as Finished":
+                    if (getSelectedMeeting() != null) {
+                        Meeting selectedMeeting = getSelectedMeeting();
+                        if (selectedMeeting.getIsOpen() == true)
+                            MeetingsController.closeMeeting(selectedMeeting.getId());
+                        fillTable();
+                    }
+                    break;
+                case "Mark as Open":
+                    if (getSelectedMeeting() != null) {
+                        Meeting selectedMeeting = getSelectedMeeting();
+                        if (selectedMeeting.getIsOpen() == false)
+                            MeetingsController.reopenMeeting(selectedMeeting.getId());
+                        fillTable();
+                    }
+                    break;
             }
         }   
     }

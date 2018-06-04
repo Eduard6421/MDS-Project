@@ -91,9 +91,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="buttonBack" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="labelSelectedMeeting" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonReassignEmployee" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="buttonCancelMeeting" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="buttonMarkAsFinished" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="buttonMarkAsOpen" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -110,6 +116,9 @@
                       <Component id="buttonBack" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonReassignEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonCancelMeeting" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelSelectedMeeting" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonMarkAsFinished" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonMarkAsOpen" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -205,6 +214,23 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Reassign Employee"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelSelectedMeeting">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Selected meeting: "/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="buttonMarkAsFinished">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mark as Finished"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="buttonMarkAsOpen">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mark as Open"/>
           </Properties>
         </Component>
       </SubComponents>
