@@ -63,4 +63,8 @@ public class EmployeeContract extends Entity {
         this.EndDate = endDate;
     }
 
+    @Override
+    public String toString() {
+        return "(" + IdEmployee + IdCompany + StartDate + EndDate + ")";
+    }
 }

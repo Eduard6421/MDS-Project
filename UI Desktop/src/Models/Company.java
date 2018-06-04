@@ -87,4 +87,8 @@ public class Company extends Entity {
         this.Password = Password;
     }
 
+    @Override
+    public String toString() {
+        return "(" + Name + Username + Password + ContractStartDate + ContractEndDate + Description + ')';
+    }
 }

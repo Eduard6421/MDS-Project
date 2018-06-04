@@ -27,7 +27,7 @@ public class Meeting extends Entity {
         this.Description = description;
         this.IsOpen = isOpen;
     }
-    
+
     public Meeting(int idClient, int idCompany, int idEmployee, Date meetingDate, double feedback, String description, boolean isOpen) {
         this.IdClient = idClient;
         this.IdCompany = idCompany;
@@ -94,4 +94,8 @@ public class Meeting extends Entity {
         this.IsOpen = isOpen;
     }
 
+    @Override
+    public String toString() {
+        return "(" + IdClient + IdEmployee + IdCompany + MeetingDate + Feedback + Description + IsOpen + ")";
+    }
 }

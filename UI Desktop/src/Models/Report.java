@@ -38,5 +38,9 @@ public class Report extends Entity {
     public void setDescription(String description) {
         this.Description = description;
     }
+    @Override
+    public String toString() {
+        return "("  + MeetingID  + Description + ")";
+    }
     
 }

@@ -180,7 +180,9 @@ public class NotificationsController {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-
+                if (resultSet.getInt(1) == 0) {
+                    return false;
+                }
                 result = true;
             }
 
@@ -209,7 +211,9 @@ public class NotificationsController {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-
+                if (resultSet.getInt(1) == 0) {
+                    return false;
+                }
                 result = true;
             }
 

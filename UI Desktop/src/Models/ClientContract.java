@@ -18,8 +18,6 @@ public class ClientContract extends Entity {
     private Date StartDate;
     private Date EndDate;
 
-    
-    
     public ClientContract(int idClient, int idCompany, Date startDate, Date endDate) {
 
         this.Id = -1;
@@ -71,4 +69,8 @@ public class ClientContract extends Entity {
         this.EndDate = endDate;
     }
 
+    @Override
+    public String toString() {
+        return "(" + IdClient + IdCompany + StartDate + EndDate + ")";
+    }
 }

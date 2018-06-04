@@ -99,4 +99,9 @@ public class Employee extends Entity {
     public void setRating(Double rating) {
         this.Rating = rating;
     }
+
+    @Override
+    public String toString() {
+        return "(" + FirstName + LastName + Username + Password + Phone + Email + Rating + ")";
+    }
 }

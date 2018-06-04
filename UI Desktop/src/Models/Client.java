@@ -97,4 +97,8 @@ public class Client extends Entity {
         this.Email = email;
     }
 
+    @Override
+    public String toString() {
+        return "(" + FirstName + LastName + Username + Password + Address + Phone + Email + ')';
+    }
 }
