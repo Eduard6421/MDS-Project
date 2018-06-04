@@ -61,8 +61,16 @@ public class AddEmployee extends javax.swing.JFrame {
                 return null;
             }
             Boolean check=true;
-            Date startDate = dateFormatter.parse(inputStartDate.getText());
-            Date endDate = dateFormatter.parse(inputEndDate.getText());
+            String s1=inputStartDate.getText();
+            String s2=inputEndDate.getText();
+            Date startDate = dateFormatter.parse(s1);
+            String sd=dateFormatter.format(startDate);
+            Date endDate = dateFormatter.parse(s2);
+            String ed=dateFormatter.format(endDate);
+            if(!sd.equals(s1)||!ed.equals(s2)){
+              JOptionPane.showMessageDialog(this,"The format of the date is not legal! It should be like this: yyyy-mm-dd");
+              check=false;
+            }
             if(startDate.after(endDate)){
                 JOptionPane.showMessageDialog(this,"The start date is after the end date! Please enter a valid start date");
                 check=false;
@@ -105,7 +113,7 @@ public class AddEmployee extends javax.swing.JFrame {
         }
         catch (ParseException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null,"The format of the date is not legal! It should be like this: yyyy-mm-dd");
+            //JOptionPane.showMessageDialog(null,"The format of the date is not legal! It should be like this: yyyy-mm-dd");
         }
         catch (Exception e) {
             System.out.println(e);
