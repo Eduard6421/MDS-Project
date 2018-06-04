@@ -47,9 +47,9 @@ public class CompanyMenuController implements ActionListener {
                         }
                     }
                     break;
-                case "Meetings":
+                case "Assigned Meetings":
                     {
-                        MeetingsTableController meetingsTableController = new MeetingsTableController(this);
+                        AssignedMeetingsController assignedMeetingsController = new AssignedMeetingsController(this);
                     }
                     break;
                 case "Log out":

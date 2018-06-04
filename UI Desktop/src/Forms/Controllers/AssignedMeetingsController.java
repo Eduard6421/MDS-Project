@@ -3,7 +3,7 @@ package Forms.Controllers;
 import Controllers.ClientsController;
 import Controllers.EmployeesController;
 import Controllers.MeetingsController;
-import Forms.MeetingsTable;
+import Forms.AssignedMeetingsTable;
 import Models.Meeting;
 import Utils.Converters;
 import Utils.GlobalData;
@@ -16,22 +16,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.util.Pair;
 
-public class MeetingsTableController implements ActionListener {
+public class AssignedMeetingsController implements ActionListener {
     
-    private MeetingsTable form;
+    private AssignedMeetingsTable form;
     
     private boolean focus = true;
-    int a;
     private CompanyMenuController parentController;
     
     private List<Pair<Integer, String>> employees;
     private List<Pair<Integer, String>> clients;
     
-    public MeetingsTableController() {
+    public AssignedMeetingsController() {
     }
-    public MeetingsTableController(String tableType)
+    public AssignedMeetingsController(String tableType)
     {
-        form = new MeetingsTable(this);
+        form = new AssignedMeetingsTable(this);
         form.setVisible(true);
         
         populateClientsList();
@@ -41,16 +40,16 @@ public class MeetingsTableController implements ActionListener {
         fillTable();
     }
 
-    public MeetingsTable getForm() {
+    public AssignedMeetingsTable getForm() {
         return form;
     }
     
-    public MeetingsTableController(CompanyMenuController parentController) {
+    public AssignedMeetingsController(CompanyMenuController parentController) {
         
         this.parentController = parentController;
         this.parentController.setWindowInvisible();
         
-        form = new MeetingsTable(this);
+        form = new AssignedMeetingsTable(this);
         form.setVisible(true);
         
         populateClientsList();
@@ -79,7 +78,7 @@ public class MeetingsTableController implements ActionListener {
         try {
             clients = ClientsController.getAllOnlyGeneralData(GlobalData.getCompanyName());
         } catch (SQLException ex) {
-            Logger.getLogger(MeetingsTableController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AssignedMeetingsController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -87,7 +86,7 @@ public class MeetingsTableController implements ActionListener {
         try {
             employees = EmployeesController.getAllOnlyGeneralData();
         } catch (SQLException ex) {
-            Logger.getLogger(MeetingsTableController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AssignedMeetingsController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

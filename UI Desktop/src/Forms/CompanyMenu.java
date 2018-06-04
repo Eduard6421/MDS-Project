@@ -31,7 +31,7 @@ public class CompanyMenu extends javax.swing.JFrame {
         initComponents();
         buttonLogOut.addActionListener(controller);
         buttonEmployees.addActionListener(controller);
-        buttonMeetings.addActionListener(controller);
+        buttonAssignedMeetings.addActionListener(controller);
     }
 
     /**
@@ -46,8 +46,9 @@ public class CompanyMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         buttonEmployees = new javax.swing.JButton();
-        buttonMeetings = new javax.swing.JButton();
+        buttonAssignedMeetings = new javax.swing.JButton();
         buttonLogOut = new javax.swing.JButton();
+        buttonPendingMeetings = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PublicSEC - Menu");
@@ -87,10 +88,10 @@ public class CompanyMenu extends javax.swing.JFrame {
             }
         });
 
-        buttonMeetings.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        buttonMeetings.setText("Meetings");
-        buttonMeetings.setToolTipText("");
-        buttonMeetings.setAlignmentX(0.5F);
+        buttonAssignedMeetings.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        buttonAssignedMeetings.setText("Assigned Meetings");
+        buttonAssignedMeetings.setToolTipText("");
+        buttonAssignedMeetings.setAlignmentX(0.5F);
 
         buttonLogOut.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         buttonLogOut.setText("Log out");
@@ -102,28 +103,34 @@ public class CompanyMenu extends javax.swing.JFrame {
             }
         });
 
+        buttonPendingMeetings.setText("Pending Meetings");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(239, 239, 239)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(buttonEmployees, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonMeetings, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                    .addComponent(buttonLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonPendingMeetings)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(buttonAssignedMeetings, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                        .addComponent(buttonEmployees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonLogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(buttonEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonMeetings, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(buttonAssignedMeetings, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonPendingMeetings, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(buttonLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,9 +203,10 @@ public class CompanyMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAssignedMeetings;
     private javax.swing.JButton buttonEmployees;
     private javax.swing.JButton buttonLogOut;
-    private javax.swing.JButton buttonMeetings;
+    private javax.swing.JButton buttonPendingMeetings;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

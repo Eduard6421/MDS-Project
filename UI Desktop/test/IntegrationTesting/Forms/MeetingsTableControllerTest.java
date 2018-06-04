@@ -5,7 +5,7 @@
  */
 package IntegrationTesting.Forms;
 
-import Forms.Controllers.MeetingsTableController;
+import Forms.Controllers.AssignedMeetingsController;
 import Utils.GlobalData;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class MeetingsTableControllerTest {
     public void testMeetingTableController1() {
         GlobalData.setCompanyName("Firma1");
         GlobalData.setUserId(1);
-        MeetingsTableController controller = new MeetingsTableController("View all meetings");
+        AssignedMeetingsController controller = new AssignedMeetingsController("View all meetings");
         boolean expResult = true;
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
         Vector aux1 = (Vector) tm.getDataVector().get(0);
@@ -77,7 +77,7 @@ public class MeetingsTableControllerTest {
     public void testMeetingTableController2() {
         GlobalData.setCompanyName("Firma2");
         GlobalData.setUserId(2);
-        MeetingsTableController controller = new MeetingsTableController("View all meetings");
+        AssignedMeetingsController controller = new AssignedMeetingsController("View all meetings");
         boolean expResult = false;
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
         Vector aux1 = (Vector) tm.getDataVector().get(0);
@@ -99,7 +99,7 @@ public class MeetingsTableControllerTest {
     @Test
     public void testMeetingTableController3() {
 
-        MeetingsTableController controller = new MeetingsTableController("View all meetings");
+        AssignedMeetingsController controller = new AssignedMeetingsController("View all meetings");
         boolean expResult = false;
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
 
@@ -127,7 +127,7 @@ public class MeetingsTableControllerTest {
 
         GlobalData.setCompanyName("Firma1");
         GlobalData.setUserId(1);
-        MeetingsTableController controller = new MeetingsTableController("View closed meetings");
+        AssignedMeetingsController controller = new AssignedMeetingsController("View closed meetings");
 
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
 
@@ -159,7 +159,7 @@ public class MeetingsTableControllerTest {
 
         GlobalData.setCompanyName("Firma1");
         GlobalData.setUserId(1);
-        MeetingsTableController controller = new MeetingsTableController("View closed meetings");
+        AssignedMeetingsController controller = new AssignedMeetingsController("View closed meetings");
 
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
 

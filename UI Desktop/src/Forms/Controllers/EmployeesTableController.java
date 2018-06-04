@@ -182,13 +182,11 @@ public class EmployeesTableController implements ActionListener {
         
         for (Employee employee : employees) {
             
-            Object[] row = new Object[6];
+            Object[] row = new Object[4];
             row[0] = employee.getUsername();
             row[1] = employee.getFirstName();
             row[2] = employee.getLastName();
-            row[3] = employee.getPhone();
-            row[4] = employee.getEmail();
-            row[5] = employee.getRating();
+            row[3] = employee.getRating();
             
             employeesIds.add(new Pair<Integer, String>(employee.getId(), employee.getUsername()));
             

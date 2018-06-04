@@ -94,12 +94,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="buttonEmployees" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                      <Component id="buttonMeetings" alignment="1" pref="124" max="32767" attributes="0"/>
-                      <Component id="buttonLogOut" alignment="1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="buttonPendingMeetings" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buttonAssignedMeetings" alignment="0" pref="135" max="32767" attributes="0"/>
+                          <Component id="buttonEmployees" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buttonLogOut" alignment="1" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="239" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,11 +111,13 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                   <Component id="buttonEmployees" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="buttonMeetings" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <Component id="buttonAssignedMeetings" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buttonPendingMeetings" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="buttonLogOut" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -130,12 +135,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEmployeesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonMeetings">
+        <Component class="javax.swing.JButton" name="buttonAssignedMeetings">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Meetings"/>
+            <Property name="text" type="java.lang.String" value="Assigned Meetings"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="alignmentX" type="float" value="0.5"/>
           </Properties>
@@ -152,6 +157,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonLogOutActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="buttonPendingMeetings">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pending Meetings"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

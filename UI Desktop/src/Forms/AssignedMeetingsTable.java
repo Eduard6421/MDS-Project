@@ -5,7 +5,7 @@
  */
 package Forms;
 
-import Forms.Controllers.MeetingsTableController;
+import Forms.Controllers.AssignedMeetingsController;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.List;
@@ -16,18 +16,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author GABY
  */
-public class MeetingsTable extends javax.swing.JFrame {
+public class AssignedMeetingsTable extends javax.swing.JFrame {
 
     /**
      * Creates new form Client_Meetings
      */
-    static MeetingsTable form;
+    static AssignedMeetingsTable form;
 
-    public MeetingsTable() {
+    public AssignedMeetingsTable() {
         initComponents();
     }
     
-    public MeetingsTable(MeetingsTableController controller) {
+    public AssignedMeetingsTable(AssignedMeetingsController controller) {
 
         initComponents();
         buttonBack.addActionListener(controller);     
@@ -64,7 +64,9 @@ public class MeetingsTable extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         buttonBack = new javax.swing.JButton();
-        labelMeetingsType = new javax.swing.JLabel();
+        buttonCancelMeeting = new javax.swing.JButton();
+        buttonAssignEmployee = new javax.swing.JButton();
+        labelMeetings = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PublicSEC - Client_Meetings");
@@ -95,7 +97,7 @@ public class MeetingsTable extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Closed", "Client", "Employee", "Date", "Description"
+                "Finished", "Client", "Employee", "Date", "Description"
             }
         ) {
             Class[] types = new Class [] {
@@ -118,7 +120,12 @@ public class MeetingsTable extends javax.swing.JFrame {
                 buttonBackActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonBack);
+
+        buttonCancelMeeting.setText("Cancel Meeting");
+        buttonCancelMeeting.setToolTipText("");
+
+        buttonAssignEmployee.setText("Assign Employee");
+        buttonAssignEmployee.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,8 +134,17 @@ public class MeetingsTable extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(284, 284, 284))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(buttonBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonAssignEmployee)
+                        .addGap(27, 27, 27)
+                        .addComponent(buttonCancelMeeting)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -137,13 +153,17 @@ public class MeetingsTable extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonBack)
+                    .addComponent(buttonAssignEmployee)
+                    .addComponent(buttonCancelMeeting))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
-        labelMeetingsType.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        labelMeetingsType.setText("Display: ");
-        labelMeetingsType.setToolTipText("");
+        labelMeetings.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        labelMeetings.setText("Meetings");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,20 +172,19 @@ public class MeetingsTable extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1195, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelMeetingsType)
+                .addGap(558, 558, 558)
+                .addComponent(labelMeetings)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(labelMeetingsType)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addComponent(labelMeetings)
+                .addGap(31, 31, 31)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -197,14 +216,18 @@ public class MeetingsTable extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AssignedMeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AssignedMeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AssignedMeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AssignedMeetingsTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -213,7 +236,7 @@ public class MeetingsTable extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MeetingsTable().setVisible(true);
+                new AssignedMeetingsTable().setVisible(true);
             }
         });
     }
@@ -223,12 +246,14 @@ public class MeetingsTable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAssignEmployee;
     private javax.swing.JButton buttonBack;
+    private javax.swing.JButton buttonCancelMeeting;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelMeetingsType;
+    private javax.swing.JLabel labelMeetings;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
