@@ -5,7 +5,7 @@
  */
 package IntegrationTesting.Forms;
 
-import Forms.Controllers.AssignedMeetingsController;
+import Forms.Controllers.MeetingsTableController;
 import Utils.GlobalData;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class MeetingsTableControllerTest {
     public void testMeetingTableController1() {
         GlobalData.setCompanyName("Firma1");
         GlobalData.setUserId(1);
-        AssignedMeetingsController controller = new AssignedMeetingsController("View all meetings");
+        MeetingsTableController controller = new MeetingsTableController("View all meetings");
         boolean expResult = true;
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
         Vector aux1 = (Vector) tm.getDataVector().get(0);
@@ -77,7 +77,7 @@ public class MeetingsTableControllerTest {
     public void testMeetingTableController2() {
         GlobalData.setCompanyName("Firma2");
         GlobalData.setUserId(2);
-        AssignedMeetingsController controller = new AssignedMeetingsController("View all meetings");
+        MeetingsTableController controller = new MeetingsTableController("View all meetings");
         boolean expResult = false;
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
         Vector aux1 = (Vector) tm.getDataVector().get(0);
@@ -99,7 +99,7 @@ public class MeetingsTableControllerTest {
     @Test
     public void testMeetingTableController3() {
 
-        AssignedMeetingsController controller = new AssignedMeetingsController("View all meetings");
+        MeetingsTableController controller = new MeetingsTableController("View all meetings");
         boolean expResult = false;
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
 
@@ -127,14 +127,14 @@ public class MeetingsTableControllerTest {
 
         GlobalData.setCompanyName("Firma1");
         GlobalData.setUserId(1);
-        AssignedMeetingsController controller = new AssignedMeetingsController("View closed meetings");
+        MeetingsTableController controller = new MeetingsTableController("View closed meetings");
 
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
-
         List<String> realAnswer = new ArrayList<>();
         List<String> expectedAnswer = new ArrayList<>();
 
         expectedAnswer.add("trueclient1employee12010-01-01da");
+        expectedAnswer.add("trueclient122018-06-05finished");
 
         String element = new String();
         StringBuilder build = new StringBuilder();
@@ -146,6 +146,7 @@ public class MeetingsTableControllerTest {
             realAnswer.add(build.toString());
             build.setLength(0);
         }
+       
 
         boolean realResult = realAnswer.equals(expectedAnswer);
         boolean expResult = true;
@@ -159,7 +160,7 @@ public class MeetingsTableControllerTest {
 
         GlobalData.setCompanyName("Firma1");
         GlobalData.setUserId(1);
-        AssignedMeetingsController controller = new AssignedMeetingsController("View closed meetings");
+        MeetingsTableController controller = new MeetingsTableController("View closed meetings");
 
         DefaultTableModel tm = (DefaultTableModel) controller.getForm().getTable().getModel();
 
@@ -167,7 +168,7 @@ public class MeetingsTableControllerTest {
         List<String> expectedAnswer = new ArrayList<>();
 
         expectedAnswer.add("trueclient1employee12010-01-01da");
-
+        expectedAnswer.add("trueclient122018-06-05finished");
         String element = new String();
         StringBuilder build = new StringBuilder();
 
@@ -178,7 +179,6 @@ public class MeetingsTableControllerTest {
             realAnswer.add(build.toString());
             build.setLength(0);
         }
-
         boolean realResult = realAnswer.equals(expectedAnswer);
         boolean expResult = true;
 

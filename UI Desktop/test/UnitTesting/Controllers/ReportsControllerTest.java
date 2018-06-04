@@ -71,7 +71,7 @@ public class ReportsControllerTest {
         int id = 1;
         boolean expResult = true;
         Report result = ReportsController.getById(id);
-        boolean trueResult = result == null;
+        boolean trueResult = result != null;
 
         assertEquals(expResult, trueResult);
     }

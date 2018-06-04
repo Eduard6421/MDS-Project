@@ -142,7 +142,7 @@ public class EmployeeContractsControllerTest {
         
         List<EmployeeContract> result = EmployeeContractsController.getByCompany(id);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = (result.size() == 2);
 
         assertEquals(expResult, trueResult);
     }

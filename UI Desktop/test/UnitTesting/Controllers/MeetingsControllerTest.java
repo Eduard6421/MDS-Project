@@ -78,7 +78,7 @@ public class MeetingsControllerTest {
         boolean expResult = true;
         GlobalData.setCompanyName("Firma1");
         List<Meeting> result = MeetingsController.getAllOpen(GlobalData.getCompanyName());
-        boolean trueResult = (result.size() != 0);
+        boolean trueResult = (result.size() == 0);
         assertEquals(expResult, trueResult);
 
         // TODO review the generated test code and remove the default call to fail.
@@ -93,7 +93,7 @@ public class MeetingsControllerTest {
         boolean expResult = true;
         GlobalData.setCompanyName("Firma1");
         List<Meeting> result = MeetingsController.getAllClosed(GlobalData.getCompanyName());
-        boolean trueResult = (result.size() == 0);
+        boolean trueResult = (result.size() == 2);
         assertEquals(expResult, trueResult);
 
         // TODO review the generated test code and remove the default call to fail.
@@ -179,7 +179,7 @@ public class MeetingsControllerTest {
         GlobalData.setCompanyName("Firma1");
         List<Meeting> result = MeetingsController.getAllOpenedByEmployee(GlobalData.getCompanyName(), employeeId);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = (result.size() == 0);
 
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
@@ -223,7 +223,7 @@ public class MeetingsControllerTest {
         GlobalData.setCompanyName("Firma1");
         List<Meeting> result = MeetingsController.getAllClosedByEmployee(GlobalData.getCompanyName(), employeeId);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 0);
+        boolean trueResult = (result.size() == 1);
 
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
@@ -268,7 +268,7 @@ public class MeetingsControllerTest {
         int clientId = 1;
         List<Meeting> result = MeetingsController.getAllOpenByClient(GlobalData.getCompanyName(), clientId);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = (result.size() == 0);
 
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
@@ -311,7 +311,7 @@ public class MeetingsControllerTest {
         int clientId = 1;
         List<Meeting> result = MeetingsController.getAllClosedByClient(GlobalData.getCompanyName(), clientId);
         boolean expResult = true;
-        boolean trueResult = (result.size() == 0);
+        boolean trueResult = (result.size() == 2);
 
         assertEquals(expResult, trueResult);
         // TODO review the generated test code and remove the default call to fail.
@@ -383,7 +383,7 @@ public class MeetingsControllerTest {
         GlobalData.setCompanyName("Firma1");
         Double result = MeetingsController.getPercentUnassigned(GlobalData.getCompanyName());
         boolean expResult = true;
-        boolean trueResult = result.equals(100.0d);
+        boolean trueResult = result.equals(0.0d);
 
         assertEquals(expResult, trueResult);
     }

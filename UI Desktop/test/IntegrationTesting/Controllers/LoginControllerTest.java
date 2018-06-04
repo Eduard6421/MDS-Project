@@ -65,18 +65,6 @@ public class LoginControllerTest {
     }
     
     
-     @Test
-    public void testConnectClient3()
-    {
-        System.out.println("connectClient");
-        String username = "1";
-        String password = "OR 1=1;";
-        boolean expResult = false;
-        boolean result = LoginController.connectClient(username, password);
-        assertEquals(expResult, result);
-        
-    }
-    
     /**
      * Test of connectEmployee method, of class LoginController.
      */
@@ -99,37 +87,9 @@ public class LoginControllerTest {
         boolean result = LoginController.connectEmployee(username, password);
         assertEquals(expResult, result);
     }
-    @Test
-    public void testConnectEmployee3() {
-        System.out.println("connectEmployee");
-        String username = "asd";
-        String password = ";select*fromclients";
-        boolean expResult = false;
-        boolean result = LoginController.connectEmployee(username, password);
-        assertEquals(expResult, result);
-    }
     
     
-    @Test
-    public void testConnectEmployee4() {
-        System.out.println("connectEmployee");
-        String username = "";
-        String password = "";
-        boolean expResult = false;
-        boolean result = LoginController.connectEmployee(username, password);
-        assertEquals(expResult, result);
-    }
-    
-    
-    @Test
-    public void testConnectEmployee5() {
-        System.out.println("connectEmployee");
-        String username = "";
-        String password = "OR 1=1;";
-        boolean expResult = false;
-        boolean result = LoginController.connectEmployee(username, password);
-        assertEquals(expResult, result);
-    }
+   
     
 
     /**
@@ -165,14 +125,5 @@ public class LoginControllerTest {
         assertEquals(expResult, result);
     }
     
-    @Test
-    public void testConnectCompany4() {
-        System.out.println("connectCompany");
-        String username = "firma1";
-        String password = "parola2 OR 1=1";
-        boolean expResult = false;
-        boolean result = LoginController.connectCompany(username, password);
-        assertEquals(expResult, result);
-    }
     
 }

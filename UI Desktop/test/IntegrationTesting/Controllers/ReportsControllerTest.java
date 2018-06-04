@@ -47,8 +47,9 @@ public class ReportsControllerTest {
     public void testGetAll() throws Exception {
         System.out.println("getAll");
         List<Report> result = ReportsController.getAll();
+        String aux = "[(1solved), (1solv3d)]";
         boolean expResult = true;
-        boolean trueResult = result.size() == 2;
+        boolean trueResult = aux.equals(result.toString());
 
         assertEquals(expResult, trueResult);
     }
@@ -71,7 +72,8 @@ public class ReportsControllerTest {
         int id = 1;
         boolean expResult = true;
         Report result = ReportsController.getById(id);
-        boolean trueResult = result == null;
+        String aux = "(1solved)";
+        boolean trueResult = aux.equals(result.toString());
 
         assertEquals(expResult, trueResult);
     }
@@ -93,7 +95,8 @@ public class ReportsControllerTest {
         int id = 1;
         boolean expResult = true;
         Report result = ReportsController.getByMeeting(id);
-        boolean trueResult = result != null;
+        String aux = "(1solv3d)";
+        boolean trueResult = aux.equals(result.toString());
 
         assertEquals(expResult, trueResult);
     }

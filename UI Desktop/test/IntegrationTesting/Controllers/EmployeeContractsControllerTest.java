@@ -66,7 +66,8 @@ public class EmployeeContractsControllerTest {
         int id = 1;
         boolean expResult = true;
         EmployeeContract result = EmployeeContractsController.getById(id);
-        boolean trueResult = result != null;
+        String aux = "(112010-02-022012-02-02)";
+        boolean trueResult = aux.equals(result.toString());
         assertEquals(expResult, trueResult);
     }
 
@@ -90,8 +91,9 @@ public class EmployeeContractsControllerTest {
         int id = 1;
 
         EmployeeContract result = EmployeeContractsController.getByEmployee(id);
+        String aux = "(112010-02-022012-02-02)";
         boolean expResult = true;
-        boolean trueResult = (result != null);
+        boolean trueResult = aux.equals(result.toString());
 
         assertEquals(expResult, trueResult);
     }
@@ -141,8 +143,9 @@ public class EmployeeContractsControllerTest {
         int id = 1;
         
         List<EmployeeContract> result = EmployeeContractsController.getByCompany(id);
+        String aux = "[(112010-02-022012-02-02), (312018-02-022019-01-01)]";
         boolean expResult = true;
-        boolean trueResult = (result.size() == 1);
+        boolean trueResult = aux.equals(result.toString());
 
         assertEquals(expResult, trueResult);
     }

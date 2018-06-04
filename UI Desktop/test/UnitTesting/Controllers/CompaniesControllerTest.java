@@ -7,6 +7,7 @@ package UnitTesting.Controllers;
 
 import Controllers.CompaniesController;
 import Models.Company;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,18 +43,9 @@ public class CompaniesControllerTest {
     /**
      * Test of getByAccount method, of class CompaniesController.
      */
-    @Test
-    public void testGetByAccount1() {
-        System.out.println("getByAccount");
-        String username = "";
-        String password = "";
-        Company expResult = null;
-        Company result = CompaniesController.getByAccount(username, password);
-        assertEquals(expResult, result);
-    }
 
     @Test
-    public void testGetByAccount2() {
+    public void testGetByAccount1() {
         System.out.println("getByAccount");
         String username = "";
         String password = "; OR 1=1";
@@ -63,7 +55,7 @@ public class CompaniesControllerTest {
     }
 
     @Test
-    public void testGetByAccount3() {
+    public void testGetByAccount2() {
         System.out.println("getByAccount");
         String username = "firma1";
         String password = "parola1";
@@ -146,6 +138,13 @@ public class CompaniesControllerTest {
         boolean trueResult = result!=null;
         assertEquals(expResult, trueResult);
     }
-    
+     @Test
+    public void testGetAll1() {
+        System.out.println("getAll");
+        boolean expResult = true;
+        List<Company> result = CompaniesController.getAll();
+       boolean trueResult = result.size() == 2;
+        assertEquals(expResult,trueResult);
+    }
 
 }

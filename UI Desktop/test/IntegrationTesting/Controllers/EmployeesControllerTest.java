@@ -75,7 +75,8 @@ public class EmployeesControllerTest {
         System.out.println("getAverageRating");
         int id = 2;
         boolean expResult = true;
-        boolean result = (EmployeesController.getAverageRating(id) != 0d);
+        Double d = EmployeesController.getAverageRating(id);
+        boolean result = ( d == 3.0);
         assertEquals(expResult, result);
         
     }
@@ -99,21 +100,13 @@ public class EmployeesControllerTest {
         String username = "employee1";
         String password = "employee1";
         boolean expResult = true;
-
         Employee result = EmployeesController.getByAccount(username, password);
-        boolean trueResult = (result != null);
+        String aux = "(employee1employee1employee1employee10123012312employee1@hotmail.com0.0)";
+        boolean trueResult = aux.equals(result.toString());
 
         assertEquals(expResult, trueResult);
     }
-   @Test
-    public void testGetByAccount3() {
-        System.out.println("getByAccount");
-        String username = "";
-        String password = ";OR 1=1";
-        Employee expResult = null;
-        Employee result = EmployeesController.getByAccount(username, password);
-        assertEquals(expResult, result);
-    }
+
 
     /**
      * Test of getByUsername method, of class EmployeesController.
@@ -121,7 +114,7 @@ public class EmployeesControllerTest {
     @Test
     public void testGetByUsername1() {
         System.out.println("getByUsername");
-        String username = "0";
+        String username = "";
         Employee expResult = null;
         Employee result = EmployeesController.getByUsername(username);
         assertEquals(expResult, result);
@@ -132,17 +125,10 @@ public class EmployeesControllerTest {
         String username = "employee1";
         boolean expResult = true;
         Employee result = EmployeesController.getByUsername(username);
-        boolean trueResult = result!= null;
+        String aux = "(employee1employee1employee1employee10123012312employee1@hotmail.com0.0)";
+        boolean trueResult = aux.equals(result.toString());
         
         assertEquals(expResult, trueResult);
-    }
-       @Test
-    public void testGetByUsername3() {
-        System.out.println("getByUsername");
-        String username = "%";
-        Employee expResult = null;
-        Employee result = EmployeesController.getByUsername(username);
-        assertEquals(expResult, result);
     }
 
     /**
@@ -163,7 +149,8 @@ public class EmployeesControllerTest {
         int id = 1;
         boolean expResult = true;
         Employee result = EmployeesController.getById(id);
-        boolean trueResult = (result!= null);
+        String aux = "(employee1employee1employee1employee10123012312employee1@hotmail.com0.0)";
+        boolean trueResult = aux.equals(result.toString());
         
         assertEquals(expResult, trueResult);
     }
@@ -196,8 +183,9 @@ public class EmployeesControllerTest {
 
         GlobalData.setCompanyName("Firma1");
         List<Employee> result = EmployeesController.getAll(GlobalData.getCompanyName());
-        boolean trueResult = result.isEmpty();
-        boolean expResult = false;
+        String aux = "[(employee1employee1employee1employee10123012312employee1@hotmail.com0.0), (2222224.25)]";
+        boolean trueResult = aux.equals(result.toString());
+        boolean expResult = true;
         assertEquals(expResult, trueResult);
 
     }
@@ -209,7 +197,8 @@ public class EmployeesControllerTest {
     public void testGetAllOnlyGeneralData() throws Exception {
         System.out.println("getAll");
         List<Pair<Integer, String>> result = EmployeesController.getAllOnlyGeneralData();
-        boolean trueResult = result.size() != 0;
+        String aux = "[1=employee1, 2=employee, 3=2, 4=null, 5=employee3, 6=emp4, 7=emp4]";
+        boolean trueResult = aux.equals(result.toString());
         boolean expResult = true;
         assertEquals(expResult, trueResult);
 

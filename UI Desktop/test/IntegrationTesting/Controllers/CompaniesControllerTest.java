@@ -7,6 +7,7 @@ package IntegrationTesting.Controllers;
 
 import Controllers.CompaniesController;
 import Models.Company;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -52,43 +53,28 @@ public class CompaniesControllerTest {
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testGetByAccount2() {
-        System.out.println("getByAccount");
-        String username = "";
-        String password = "; OR 1=1";
-        Company expResult = null;
-        Company result = CompaniesController.getByAccount(username, password);
-        assertEquals(expResult, result);
-    }
 
     @Test
-    public void testGetByAccount3() {
+    public void testGetByAccount2() {
         System.out.println("getByAccount");
         String username = "firma1";
         String password = "parola1";
 
         boolean expResult = true;
         Company result = CompaniesController.getByAccount(username, password);
-        boolean trueResult = (result != null);
+        String aux = "(Firma1firma1parola12011-04-022012-04-02asd)";
+        boolean trueResult = aux.equals(result.toString());
         assertEquals(expResult, trueResult);
     }
 
     /**
      * Test of getByUsername method, of class CompaniesController.
      */
+ 
     @Test
     public void testGetByUsername1() {
         System.out.println("getByUsername");
-        String username = ";OR 1=1";
-        Company expResult = null;
-        Company result = CompaniesController.getByUsername(username);
-        assertEquals(expResult, result);
-    }
-    @Test
-    public void testGetByUsername2() {
-        System.out.println("getByUsername");
-        String username = "%";
+        String username = "";
         Company expResult = null;
         Company result = CompaniesController.getByUsername(username);
         assertEquals(expResult, result);
@@ -97,10 +83,11 @@ public class CompaniesControllerTest {
     @Test
     public void testGetByUsername3() {
         System.out.println("getByUsername");
-        String username = "firma1";
+        String username = "firma2";
         boolean expResult = true;
         Company result = CompaniesController.getByUsername(username);
-        boolean trueResult = result!= null;
+        String aux = "(Firma2firma2parola22012-04-052014-05-12asd1)";
+        boolean trueResult = aux.equals(result.toString());
         assertEquals(expResult, trueResult);
     }
     /**
@@ -109,7 +96,7 @@ public class CompaniesControllerTest {
      @Test
     public void testGetByName1() {
         System.out.println("getByName");
-        String name = "%";
+        String name = "";
         Company expResult = null;
         Company result = CompaniesController.getByName(name);
         assertEquals(expResult, result);
@@ -120,7 +107,8 @@ public class CompaniesControllerTest {
         String name = "Firma1";
         boolean expResult = true;
         Company result = CompaniesController.getByName(name);
-        boolean trueResult = result!= null;
+        String aux = "(Firma1firma1parola12011-04-022012-04-02asd)";
+        boolean trueResult = aux.equals(result.toString());
         assertEquals(expResult, trueResult);
     }
     
@@ -143,9 +131,24 @@ public class CompaniesControllerTest {
         int id = 1;
         boolean expResult = true;
         Company result = CompaniesController.getById(id);
-        boolean trueResult = result!=null;
+        String aux = "(Firma1firma1parola12011-04-022012-04-02asd)";
+        boolean trueResult = aux.equals(result.toString());
         assertEquals(expResult, trueResult);
     }
+    /**
+     * Test of getAll method, of class CompaniesController.
+     */
+    @Test
+    public void testGetAll1() {
+        System.out.println("getAll");
+        boolean expResult = true;
+        List<Company> result = CompaniesController.getAll();
+        String aux = "[(Firma1firma1parola12011-04-022012-04-02asd), (Firma2firma2parola22012-04-052014-05-12asd1)]";
+        boolean trueResult = aux.equals(result.toString());
+        assertEquals(expResult,trueResult);
+    }
+    
+   
     
 
 }

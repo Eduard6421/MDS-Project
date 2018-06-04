@@ -7,7 +7,10 @@ package UnitTesting.Controllers;
 
 import Controllers.ClientsController;
 import Models.Client;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.util.Pair;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -64,17 +67,6 @@ public class ClientsControllerTest {
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testGetByAccount3() {
-        System.out.println("getByAccount");
-        String username = "client1";
-        String password = "parolaclient1";
-        boolean expResult = true;
-        Client result = ClientsController.getByAccount(username, password);
-        boolean trueResult = result != null;
-
-        assertEquals(expResult, trueResult);
-    }
 
     /**
      * Test of getByUsername method, of class ClientsController.
@@ -141,5 +133,38 @@ public class ClientsControllerTest {
 
         assertEquals(expResult, trueResult);
     }
-
+    /**
+     * Test of getAllOnlyGeneralData method, of class ClientsController.
+     */
+    @Test
+    public void testGetAllOnlyGeneralData1()
+    {
+         System.out.println("getAllOnlyGeneralData");
+         List<Pair<Integer, String>> result = null;
+        try {
+            result = ClientsController.getAllOnlyGeneralData("");
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientsControllerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         boolean expResult = true;
+         boolean trueResult = result.size() == 0;
+         
+         assertEquals(expResult,trueResult);
+    }
+    @Test
+     public void testGetAllOnlyGeneralData2()
+    {
+         System.out.println("getAllOnlyGeneralData");
+         List<Pair<Integer, String>> result = null;
+        try {
+            result = ClientsController.getAllOnlyGeneralData("Firma1");
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientsControllerTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         boolean expResult = true;
+         boolean trueResult = result.size() == 2;
+         
+         assertEquals(expResult,trueResult);
+    }
+     
 }
