@@ -17,6 +17,17 @@ public class Meeting extends Entity {
     private String Description;
     private boolean IsOpen;
 
+    public Meeting(int id, int idClient, int idCompany, int idEmployee, Date meetingDate, double feedback, String description, boolean isOpen) {
+        this.Id = id;
+        this.IdClient = idClient;
+        this.IdCompany = idCompany;
+        this.IdEmployee = idEmployee;
+        this.MeetingDate = meetingDate;
+        this.Feedback = feedback;
+        this.Description = description;
+        this.IsOpen = isOpen;
+    }
+    
     public Meeting(int idClient, int idCompany, int idEmployee, Date meetingDate, double feedback, String description, boolean isOpen) {
         this.IdClient = idClient;
         this.IdCompany = idCompany;

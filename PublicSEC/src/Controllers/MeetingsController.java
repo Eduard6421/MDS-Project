@@ -70,6 +70,7 @@ public class MeetingsController {
             while (result.next()) {
 
                 meeting = new Meeting(
+                        result.getInt("Id"),
                         result.getInt("IdClient"),
                         result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
@@ -108,6 +109,7 @@ public class MeetingsController {
             while (result.next()) {
 
                 meeting = new Meeting(
+                        result.getInt("Id"),
                         result.getInt("IdClient"),
                         result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
@@ -146,6 +148,7 @@ public class MeetingsController {
             while (result.next()) {
 
                 meeting = new Meeting(
+                        result.getInt("Id"),
                         result.getInt("IdClient"),
                         result.getInt("IdCompany"),
                         result.getInt("IdEmployee"),
@@ -567,11 +570,11 @@ public class MeetingsController {
     public static boolean reopenMeeting(int meetingId) {
         try {
 
-            String query = "update meetings set isopen = 0 where id = ?";
+            String query = "update meetings set isopen = 1 where id = ?";
 
             PreparedStatement statement = conn.prepareStatement(query);
 
-            statement.setInt(1, 1);
+            statement.setInt(1, meetingId);
 
             int result = statement.executeUpdate();
 
@@ -622,7 +625,7 @@ public class MeetingsController {
 
             PreparedStatement statement = conn.prepareStatement(query);
 
-            statement.setInt(1, 0);
+            statement.setInt(1, meetingId);
 
             int result = statement.executeUpdate();
 
