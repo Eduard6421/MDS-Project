@@ -4,6 +4,7 @@ import Controllers.ClientsController;
 import Controllers.EmployeesController;
 import Controllers.MeetingsController;
 import Controllers.ReportsController;
+import Forms.AssignEmployee;
 import Forms.PendingMeetingsTable;
 import Forms.MeetingReport;
 import Models.Employee;
@@ -34,7 +35,7 @@ public class PendingMeetingsController implements ActionListener {
     
     private List<Meeting> meetingsList;
     
-    private MeetingReport meetingReportForm = null;
+    private AssignEmployee assignEmployeeForm = null;
     
     public PendingMeetingsController() {
     }
@@ -64,6 +65,7 @@ public class PendingMeetingsController implements ActionListener {
         
         populateClientsList();
         populateEmployeesList();
+        populateAvailableEmployeesList();
         
         fillTable();
     }
@@ -83,7 +85,11 @@ public class PendingMeetingsController implements ActionListener {
                 case "Assign Employee":
                     if (getSelectedMeeting() != null) {
                         Meeting selectedMeeting = getSelectedMeeting();
-                        tryCancelMeeting(selectedMeeting);
+                        String clientName = findClientNameById(selectedMeeting.getId());
+                        assignEmployeeForm = new AssignEmployee(this, clientName, selectedMeeting, availableEmployees);
+                        assignEmployeeForm.setVisible(true);
+                        
+                        toggleFocus();
                     }
                     break;
             }
@@ -91,10 +97,22 @@ public class PendingMeetingsController implements ActionListener {
         else {
             switch (command) {
                 case "Exit":
-                    meetingReportForm.setVisible(false);
-                    meetingReportForm.dispose();
-                    meetingReportForm = null;
+                    assignEmployeeForm.setVisible(false);
+                    assignEmployeeForm.dispose();
+                    assignEmployeeForm = null;
                     toggleFocus();
+                    break;
+                case "Assign":
+                    Pair<String, Meeting> meeting = assignEmployeeForm.getAssignedMeeting();
+                    int employeeId = findAvailableEmployeeIdByName(meeting.getKey());
+                    if (employeeId != -1) {
+                        MeetingsController.assignMeetingToEmployee(meeting.getValue().getId(), employeeId);
+                        fillTable();
+                        toggleFocus();
+                        assignEmployeeForm.setVisible(false);
+                        assignEmployeeForm.dispose();
+                        assignEmployeeForm = null;
+                    }                 
                     break;
             }
         }
@@ -118,7 +136,7 @@ public class PendingMeetingsController implements ActionListener {
     
     public void populateAvailableEmployeesList() {
         try {
-            employees = EmployeesController.getAllOnlyGeneralData();
+            availableEmployees = EmployeesController.getAllOnlyGeneralData();
         } catch (SQLException ex) {
             Logger.getLogger(PendingMeetingsController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -177,6 +195,15 @@ public class PendingMeetingsController implements ActionListener {
         return null;
     }
     
+    public int findAvailableEmployeeIdByName(String name) {
+        for (Pair<Integer, String> employee : availableEmployees) {
+            if(employee.getValue().equals(name)) {
+                return employee.getKey();
+            }
+        }
+        return -1;       
+    }
+    
     public String findClientNameById(int id) {
         for (Pair<Integer, String> client : clients) {
             if(client.getKey() == id) {
@@ -194,17 +221,5 @@ public class PendingMeetingsController implements ActionListener {
         Meeting meeting = meetingsList.get(selectedIndex);
         
         return meeting;
-    }
-    
-    public void tryCancelMeeting(Meeting meeting) {
-        int confirmationDialog = JOptionPane
-                                    .showConfirmDialog(null, 
-                                                       "Do you want to cancel this meeting?",
-                                                       "Cancel meeting", JOptionPane.YES_NO_OPTION);
-        
-        if (confirmationDialog == JOptionPane.YES_OPTION) {
-            MeetingsController.cancelMeetingById(meeting.getId());
-            fillTable();
-        }
     }
 }
