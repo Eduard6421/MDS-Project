@@ -1,6 +1,6 @@
 package Forms.Controllers;
 
-import Forms.CompanyMenu;
+import Forms.Forms.CompanyMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;

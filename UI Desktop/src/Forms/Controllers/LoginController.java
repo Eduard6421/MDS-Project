@@ -1,6 +1,6 @@
 package Forms.Controllers;
 
-import Forms.Login;
+import Forms.Forms.Login;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

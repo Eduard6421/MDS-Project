@@ -1,6 +1,6 @@
 package Forms.Controllers;
 
-import Forms.EmployeeMenu;
+import Forms.Forms.EmployeeMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;

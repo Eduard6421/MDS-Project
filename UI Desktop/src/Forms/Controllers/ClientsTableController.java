@@ -1,7 +1,7 @@
 package Forms.Controllers;
 
 import Controllers.ClientsController;
-import Forms.ClientsTable;
+import Forms.Forms.ClientsTable;
 import Models.Client;
 import Utils.Converters;
 import Utils.GlobalData;
