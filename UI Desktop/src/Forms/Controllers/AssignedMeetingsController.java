@@ -3,9 +3,12 @@ package Forms.Controllers;
 import Controllers.ClientsController;
 import Controllers.EmployeesController;
 import Controllers.MeetingsController;
+import Controllers.ReportsController;
 import Forms.AssignedMeetingsTable;
+import Forms.MeetingReport;
 import Models.Employee;
 import Models.Meeting;
+import Models.Report;
 import Utils.Converters;
 import Utils.GlobalData;
 import java.awt.event.ActionEvent;
@@ -28,6 +31,8 @@ public class AssignedMeetingsController implements ActionListener {
     private List<Pair<Integer, String>> employees;
     private List<Pair<Integer, String>> clients;
     private List<Meeting> meetingsList;
+    
+    private MeetingReport meetingReportForm = null;
     
     public AssignedMeetingsController() {
     }
@@ -82,7 +87,7 @@ public class AssignedMeetingsController implements ActionListener {
                     if (getSelectedMeeting() != null) {
                         Meeting selectedMeeting = getSelectedMeeting();
                         if (selectedMeeting.getIsOpen() == true)
-                            MeetingsController.closeMeeting(selectedMeeting.getId());
+                            MeetingsController.markAsFinished(selectedMeeting.getId());
                         fillTable();
                     }
                     break;
@@ -90,12 +95,35 @@ public class AssignedMeetingsController implements ActionListener {
                     if (getSelectedMeeting() != null) {
                         Meeting selectedMeeting = getSelectedMeeting();
                         if (selectedMeeting.getIsOpen() == false)
-                            MeetingsController.reopenMeeting(selectedMeeting.getId());
+                            MeetingsController.markAsOpen(selectedMeeting.getId());
                         fillTable();
                     }
                     break;
+                case "View Report":
+                    if (getSelectedMeeting() != null) {
+                        Meeting meeting = getSelectedMeeting();
+                        String clientName = findClientNameById(meeting.getIdClient());
+                        String employeeName = findEmployeeNameById(meeting.getIdEmployee());
+                        Report report = ReportsController.getByMeeting(meeting.getId());
+                        if (report != null) {
+                            meetingReportForm = new MeetingReport(this, meeting, report, clientName, employeeName);
+                            meetingReportForm.setVisible(true);
+                            toggleFocus();
+                        }
+                    }
+                    break;
             }
-        }   
+        }
+        else {
+            switch (command) {
+                case "Exit":
+                    meetingReportForm.setVisible(false);
+                    meetingReportForm.dispose();
+                    meetingReportForm = null;
+                    toggleFocus();
+                    break;
+            }
+        }
     }
     
     public void populateClientsList() {

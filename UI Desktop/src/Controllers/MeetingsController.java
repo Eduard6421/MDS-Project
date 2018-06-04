@@ -567,7 +567,7 @@ public class MeetingsController {
      * @param meetingId
      * @return 
      */
-    public static boolean reopenMeeting(int meetingId) {
+    public static boolean markAsOpen(int meetingId) {
         try {
 
             String query = "update meetings set isopen = 1 where id = ?";
@@ -617,7 +617,7 @@ public class MeetingsController {
      * @param meetingId
      * @return 
      */
-    public static boolean closeMeeting(int meetingId) {
+    public static boolean markAsFinished(int meetingId) {
 
         try {
 

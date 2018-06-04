@@ -93,7 +93,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="labelSelectedMeeting" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonReassignEmployee" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonViewReport" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="buttonCancelMeeting" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -114,7 +114,7 @@
                   <EmptySpace pref="27" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="buttonBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonReassignEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonViewReport" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonCancelMeeting" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labelSelectedMeeting" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonMarkAsFinished" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -210,9 +210,9 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonReassignEmployee">
+        <Component class="javax.swing.JButton" name="buttonViewReport">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reassign Employee"/>
+            <Property name="text" type="java.lang.String" value="View Report"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>

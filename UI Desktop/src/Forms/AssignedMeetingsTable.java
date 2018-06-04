@@ -31,7 +31,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         parentController = controller;
         
         buttonBack.addActionListener(parentController);
-        buttonReassignEmployee.addActionListener(parentController);
+        buttonViewReport.addActionListener(parentController);
         buttonCancelMeeting.addActionListener(parentController);
         buttonMarkAsFinished.addActionListener(parentController);
         buttonMarkAsOpen.addActionListener(parentController);
@@ -73,7 +73,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         buttonBack = new javax.swing.JButton();
         buttonCancelMeeting = new javax.swing.JButton();
-        buttonReassignEmployee = new javax.swing.JButton();
+        buttonViewReport = new javax.swing.JButton();
         labelSelectedMeeting = new javax.swing.JLabel();
         buttonMarkAsFinished = new javax.swing.JButton();
         buttonMarkAsOpen = new javax.swing.JButton();
@@ -139,8 +139,8 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
         buttonCancelMeeting.setText("Cancel Meeting");
         buttonCancelMeeting.setToolTipText("");
 
-        buttonReassignEmployee.setText("Reassign Employee");
-        buttonReassignEmployee.setToolTipText("");
+        buttonViewReport.setText("View Report");
+        buttonViewReport.setToolTipText("");
 
         labelSelectedMeeting.setText("Selected meeting: ");
         labelSelectedMeeting.setToolTipText("");
@@ -167,7 +167,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelSelectedMeeting)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonReassignEmployee)
+                        .addComponent(buttonViewReport)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonCancelMeeting)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -184,7 +184,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonBack)
-                    .addComponent(buttonReassignEmployee)
+                    .addComponent(buttonViewReport)
                     .addComponent(buttonCancelMeeting)
                     .addComponent(labelSelectedMeeting)
                     .addComponent(buttonMarkAsFinished)
@@ -282,7 +282,7 @@ public class AssignedMeetingsTable extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancelMeeting;
     private javax.swing.JButton buttonMarkAsFinished;
     private javax.swing.JButton buttonMarkAsOpen;
-    private javax.swing.JButton buttonReassignEmployee;
+    private javax.swing.JButton buttonViewReport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
