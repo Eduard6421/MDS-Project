@@ -30,7 +30,12 @@ public class LoginController {
             GlobalData.setUsername(username);
             GlobalData.setUserType("employee");
             GlobalData.setUserId(employee.getId());
+
             EmployeeContract tmp = EmployeeContractsController.getById(employee.getId());
+            if (tmp == null) {
+                return false;
+            }
+
             Company tmp1 = CompaniesController.getById(tmp.getIdCompany());
             GlobalData.setCompanyName(tmp1.getName());
             return true;

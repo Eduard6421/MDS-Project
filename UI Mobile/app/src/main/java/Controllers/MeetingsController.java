@@ -330,11 +330,11 @@ public class MeetingsController {
     }
 
     /*********************************************************************************************/
-    public static List<Meeting> getAllOpenedByEmployee(String companyName, Integer employeeId) {
+    public static List<Meeting> getAllOpenedByEmployee(Integer employeeId) {
 
         try {
             AsyncGetAllOpenedByEmployee asyncGetAllOpenedByEmployee = new AsyncGetAllOpenedByEmployee();
-            return asyncGetAllOpenedByEmployee.execute(companyName, employeeId.toString()).get();
+            return asyncGetAllOpenedByEmployee.execute(employeeId).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -344,21 +344,20 @@ public class MeetingsController {
         return null;
     }
 
-    public static class AsyncGetAllOpenedByEmployee extends AsyncTask<String, String, List<Meeting>> {
+    public static class AsyncGetAllOpenedByEmployee extends AsyncTask<Integer, String, List<Meeting>> {
 
         @Override
-        protected List<Meeting> doInBackground(String... strings) {
+        protected List<Meeting> doInBackground(Integer... integers) {
 
             Meeting meeting = null;
 
             List<Meeting> meetings = new ArrayList<>();
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 1 AND IdCompany = (select Id from companies where username = (?))";
+                String query = "SELECT * FROM meetings WHERE IdEmployee = (?) AND IsOpen = 1";
 
                 PreparedStatement statement = conn.prepareStatement(query);
-                statement.setInt(1, Integer.parseInt(strings[1]));
-                statement.setString(2, strings[0]);
+                statement.setInt(1, integers[0]);
                 ResultSet result = statement.executeQuery();
 
                 while (result.next()) {
@@ -386,11 +385,11 @@ public class MeetingsController {
     }
 
     /**********************************************************************************************/
-    public static List<Meeting> getAllClosedByEmployee(String companyName, Integer employeeId) {
+    public static List<Meeting> getAllClosedByEmployee(Integer employeeId) {
 
         try {
             AsyncGetAllClosedByEmployee asyncGetAllClosedByEmployee = new AsyncGetAllClosedByEmployee();
-            return asyncGetAllClosedByEmployee.execute(companyName, employeeId.toString()).get();
+            return asyncGetAllClosedByEmployee.execute(employeeId).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -400,20 +399,19 @@ public class MeetingsController {
         return null;
     }
 
-    public static class AsyncGetAllClosedByEmployee extends AsyncTask<String, String, List<Meeting>> {
+    public static class AsyncGetAllClosedByEmployee extends AsyncTask<Integer, String, List<Meeting>> {
 
         @Override
-        protected List<Meeting> doInBackground(String... strings) {
+        protected List<Meeting> doInBackground(Integer... integers) {
             Meeting meeting = null;
 
             List<Meeting> meetings = new ArrayList<>();
 
             try {
-                String query = "SELECT * FROM meetings WHERE IdClient = (?) AND IsOpen = 0 AND IdCompany = (select Id from companies where username = (?))";
+                String query = "SELECT * FROM meetings WHERE IdEmployee = (?) AND IsOpen = 0";
 
                 PreparedStatement statement = conn.prepareStatement(query);
-                statement.setInt(1, Integer.parseInt(strings[1]));
-                statement.setString(2, strings[0]);
+                statement.setInt(1, integers[0]);
                 ResultSet result = statement.executeQuery();
 
                 while (result.next()) {

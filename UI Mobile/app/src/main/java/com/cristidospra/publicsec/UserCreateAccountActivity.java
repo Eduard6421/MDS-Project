@@ -63,6 +63,9 @@ public class UserCreateAccountActivity extends AppCompatActivity {
         if (result == false) {
             createAlertDialog("Failed to create your account. Please try again.");
         }
+        else {
+            createAlertDialog("Account created succesfully!");
+        }
     }
 
     private void createAlertDialog(String errorMessage) {

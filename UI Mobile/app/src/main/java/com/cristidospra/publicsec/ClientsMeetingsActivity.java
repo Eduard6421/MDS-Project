@@ -87,12 +87,12 @@ public class ClientsMeetingsActivity extends AppCompatActivity implements PopupM
             String companyName = company != null ? company.getName() : "-";
             String employeeName = employee != null ? employee.getFirstName() + " " + employee.getLastName() : "-";
 
-            createTableRow(meetingsTable, meet.getMeetingDate(), companyName, meet.getDescription(), employeeName, null);
+            createTableRow(meetingsTable, meet.getMeetingDate(), companyName, employeeName, meet.getDescription(), null);
         }
 
     }
 
-    public void createTableRow(TableLayout meetingsTable, Date meetingDate, String meetingCompanyName, String meetingDescription, String meetingEmployee, View.OnClickListener clickListener) {
+    public void createTableRow(TableLayout meetingsTable, Date meetingDate, String meetingCompanyName, String meetingEmployee, String meetingDescription, View.OnClickListener clickListener) {
 
         TableRow tr = new TableRow(this);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
@@ -208,30 +208,6 @@ public class ClientsMeetingsActivity extends AppCompatActivity implements PopupM
 
         switch (item.getItemId()) {
 
-            /* EMPLOYEE SIDE */
-            case R.id.employee_overflow_account:
-
-                intent = new Intent(this, EmployeeAccountActivity.class);
-                startActivity(intent);
-
-                return true;
-
-            case R.id.employee_overflow_meetings:
-
-                intent = new Intent(this, ClientsMeetingsActivity.class);
-                startActivity(intent);
-
-                return true;
-
-            case R.id.employee_overflow_write_report:
-
-                intent = new Intent(this, WriteReportActivity.class);
-                startActivity(intent);
-
-                return true;
-
-
-            /* CLIENT SIDE */
             case R.id.user_overflow_account:
 
                 intent = new Intent(this, UserAccountActivity.class);

@@ -44,7 +44,7 @@ public class WriteReportActivity extends AppCompatActivity implements PopupMenu.
         submitButton = findViewById(R.id.write_report_submit_button);
         cancelButton = findViewById(R.id.write_report_cancel_button);
 
-        menuBarsImageView = findViewById(R.id.employee_menu_bars_image_view);
+        menuBarsImageView = findViewById(R.id.write_report_menu_bars_image_view);
 
         menuBarsImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +117,7 @@ public class WriteReportActivity extends AppCompatActivity implements PopupMenu.
 
             case R.id.employee_overflow_meetings:
 
-                intent = new Intent(this, ClientsMeetingsActivity.class);
+                intent = new Intent(this, EmployeesMeetingsActivity.class);
                 startActivity(intent);
 
                 return true;

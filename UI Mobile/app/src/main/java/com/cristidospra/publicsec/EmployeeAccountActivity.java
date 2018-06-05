@@ -91,8 +91,10 @@ public class EmployeeAccountActivity extends AppCompatActivity implements PopupM
 
         usernameEditText.setClickable(false);
         //usernameEditText.setActivated(false);
+        ratingBar.setFocusable(false);
         ratingBar.setClickable(false);
-        //ratingBar.setActivated(false);
+        ratingBar.setActivated(false);
+        ratingBar.setEnabled(false);
 
         usernameEditText.setText(myEmployee.getUsername());
         emailEditText.setText(myEmployee.getEmail());
@@ -121,7 +123,9 @@ public class EmployeeAccountActivity extends AppCompatActivity implements PopupM
         final EditText newPasswordEditText = findViewById(R.id.new_password_edit_text);
         final EditText confirmPasswordEditText = findViewById(R.id.confirm_password_edit_text);
 
-        Button changePasswordButton = findViewById(R.id.change_password_button);
+        Button changePasswordButton = findViewById(R.id.employee_change_password_button);
+
+        final AlertDialog alertDialog = dialogBuilder.create();
 
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,19 +139,22 @@ public class EmployeeAccountActivity extends AppCompatActivity implements PopupM
                     createAlertDialog("The inserted passwords do not match.");
                 }
                 else {
-                    boolean result = EmployeesController.changePassword(oldPassword, newPassword);
+                    if (newPassword.length() < 1) {
+                        createAlertDialog("Password cant be empty.");
+                    } else {
+                        boolean result = EmployeesController.changePassword(oldPassword, newPassword);
 
-                    if (result == false) {
-                        createAlertDialog("Inserted password not correct.");
-                    }
-                    else {
-                        createAlertDialog("Password succesfully changed.");
+                        if (result == false) {
+                            createAlertDialog("Inserted password not correct.");
+                        } else {
+                            createAlertDialog("Password succesfully changed.");
+                            alertDialog.dismiss();
+                        }
                     }
                 }
             }
         });
 
-        AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();
     }
 
@@ -179,7 +186,7 @@ public class EmployeeAccountActivity extends AppCompatActivity implements PopupM
 
             case R.id.employee_overflow_meetings:
 
-                intent = new Intent(this, ClientsMeetingsActivity.class);
+                intent = new Intent(this, EmployeesMeetingsActivity.class);
                 startActivity(intent);
 
                 return true;
