@@ -2,6 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/src/Forms/Controllers/LoginController.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/IntegrationTesting/Forms/ClientsTableControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/EmployeeContractsControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/ClientsControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/ReportsControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/IntegrationTesting/Controllers/ClientContractsControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/src/Utils/MySQLConnector.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/IntegrationTesting/Forms/LoginControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/src/Controllers/MeetingsController.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/LoginControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/IntegrationTesting/Controllers/CompaniesControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/CompaniesControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/MeetingsControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/IntegrationTesting/Forms/EmployeesTableControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/IntegrationTesting/Forms/MeetingsTableControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/EmployeesControllerTest.java</file>
+            <file>file:/E:/Student/Facultate/Anul%20II/Semestrul%20II/MDS/MDS-Project/UI%20Desktop/test/UnitTesting/Controllers/ClientContractsControllerTest.java</file>
+        </group>
     </open-files>
 </project-private>

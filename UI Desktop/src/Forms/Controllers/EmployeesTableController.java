@@ -186,7 +186,7 @@ public class EmployeesTableController implements ActionListener {
             row[0] = employee.getUsername();
             row[1] = employee.getFirstName();
             row[2] = employee.getLastName();
-            row[3] = employee.getRating();
+            row[3] = EmployeesController.getAverageRating(employee.getId());
             
             employeesIds.add(new Pair<Integer, String>(employee.getId(), employee.getUsername()));
             
