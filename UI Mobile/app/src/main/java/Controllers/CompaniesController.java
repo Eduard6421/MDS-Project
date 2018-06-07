@@ -2,8 +2,6 @@ package Controllers;
 
 import android.os.AsyncTask;
 
-import Models.Company;
-import Utils.MySQLConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import Models.Company;
+import Utils.MySQLConnector;
 
 public class CompaniesController {
 
@@ -217,6 +218,60 @@ public class CompaniesController {
             }
 
             return company;
+        }
+    }
+
+    /**************************************************************************************/
+    public static List<Company> getByClient(Integer clientId) {
+
+        try {
+            AsyncGetByClient asyncGetByClient = new AsyncGetByClient();
+            return asyncGetByClient.execute(clientId).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+    public static class AsyncGetByClient extends AsyncTask<Integer, String, List<Company>> {
+
+        @Override
+        protected List<Company> doInBackground(Integer... integers) {
+
+            Company company;
+            List<Company> companies = new ArrayList<>();
+
+            try {
+                String query = "select cmp.Id,cmp.Name,cmp.ContractStartDate,cmp.ContractEndDate,cmp.Description,cmp.Username,cmp.Password from companies as cmp join client_contracts  con on  cmp.id = con.IdCompany join clients clt on clt.Id = con.IdClient where clt.id = ?";
+
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setInt(1, integers[0]);
+
+                ResultSet result = statement.executeQuery();
+
+                while (result.next()) {
+
+                    company = new Company(
+                            result.getInt("Id"),
+                            result.getString("Name"),
+                            result.getDate("ContractStartDate"),
+                            result.getDate("ContractEndDate"),
+                            result.getString("Description"),
+                            result.getString("Username"),
+                            result.getString("Password"));
+
+                    companies.add(company);
+                }
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return companies;
         }
     }
 

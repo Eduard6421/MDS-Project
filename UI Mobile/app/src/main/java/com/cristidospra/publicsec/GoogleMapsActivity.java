@@ -3,6 +3,7 @@ package com.cristidospra.publicsec;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -18,6 +19,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.DirectionsApi;
+import com.google.maps.DirectionsApiRequest;
+import com.google.maps.GeoApiContext;
+import com.google.maps.model.DirectionsLeg;
+import com.google.maps.model.DirectionsResult;
+import com.google.maps.model.DirectionsRoute;
+import com.google.maps.model.DirectionsStep;
+import com.google.maps.model.EncodedPolyline;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -90,7 +100,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             Address addr = addresses.get(0);
             return new LatLng(addr.getLatitude(), addr.getLongitude());
         } else {
-            return new LatLng(50, 50);
+            return new LatLng(40, 40);
         }
     }
 
@@ -98,8 +108,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LocationManager locationManager = (LocationManager)
-                getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -113,7 +122,12 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             return;
         }
 
-        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        Location location;
+
+        do {
+            location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+        }while(location == null);
+
         showMarker(location.getLatitude(), location.getLongitude(), "Your location");
         centerMapOnLocation(location.getLatitude(), location.getLongitude());
 
@@ -125,7 +139,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
         LatLng coordsSource = new LatLng(location.getLatitude(), location.getLongitude());
         LatLng coordsDestination = getAdrdessCoords(this.clientAddress);
-/*
+
         //Execute Directions API request
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyC6VyD5brbSZYL6W2nYs7h4lU6HWkOGcjw")
@@ -181,7 +195,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         if (path.size() > 0) {
             PolylineOptions opts = new PolylineOptions().addAll(path).color(Color.BLUE).width(5);
             mMap.addPolyline(opts);
-        }*/
+        }
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
     }

@@ -2,8 +2,6 @@ package Controllers;
 
 import android.os.AsyncTask;
 
-import Models.Report;
-import Utils.MySQLConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import Models.Report;
+import Utils.MySQLConnector;
 
 public class ReportsController {
 

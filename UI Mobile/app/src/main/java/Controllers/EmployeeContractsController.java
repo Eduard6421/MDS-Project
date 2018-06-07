@@ -2,16 +2,16 @@ package Controllers;
 
 import android.os.AsyncTask;
 
-import Models.EmployeeContract;
-import Utils.MySQLConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
+
+import Models.EmployeeContract;
+import Utils.MySQLConnector;
 
 public class EmployeeContractsController {
 
@@ -114,7 +114,7 @@ public class EmployeeContractsController {
     }
 
     /************************************************************************/
-    public static List<EmployeeContract> getByEmployee(Integer id) {
+    public static EmployeeContract getByEmployee(Integer id) {
 
         try {
             AsyncGetByEmployee asyncGetByEmployee = new AsyncGetByEmployee();
@@ -128,14 +128,12 @@ public class EmployeeContractsController {
         return null;
     }
 
-    public static class AsyncGetByEmployee extends AsyncTask<Integer, String, List<EmployeeContract>> {
+    public static class AsyncGetByEmployee extends AsyncTask<Integer, String, EmployeeContract> {
 
         @Override
-        protected List<EmployeeContract> doInBackground(Integer... integers) {
+        protected EmployeeContract doInBackground(Integer... integers) {
 
             EmployeeContract employeeContract = null;
-
-            List<EmployeeContract> employeeContracts = new ArrayList<>();
 
             try {
                 String query = "SELECT * FROM employee_contracts WHERE IdEmployee = (?)";
@@ -152,9 +150,6 @@ public class EmployeeContractsController {
                             result.getInt("IdCompany"),
                             result.getDate("StartDate"),
                             result.getDate("EndDate"));
-
-                    employeeContracts.add(employeeContract);
-
                 }
 
                 statement.close();
@@ -163,7 +158,7 @@ public class EmployeeContractsController {
                 System.out.println(e);
             }
 
-            return employeeContracts;
+            return employeeContract;
         }
     }
 

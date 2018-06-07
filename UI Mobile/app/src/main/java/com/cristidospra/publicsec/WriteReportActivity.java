@@ -1,7 +1,9 @@
 package com.cristidospra.publicsec;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
@@ -16,8 +18,10 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
+import Controllers.ClientsController;
 import Controllers.MeetingsController;
 import Controllers.ReportsController;
+import Models.Client;
 import Models.Meeting;
 import Utils.GlobalData;
 
@@ -65,6 +69,7 @@ public class WriteReportActivity extends AppCompatActivity implements PopupMenu.
             @Override
             public void onClick(View v) {
                 writeReport();
+                createAlertDialog("Report submitted succesfully.");
             }
         });
 
@@ -83,23 +88,43 @@ public class WriteReportActivity extends AppCompatActivity implements PopupMenu.
     private void populateSpinnerValues() {
 
         List<Meeting> meetings = MeetingsController.getAllByClient(GlobalData.getUserId());
-        ArrayList<Integer> meetingIDs = new ArrayList<>();
+        ArrayList<String> meetingClients = new ArrayList<>();
 
         for (Meeting meet : meetings) {
-            meetingIDs.add(meet.getId());
+            Client client = ClientsController.getById(meet.getIdClient());
+            meetingClients.add(meet.getId() + " " + client.getFirstName() + " " + client.getLastName());
         }
 
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, meetingIDs);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, meetingClients);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         meetingsSpinner.setAdapter(adapter);
     }
 
     private void writeReport() {
 
-        Integer meetingID = (Integer) meetingsSpinner.getSelectedItem();
+        String meetingClient = (String) meetingsSpinner.getSelectedItem();
         String description = String.valueOf(descriptionEditText.getText());
 
-        ReportsController.createReport(meetingID, description);
+        Integer meetingId = Integer.parseInt(meetingClient.substring(0, meetingClient.indexOf(' ')));
+
+        ReportsController.createReport(meetingId, description);
+        MeetingsController.closeMeeting(meetingId);
+    }
+
+
+    private AlertDialog createAlertDialog(String errorMessage) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(errorMessage)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+        return alert;
     }
 
     @Override

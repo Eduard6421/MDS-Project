@@ -31,7 +31,7 @@ public class LoginController {
             GlobalData.setUserType("employee");
             GlobalData.setUserId(employee.getId());
 
-            EmployeeContract tmp = EmployeeContractsController.getById(employee.getId());
+            EmployeeContract tmp = EmployeeContractsController.getByEmployee(employee.getId());
             if (tmp == null) {
                 return false;
             }

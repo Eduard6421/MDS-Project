@@ -3,9 +3,6 @@ package Controllers;
 import android.os.AsyncTask;
 import android.util.Pair;
 
-import Models.Client;
-import Utils.GlobalData;
-import Utils.MySQLConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import Models.Client;
+import Utils.GlobalData;
+import Utils.MySQLConnector;
 
 public class ClientsController {
 
@@ -58,9 +59,6 @@ public class ClientsController {
 
             } catch (SQLException e) {
                 return false;
-            } finally {
-                return false;
-
             }
         }
     }

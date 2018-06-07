@@ -130,7 +130,7 @@ public class MeetingSchedulerActivity extends AppCompatActivity implements Popup
 
     private void loadCompanies() {
 
-        List<Company> companies = CompaniesController.getAll();
+        List<Company> companies = CompaniesController.getByClient(GlobalData.getUserId());
 
         String[] companyNames = new String[companies.size()];
 
